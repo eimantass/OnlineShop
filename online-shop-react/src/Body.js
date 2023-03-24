@@ -1,12 +1,14 @@
 import './css/Body.css';
-import './img/computer-lab-icon-2.jpg';
 
 function Body() {
     return (
      <div>
-        
-        <img src="https://thumbs.dreamstime.com/b/computer-logo-pc-logo-vector-computer-logo-pc-logo-vector-142583250.jpg" alt="Logo" style={{ width: "200px", height: "200px", position: "absolute", top: "5", left: "0" }} />
-        
+        <a href="http://localhost:3000/#">
+        <img src="https://thumbs.dreamstime.com/b/computer-logo-pc-logo-vector-computer-logo-pc-logo-vector-142583250.jpg" 
+        alt="Logo" 
+        style={{ width: "200px", height: "200px", position: "absolute", top: "5", left: "0" }} />
+        </a>
+
         <main>
             
             <h2 class="center"> Test Text1 </h2>
