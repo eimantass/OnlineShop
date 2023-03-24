@@ -21,25 +21,26 @@ import org.springframework.web.bind.annotation.RestController;
 public class ServiceController {
 @Autowired
 private ServiceRepository serviceRepsitory;
+/*
 @GetMapping
-public List<ServiceManager> getCustomers() {
+public List<ServiceManager> getServiceManagers() {
 	return serviceRepsitory.findAll();
 }
-
+*/
 @GetMapping("/{id}")
-public ServiceManager getCustomer(@PathVariable Long id) {
+public ServiceManager getAllServiceManagers(@PathVariable Long id) {
 	return serviceRepsitory.findById(id).orElseThrow(RuntimeException::new);
 }
 
 @PostMapping
-public ServiceManager createCustomer(@RequestBody ServiceManager manager) throws URISyntaxException {
+public ServiceManager createServiceManager(@RequestBody ServiceManager manager) throws URISyntaxException {
 	ServiceManager savedAdmin = serviceRepsitory.save(manager);
 	return savedAdmin;
 
 }
 
 @PutMapping("/{id}")
-public ServiceManager updateCustomer(@PathVariable Long id, @RequestBody ServiceManager manager) {
+public ServiceManager updateServiceManager(@PathVariable Long id, @RequestBody ServiceManager manager) {
 	ServiceManager currentAdmin = serviceRepsitory.findById(id).orElseThrow(RuntimeException::new);
 	currentAdmin.setFullName(manager.getFullName());
 	currentAdmin.setEmail(manager.getEmail());
@@ -48,10 +49,6 @@ public ServiceManager updateCustomer(@PathVariable Long id, @RequestBody Service
 	return serviceRepsitory.save(manager);
 }
 
-@DeleteMapping("/{id}")
-public ResponseEntity<?> deleteCustomer(@PathVariable Long id) {
-	serviceRepsitory.deleteById(id);
-	return ResponseEntity.ok().build();
-	}
-
+/*
+*/
 }

@@ -18,31 +18,31 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 
 @Controller
-@RequestMapping("/customers")
+@RequestMapping("/products")
 
 public class ProductController {
 	@Autowired
 	private ProductRepository productRepository;
 
 	@GetMapping
-	public List<Product> getCustomers() {
+	public List<Product> getProducts() {
 		return productRepository.findAll();
 	}
 
 	@GetMapping("/{id}")
-	public Product getCustomer(@PathVariable Long id) {
+	public Product getProduct(@PathVariable Long id) {
 		return productRepository.findById(id).orElseThrow(RuntimeException::new);
 	}
 
 	@PostMapping
-	public Product createCustomer(@RequestBody Product customer) throws URISyntaxException {
-		Product savedCustomer = productRepository.save(customer);
-		return savedCustomer;
+	public Product createProduct(@RequestBody Product product) throws URISyntaxException {
+		Product savedProduct = productRepository.save(product);
+		return savedProduct;
 
 	}
 
 	@PutMapping("/{id}")
-	public Product updateCustomer(@PathVariable Long id, @RequestBody Product product) {
+	public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
 		Product currentProduct = productRepository.findById(id).orElseThrow(RuntimeException::new);
 		currentProduct.setPavadinimas(product.getPavadinimas());
 		currentProduct.setKategorija(product.getKategorija());
@@ -52,7 +52,7 @@ public class ProductController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteCustomer(@PathVariable Long id) {
+	public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
 		productRepository.deleteById(id);
 		return ResponseEntity.ok().build();
 	}
