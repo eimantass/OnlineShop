@@ -74,32 +74,32 @@ public class AdminController {
 	}
 
 	// Managing Customers
-	@GetMapping
+	@GetMapping("/customers/all")
 	public List<Customer> getCustomers() {
 		return customerRepository.findAll();
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/customers/delete/{id}")
 	public ResponseEntity<?> deleteCustomer(@PathVariable Long id) {
 		customerRepository.deleteById(id);
 		return ResponseEntity.ok().build();
 	}
 	// Managing Managers
-	@GetMapping
+	@GetMapping("/managers/all")
 	public List<Manager> getManagers() {
 		return managerRepository.findAll();
 	}
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/managers/{id}")
 	public ResponseEntity<?> deleteManager(@PathVariable Long id) {
 		managerRepository.deleteById(id);
 		return ResponseEntity.ok().build();
 	}
 	// Managing ServiceManagement
-	@GetMapping
+	@GetMapping("/servicemanagers/all")
 	public List<ServiceManager> getServiceManagers() {
 		return serviceRepsitory.findAll();
 	}
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/servicemanagers/delete/{id}")
 	public ResponseEntity<?> deleteServiceManager(@PathVariable Long id) {
 		serviceRepsitory.deleteById(id);
 		return ResponseEntity.ok().build();
