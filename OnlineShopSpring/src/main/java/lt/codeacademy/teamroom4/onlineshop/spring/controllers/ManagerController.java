@@ -50,7 +50,7 @@ public class ManagerController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteManagers(@PathVariable Long id) {
+	public ResponseEntity<?> deleteManager(@PathVariable Long id) {
 		managerRepository.deleteById(id);
 		return ResponseEntity.ok().build();
 	}
