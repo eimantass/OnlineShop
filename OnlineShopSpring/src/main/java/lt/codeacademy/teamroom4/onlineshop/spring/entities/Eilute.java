@@ -4,6 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 public class Eilute {
@@ -13,6 +18,10 @@ public class Eilute {
 	Long id;
 	
 	int kiekis;
+	
+	@ManyToOne
+	@Cascade(CascadeType.SAVE_UPDATE)
+	@JoinColumn(name = "preke_id" , referencedColumnName = "id")
 	Product preke;
 	
 	public Eilute() {}
