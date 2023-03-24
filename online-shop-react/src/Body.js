@@ -17,7 +17,7 @@ function Body() {
         </form>
       </div>
 
-      <div className="nav-links">
+      <div className="categories">
         <ul>
           <li><a href="http://localhost:3000/#">Staliniai kompiuteriai</a></li>
           <li><a href="http://localhost:3000/#">Nesiojamieji kompiuteriai</a></li>

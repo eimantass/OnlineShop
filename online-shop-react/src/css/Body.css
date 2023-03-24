@@ -5,45 +5,86 @@
   }
   
   .logo-container img {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     position: absolute;
     top: 5px;
     left: 120px;
   }
   
+/* Center the search bar on page*/
+
   .search-form {
     margin-top: 50px;
-    margin-left: 450px;
+    margin-left: 380px;
   }
   
+  /* Search bar dementions */
+
   .search-form input {
-    width: 300px;
-    height: 30px;
+    width: 500px;
+    height: 20px;
     padding: 5px;
   }
   
+    /* Search button style */
+
   .search-form button {
     width: 50px;
     height: 30px;
-    background-color: gray;
-    color: white;
+    background-color: rgb(40, 37, 234);
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 5px;
     margin-left: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+    /* Search button style on hover */
+
+  .search-form button:hover {
+    background-color: rgb(103, 7, 118);
   }
   
-  .nav-links {
+    /* Position the categories links - with background blue */
+
+  .categories {
+    background-color: rgb(40, 46, 243);
     margin-top: 40px;
+    
+
   }
-  
-  .nav-links ul {
+
+    /* Position the categories items style */
+
+  .categories ul {
     list-style: none;
-    padding-left: 0;
     display: flex;
     justify-content: center;
+    align-items: center; /* Center vertically */
+    text-align: center; 
+    transition: background-color 0.3s ease;
+
   }
-  
-  .nav-links li {
-    margin-right: 10px;
+
+    /* Margins between categories items*/
+
+  .categories li {
+    justify-content: center;
+    padding: 20px;
+  }
+
+    /* Hover on the categories items*/
+
+  .categories li:hover { 
+    background-color: rgb(195, 52, 217);
+    padding: 15px;
+  }
+
+  /* Remove underline from categories links and color the text white */
+
+  .categories li a {
+    text-decoration: none;
+    color: white;
+    justify-content: center;
   }

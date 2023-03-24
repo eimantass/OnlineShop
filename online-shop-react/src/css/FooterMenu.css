@@ -7,6 +7,10 @@
     height: 40px;
     background-color: #333;
   }
+
+  .aligner{
+    margin-top:auto;
+  }
   
   /* Style the menu items */
   .footer-menu li {

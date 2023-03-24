@@ -9,11 +9,11 @@ import Body from './Body';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  
-    <>
+    <div className = "align">
     <TopMenu/>
     <Body/>
     <FooterMenu/>
-    </>
+    </div>
 
 
 );
