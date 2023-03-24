@@ -35,7 +35,7 @@ public class ProductController {
 		return productRepository.findById(id).orElseThrow(RuntimeException::new);
 	}
 
-	@PostMapping
+	@PostMapping()
 	public Product createProduct(@RequestBody Product product) throws URISyntaxException {
 		Product savedProduct = productRepository.save(product);
 		return savedProduct;
