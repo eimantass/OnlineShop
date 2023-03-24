@@ -21,10 +21,10 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-			.antMatchers("/admin/**").hasRole(ADMIN)
-			.antMatchers("/customer/**").hasAnyRole(CUSTOMER, ADMIN)
-			.antMatchers("/manager/**").hasAnyRole(MANAGER, ADMIN)
-			.antMatchers("/serviceManager/**").hasAnyRole(SERVICEMANAGER,ADMIN)
+			.antMatchers("/admins/**").hasRole(ADMIN)
+			.antMatchers("/customers/**").hasAnyRole(CUSTOMER, ADMIN)
+			.antMatchers("/managers/**").hasAnyRole(MANAGER, ADMIN)
+			.antMatchers("/servicemanagers/**").hasAnyRole(SERVICEMANAGER,ADMIN)
 			.antMatchers("/**").permitAll()
 		.and()
 		.formLogin();
