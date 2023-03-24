@@ -25,11 +25,11 @@ public class ManagerController {
 	@Autowired
 	private ManagerRepository managerRepository;
 
-	@GetMapping
+	/*@GetMapping
 	public List<Manager> getManagers() {
 		return managerRepository.findAll();
 	}
-
+*/
 	@GetMapping("/{id}")
 	public Manager getManagers(@PathVariable Long id) {
 		return managerRepository.findById(id).orElseThrow(RuntimeException::new);
@@ -51,10 +51,7 @@ public class ManagerController {
 		currentManager.setMatchingPassword(manager.getMatchingPassword());
 		return managerRepository.save(manager);
 	}
-
-	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteManager(@PathVariable Long id) {
-		managerRepository.deleteById(id);
-		return ResponseEntity.ok().build();
-	}
+/*
+	
+	*/
 }

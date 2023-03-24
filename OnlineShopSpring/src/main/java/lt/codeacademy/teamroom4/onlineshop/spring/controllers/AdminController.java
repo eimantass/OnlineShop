@@ -1,11 +1,18 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
+
 import java.net.URISyntaxException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Admin;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Customer;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Manager;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.ServiceManager;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.AdminRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CustomerRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ManagerRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ServiceRepository;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,39 +27,83 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/admins")
 
 public class AdminController {
-@Autowired
-private AdminRepository adminRepository;
+	
+	@Autowired
+	private AdminRepository adminRepository;
+	
+	@Autowired
+	private ManagerRepository managerRepository;
+	
+	@Autowired
+	private CustomerRepository customerRepository;
+	
+	@Autowired
+	private ServiceRepository serviceRepsitory;
+	
+	@GetMapping
+	public List<Admin> getAdmins() {
+		return adminRepository.findAll();
+	}
 
-@GetMapping
-public List<Admin> getAdmins() {
-	return adminRepository.findAll();
-}
+	@GetMapping("/{id}")
+	public Admin getAdmin(@PathVariable Long id) {
+		return adminRepository.findById(id).orElseThrow(RuntimeException::new);
+	}
 
-@GetMapping("/{id}")
-public Admin getAdmin(@PathVariable Long id) {
-	return adminRepository.findById(id).orElseThrow(RuntimeException::new);
-}
+	@PostMapping
+	public Admin createAdmin(@RequestBody Admin admin) throws URISyntaxException {
+		Admin savedAdmin = adminRepository.save(admin);
+		return savedAdmin;
 
-@PostMapping
-public Admin createAdmin(@RequestBody Admin admin) throws URISyntaxException {
-	Admin savedAdmin = adminRepository.save(admin);
-	return savedAdmin;
+	}
 
-}
+	@PutMapping("/{id}")
+	public Admin updateAdmin(@PathVariable Long id, @RequestBody Admin admin) {
+		Admin currentAdmin = adminRepository.findById(id).orElseThrow(RuntimeException::new);
+		currentAdmin.setFullName(admin.getFullName());
+		currentAdmin.setEmail(admin.getEmail());
+		currentAdmin.setPassword(admin.getPassword());
+		currentAdmin.setMatchingPassword(admin.getMatchingPassword());
+		return adminRepository.save(admin);
+	}
 
-@PutMapping("/{id}")
-public Admin updateAdmin(@PathVariable Long id, @RequestBody Admin admin) {
-	Admin currentAdmin = adminRepository.findById(id).orElseThrow(RuntimeException::new);
-	currentAdmin.setFullName(admin.getFullName());
-	currentAdmin.setEmail(admin.getEmail());
-	currentAdmin.setPassword(admin.getPassword());
-	currentAdmin.setMatchingPassword(admin.getMatchingPassword());
-	return adminRepository.save(admin);
-}
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteAdmin(@PathVariable Long id) {
+		adminRepository.deleteById(id);
+		return ResponseEntity.ok().build();
+	}
 
-@DeleteMapping("/{id}")
-public ResponseEntity<?> deleteAdmin(@PathVariable Long id) {
-	adminRepository.deleteById(id);
-	return ResponseEntity.ok().build();
-}
+	// Managing Customers
+	@GetMapping
+	public List<Customer> getCustomers() {
+		return customerRepository.findAll();
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteCustomer(@PathVariable Long id) {
+		customerRepository.deleteById(id);
+		return ResponseEntity.ok().build();
+	}
+	// Managing Managers
+	@GetMapping
+	public List<Manager> getManagers() {
+		return managerRepository.findAll();
+	}
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteManager(@PathVariable Long id) {
+		managerRepository.deleteById(id);
+		return ResponseEntity.ok().build();
+	}
+	// Managing ServiceManagement
+	@GetMapping
+	public List<ServiceManager> getServiceManagers() {
+		return serviceRepsitory.findAll();
+	}
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteServiceManager(@PathVariable Long id) {
+		serviceRepsitory.deleteById(id);
+		return ResponseEntity.ok().build();
+		}
+	
+	
 }

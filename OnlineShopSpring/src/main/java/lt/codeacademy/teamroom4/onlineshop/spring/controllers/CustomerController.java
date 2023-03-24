@@ -23,12 +23,9 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CustomerRepositor
 public class CustomerController {
 	@Autowired
 	private CustomerRepository customerRepository;
-
-	@GetMapping
-	public List<Customer> getCustomers() {
-		return customerRepository.findAll();
-	}
-
+ /*
+	
+*/
 	@GetMapping("/{id}")
 	public Customer getCustomer(@PathVariable Long id) {
 		return customerRepository.findById(id).orElseThrow(RuntimeException::new);
@@ -50,11 +47,5 @@ public class CustomerController {
 		currentCustomer.setPassword(customer.getPassword());
 		currentCustomer.setMatchingPassword(customer.getMatchingPassword());
 		return customerRepository.save(customer);
-	}
-
-	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteCustomer(@PathVariable Long id) {
-		customerRepository.deleteById(id);
-		return ResponseEntity.ok().build();
 	}
 }
