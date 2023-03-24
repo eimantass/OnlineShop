@@ -1,18 +1,20 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CustomerRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.KlientasRepository;
 
 @RestController
-public class CustomerController {
+public class KlientasController {
 	@Autowired
-	private CustomerRepository customerRepository;
+	private KlientasRepository customerRepository;
 
 	@GetMapping
-	public List<Customer> getCustomers(){
+	public List<Klientas> getCustomers(){
 	return  customerRepository.findAll();
 }
 	@GetMapping("/{id}")
