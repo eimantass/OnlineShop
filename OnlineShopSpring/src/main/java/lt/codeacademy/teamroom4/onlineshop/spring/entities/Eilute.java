@@ -37,6 +37,10 @@ public class Eilute {
 		this.kiekis = kiekis;
 		this.preke = preke;
 	}
+	
+	public double getSuma() {
+		return preke.kaina * kiekis;
+	}
 
 	public Long getId() {
 		return id;

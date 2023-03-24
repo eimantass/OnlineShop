@@ -24,7 +24,8 @@ public class SecurityConfig {
 			.antMatchers("/admins/**").hasRole(ADMIN)
 			.antMatchers("/customers/**").hasAnyRole(CUSTOMER, ADMIN)
 			.antMatchers("/managers/**").hasAnyRole(MANAGER, ADMIN)
-			.antMatchers("/serviceManagers/**").hasAnyRole(SERVICEMANAGER,ADMIN)
+
+			.antMatchers("/serviceManager/**").hasAnyRole(SERVICEMANAGER,ADMIN)
 			.antMatchers("/**").permitAll()
 		.and()
 		.formLogin();

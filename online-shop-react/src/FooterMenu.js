@@ -3,8 +3,7 @@ import './css/FooterMenu.css'; // Import your CSS file
 
 function FooterMenu() {
     return (
-        <footer>
-        <div>
+        <div className="aligner">
     {/* Create your footer menu */}
       <nav className="footer-menu">
         <ul className="menu">
@@ -20,7 +19,6 @@ function FooterMenu() {
         </ul>
       </nav>
     </div>
-    </footer>
   );
 }
 
