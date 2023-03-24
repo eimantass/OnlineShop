@@ -3,11 +3,19 @@ package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+
 
 @Entity
 @Table(name = "krepselis")
@@ -17,6 +25,9 @@ public class Krepselis {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	
+	@ManyToMany
+	@Cascade({ CascadeType.SAVE_UPDATE, CascadeType.MERGE, CascadeType.PERSIST })
+	@JoinColumn(name = "eilute_id")
 	List<Eilute> eilutes = new ArrayList<>();
 	
 	public Krepselis() {}
