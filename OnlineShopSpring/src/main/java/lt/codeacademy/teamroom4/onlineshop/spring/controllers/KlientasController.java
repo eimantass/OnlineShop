@@ -4,17 +4,19 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import lt.codeacademy.teamroom4.onlineshop.spring.repositories.KlientasRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Customer;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CustomerRepository;
 
 @RestController
 public class KlientasController {
 	@Autowired
-	private KlientasRepository customerRepository;
+	private CustomerRepository customerRepository;
 
 	@GetMapping
-	public List<Klientas> getCustomers(){
+	public List<Customer> getCustomers(){
 	return  customerRepository.findAll();
 }
 	@GetMapping("/{id}")
