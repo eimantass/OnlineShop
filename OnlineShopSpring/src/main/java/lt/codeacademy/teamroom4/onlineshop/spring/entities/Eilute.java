@@ -26,8 +26,7 @@ public class Eilute {
 	
 	public Eilute() {}
 	
-	public Eilute(int kiekis, Product preke) {
-		super();
+	public Eilute(Product preke,int kiekis) {
 		this.kiekis = kiekis;
 		this.preke = preke;
 	}
