@@ -60,7 +60,12 @@ public class Observer {
 	}
 	private void seedCustomer() {
 		List<Customer> customer = List.of(
-				new Customer(null, "ViliusCustomer", 0, "viliusCustomer@gmail.com", "svbsdvisbv","svbsdvisbv" ,CUSTOMER, moneyGenerator.virtualMoney())
+				new Customer(
+						null, "ViliusCustomer", 0, "viliusCustomer@gmail.com", "svbsdvisbv","svbsdvisbv" ,CUSTOMER, moneyGenerator.virtualMoney()
+						),
+				new Customer(null, "ViliusCustomer2", 0, "viliusCustomer2@gmail.com", "svbsdvisbv","svbsdvisbv" ,CUSTOMER, moneyGenerator.virtualMoney()),
+				new Customer(null, "ViliusCustomer3", 0, "viliusCustomer3@gmail.com", "svbsdvisbv","svbsdvisbv" ,CUSTOMER, moneyGenerator.virtualMoney())
+
 				);
 		
 		customerRepository.saveAll(customer);
