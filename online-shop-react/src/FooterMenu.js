@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './css/FooterMenu.css'; // Import your CSS file
 
 function FooterMenu() {
@@ -7,15 +8,15 @@ function FooterMenu() {
     {/* Create your footer menu */}
       <nav className="footer-menu">
         <ul className="menu">
-          <li><a href="/about">Apie mus</a></li>
-          <li><a href="/contacts">Kontaktai</a></li>
-          <li><a href="/terms">Pirkimo/Pardavimo taisyklės</a></li>
-          <li><a href="/shipping">Prekių pristatymas</a></li>
-          <li><a href="/returns">Prekių grąžinimas</a></li>
-          <li><a href="/warranty">Garantinis aptarnavimas</a></li>
-          <li><a href="/privacy">Privatumo politika</a></li>
-          <li><a href="/atsiliepimai">Atsiliepimai</a></li>
-          <li><a href="/help">Pagalba</a></li>
+          <li><Link to="/about">Apie mus</Link></li>
+          <li><Link to="/contacts">Kontaktai</Link></li>
+          <li><Link to="/terms">Pirkimo/Pardavimo taisyklės</Link></li>
+          <li><Link to="/shipping">Prekių pristatymas</Link></li>
+          <li><Link to="/returns">Prekių grąžinimas</Link></li>
+          <li><Link to="/warranty">Garantinis aptarnavimas</Link></li>
+          <li><Link to="/privacy">Privatumo politika</Link></li>
+          <li><Link to="/atsiliepimai">Atsiliepimai</Link></li>
+          <li><Link to="/help">Pagalba</Link></li>
         </ul>
       </nav>
     </div>
