@@ -7,14 +7,14 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
 public class CartDto {
 	
 	Long id;
-	List<RecordDto> irasai;
+	List<RecordDto> records;
 	
 	public CartDto() {}
 	
-	public CartDto(Cart krepselis) {
-		this.id = krepselis.getId();
+	public CartDto(Cart cart) {
+		this.id = cart.getId();
 		
-		this.irasai = krepselis.getEilutes()
+		this.records = cart.getEilutes()
 				.stream()
 				.map(e -> new RecordDto(e))
 				.toList();
@@ -28,27 +28,27 @@ public class CartDto {
 		this.id = id;
 	}
 
-	public List<RecordDto> getIrasai() {
-		return irasai;
+	public List<RecordDto> getRecords() {
+		return records;
 	}
 
-	public void setIrasai(List<RecordDto> irasai) {
-		this.irasai = irasai;
+	public void setIrasai(List<RecordDto> records) {
+		this.records = records;
 	}
 	
-	public double getSuma() {
-		return irasai
+	public double getTotalPrice() {
+		return records
 				.stream()
 				.mapToDouble(e -> e.getSuma())
 				.sum();
 	}
 	
 	public String toString() {
-		String atsakymas = "id= " + id + ", suma " + getSuma();
-		if(irasai == null)
+		String atsakymas = "id= " + id + ", suma " + getTotalPrice();
+		if(records == null)
 			return atsakymas;
 		
-		for(RecordDto irasas : irasai) {
+		for(RecordDto irasas : records) {
 			atsakymas += "\n" + irasas;
 		}
 		return atsakymas;
