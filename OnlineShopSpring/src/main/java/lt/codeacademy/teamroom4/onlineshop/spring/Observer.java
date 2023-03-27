@@ -18,13 +18,14 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ManagerRepository
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ServiceRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.CustomerService;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles.*;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Categories.*;
 
 @Configuration
 public class Observer {
-	
+	MoneyGenerator moneyGenerator = new MoneyGenerator();
 	@Autowired
 	private AdminRepository adminRepository;
 	
@@ -59,7 +60,7 @@ public class Observer {
 	}
 	private void seedCustomer() {
 		List<Customer> customer = List.of(
-				new Customer(null, "ViliusCustomer", 0, "viliusCustomer@gmail.com", "svbsdvisbv","svbsdvisbv" ,CUSTOMER, 1000)
+				new Customer(null, "ViliusCustomer", 0, "viliusCustomer@gmail.com", "svbsdvisbv","svbsdvisbv" ,CUSTOMER, moneyGenerator.virtualMoney())
 				);
 		
 		customerRepository.saveAll(customer);
