@@ -4,7 +4,7 @@ function Body() {
   return (
     <div>
       <div className="logo-container">
-        <a href="http://localhost:3000/#">
+        <a href="http://localhost:3000/">
           <img
             src="https://thumbs.dreamstime.com/b/computer-logo-pc-logo-vector-computer-logo-pc-logo-vector-142583250.jpg"
             alt="Logo"
