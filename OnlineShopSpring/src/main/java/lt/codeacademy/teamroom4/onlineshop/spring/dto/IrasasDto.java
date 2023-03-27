@@ -1,6 +1,6 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.dto;
 
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Eilute;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Line;
 
 public class IrasasDto {
 	
@@ -12,7 +12,7 @@ public class IrasasDto {
 	
 	public IrasasDto() {}
 	
-	public IrasasDto(Eilute eilute) {
+	public IrasasDto(Line eilute) {
 		this.id = eilute.getPreke().getId();
 		this.pavadinimas = eilute.getPreke().getPavadinimas();
 		this.kaina = eilute.getPreke().getKaina();

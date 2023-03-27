@@ -11,7 +11,7 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 @Entity
-public class Eilute {
+public class Line {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,14 +24,14 @@ public class Eilute {
 	@JoinColumn(name = "preke_id" , referencedColumnName = "id")
 	Product preke;
 	
-	public Eilute() {}
+	public Line() {}
 	
-	public Eilute(Product preke,int kiekis) {
+	public Line(Product preke,int kiekis) {
 		this.kiekis = kiekis;
 		this.preke = preke;
 	}
 
-	public Eilute(Long id, int kiekis, Product preke) {
+	public Line(Long id, int kiekis, Product preke) {
 		this.id = id;
 		this.kiekis = kiekis;
 		this.preke = preke;
