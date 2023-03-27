@@ -20,7 +20,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ServiceRepository
 import lt.codeacademy.teamroom4.onlineshop.spring.services.CustomerService;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles.*;
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Kategorija.*;
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Categories.*;
 
 @Configuration
 public class Observer {

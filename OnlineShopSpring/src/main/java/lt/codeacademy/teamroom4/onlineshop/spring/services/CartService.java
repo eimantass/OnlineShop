@@ -30,12 +30,12 @@ public class CartService {
 	
 	public void saveKrepselis(CartDto krepselisDto) {
 		List<Line> eilutes = new ArrayList<>();
-		for(RecordDto irasas : krepselisDto.getIrasai()) {
-			if(irasas.getKiekis() <=0)
+		for(RecordDto irasas : krepselisDto.getRecords()) {
+			if(irasas.getAmount() <=0)
 				continue;
 			
 		Product product = productRepository.findById(irasas.getId()).get();
-		Line eilute = new Line(product, irasas.getKiekis());
+		Line eilute = new Line(product, irasas.getAmount());
 		eilutes.add(eilute);
 			
 		}

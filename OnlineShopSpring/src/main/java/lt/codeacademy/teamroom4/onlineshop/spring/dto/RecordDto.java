@@ -5,19 +5,19 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.Line;
 public class RecordDto {
 	
 	Long id;
-	String pavadinimas;
-	int kiekis;
-	double suma;
-	double kaina;
+	String name;
+	int amount;
+	double totalPrice;
+	double price;
 	
 	public RecordDto() {}
 	
-	public RecordDto(Line eilute) {
-		this.id = eilute.getPreke().getId();
-		this.pavadinimas = eilute.getPreke().getPavadinimas();
-		this.kaina = eilute.getPreke().getKaina();
-		this.kiekis = eilute.getKiekis();
-		this.suma = eilute.getSuma();
+	public RecordDto(Line line) {
+		this.id = line.getPreke().getId();
+		this.name = line.getPreke().getPavadinimas();
+		this.price = line.getPreke().getKaina();
+		this.amount = line.getKiekis();
+		this.totalPrice = line.getSuma();
 	}
 
 	public Long getId() {
@@ -28,42 +28,42 @@ public class RecordDto {
 		this.id = id;
 	}
 
-	public String getPavadinimas() {
-		return pavadinimas;
+	public String getName() {
+		return name;
 	}
 
-	public void setPavadinimas(String pavadinimas) {
-		this.pavadinimas = pavadinimas;
+	public void setName(String pavadinimas) {
+		this.name = pavadinimas;
 	}
 
-	public int getKiekis() {
-		return kiekis;
+	public int getAmount() {
+		return amount;
 	}
 
-	public void setKiekis(int kiekis) {
-		this.kiekis = kiekis;
+	public void setAmount(int kiekis) {
+		this.amount = kiekis;
 	}
 
 	public double getSuma() {
-		return suma;
+		return totalPrice;
 	}
 
-	public void setSuma(double suma) {
-		this.suma = suma;
+	public void setTotalPrice(double suma) {
+		this.totalPrice = suma;
 	}
 
-	public double getKaina() {
-		return kaina;
+	public double getPrice() {
+		return price;
 	}
 
-	public void setKaina(double kaina) {
-		this.kaina = kaina;
+	public void setPrice(double kaina) {
+		this.price = kaina;
 	}
 
 	@Override
 	public String toString() {
-		return "IrasasDto [id=" + id + ", pavadinimas=" + pavadinimas + ", kiekis=" + kiekis + ", suma=" + suma
-				+ ", kaina=" + kaina + "]";
+		return "IrasasDto [id=" + id + ", pavadinimas=" + name + ", kiekis=" + amount + ", suma=" + totalPrice
+				+ ", kaina=" + price + "]";
 	}
 	
 	
