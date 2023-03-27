@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import lt.codeacademy.teamroom4.onlineshop.spring.dto.IrasasDto;
-import lt.codeacademy.teamroom4.onlineshop.spring.dto.KrepselisDto;
+import lt.codeacademy.teamroom4.onlineshop.spring.dto.RecordDto;
+import lt.codeacademy.teamroom4.onlineshop.spring.dto.CartDto;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Line;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
@@ -21,13 +21,13 @@ public class ProductService {
 		return productRepository.findAll();
 	}
 	
-	public KrepselisDto getNewKrepselisDto() {
-		KrepselisDto dto = new KrepselisDto();
-		List<IrasasDto> irasai = 
+	public CartDto getNewKrepselisDto() {
+		CartDto dto = new CartDto();
+		List<RecordDto> irasai = 
 				getAllProducts()
 				.stream()
 				.map(p -> new Line(p, 0))
-				.map(e -> new IrasasDto(e))
+				.map(e -> new RecordDto(e))
 				.toList();
 		dto.setIrasai(irasai);
 		return dto;

@@ -2,7 +2,7 @@ package lt.codeacademy.teamroom4.onlineshop.spring.dto;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Line;
 
-public class IrasasDto {
+public class RecordDto {
 	
 	Long id;
 	String pavadinimas;
@@ -10,9 +10,9 @@ public class IrasasDto {
 	double suma;
 	double kaina;
 	
-	public IrasasDto() {}
+	public RecordDto() {}
 	
-	public IrasasDto(Line eilute) {
+	public RecordDto(Line eilute) {
 		this.id = eilute.getPreke().getId();
 		this.pavadinimas = eilute.getPreke().getPavadinimas();
 		this.kaina = eilute.getPreke().getKaina();
