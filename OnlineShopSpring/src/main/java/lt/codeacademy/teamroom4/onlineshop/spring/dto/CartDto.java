@@ -4,19 +4,19 @@ import java.util.List;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
 
-public class KrepselisDto {
+public class CartDto {
 	
 	Long id;
-	List<IrasasDto> irasai;
+	List<RecordDto> irasai;
 	
-	public KrepselisDto() {}
+	public CartDto() {}
 	
-	public KrepselisDto(Cart krepselis) {
+	public CartDto(Cart krepselis) {
 		this.id = krepselis.getId();
 		
 		this.irasai = krepselis.getEilutes()
 				.stream()
-				.map(e -> new IrasasDto(e))
+				.map(e -> new RecordDto(e))
 				.toList();
 	}
 
@@ -28,11 +28,11 @@ public class KrepselisDto {
 		this.id = id;
 	}
 
-	public List<IrasasDto> getIrasai() {
+	public List<RecordDto> getIrasai() {
 		return irasai;
 	}
 
-	public void setIrasai(List<IrasasDto> irasai) {
+	public void setIrasai(List<RecordDto> irasai) {
 		this.irasai = irasai;
 	}
 	
@@ -48,7 +48,7 @@ public class KrepselisDto {
 		if(irasai == null)
 			return atsakymas;
 		
-		for(IrasasDto irasas : irasai) {
+		for(RecordDto irasas : irasai) {
 			atsakymas += "\n" + irasas;
 		}
 		return atsakymas;
