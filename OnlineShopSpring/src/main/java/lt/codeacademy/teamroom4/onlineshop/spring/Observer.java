@@ -81,7 +81,7 @@ public class Observer {
 	}	
 		private void seedProduct() {
 			List<Product> product = List.of(
-					new Product("Intel i3", 120,"Quad Core CPU",CPU)
+					new Product("Intel i3","foto.png", 120,"Quad Core CPU",CPU)
 					);
 			
 			productRepository.saveAll(product);

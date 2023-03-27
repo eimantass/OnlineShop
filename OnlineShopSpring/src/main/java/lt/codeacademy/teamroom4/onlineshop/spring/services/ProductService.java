@@ -1,5 +1,8 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.services;
 
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Categories.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,23 @@ public class ProductService {
 	
 	@Autowired
 	ProductRepository productRepository;
+	
+	public List<Product> findAll(){
+		List<Product> products = new ArrayList<Product>();
+		products.add(new Product("Intel i3","thumb1.gif",120,"Quad Core CPU",CPU));
+		products.add(new Product("Intel i3","thumb2.gif",300,"Quad Core RAM",RAM));
+		return products;
+	}
+	
+	public Product find(Long id) {
+		List<Product> products = findAll();
+		for(Product product : products) {
+			if(product.getId().equals(id)) {
+				return product;
+			}
+		}
+		return null;
+	}
 	
 	public List<Product> getAllProducts(){
 		return productRepository.findAll();

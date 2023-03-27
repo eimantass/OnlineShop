@@ -16,22 +16,25 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	String pavadinimas;
+	String photo;
 	double kaina;
 	String aprasymas;
 	Categories kategorija;
 	
 	public Product() {}
 
-	public Product(String pavadinimas, double kaina, String aprasymas, Categories kategorija) {
+	public Product(String pavadinimas,String photo, double kaina, String aprasymas, Categories kategorija) {
 		this.pavadinimas = pavadinimas;
+		this.photo = photo;
 		this.kaina = kaina;
 		this.aprasymas = aprasymas;
 		this.kategorija = kategorija;
 	}
 
-	public Product(Long id, String pavadinimas, double kaina, String aprasymas, Categories kategorija) {
+	public Product(Long id, String pavadinimas,String photo, double kaina, String aprasymas, Categories kategorija) {
 		this.id = id;
 		this.pavadinimas = pavadinimas;
+		this.photo = photo;
 		this.kaina = kaina;
 		this.aprasymas = aprasymas;
 		this.kategorija = kategorija;
@@ -51,6 +54,14 @@ public class Product {
 
 	public void setPavadinimas(String pavadinimas) {
 		this.pavadinimas = pavadinimas;
+	}
+	
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
 	public double getKaina() {
