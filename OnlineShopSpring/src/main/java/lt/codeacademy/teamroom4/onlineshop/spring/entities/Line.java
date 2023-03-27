@@ -11,35 +11,34 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 @Entity
-public class Eilute {
+public class Line {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	
-	int kiekis;
+	int amount;
 	
 	@ManyToOne
 	@Cascade(CascadeType.SAVE_UPDATE)
-	@JoinColumn(name = "preke_id" , referencedColumnName = "id")
-	Product preke;
+	@JoinColumn(name = "product_id" , referencedColumnName = "id")
+	Product product;
 	
-	public Eilute() {}
+	public Line() {}
 	
-	public Eilute(int kiekis, Product preke) {
-		super();
-		this.kiekis = kiekis;
-		this.preke = preke;
+	public Line(Product product,int amount) {
+		this.amount = amount;
+		this.product = product;
 	}
 
-	public Eilute(Long id, int kiekis, Product preke) {
+	public Line(Long id, int amount, Product product) {
 		this.id = id;
-		this.kiekis = kiekis;
-		this.preke = preke;
+		this.amount = amount;
+		this.product = product;
 	}
 	
 	public double getSuma() {
-		return preke.kaina * kiekis;
+		return product.price * amount;
 	}
 
 	public Long getId() {
@@ -51,24 +50,24 @@ public class Eilute {
 	}
 
 	public int getKiekis() {
-		return kiekis;
+		return amount;
 	}
 
-	public void setKiekis(int kiekis) {
-		this.kiekis = kiekis;
+	public void setKiekis(int amount) {
+		this.amount = amount;
 	}
 
 	public Product getPreke() {
-		return preke;
+		return product;
 	}
 
-	public void setPreke(Product preke) {
-		this.preke = preke;
+	public void setPreke(Product product) {
+		this.product = product;
 	}
 
 	@Override
 	public String toString() {
-		return "Eilute [id=" + id + ", kiekis=" + kiekis + ", preke=" + preke + "]";
+		return "Eilute [id=" + id + ", kiekis=" + amount + ", preke=" + product + "]";
 	}
 	
 	

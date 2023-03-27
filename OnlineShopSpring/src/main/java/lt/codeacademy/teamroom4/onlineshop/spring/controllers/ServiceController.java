@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Customer;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ServiceManager;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CustomerRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ServiceRepository;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,18 +26,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class ServiceController {
 @Autowired
 private ServiceRepository serviceRepsitory;
-/*
-@GetMapping
-public List<ServiceManager> getServiceManagers() {
-	return serviceRepsitory.findAll();
+@Autowired
+private CustomerRepository customerRepository;
+
+@GetMapping("/customers/all")
+public List<Customer> getCustomers() {
+	return customerRepository.findAll();
 }
-*/
 @GetMapping("/{id}")
 public ServiceManager getAllServiceManagers(@PathVariable Long id) {
 	return serviceRepsitory.findById(id).orElseThrow(RuntimeException::new);
 }
 
-@PostMapping
+@PostMapping("/create-service-controller")
 public ServiceManager createServiceManager(@RequestBody ServiceManager manager) throws URISyntaxException {
 	ServiceManager savedAdmin = serviceRepsitory.save(manager);
 	return savedAdmin;

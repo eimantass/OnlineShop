@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Krepselis;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
-import lt.codeacademy.teamroom4.onlineshop.spring.repositories.KrepselisRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
 
 @Controller
@@ -18,7 +18,7 @@ public class HomeController {
 	ProductService productService;
 	
 	@Autowired
-	KrepselisRepository krepselisRep;
+	CartRepository krepselisRep;
 	
 	@GetMapping("/")
 	public String startPage() {
@@ -31,7 +31,7 @@ public class HomeController {
 	}
 	
 	@GetMapping("/krepselis")
-	public Krepselis getKrepselis() {
+	public Cart getKrepselis() {
 		return krepselisRep.findById(1L).get();
 	}
 	

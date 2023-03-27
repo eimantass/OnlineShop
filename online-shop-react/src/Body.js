@@ -3,20 +3,6 @@ import './css/Body.css';
 function Body() {
   return (
     <div>
-      <div className="logo-container">
-        <a href="http://localhost:3000/#">
-          <img
-            src="https://thumbs.dreamstime.com/b/computer-logo-pc-logo-vector-computer-logo-pc-logo-vector-142583250.jpg"
-            alt="Logo"
-          />
-        </a>
-
-        <form action="/search" method="get" className="search-form">
-          <input type="text" placeholder="Search..." name="q" />
-          <button type="submit">Ieškoti</button>
-        </form>
-      </div>
-
       <div className="categories">
         <ul>
           <li><a href="http://localhost:3000/#">Staliniai kompiuteriai</a></li>

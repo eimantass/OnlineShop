@@ -8,16 +8,14 @@ import Body from './Body';
 import ApieMus from './ApieMus';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
- 
-    <div className = "align">
-    <TopMenu/>
-    <Body/>
-    <FooterMenu/>
-    </div>
 
-
+        <BrowserRouter>
+            <App/> 
+        </BrowserRouter>         
+    
 );
 
 

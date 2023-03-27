@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lt.codeacademy.teamroom4.onlineshop.spring.utils.Kategorija;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.Categories;
 
 @Entity
 @Table(name = "product")
@@ -16,23 +16,23 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	String pavadinimas;
-	double kaina;
+	double price;
 	String aprasymas;
-	Kategorija kategorija;
+	Categories kategorija;
 	
 	public Product() {}
 
-	public Product(String pavadinimas, double kaina, String aprasymas, Kategorija kategorija) {
+	public Product(String pavadinimas, double kaina, String aprasymas, Categories kategorija) {
 		this.pavadinimas = pavadinimas;
-		this.kaina = kaina;
+		this.price = kaina;
 		this.aprasymas = aprasymas;
 		this.kategorija = kategorija;
 	}
 
-	public Product(Long id, String pavadinimas, double kaina, String aprasymas, Kategorija kategorija) {
+	public Product(Long id, String pavadinimas, double kaina, String aprasymas, Categories kategorija) {
 		this.id = id;
 		this.pavadinimas = pavadinimas;
-		this.kaina = kaina;
+		this.price = kaina;
 		this.aprasymas = aprasymas;
 		this.kategorija = kategorija;
 	}
@@ -54,11 +54,11 @@ public class Product {
 	}
 
 	public double getKaina() {
-		return kaina;
+		return price;
 	}
 
 	public void setKaina(double kaina) {
-		this.kaina = kaina;
+		this.price = kaina;
 	}
 
 	public String getAprasymas() {
@@ -69,17 +69,17 @@ public class Product {
 		this.aprasymas = aprasymas;
 	}
 
-	public Kategorija getKategorija() {
+	public Categories getKategorija() {
 		return kategorija;
 	}
 
-	public void setKategorija(Kategorija kategorija) {
+	public void setKategorija(Categories kategorija) {
 		this.kategorija = kategorija;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", pavadinimas=" + pavadinimas + ", kaina=" + kaina + ", aprasymas=" + aprasymas
+		return "Product [id=" + id + ", pavadinimas=" + pavadinimas + ", kaina=" + price + ", aprasymas=" + aprasymas
 				+ "]";
 	}
 

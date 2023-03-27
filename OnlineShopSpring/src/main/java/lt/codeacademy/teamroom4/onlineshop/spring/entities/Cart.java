@@ -19,7 +19,7 @@ import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "krepselis")
-public class Krepselis {
+public class Cart {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,16 +28,16 @@ public class Krepselis {
 	@ManyToMany
 	@Cascade({ CascadeType.SAVE_UPDATE, CascadeType.MERGE, CascadeType.PERSIST })
 	@JoinColumn(name = "eilute_id")
-	List<Eilute> eilutes = new ArrayList<>();
+	List<Line> eilutes = new ArrayList<>();
 	
-	public Krepselis() {}
+	public Cart() {}
 
-	public Krepselis(Long id, List<Eilute> eilutes) {
+	public Cart(Long id, List<Line> eilutes) {
 		this.id = id;
 		this.eilutes = eilutes;
 	}
 
-	public Krepselis(List<Eilute> eilutes) {
+	public Cart(List<Line> eilutes) {
 		this.eilutes = eilutes;
 	}
 
@@ -49,11 +49,11 @@ public class Krepselis {
 		this.id = id;
 	}
 
-	public List<Eilute> getEilutes() {
+	public List<Line> getLines() {
 		return eilutes;
 	}
 
-	public void setEilutes(List<Eilute> eilutes) {
+	public void setEilutes(List<Line> eilutes) {
 		this.eilutes = eilutes;
 	}
 
