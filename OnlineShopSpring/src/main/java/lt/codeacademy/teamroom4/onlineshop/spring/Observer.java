@@ -41,7 +41,7 @@ public class Observer {
 	@Autowired
 	private ProductRepository productRepository;
 	
-	@EventListener
+	//@EventListener
 	public void seed(ContextRefreshedEvent event) {
 		seedAdmin();
 		seedCustomer();
