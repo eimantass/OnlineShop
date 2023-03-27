@@ -13,10 +13,10 @@ public class RecordDto {
 	public RecordDto() {}
 	
 	public RecordDto(Line line) {
-		this.id = line.getPreke().getId();
-		this.name = line.getPreke().getPavadinimas();
-		this.price = line.getPreke().getKaina();
-		this.amount = line.getKiekis();
+		this.id = line.getProduct().getId();
+		this.name = line.getProduct().getName();
+		this.price = line.getProduct().getPrice();
+		this.amount = line.getAmount();
 		this.totalPrice = line.getSuma();
 	}
 

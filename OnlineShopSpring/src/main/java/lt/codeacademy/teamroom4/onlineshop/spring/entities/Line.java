@@ -49,19 +49,19 @@ public class Line {
 		this.id = id;
 	}
 
-	public int getKiekis() {
+	public int getAmount() {
 		return amount;
 	}
 
-	public void setKiekis(int amount) {
+	public void setAmount(int amount) {
 		this.amount = amount;
 	}
 
-	public Product getPreke() {
+	public Product getProduct() {
 		return product;
 	}
 
-	public void setPreke(Product product) {
+	public void setProduct(Product product) {
 		this.product = product;
 	}
 
