@@ -25,17 +25,17 @@ public class ProductController {
 	@Autowired
 	private ProductRepository productRepository;
 
-	@GetMapping
+	/* @GetMapping
 	public List<Product> getProducts() {
 		return productRepository.findAll();
 	}
-
+*/
 	@GetMapping("/{id}")
 	public Product getProduct(@PathVariable Long id) {
 		return productRepository.findById(id).orElseThrow(RuntimeException::new);
 	}
 
-	@PostMapping()
+	@PostMapping("/create")
 	public Product createProduct(@RequestBody Product product) throws URISyntaxException {
 		Product savedProduct = productRepository.save(product);
 		return savedProduct;
