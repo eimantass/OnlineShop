@@ -10,6 +10,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.Customer;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ServiceManager;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CustomerRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ServiceRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.services.CustomerService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,37 +25,33 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/servicemanagers")
 
 public class ServiceController {
-@Autowired
-private ServiceRepository serviceRepsitory;
-@Autowired
-private CustomerRepository customerRepository;
+	@Autowired
+	CustomerService customerService;
+	@Autowired
+	private ServiceRepository serviceRepsitory;
+	
 
-@GetMapping("/customers/all")
-public List<Customer> getCustomers() {
-	return customerRepository.findAll();
-}
-@GetMapping("/{id}")
-public ServiceManager getAllServiceManagers(@PathVariable Long id) {
-	return serviceRepsitory.findById(id).orElseThrow(RuntimeException::new);
-}
+	@GetMapping("/{id}")
+	public ServiceManager getAllServiceManagers(@PathVariable Long id) {
+		return serviceRepsitory.findById(id).orElseThrow(RuntimeException::new);
+	}
 
-@PostMapping("/create-service-controller")
-public ServiceManager createServiceManager(@RequestBody ServiceManager manager) throws URISyntaxException {
-	ServiceManager savedAdmin = serviceRepsitory.save(manager);
-	return savedAdmin;
+	@PostMapping("/create-service-controller")
+	public ServiceManager createServiceManager(@RequestBody ServiceManager manager) throws URISyntaxException {
+		ServiceManager savedAdmin = serviceRepsitory.save(manager);
+		return savedAdmin;
 
-}
+	}
 
-@PutMapping("/{id}")
-public ServiceManager updateServiceManager(@PathVariable Long id, @RequestBody ServiceManager manager) {
-	ServiceManager currentAdmin = serviceRepsitory.findById(id).orElseThrow(RuntimeException::new);
-	currentAdmin.setFullName(manager.getFullName());
-	currentAdmin.setEmail(manager.getEmail());
-	currentAdmin.setPassword(manager.getPassword());
-	currentAdmin.setMatchingPassword(manager.getMatchingPassword());
-	return serviceRepsitory.save(manager);
-}
-
-/*
-*/
+	@PutMapping("/{id}")
+	public ServiceManager updateServiceManager(@PathVariable Long id, @RequestBody ServiceManager manager) {
+		ServiceManager currentAdmin = serviceRepsitory.findById(id).orElseThrow(RuntimeException::new);
+		currentAdmin.setFullName(manager.getFullName());
+		currentAdmin.setEmail(manager.getEmail());
+		currentAdmin.setPassword(manager.getPassword());
+		currentAdmin.setMatchingPassword(manager.getMatchingPassword());
+		return serviceRepsitory.save(manager);
+	}
+	//Manage users
+	
 }

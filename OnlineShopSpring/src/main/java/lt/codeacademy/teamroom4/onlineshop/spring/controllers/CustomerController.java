@@ -14,25 +14,24 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Customer;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CustomerRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.services.CustomerService;
 
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
 	@Autowired
 	private CustomerRepository customerRepository;
- /*
+
 	
-*/
 	@GetMapping("/{id}")
 	public Customer getCustomer(@PathVariable Long id) {
 		return customerRepository.findById(id).orElseThrow(RuntimeException::new);
 	}
 
 	@PostMapping("/add-customer")
-	public Customer createCustomer(@RequestBody Customer customer) throws URISyntaxException {
+	public Customer createCustomer(@RequestBody Customer customer) {
 		Customer savedCustomer = customerRepository.save(customer);
 		return savedCustomer;
 
