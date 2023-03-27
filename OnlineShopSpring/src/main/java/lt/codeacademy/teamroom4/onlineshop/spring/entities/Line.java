@@ -17,28 +17,28 @@ public class Line {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	
-	int kiekis;
+	int amount;
 	
 	@ManyToOne
 	@Cascade(CascadeType.SAVE_UPDATE)
-	@JoinColumn(name = "preke_id" , referencedColumnName = "id")
-	Product preke;
+	@JoinColumn(name = "product_id" , referencedColumnName = "id")
+	Product product;
 	
 	public Line() {}
 	
-	public Line(Product preke,int kiekis) {
-		this.kiekis = kiekis;
-		this.preke = preke;
+	public Line(Product product,int amount) {
+		this.amount = amount;
+		this.product = product;
 	}
 
-	public Line(Long id, int kiekis, Product preke) {
+	public Line(Long id, int amount, Product product) {
 		this.id = id;
-		this.kiekis = kiekis;
-		this.preke = preke;
+		this.amount = amount;
+		this.product = product;
 	}
 	
 	public double getSuma() {
-		return preke.kaina * kiekis;
+		return product.price * amount;
 	}
 
 	public Long getId() {
@@ -49,25 +49,25 @@ public class Line {
 		this.id = id;
 	}
 
-	public int getKiekis() {
-		return kiekis;
+	public int getAmount() {
+		return amount;
 	}
 
-	public void setKiekis(int kiekis) {
-		this.kiekis = kiekis;
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 
-	public Product getPreke() {
-		return preke;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setPreke(Product preke) {
-		this.preke = preke;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	@Override
 	public String toString() {
-		return "Eilute [id=" + id + ", kiekis=" + kiekis + ", preke=" + preke + "]";
+		return "Eilute [id=" + id + ", kiekis=" + amount + ", preke=" + product + "]";
 	}
 	
 	

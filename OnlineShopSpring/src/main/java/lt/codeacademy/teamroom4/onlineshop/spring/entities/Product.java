@@ -38,6 +38,7 @@ public class Product {
 		this.kaina = kaina;
 		this.aprasymas = aprasymas;
 		this.kategorija = kategorija;
+
 	}
 
 	public Long getId() {
@@ -48,12 +49,12 @@ public class Product {
 		this.id = id;
 	}
 
-	public String getPavadinimas() {
-		return pavadinimas;
+	public String getName() {
+		return name;
 	}
 
-	public void setPavadinimas(String pavadinimas) {
-		this.pavadinimas = pavadinimas;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	public String getPhoto() {
@@ -64,33 +65,33 @@ public class Product {
 		this.photo = photo;
 	}
 
-	public double getKaina() {
-		return kaina;
+	public double getPrice() {
+		return price;
 	}
 
-	public void setKaina(double kaina) {
-		this.kaina = kaina;
+	public void setPrice(double kaina) {
+		this.price = kaina;
 	}
 
-	public String getAprasymas() {
-		return aprasymas;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setAprasymas(String aprasymas) {
-		this.aprasymas = aprasymas;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public Categories getKategorija() {
-		return kategorija;
+	public Categories getCategory() {
+		return categories;
 	}
 
-	public void setKategorija(Categories kategorija) {
-		this.kategorija = kategorija;
+	public void setCategory(Categories category) {
+		this.categories = category;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", pavadinimas=" + pavadinimas + ", kaina=" + kaina + ", aprasymas=" + aprasymas
+		return "Product [id=" + id + ", pavadinimas=" + name + ", kaina=" + price + ", aprasymas=" + description
 				+ "]";
 	}
 

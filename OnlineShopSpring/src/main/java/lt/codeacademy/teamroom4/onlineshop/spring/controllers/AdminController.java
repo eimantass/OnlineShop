@@ -13,6 +13,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.AdminRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CustomerRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ManagerRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ServiceRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.services.CustomerService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +28,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/admins")
 
 public class AdminController {
-	
 	@Autowired
 	private AdminRepository adminRepository;
 	
@@ -44,6 +44,7 @@ public class AdminController {
 	public List<Admin> getAdmins() {
 		return adminRepository.findAll();
 	}
+
 
 	@GetMapping("/{id}")
 	public Admin getAdmin(@PathVariable Long id) {
@@ -74,11 +75,6 @@ public class AdminController {
 	}
 
 	// Managing Customers
-	@GetMapping("/customers/all")
-	public List<Customer> getCustomers() {
-		return customerRepository.findAll();
-	}
-
 	@DeleteMapping("/customers/delete/{id}")
 	public ResponseEntity<?> deleteCustomer(@PathVariable Long id) {
 		customerRepository.deleteById(id);

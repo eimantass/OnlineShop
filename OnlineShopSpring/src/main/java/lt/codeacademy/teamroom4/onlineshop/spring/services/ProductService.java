@@ -12,6 +12,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.dto.RecordDto;
 import lt.codeacademy.teamroom4.onlineshop.spring.dto.CartDto;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Line;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.ServiceManager;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 
 @Service
@@ -51,5 +52,21 @@ public class ProductService {
 				.toList();
 		dto.setIrasai(irasai);
 		return dto;
+	}
+	public Product findByName(String searchName) {
+		searchName = searchName.toUpperCase();
+		List<Product> allProducts = new ArrayList<Product>();
+		allProducts.addAll(productRepository.findAll());
+		
+		for(long i =1; i<=allProducts.size();i++) {
+			//Customer currentCustomer = customerRepository.getById(i);
+			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
+			if(currentProduct.getName().toUpperCase().equals(searchName)){
+				return (currentProduct);
+			}
+		}
+		//return customerRepository.findById((long) 1);
+		return null;
+		
 	}
 }

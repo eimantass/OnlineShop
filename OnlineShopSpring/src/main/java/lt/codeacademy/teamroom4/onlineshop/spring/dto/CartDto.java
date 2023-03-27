@@ -14,7 +14,7 @@ public class CartDto {
 	public CartDto(Cart cart) {
 		this.id = cart.getId();
 		
-		this.records = cart.getEilutes()
+		this.records = cart.getLines()
 				.stream()
 				.map(e -> new RecordDto(e))
 				.toList();
@@ -44,13 +44,13 @@ public class CartDto {
 	}
 	
 	public String toString() {
-		String atsakymas = "id= " + id + ", suma " + getTotalPrice();
+		String answer = "id= " + id + ", suma " + getTotalPrice();
 		if(records == null)
-			return atsakymas;
+			return answer;
 		
-		for(RecordDto irasas : records) {
-			atsakymas += "\n" + irasas;
+		for(RecordDto record : records) {
+			answer += "\n" + record;
 		}
-		return atsakymas;
+		return answer;
 	}
 }

@@ -13,10 +13,10 @@ public class RecordDto {
 	public RecordDto() {}
 	
 	public RecordDto(Line line) {
-		this.id = line.getPreke().getId();
-		this.name = line.getPreke().getPavadinimas();
-		this.price = line.getPreke().getKaina();
-		this.amount = line.getKiekis();
+		this.id = line.getProduct().getId();
+		this.name = line.getProduct().getName();
+		this.price = line.getProduct().getPrice();
+		this.amount = line.getAmount();
 		this.totalPrice = line.getSuma();
 	}
 
@@ -32,32 +32,32 @@ public class RecordDto {
 		return name;
 	}
 
-	public void setName(String pavadinimas) {
-		this.name = pavadinimas;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int kiekis) {
-		this.amount = kiekis;
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 
 	public double getSuma() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(double suma) {
-		this.totalPrice = suma;
+	public void setTotalPrice(double price) {
+		this.totalPrice = price;
 	}
 
 	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double kaina) {
-		this.price = kaina;
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	@Override
