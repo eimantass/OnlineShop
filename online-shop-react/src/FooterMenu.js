@@ -7,6 +7,7 @@ function FooterMenu() {
     {/* Create your footer menu */}
       <nav className="footer-menu">
         <ul className="menu">
+
           <li><a href="/about">Apie mus</a></li>
           <li><a href="/contacts">Kontaktai</a></li>
           <li><a href="/terms">Pirkimo/Pardavimo taisyklės</a></li>
