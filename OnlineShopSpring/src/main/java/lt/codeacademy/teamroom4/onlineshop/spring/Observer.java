@@ -40,7 +40,7 @@ public class Observer {
 	@Autowired
 	private ProductRepository productRepository;
 	
-	//@EventListener
+	@EventListener
 	public void seed(ContextRefreshedEvent event) {
 		seedAdmin();
 		seedCustomer();
@@ -59,7 +59,7 @@ public class Observer {
 	}
 	private void seedCustomer() {
 		List<Customer> customer = List.of(
-				new Customer(null, "ViliusCustomer", 0, "viliusCustomer@gmail.com", "svbsdvisbv","svbsdvisbv" ,CUSTOMER, 0)
+				new Customer(null, "ViliusCustomer", 0, "viliusCustomer@gmail.com", "svbsdvisbv","svbsdvisbv" ,CUSTOMER, 1000)
 				);
 		
 		customerRepository.saveAll(customer);
