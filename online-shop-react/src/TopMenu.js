@@ -1,5 +1,4 @@
 import './css/TopMenu.css';
-import { Link } from 'react-router-dom';
 
 function TopMenu() {
     return (
@@ -9,13 +8,13 @@ function TopMenu() {
         {/* Create your menu */}
         <nav>
           <ul className="menu">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/registracija">Registracija</Link></li>
-            <li><Link to="/prisijungti">Prisijungimas</Link></li>
-            <li><Link to="/prekes">Prekės</Link></li>
-            <li><Link to="/akcijos">Akcijos</Link></li>
-            <li><Link to="/parduok">Parduok nereikalingą techniką!</Link></li>
-            <li><Link to="/krepselis">Pirkinių krepšelis</Link></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/registracija">Registracija</a></li>
+            <li><a href="/prisijungti">Prisijungimas</a></li>
+            <li><a href="/prekes">Prekės</a></li>
+            <li><a href="/akcijos">Akcijos</a></li>
+            <li><a href="/parduok">Parduok nereikalingą techniką!</a></li>
+            <li><a href="/krepselis">Pirkinių krepšelis</a></li>
           </ul>
         </nav>
   
