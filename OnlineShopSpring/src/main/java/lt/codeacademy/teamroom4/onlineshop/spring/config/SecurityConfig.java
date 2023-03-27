@@ -29,7 +29,7 @@ public class SecurityConfig {
 			.antMatchers("/**").permitAll()
 		.and()
 		.formLogin();
-		
+		 
 		return http.build();
 	}
 	
