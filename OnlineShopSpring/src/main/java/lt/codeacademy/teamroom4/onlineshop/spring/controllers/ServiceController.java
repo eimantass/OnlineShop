@@ -35,7 +35,7 @@ public ServiceManager getAllServiceManagers(@PathVariable Long id) {
 	return serviceRepsitory.findById(id).orElseThrow(RuntimeException::new);
 }
 
-@PostMapping
+@PostMapping("/create-service-controller")
 public ServiceManager createServiceManager(@RequestBody ServiceManager manager) throws URISyntaxException {
 	ServiceManager savedAdmin = serviceRepsitory.save(manager);
 	return savedAdmin;

@@ -35,7 +35,7 @@ public class ManagerController {
 		return managerRepository.findById(id).orElseThrow(RuntimeException::new);
 	}
 
-	@PostMapping
+	@PostMapping("/create-manager")
 	public Manager createManagers(@RequestBody Manager manager) throws URISyntaxException {
 		Manager savedManager = managerRepository.save(manager);
 		return savedManager;

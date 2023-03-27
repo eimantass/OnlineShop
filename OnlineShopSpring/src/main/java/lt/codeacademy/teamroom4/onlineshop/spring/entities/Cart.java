@@ -49,7 +49,7 @@ public class Cart {
 		this.id = id;
 	}
 
-	public List<Line> getEilutes() {
+	public List<Line> getLines() {
 		return eilutes;
 	}
 

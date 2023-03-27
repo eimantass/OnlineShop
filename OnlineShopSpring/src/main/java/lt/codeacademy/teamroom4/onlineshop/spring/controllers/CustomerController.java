@@ -31,7 +31,7 @@ public class CustomerController {
 		return customerRepository.findById(id).orElseThrow(RuntimeException::new);
 	}
 
-	@PostMapping
+	@PostMapping("/add-customer")
 	public Customer createCustomer(@RequestBody Customer customer) throws URISyntaxException {
 		Customer savedCustomer = customerRepository.save(customer);
 		return savedCustomer;
