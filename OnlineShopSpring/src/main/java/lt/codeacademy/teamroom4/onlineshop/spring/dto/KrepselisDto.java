@@ -2,7 +2,7 @@ package lt.codeacademy.teamroom4.onlineshop.spring.dto;
 
 import java.util.List;
 
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Krepselis;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
 
 public class KrepselisDto {
 	
@@ -11,7 +11,7 @@ public class KrepselisDto {
 	
 	public KrepselisDto() {}
 	
-	public KrepselisDto(Krepselis krepselis) {
+	public KrepselisDto(Cart krepselis) {
 		this.id = krepselis.getId();
 		
 		this.irasai = krepselis.getEilutes()
