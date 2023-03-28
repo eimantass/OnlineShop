@@ -1,14 +1,25 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.CPUParameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Categories;
 
 @Entity
+
 @Table(name = "product")
 public class Product {
 	
@@ -20,25 +31,39 @@ public class Product {
 	double price;
 	String description;
 	Categories category;
+	//List<String> parameters = new ArrayList<String>();
 	
-	public Product() {}
+	
 
-	public Product(String name,String photo, double price, String description, Categories categories) {
-		this.name = name;
-		this.photo = photo;
-		this.price = price;
-		this.description = description;
-		this.category = categories;
-	}
-
-	public Product(Long id, String name,String photo, double price, String description, Categories category) {
+	public Product(Long id, String name, String photo, double price, String description, Categories category) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.photo = photo;
 		this.price = price;
 		this.description = description;
 		this.category = category;
+	}
 
+	public Product(String name,String photo, double price, String description, Categories categories,List<String> parameters) {
+		this.name = name;
+		this.photo = photo;
+		this.price = price;
+		this.description = description;
+		this.category = categories;
+
+	}
+	public Product(String name,String photo, double price, String description, Categories categories) {
+		this.name = name;
+		this.photo = photo;
+		this.price = price;
+		this.description = description;
+		this.category = categories;
+		
+
+	}
+
+	public Product() {
 	}
 
 	public Long getId() {
@@ -49,6 +74,7 @@ public class Product {
 		this.id = id;
 	}
 
+	
 	public String getName() {
 		return name;
 	}
@@ -56,7 +82,7 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getPhoto() {
 		return photo;
 	}
@@ -65,12 +91,13 @@ public class Product {
 		this.photo = photo;
 	}
 
+	
 	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double kaina) {
-		this.price = kaina;
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	public String getDescription() {
@@ -81,6 +108,7 @@ public class Product {
 		this.description = description;
 	}
 
+
 	public Categories getCategory() {
 		return category;
 	}
@@ -88,6 +116,7 @@ public class Product {
 	public void setCategory(Categories category) {
 		this.category = category;
 	}
+
 
 	@Override
 	public String toString() {

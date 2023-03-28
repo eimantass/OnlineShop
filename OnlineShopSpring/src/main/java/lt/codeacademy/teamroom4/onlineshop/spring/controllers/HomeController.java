@@ -41,8 +41,30 @@ public class HomeController {
 	public Product getCustomerByName(@PathVariable String searchName) {
 		return productService.findByName(searchName);
 	}
-	@GetMapping("/products/sort-by-name")
-	public Product SortProductsByName(@PathVariable String searchName) {
-		return productService.findByName(searchName);
+	@GetMapping("/products/sort-by-name-asc")
+	public List<Product> SortProductsByNameAsc() {
+		return productService.sortByNameAsc();
+	}
+	@GetMapping("/products/sort-by-name-desc")
+	public List<Product> SortProductsByNameDesc() {
+		return productService.sortByNameDesc();
+	}
+	
+	@GetMapping("/products/sort-by-price-asc")
+	public List<Product> SortProductsByPriceAsc() {
+		return productService.sortByNameAsc();
+	}
+	@GetMapping("/products/sort-by-price-desc")
+	public List<Product> SortProductsByPriceDesc() {
+		return productService.sortByPriceDesc();
+	}
+	@GetMapping("/products/sort-by-category-asc")
+	public List<Product> SortProductsByCategoryAsc() {
+		return productService.sortByCategoryAsc();
+	}
+	
+	@GetMapping("/products/sort-by-category-desc")
+	public List<Product> SortProductsByCategoryDesc() {
+		return productService.sortByCategoryDesc();
 	}
 }
