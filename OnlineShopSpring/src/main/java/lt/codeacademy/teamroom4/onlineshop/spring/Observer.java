@@ -113,4 +113,3 @@ public class Observer {
 			productRepository.saveAll(product);
 			}
 }
-*/
