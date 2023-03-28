@@ -23,6 +23,9 @@ import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles.*;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Categories.*;
 //This class is used to generate dummy data;
+
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.CPUParameters.*;
+
 @Configuration
 public class Observer {
 	//Used to generate random amount of money
@@ -110,3 +113,4 @@ public class Observer {
 			productRepository.saveAll(product);
 			}
 }
+*/
