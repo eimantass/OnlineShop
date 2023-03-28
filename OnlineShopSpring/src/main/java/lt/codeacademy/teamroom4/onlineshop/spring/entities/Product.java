@@ -39,7 +39,7 @@ public class Product {
 	double price;
 	String description;
 	Categories category;
-	ArrayList<String> parameters = new ArrayList<>();
+	ArrayList<String[]> parameters = new ArrayList<>();
 	//List<String> parameters = new ArrayList<String>();
 	
 	
@@ -58,7 +58,7 @@ public class Product {
 
 	
 	public Product(Long id, String name, String photo, double price, String description, Categories category,
-			ArrayList<String> parameters) {
+			ArrayList<String[]> parameters) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -71,7 +71,7 @@ public class Product {
 
 
 	public Product(String name, String photo, double price, String description, Categories category,
-			ArrayList<String> parameters) {
+			ArrayList<String[]> parameters) {
 		super();
 		this.name = name;
 		this.photo = photo;
@@ -149,12 +149,12 @@ public class Product {
 
 	
 
-	public ArrayList<String> getParameters() {
+	public ArrayList<String[]> getParameters() {
 		return parameters;
 	}
 
 
-	public void setParameters(ArrayList<String> parameters) {
+	public void setParameters(ArrayList<String[]> parameters) {
 		this.parameters = parameters;
 	}
 
