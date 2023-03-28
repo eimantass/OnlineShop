@@ -1,5 +1,6 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -28,13 +31,19 @@ public class Product {
 	double price;
 	String description;
 	Categories category;
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//List<String> parameters;
-
+	//List<String> parameters = new ArrayList<String>();
+	
 	
 
-	
+	public Product(Long id, String name, String photo, double price, String description, Categories category) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.photo = photo;
+		this.price = price;
+		this.description = description;
+		this.category = category;
+	}
 
 	public Product(String name,String photo, double price, String description, Categories categories,List<String> parameters) {
 		this.name = name;
@@ -54,14 +63,7 @@ public class Product {
 
 	}
 
-	public Product(Long id, String name,String photo, double price, String description, Categories category) {
-		this.id = id;
-		this.name = name;
-		this.photo = photo;
-		this.price = price;
-		this.description = description;
-		this.category = category;
-
+	public Product() {
 	}
 
 	public Long getId() {

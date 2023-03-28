@@ -43,7 +43,7 @@ public class Observer {
 	@Autowired
 	private ProductRepository productRepository;
 	
-	//@EventListener
+	@EventListener
 	public void seed(ContextRefreshedEvent event) {
 		seedAdmin();
 		seedCustomer();
@@ -89,15 +89,15 @@ public class Observer {
 	}	
 		private void seedProduct() {
 			//List<CPUParameters> parameters = List.of(CPU_SOCKET,CPU_FREQUENCY);
-			List<String> parameters = List.of("CPU_SOCKET = 1200");
+			//List<String> parameters = List.of("CPU_SOCKET = 1200");
 			List<Product> product = List.of(
 					new Product("IntelI3","foto.png", 120,"Quad Core CPU",CPU)
 					,
 					new Product("RX 6400XT","foto.png", 160," 4gb gddr6 RX 6400XT gpu",GPU),
-					new Product("GTX 1650 Super","foto.png", 220,"4 gb gddr6 GTX 1650 Super gpu",GPU),
-					new Product("GTX 1650 Super","foto.png", 220,"4 gb gddr6 GTX 1650 Super gpu",GPU),
-					new Product("4gb RAM","foto.png", 30,"4 gb ddr3 ram",RAM),
-					new Product("IntelI5","foto.png", 200,"12 core cpu",CPU)
+					new Product("GTX 1650 Super","foto.png", 220,"4 gb gddr6 GTX 1650 Super gpu",GPU)
+					//new Product("GTX 1650 Super","foto.png", 220,"4 gb gddr6 GTX 1650 Super gpu",GPU),
+					//new Product("4gb RAM","foto.png", 30,"4 gb ddr3 ram",RAM),
+					//new Product("IntelI5","foto.png", 200,"12 core cpu",CPU)
 					//new Product( "IntelI7","foto.png", 250,"16 core cpu",CPU, parameters)
 					
 );
