@@ -6,9 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Manager;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ServiceManager;
-import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ManagerRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ServiceRepository;
 
 @Service
