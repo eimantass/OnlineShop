@@ -15,14 +15,14 @@ public class Line {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long id;
+	private Long id;
 	
-	int amount;
+	private int amount;
 	
 	@ManyToOne
 	@Cascade(CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "product_id" , referencedColumnName = "id")
-	Product product;
+	private Product product;
 	
 	public Line() {}
 	
@@ -38,7 +38,7 @@ public class Line {
 	}
 	
 	public double getSuma() {
-		return product.price * amount;
+		return product.getPrice() * amount;
 	}
 
 	public Long getId() {

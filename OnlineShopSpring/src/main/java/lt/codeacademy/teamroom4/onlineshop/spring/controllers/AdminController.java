@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+// In this class admins and other users(which require admin security level to edit) mapping are configured
 @RestController
 @RequestMapping("/admins")
 
@@ -39,25 +40,25 @@ public class AdminController {
 	
 	@Autowired
 	private ServiceRepository serviceRepsitory;
-	
+	//This function is used to get list of all admins
 	@GetMapping
 	public List<Admin> getAdmins() {
 		return adminRepository.findAll();
 	}
 
-
+	//Here admins can be found by id 
 	@GetMapping("/{id}")
 	public Admin getAdmin(@PathVariable Long id) {
 		return adminRepository.findById(id).orElseThrow(RuntimeException::new);
 	}
-
+//Here new admin accounts are created
 	@PostMapping
 	public Admin createAdmin(@RequestBody Admin admin) throws URISyntaxException {
 		Admin savedAdmin = adminRepository.save(admin);
 		return savedAdmin;
 
 	}
-
+//Here admin update operations are handled
 	@PutMapping("/{id}")
 	public Admin updateAdmin(@PathVariable Long id, @RequestBody Admin admin) {
 		Admin currentAdmin = adminRepository.findById(id).orElseThrow(RuntimeException::new);
@@ -67,35 +68,37 @@ public class AdminController {
 		currentAdmin.setMatchingPassword(admin.getMatchingPassword());
 		return adminRepository.save(admin);
 	}
-
+//Here admins can be deleted
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteAdmin(@PathVariable Long id) {
 		adminRepository.deleteById(id);
 		return ResponseEntity.ok().build();
 	}
 
-	// Managing Customers
+	//Admins can delete customers here
 	@DeleteMapping("/customers/delete/{id}")
 	public ResponseEntity<?> deleteCustomer(@PathVariable Long id) {
 		customerRepository.deleteById(id);
 		return ResponseEntity.ok().build();
 	}
-	// Managing Managers
+	// Admins can get list of all managers here
 	@GetMapping("/managers/all")
 	public List<Manager> getManagers() {
 		return managerRepository.findAll();
 	}
+	//Admins can delete managers here
 	@DeleteMapping("/managers/{id}")
 	public ResponseEntity<?> deleteManager(@PathVariable Long id) {
 		managerRepository.deleteById(id);
 		return ResponseEntity.ok().build();
 	}
-	// Managing ServiceManagement
-	@GetMapping("/servicemanagers/all")
+	// Admins can find all service managers here
+	@GetMapping("/service-managers/all")
 	public List<ServiceManager> getServiceManagers() {
 		return serviceRepsitory.findAll();
 	}
-	@DeleteMapping("/servicemanagers/delete/{id}")
+	//Admins can delete service managers here
+	@DeleteMapping("/service-managers/delete/{id}")
 	public ResponseEntity<?> deleteServiceManager(@PathVariable Long id) {
 		serviceRepsitory.deleteById(id);
 		return ResponseEntity.ok().build();

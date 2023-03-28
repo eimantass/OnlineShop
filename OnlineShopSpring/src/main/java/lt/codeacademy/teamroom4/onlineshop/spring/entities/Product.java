@@ -1,45 +1,27 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import lt.codeacademy.teamroom4.onlineshop.spring.utils.CPUParameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Categories;
+//This is the Product entity
 
 @Entity
 
 @Table(name = "product")
 public class Product {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long id;
-	String name;
-	String photo;
-	double price;
-	String description;
-	Categories category;
-	ArrayList<String[]> parameters = new ArrayList<>();
+	private Long id;
+	private String name;
+	private String photo;
+	private double price;
+	private String description;
+	private Categories category;
+	private ArrayList<String[]> parameters = new ArrayList<>();
 	//List<String> parameters = new ArrayList<String>();
 	
 	

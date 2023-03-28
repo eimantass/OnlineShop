@@ -12,7 +12,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles.*;
-
+//In this class security parameters are configured
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -32,7 +32,7 @@ public class SecurityConfig {
 		 
 		return http.build();
 	}
-	
+	//Over here test users are created
 	@Bean
 	public InMemoryUserDetailsManager userDetailsService() {
 		UserDetails user1 = User
@@ -59,6 +59,7 @@ public class SecurityConfig {
 		return new InMemoryUserDetailsManager(user1,user2,user3,user4);
 	}
 	
+	//This function is used to encode passwords
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
