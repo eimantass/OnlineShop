@@ -2,7 +2,6 @@ import './css/TopMenu.css';
 
 function TopMenu() {
     return (
-
       <>
       <div className="App">
         {/* Create your menu */}

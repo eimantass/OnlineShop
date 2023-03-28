@@ -1,6 +1,6 @@
-import TopMenu from "../TopMenu";
-import SeachAndLogo from "../searchandlogo";
-import FooterMenu from "../FooterMenu";
+import TopMenu from "../layout/TopMenu";
+import SeachAndLogo from "../layout/searchandlogo";
+import FooterMenu from "../layout/FooterMenu";
 
 import '../css/App.css'
 

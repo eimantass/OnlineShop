@@ -1,3 +1,6 @@
+ HEAD:online-shop-react/src/layout/Body.js
+import { Link } from 'react-router-dom';
+
 import './css/Body.css';
 
 function Body() {
