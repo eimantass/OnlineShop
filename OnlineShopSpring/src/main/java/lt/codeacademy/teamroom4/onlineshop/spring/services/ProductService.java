@@ -70,7 +70,25 @@ public class ProductService {
 		return null;
 		
 	}
-	public List<Product> sortByName(){
+	public List<Product> sortByNameAsc(){
 		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
 	}
+	public List<Product> sortByNameDesc(){
+		return productRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
+	}
+	public List<Product> sortByPriceAsc(){
+		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "price"));
+	}
+	public List<Product> sortByPriceDesc(){
+		return productRepository.findAll(Sort.by(Sort.Direction.DESC, "price"));
+	}
+	public List<Product> sortByCategoryAsc(){
+		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "category"));
+
+	}
+	public List<Product> sortByCategoryDesc(){
+		return productRepository.findAll(Sort.by(Sort.Direction.DESC, "category"));
+
+	}
+
 }
