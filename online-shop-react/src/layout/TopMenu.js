@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 function TopMenu() {
     return (
-
       <>
       <div className="App">
         {/* Create your menu */}

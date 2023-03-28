@@ -1,6 +1,7 @@
-import TopMenu from "../TopMenu";
-import FooterMenu from "../FooterMenu";
-import SeachAndLogo from "../searchandlogo";
+import TopMenu from "../layout/TopMenu";
+import SeachAndLogo from "../layout/searchandlogo";
+import FooterMenu from "../layout/FooterMenu";
+
 
 export function Prisijungimas() {
     return (

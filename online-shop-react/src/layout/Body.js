@@ -1,5 +1,5 @@
-import './css/Body.css';
 import { Link } from 'react-router-dom';
+import './css/Body.css';
 
 function Body() {
   return (
