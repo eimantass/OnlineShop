@@ -26,6 +26,7 @@ import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles.*;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Categories.*;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.CPUParameters.*;
 
+/*
 @Configuration
 public class Observer {
 	MoneyGenerator moneyGenerator = new MoneyGenerator();
@@ -107,3 +108,4 @@ public class Observer {
 			productRepository.saveAll(product);
 			}
 }
+*/
