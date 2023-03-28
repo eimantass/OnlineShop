@@ -14,8 +14,8 @@ public class RecordDto {
 	
 	public RecordDto(Line line) {
 		this.id = line.getProduct().getId();
-		this.name = line.getProduct().getName();
-		this.price = line.getProduct().getPrice();
+		this.name = line.getProduct().getPavadinimas();
+		this.price = line.getProduct().getKaina();
 		this.amount = line.getAmount();
 		this.totalPrice = line.getSuma();
 	}

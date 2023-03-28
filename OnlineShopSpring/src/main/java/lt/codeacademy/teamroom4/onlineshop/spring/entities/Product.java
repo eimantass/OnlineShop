@@ -49,14 +49,15 @@ public class Product {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	
+	public String getPavadinimas() {
+		return pavadinimas;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setPavadinimas(String pavadinimas) {
+		this.pavadinimas = pavadinimas;
 	}
-	
+
 	public String getPhoto() {
 		return photo;
 	}
@@ -65,21 +66,23 @@ public class Product {
 		this.photo = photo;
 	}
 
-	public double getPrice() {
-		return price;
+	
+	public double getKaina() {
+		return kaina;
 	}
 
-	public void setPrice(double kaina) {
-		this.price = kaina;
+	public void setKaina(double kaina) {
+		this.kaina = kaina;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getAprasymas() {
+		return aprasymas;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setAprasymas(String aprasymas) {
+		this.aprasymas = aprasymas;
 	}
+
 
 	public Categories getCategory() {
 		return category;

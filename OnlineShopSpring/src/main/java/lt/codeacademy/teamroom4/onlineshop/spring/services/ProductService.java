@@ -62,7 +62,7 @@ public class ProductService {
 		for(long i =1; i<=allProducts.size();i++) {
 			//Customer currentCustomer = customerRepository.getById(i);
 			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
-			if(currentProduct.getName().toUpperCase().equals(searchName)){
+			if(currentProduct.getPavadinimas().toUpperCase().equals(searchName)){
 				return (currentProduct);
 			}
 		}

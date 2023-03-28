@@ -68,6 +68,7 @@ public class CartController {
 		
 		double total = 0;
 		for(Line line : cart) {
+
 			total += line.getProduct().getPrice() * line.getAmount();
 			
 			purchaseUnit.getItems().add(new Item(

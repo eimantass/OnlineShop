@@ -56,10 +56,10 @@ public class ProductController {
 	@PutMapping("/{id}")
 	public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
 		Product currentProduct = productRepository.findById(id).orElseThrow(RuntimeException::new);
-		currentProduct.setName(product.getName());
-		currentProduct.setCategory(product.getCategory());
-		currentProduct.setPrice(product.getPrice());
-		currentProduct.setDescription(product.getDescription());
+		currentProduct.setPavadinimas(product.getPavadinimas());
+		currentProduct.setKategorija(product.getKategorija());
+		currentProduct.setKaina(product.getKaina());
+		currentProduct.setAprasymas(product.getAprasymas());
 		return productRepository.save(product);
 	}
 
