@@ -4,19 +4,16 @@ import FooterMenu from "../layout/FooterMenu";
 
 
 import '../css/App.css'
+import RegistrationPage from "../layout/RegistrationForm";
 
 export function Registracija() {
     return (
       <div className="FooterPlacer">
         <TopMenu/>
         <SeachAndLogo/>
+        {/* Registration Page */}
+        <RegistrationPage/>
         
-        <h1>Registracija funkcija</h1>
-        <h1>Registracija funkcija</h1>
-        <h1>Registracija funkcija</h1>
-        <h1>Registracija funkcija</h1>
-
-        {/* rest of your contact page content */}
         <FooterMenu/>
       </div>
     );
