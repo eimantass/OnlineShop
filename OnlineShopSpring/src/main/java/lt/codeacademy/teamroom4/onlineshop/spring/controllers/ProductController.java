@@ -31,14 +31,14 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@GetMapping("/all")
+	@GetMapping("/products")
 	@CrossOrigin(origins = "http://localhost:3000")
 
 	public String index(ModelMap modelMap) {
 		modelMap.put("product", productService.findAll());
 		return "products/all";
 	}
-*/
+
 	 @GetMapping("/all")
 	public List<Product> getProducts() {
 		return productRepository.findAll();
