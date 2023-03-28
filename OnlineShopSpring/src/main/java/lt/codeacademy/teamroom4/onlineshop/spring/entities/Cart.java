@@ -23,22 +23,22 @@ public class Cart {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long id;
+	private Long id;
 	
 	@ManyToMany
 	@Cascade({ CascadeType.SAVE_UPDATE, CascadeType.MERGE, CascadeType.PERSIST })
 	@JoinColumn(name = "eilute_id")
-	List<Line> lines = new ArrayList<>();
+	private List<Line> lines = new ArrayList<>();
 	
 	public Cart() {}
 
-	public Cart(Long id, List<Line> eilutes) {
+	public Cart(Long id, List<Line> lines) {
 		this.id = id;
-		this.lines = eilutes;
+		this.lines = lines;
 	}
 
-	public Cart(List<Line> eilutes) {
-		this.lines = eilutes;
+	public Cart(List<Line> lines) {
+		this.lines = lines;
 	}
 
 	public Long getId() {
@@ -53,8 +53,8 @@ public class Cart {
 		return lines;
 	}
 
-	public void setEilutes(List<Line> eilutes) {
-		this.lines = eilutes;
+	public void setEilutes(List<Line> lines) {
+		this.lines = lines;
 	}
 
 	@Override

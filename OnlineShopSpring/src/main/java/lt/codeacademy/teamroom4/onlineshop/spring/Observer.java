@@ -18,18 +18,20 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CustomerRepositor
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ManagerRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ServiceRepository;
-import lt.codeacademy.teamroom4.onlineshop.spring.services.CustomerService;
-import lt.codeacademy.teamroom4.onlineshop.spring.utils.CPUParameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles.*;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Categories.*;
+//This class is used to generate dummy data;
+
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.CPUParameters.*;
 
-/*
 @Configuration
 public class Observer {
+	//Used to generate random amount of money
 	MoneyGenerator moneyGenerator = new MoneyGenerator();
+	
+	//Autowiring repositories
 	@Autowired
 	private AdminRepository adminRepository;
 	
@@ -45,6 +47,7 @@ public class Observer {
 	@Autowired
 	private ProductRepository productRepository;
 	
+	//Used to activate seed function
 	@EventListener
 	public void seed(ContextRefreshedEvent event) {
 		seedAdmin();
@@ -53,6 +56,8 @@ public class Observer {
 		seedManager();
 		seedProduct();
 	}
+	
+	//Seeding users and products
 	
 	private void seedAdmin() {
 		List<Admin> admin = List.of(
