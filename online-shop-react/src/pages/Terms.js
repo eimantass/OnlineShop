@@ -3,12 +3,14 @@ import SeachAndLogo from "../layout/searchandlogo";
 import FooterMenu from "../layout/FooterMenu";
 
 
+import '../css/App.css'
+
 export function Terms() {
     return (
-      <div>
+      <div className="FooterPlacer">
         <TopMenu/>
         <SeachAndLogo/>
-        <h1>Terms page</h1>
+        <h1 style={{textAlign: "center"}}>Terms page</h1>
         {/* rest of your contact page content */}
         <FooterMenu/>
       </div>

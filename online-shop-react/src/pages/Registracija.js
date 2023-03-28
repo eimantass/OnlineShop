@@ -3,9 +3,11 @@ import SeachAndLogo from "../layout/searchandlogo";
 import FooterMenu from "../layout/FooterMenu";
 
 
+import '../css/App.css'
+
 export function Registracija() {
     return (
-      <div>
+      <div className="FooterPlacer">
         <TopMenu/>
         <SeachAndLogo/>
         
@@ -13,6 +15,7 @@ export function Registracija() {
         <h1>Registracija funkcija</h1>
         <h1>Registracija funkcija</h1>
         <h1>Registracija funkcija</h1>
+
         {/* rest of your contact page content */}
         <FooterMenu/>
       </div>

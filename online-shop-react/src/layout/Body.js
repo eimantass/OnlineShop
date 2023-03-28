@@ -1,4 +1,6 @@
+ HEAD:online-shop-react/src/layout/Body.js
 import { Link } from 'react-router-dom';
+
 import './css/Body.css';
 
 function Body() {
@@ -6,15 +8,15 @@ function Body() {
     <div>
       <div className="categories">
         <ul>
-          <li><Link to="/prekes">Staliniai kompiuteriai</Link></li>
-          <li><Link to="/prekes">Nesiojamieji kompiuteriai</Link></li>
-          <li><Link to="/prekes">Kompiuteriu komponentai</Link></li>
-          <li><Link to="/prekes">Monitoriai</Link></li>
-          <li><Link to="/prekes">Mobilieji telefonai</Link></li>
-          <li><Link to="/prekes">Plansetiniai kompiuteriai</Link></li>
-          <li><Link to="/prekes">Spausdintuvai</Link></li>
-          <li><Link to="/prekes">Žaidimu konsoles</Link></li>
-          <li><Link to="/prekes">Žaidimai</Link></li>
+          <li><a href="http://localhost:3000/#">Staliniai kompiuteriai</a></li>
+          <li><a href="http://localhost:3000/#">Nesiojamieji kompiuteriai</a></li>
+          <li><a href="http://localhost:3000/#">Kompiuteriu komponentai</a></li>
+          <li><a href="http://localhost:3000/#">Monitoriai</a></li>
+          <li><a href="http://localhost:3000/#">Mobilieji telefonai</a></li>
+          <li><a href="http://localhost:3000/#">Plansetiniai kompiuteriai</a></li>
+          <li><a href="http://localhost:3000/#">Spausdintuvai</a></li>
+          <li><a href="http://localhost:3000/#">Žaidimu konsoles</a></li>
+          <li><a href="http://localhost:3000/#">Žaidimai</a></li>
         </ul>
       </div>
 

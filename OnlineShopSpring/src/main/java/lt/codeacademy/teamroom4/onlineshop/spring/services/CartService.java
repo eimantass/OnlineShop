@@ -18,28 +18,28 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository
 public class CartService {
 
 	@Autowired
-	CartRepository krepselisRepository;
+	CartRepository cartRepository;
 	
 	@Autowired
 	ProductRepository productRepository;
 	
 	public List<CartDto> getAll(){
-		List<Cart> kvitai = krepselisRepository.findAll();
-		return kvitai.stream().map(k -> new CartDto(k)).toList();
+		List<Cart> records = cartRepository.findAll();
+		return records.stream().map(k -> new CartDto(k)).toList();
 	}
 	
-	public void saveKrepselis(CartDto krepselisDto) {
-		List<Line> eilutes = new ArrayList<>();
-		for(RecordDto irasas : krepselisDto.getRecords()) {
-			if(irasas.getAmount() <=0)
+	public void saveCart(CartDto cartDto) {
+		List<Line> lines = new ArrayList<>();
+		for(RecordDto record : cartDto.getRecords()) {
+			if(record.getAmount() <=0)
 				continue;
 			
-		Product product = productRepository.findById(irasas.getId()).get();
-		Line eilute = new Line(product, irasas.getAmount());
-		eilutes.add(eilute);
+		Product product = productRepository.findById(record.getId()).get();
+		Line line = new Line(product, record.getAmount());
+		lines.add(line);
 			
 		}
-		Cart krepselis = new Cart(eilutes);
-		krepselisRepository.save(krepselis);
+		Cart krepselis = new Cart(lines);
+		cartRepository.save(krepselis);
 	}
 }

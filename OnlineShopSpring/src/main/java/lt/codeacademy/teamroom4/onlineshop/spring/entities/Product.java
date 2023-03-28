@@ -15,26 +15,30 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
-	String pavadinimas;
+	String name;
+	String photo;
 	double price;
-	String aprasymas;
-	Categories kategorija;
+	String description;
+	Categories category;
 	
 	public Product() {}
 
-	public Product(String pavadinimas, double kaina, String aprasymas, Categories kategorija) {
-		this.pavadinimas = pavadinimas;
-		this.price = kaina;
-		this.aprasymas = aprasymas;
-		this.kategorija = kategorija;
+	public Product(String name,String photo, double price, String description, Categories categories) {
+		this.name = name;
+		this.photo = photo;
+		this.price = price;
+		this.description = description;
+		this.category = categories;
 	}
 
-	public Product(Long id, String pavadinimas, double kaina, String aprasymas, Categories kategorija) {
+	public Product(Long id, String name,String photo, double price, String description, Categories category) {
 		this.id = id;
-		this.pavadinimas = pavadinimas;
-		this.price = kaina;
-		this.aprasymas = aprasymas;
-		this.kategorija = kategorija;
+		this.name = name;
+		this.photo = photo;
+		this.price = price;
+		this.description = description;
+		this.category = category;
+
 	}
 
 	public Long getId() {
@@ -45,41 +49,49 @@ public class Product {
 		this.id = id;
 	}
 
-	public String getPavadinimas() {
-		return pavadinimas;
+	public String getName() {
+		return name;
 	}
 
-	public void setPavadinimas(String pavadinimas) {
-		this.pavadinimas = pavadinimas;
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getPhoto() {
+		return photo;
 	}
 
-	public double getKaina() {
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public double getPrice() {
 		return price;
 	}
 
-	public void setKaina(double kaina) {
+	public void setPrice(double kaina) {
 		this.price = kaina;
 	}
 
-	public String getAprasymas() {
-		return aprasymas;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setAprasymas(String aprasymas) {
-		this.aprasymas = aprasymas;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public Categories getKategorija() {
-		return kategorija;
+	public Categories getCategory() {
+		return category;
 	}
 
-	public void setKategorija(Categories kategorija) {
-		this.kategorija = kategorija;
+	public void setCategory(Categories category) {
+		this.category = category;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", pavadinimas=" + pavadinimas + ", kaina=" + price + ", aprasymas=" + aprasymas
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description
 				+ "]";
 	}
 

@@ -3,13 +3,15 @@ import SeachAndLogo from "../layout/searchandlogo";
 import FooterMenu from "../layout/FooterMenu";
 
 
+import '../css/App.css'
+
 export function Akcijos() {
 
     return (
-      <div>
+      <div className="FooterPlacer">
         <TopMenu/>
         <SeachAndLogo/>
-        <h1>Akcijos page</h1>
+        <h1 style={{textAlign: "center"}}>Akcijos page</h1>
 
         {/* rest of your contact page content */}
 
