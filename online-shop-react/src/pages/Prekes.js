@@ -4,6 +4,7 @@ import FooterMenu from "../layout/FooterMenu";
 
 
 import '../css/App.css'
+import ProductList from "../layout/ProductList";
 
 export function Prekes() {
     return (
@@ -11,6 +12,7 @@ export function Prekes() {
         <TopMenu/>
         <SeachAndLogo/>
         <h1 style={{textAlign: "center"}}>Prekes</h1>
+        <ProductList/>
         {/* rest of your contact page content */}
         <FooterMenu/>
       </div>
