@@ -18,7 +18,7 @@ import org.hibernate.annotations.CascadeType;
 
 
 @Entity
-@Table(name = "krepselis")
+@Table(name = "cart")
 public class Cart {
 	
 	@Id

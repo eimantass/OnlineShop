@@ -8,12 +8,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.CPUParameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Categories;
@@ -31,8 +39,11 @@ public class Product {
 	double price;
 	String description;
 	Categories category;
+	ArrayList<String[]> parameters = new ArrayList<>();
 	//List<String> parameters = new ArrayList<String>();
 	
+	
+
 	
 
 	public Product(Long id, String name, String photo, double price, String description, Categories category) {
@@ -45,14 +56,32 @@ public class Product {
 		this.category = category;
 	}
 
-	public Product(String name,String photo, double price, String description, Categories categories,List<String> parameters) {
+	
+	public Product(Long id, String name, String photo, double price, String description, Categories category,
+			ArrayList<String[]> parameters) {
+		super();
+		this.id = id;
 		this.name = name;
 		this.photo = photo;
 		this.price = price;
 		this.description = description;
-		this.category = categories;
-
+		this.category = category;
+		this.parameters = parameters;
 	}
+
+
+	public Product(String name, String photo, double price, String description, Categories category,
+			ArrayList<String[]> parameters) {
+		super();
+		this.name = name;
+		this.photo = photo;
+		this.price = price;
+		this.description = description;
+		this.category = category;
+		this.parameters = parameters;
+	}
+
+
 	public Product(String name,String photo, double price, String description, Categories categories) {
 		this.name = name;
 		this.photo = photo;
@@ -118,10 +147,22 @@ public class Product {
 	}
 
 
+	
+
+	public ArrayList<String[]> getParameters() {
+		return parameters;
+	}
+
+
+	public void setParameters(ArrayList<String[]> parameters) {
+		this.parameters = parameters;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description
-				+ "]";
+		return "Product [id=" + id + ", name=" + name + ", photo=" + photo + ", price=" + price + ", description="
+				+ description + ", category=" + category + ", parameters=" +  "]";
 	}
 
 }

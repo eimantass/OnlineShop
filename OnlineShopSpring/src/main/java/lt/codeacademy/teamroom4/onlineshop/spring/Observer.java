@@ -1,5 +1,6 @@
 package lt.codeacademy.teamroom4.onlineshop.spring;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,17 +90,18 @@ public class Observer {
 	}	
 		private void seedProduct() {
 			//List<CPUParameters> parameters = List.of(CPU_SOCKET,CPU_FREQUENCY);
-			//List<String> parameters = List.of("CPU_SOCKET = 1200");
+			//List<String> parameters = List.of(	("CPU_SOCKET = 1200"),		("CPU_CORES = 16"));
+			ArrayList<String[]> parameters= new ArrayList<>();
+			String[]	CPUparameters = {"CPU_SOCKET","lll"};
+			parameters.add(CPUparameters);
 			List<Product> product = List.of(
 					new Product("IntelI3","foto.png", 120,"Quad Core CPU",CPU)
 					,
 					new Product("RX 6400XT","foto.png", 160," 4gb gddr6 RX 6400XT gpu",GPU),
-					new Product("GTX 1650 Super","foto.png", 220,"4 gb gddr6 GTX 1650 Super gpu",GPU)
-					//new Product("GTX 1650 Super","foto.png", 220,"4 gb gddr6 GTX 1650 Super gpu",GPU),
-					//new Product("4gb RAM","foto.png", 30,"4 gb ddr3 ram",RAM),
-					//new Product("IntelI5","foto.png", 200,"12 core cpu",CPU)
-					//new Product( "IntelI7","foto.png", 250,"16 core cpu",CPU, parameters)
-					
+					new Product("GTX 1650 Super","foto.png", 220,"4 gb gddr6 GTX 1650 Super gpu",GPU),
+					new Product("4gb RAM","foto.png", 30,"4 gb ddr3 ram",RAM),
+					new Product("IntelI5","foto.png", 200,"12 core cpu",CPU),
+					new Product( "IntelI7","foto.png", 250,"16 core cpu",CPU, parameters)		
 );
 			
 			productRepository.saveAll(product);
