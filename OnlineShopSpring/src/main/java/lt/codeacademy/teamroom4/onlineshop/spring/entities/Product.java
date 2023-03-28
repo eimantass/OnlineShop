@@ -15,29 +15,29 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
-	String pavadinimas;
+	String name;
 	String photo;
-	double kaina;
-	String aprasymas;
-	Categories kategorija;
+	double price;
+	String description;
+	Categories category;
 	
 	public Product() {}
 
-	public Product(String pavadinimas,String photo, double kaina, String aprasymas, Categories kategorija) {
-		this.pavadinimas = pavadinimas;
+	public Product(String name,String photo, double price, String description, Categories categories) {
+		this.name = name;
 		this.photo = photo;
-		this.kaina = kaina;
-		this.aprasymas = aprasymas;
-		this.kategorija = kategorija;
+		this.price = price;
+		this.description = description;
+		this.category = categories;
 	}
 
-	public Product(Long id, String pavadinimas,String photo, double kaina, String aprasymas, Categories kategorija) {
+	public Product(Long id, String name,String photo, double price, String description, Categories category) {
 		this.id = id;
-		this.pavadinimas = pavadinimas;
+		this.name = name;
 		this.photo = photo;
-		this.kaina = kaina;
-		this.aprasymas = aprasymas;
-		this.kategorija = kategorija;
+		this.price = price;
+		this.description = description;
+		this.category = category;
 
 	}
 
@@ -82,11 +82,11 @@ public class Product {
 	}
 
 	public Categories getCategory() {
-		return categories;
+		return category;
 	}
 
 	public void setCategory(Categories category) {
-		this.categories = category;
+		this.category = category;
 	}
 
 	@Override

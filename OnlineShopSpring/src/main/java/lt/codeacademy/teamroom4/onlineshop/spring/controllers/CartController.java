@@ -68,14 +68,14 @@ public class CartController {
 		
 		double total = 0;
 		for(Line line : cart) {
-			total += line.getPreke().getKaina() * line.getKiekis();
+			total += line.getProduct().getPrice() * line.getAmount();
 			
 			purchaseUnit.getItems().add(new Item(
-					line.getPreke().getId(), 
-					line.getPreke().getPavadinimas(),
-					line.getPreke().getAprasymas(),
-					new UnitAmount("USD", line.getPreke().getKaina()),
-					line.getKiekis()
+					line.getProduct().getId(), 
+					line.getProduct().getName(),
+					line.getProduct().getDescription(),
+					new UnitAmount("USD", line.getProduct().getPrice()),
+					line.getAmount()
 					));
 		}
 		 purchaseUnit.setAmount(new Amount(new BreakDown(new ItemTotal("USD", total)), "USD", total));
