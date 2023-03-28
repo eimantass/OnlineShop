@@ -30,17 +30,17 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@GetMapping("/all")
+	/*@GetMapping("/all")
 	public String index(ModelMap modelMap) {
 		modelMap.put("product", productService.findAll());
 		return "products/all";
 	}
-
-	/* @GetMapping
+*/
+	 @GetMapping("/all")
 	public List<Product> getProducts() {
 		return productRepository.findAll();
 	}
-*/
+
 	@GetMapping("/{id}")
 	public Product getProduct(@PathVariable Long id) {
 		return productRepository.findById(id).orElseThrow(RuntimeException::new);
