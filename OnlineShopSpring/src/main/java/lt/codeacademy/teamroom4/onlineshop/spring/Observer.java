@@ -91,8 +91,9 @@ public class Observer {
 		private void seedProduct() {
 			//List<CPUParameters> parameters = List.of(CPU_SOCKET,CPU_FREQUENCY);
 			//List<String> parameters = List.of(	("CPU_SOCKET = 1200"),		("CPU_CORES = 16"));
-			ArrayList<String> parameters= new ArrayList<>();
-			parameters.add("CPU_SOCKET");
+			ArrayList<String[]> parameters= new ArrayList<>();
+			String[]	CPUparameters = {"CPU_SOCKET","lll"};
+			parameters.add(CPUparameters);
 			List<Product> product = List.of(
 					new Product("IntelI3","foto.png", 120,"Quad Core CPU",CPU)
 					,
