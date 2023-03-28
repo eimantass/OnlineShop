@@ -28,17 +28,17 @@ public class Cart {
 	@ManyToMany
 	@Cascade({ CascadeType.SAVE_UPDATE, CascadeType.MERGE, CascadeType.PERSIST })
 	@JoinColumn(name = "eilute_id")
-	List<Line> eilutes = new ArrayList<>();
+	List<Line> lines = new ArrayList<>();
 	
 	public Cart() {}
 
 	public Cart(Long id, List<Line> eilutes) {
 		this.id = id;
-		this.eilutes = eilutes;
+		this.lines = eilutes;
 	}
 
 	public Cart(List<Line> eilutes) {
-		this.eilutes = eilutes;
+		this.lines = eilutes;
 	}
 
 	public Long getId() {
@@ -50,16 +50,16 @@ public class Cart {
 	}
 
 	public List<Line> getLines() {
-		return eilutes;
+		return lines;
 	}
 
 	public void setEilutes(List<Line> eilutes) {
-		this.eilutes = eilutes;
+		this.lines = eilutes;
 	}
 
 	@Override
 	public String toString() {
-		return "Krepselis [id=" + id + ", eilutes=" + eilutes + "]";
+		return "Cart [id=" + id + ", lines=" + lines + "]";
 	}
 	
 }

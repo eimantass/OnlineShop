@@ -68,13 +68,14 @@ public class CartController {
 		
 		double total = 0;
 		for(Line line : cart) {
-			total += line.getProduct().getKaina() * line.getAmount();
+
+			total += line.getProduct().getPrice() * line.getAmount();
 			
 			purchaseUnit.getItems().add(new Item(
 					line.getProduct().getId(), 
-					line.getProduct().getPavadinimas(),
-					line.getProduct().getAprasymas(),
-					new UnitAmount("USD", line.getProduct().getKaina()),
+					line.getProduct().getName(),
+					line.getProduct().getDescription(),
+					new UnitAmount("USD", line.getProduct().getPrice()),
 					line.getAmount()
 					));
 		}

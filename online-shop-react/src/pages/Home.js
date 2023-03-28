@@ -1,8 +1,8 @@
 import React from 'react';
-import TopMenu from '../TopMenu';
-import Body from '../Body';
-import FooterMenu from '../FooterMenu';
-import SeachAndLogo from '../searchandlogo';
+import TopMenu from '../layout/TopMenu';
+import Body from '../layout/Body';
+import FooterMenu from '../layout/FooterMenu';
+import SeachAndLogo from '../layout/searchandlogo';
 
 import '../css/App.css'
 

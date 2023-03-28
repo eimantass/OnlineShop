@@ -15,29 +15,29 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
-	String pavadinimas;
+	String name;
 	String photo;
-	double kaina;
-	String aprasymas;
-	Categories kategorija;
+	double price;
+	String description;
+	Categories category;
 	
 	public Product() {}
 
-	public Product(String pavadinimas,String photo, double kaina, String aprasymas, Categories kategorija) {
-		this.pavadinimas = pavadinimas;
+	public Product(String name,String photo, double price, String description, Categories categories) {
+		this.name = name;
 		this.photo = photo;
-		this.kaina = kaina;
-		this.aprasymas = aprasymas;
-		this.kategorija = kategorija;
+		this.price = price;
+		this.description = description;
+		this.category = categories;
 	}
 
-	public Product(Long id, String pavadinimas,String photo, double kaina, String aprasymas, Categories kategorija) {
+	public Product(Long id, String name,String photo, double price, String description, Categories category) {
 		this.id = id;
-		this.pavadinimas = pavadinimas;
+		this.name = name;
 		this.photo = photo;
-		this.kaina = kaina;
-		this.aprasymas = aprasymas;
-		this.kategorija = kategorija;
+		this.price = price;
+		this.description = description;
+		this.category = category;
 
 	}
 
@@ -83,17 +83,18 @@ public class Product {
 		this.aprasymas = aprasymas;
 	}
 
-	public Categories getKategorija() {
-		return kategorija;
+
+	public Categories getCategory() {
+		return category;
 	}
 
-	public void setKategorija(Categories kategorija) {
-		this.kategorija = kategorija;
+	public void setCategory(Categories category) {
+		this.category = category;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", pavadinimas=" + pavadinimas + ", kaina=" + kaina + ", aprasymas=" + aprasymas
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description
 				+ "]";
 	}
 
