@@ -33,19 +33,9 @@ public class Product {
 	//List<String> parameters;
 
 	
-/*
-	public Product(Long id, String name, String photo, double price, String description, Categories category,
-			List<String> parameters) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.photo = photo;
-		this.price = price;
-		this.description = description;
-		this.category = category;
-		this.parameters = parameters;
-	}
-*/
+
+	
+
 	public Product(String name,String photo, double price, String description, Categories categories,List<String> parameters) {
 		this.name = name;
 		this.photo = photo;
@@ -83,12 +73,12 @@ public class Product {
 	}
 
 	
-	public String getPavadinimas() {
-		return pavadinimas;
+	public String getName() {
+		return name;
 	}
 
-	public void setPavadinimas(String pavadinimas) {
-		this.pavadinimas = pavadinimas;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getPhoto() {
@@ -100,20 +90,20 @@ public class Product {
 	}
 
 	
-	public double getKaina() {
-		return kaina;
+	public double getPrice() {
+		return price;
 	}
 
-	public void setKaina(double kaina) {
-		this.kaina = kaina;
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
-	public String getAprasymas() {
-		return aprasymas;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setAprasymas(String aprasymas) {
-		this.aprasymas = aprasymas;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 

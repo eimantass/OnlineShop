@@ -38,7 +38,7 @@ public class Line {
 	}
 	
 	public double getSuma() {
-		return product.kaina * amount;
+		return product.price * amount;
 	}
 
 	public Long getId() {
