@@ -87,8 +87,12 @@ public class Observer {
 	}	
 		private void seedProduct() {
 			List<Product> product = List.of(
-					new Product("Intel i3","foto.png", 120,"Quad Core CPU",CPU)
-					);
+					new Product("IntelI3","foto.png", 120,"Quad Core CPU",CPU)
+					,
+					new Product("RX 6400XT","foto.png", 160,"RX 6400XT gpu",GPU),
+					new Product("IntelI5","foto.png", 200,"12 core cpu",CPU)
+					
+);
 			
 			productRepository.saveAll(product);
 			}

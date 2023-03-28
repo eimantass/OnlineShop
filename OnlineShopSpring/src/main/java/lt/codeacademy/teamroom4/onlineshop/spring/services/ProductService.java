@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.dto.RecordDto;
@@ -68,5 +69,8 @@ public class ProductService {
 		//return customerRepository.findById((long) 1);
 		return null;
 		
+	}
+	public List<Product> sortByName(){
+		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
 	}
 }
