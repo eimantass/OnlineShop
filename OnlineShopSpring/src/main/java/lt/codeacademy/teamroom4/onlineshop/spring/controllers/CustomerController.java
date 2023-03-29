@@ -24,6 +24,10 @@ public class CustomerController {
 	@Autowired
 	private CustomerRepository customerRepository;
 
+	@GetMapping("/all")
+	public List<Customer> getAllCustomers() {
+	    return customerRepository.findAll();
+	}
 	
 	@GetMapping("/{id}")
 	public Customer getCustomer(@PathVariable Long id) {
