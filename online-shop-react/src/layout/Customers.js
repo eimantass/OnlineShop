@@ -47,7 +47,6 @@ function CustomerList() {
           )}
         </tbody>
       </table>
-      <button>Add Customer</button>
     </div>
   );
 }
