@@ -1,10 +1,15 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
 import java.util.ArrayList;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Categories;
 //This is the Product entity
@@ -18,6 +23,10 @@ public class Product {
 	private Long id;
 	private String name;
 	private String brand;
+	
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	//@JoinColumn(name = "product_id")
+	private Coupon discount;
 	private String photo;
 	private double price;
 	private String description;
@@ -144,14 +153,20 @@ public class Product {
 		this.parameters = parameters;
 	}
 
-
 	public String getBrand() {
 		return brand;
 	}
-
-
+	
 	public void setBrand(String brand) {
 		this.brand = brand;
+	}
+	
+	public Coupon getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Coupon discount) {
+		this.discount = discount;
 	}
 
 
