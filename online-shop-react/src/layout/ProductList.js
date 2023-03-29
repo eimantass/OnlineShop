@@ -10,6 +10,10 @@ function ProductList() {
       .catch(error => console.error(error));
   }, []);
 
+  const handleAddToCart = (product) => {
+    console.log(`Added ${product.name} to cart!`); // Replace with actual add-to-cart functionality
+  }
+
   return (
     <div>
       <table>
@@ -20,6 +24,7 @@ function ProductList() {
             <th>Category</th>
             <th>Price</th>
             <th>Description</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -30,6 +35,9 @@ function ProductList() {
               <td>{product.category}</td>
               <td>{product.price}</td>
               <td>{product.description}</td>
+              <td>
+                <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
+              </td>
             </tr>
           ))}
         </tbody>
