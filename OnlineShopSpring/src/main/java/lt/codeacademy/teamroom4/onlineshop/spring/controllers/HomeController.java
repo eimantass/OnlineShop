@@ -93,7 +93,12 @@ public class HomeController {
 		return productService.filterByMinPrice(minPrice);
 	}
 	@GetMapping("/products/filter-by-both-min-and-max-price/{minPrice}/{maxPrice}")
-	public List<Product> filterByBothMinAndMaxPrice(@PathVariable Long minPrice, Long maxPrice) {
-		return productService.filterByMinPrice(minPrice);
+	public List<Product> filterByBothMinAndMaxPrice(@PathVariable Long minPrice, @PathVariable Long maxPrice) {
+		return productService.filterByMinAndMaxPrice(minPrice, maxPrice);
 	}
+	/*@GetMapping("/products/filter-by-cpu-socket")
+	public List<Product> filterByCpuSocket(String[] cpuParameters) {
+		
+		return productService.filterByCpuSocket(cpuParameters);
+	}*/
 }

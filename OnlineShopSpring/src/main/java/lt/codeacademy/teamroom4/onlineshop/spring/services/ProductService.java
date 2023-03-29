@@ -157,11 +157,31 @@ public class ProductService {
 			// Customer currentCustomer = customerRepository.getById(i);
 			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
 
-			if (currentProduct.getPrice() > minPrice && currentProduct.getPrice() < maxPrice ) {
+			if ((currentProduct.getPrice() > minPrice) && (currentProduct.getPrice() < maxPrice )) {
 				filteredProducts.add(currentProduct);
 			}
 		}
 		return filteredProducts;
 
 	}
+	/*
+	public List<Product> filterByCpuSocket(String[] cpuParameters ) {
+		List<Product> allProducts = new ArrayList<Product>();
+		List<Product> filteredProducts = new ArrayList<Product>();
+
+		allProducts.addAll(productRepository.findAll());
+
+		for (long i = 1; i <= allProducts.size(); i++) {
+			// Customer currentCustomer = customerRepository.getById(i);
+			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
+
+			if (currentProduct.getParameters().contains("LGA1200")) {
+				
+				filteredProducts.add(currentProduct);
+			}
+		}
+		return filteredProducts;
+
+	}
+	*/
 }
