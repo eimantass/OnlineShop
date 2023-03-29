@@ -21,10 +21,11 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ServiceRepository
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles.*;
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Brands.*;
+
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Categories.*;
 //This class is used to generate dummy data;
-
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.CPUParameters.*;
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.CPUParameters.*;
 
 @Configuration
 public class Observer {
@@ -101,13 +102,13 @@ public class Observer {
 			String[]	CPUparameters = {"CPU_SOCKET","lll"};
 			parameters.add(CPUparameters);
 			List<Product> product = List.of(
-					new Product("IntelI3","foto.png", 120,"Quad Core CPU",CPU)
+					new Product("IntelI3",null, "foto.png",  120,"Quad Core CPU",CPU,parameters)
 					,
-					new Product("RX 6400XT","foto.png", 160," 4gb gddr6 RX 6400XT gpu",GPU),
-					new Product("GTX 1650 Super","foto.png", 220,"4 gb gddr6 GTX 1650 Super gpu",GPU),
-					new Product("4gb RAM","foto.png", 30,"4 gb ddr3 ram",RAM),
-					new Product("IntelI5","foto.png", 200,"12 core cpu",CPU),
-					new Product( "IntelI7","foto.png", 250,"16 core cpu",CPU, parameters)		
+					new Product("RX 6400XT", null,"foto.png", 160," 4gb gddr6 RX 6400XT gpu",GPU),
+					new Product("GTX 1650 Super",null,"foto.png",  220,"4 gb gddr6 GTX 1650 Super gpu",GPU),
+					new Product("4gb RAM", null,"foto.png", 30,"4 gb ddr3 ram",RAM),
+					new Product("IntelI5", null, "foto.png", 200,"12 core cpu",CPU),
+					new Product( "IntelI7", null, "foto.png", 250,"16 core cpu",CPU, parameters)		
 );
 			
 			productRepository.saveAll(product);
