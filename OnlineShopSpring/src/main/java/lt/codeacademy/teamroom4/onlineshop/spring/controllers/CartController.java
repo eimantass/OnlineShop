@@ -26,17 +26,18 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ShoppingCart;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.CartService;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
-
+//In this class the shopping cart mappings are handled
 @Controller
 @RequestMapping("/cart")
 public class CartController {
-	
+	//Autowiring services
 	@Autowired
 	private ProductService productService;
 	
 	@Autowired
 	private CartService cartService;
 	
+	//Here products are added to shopping cart
 	@PostMapping("/addToCart")
 	public String addToCart(HttpServletRequest request, Model model, @RequestParam("id") Long id,
 			@RequestParam("quantity") int quantity) {
@@ -50,12 +51,12 @@ public class CartController {
 		}
 		return "redirect:/";
 	}
-	
+	//Here shopping cart is shown
 	@GetMapping("/shoppingCart")
 	public String showShoppingCartView(HttpServletRequest request, Model model) {
 		return "shoppingCart";
 	}
-	
+	//Updating shopping cart
 	@PostMapping("/updateShoppingCart")
 	public String updateCartItem(@RequestParam("item_id") Long id,
 								 @RequestParam("quantity") int quantity) {
@@ -63,14 +64,14 @@ public class CartController {
 		cartService.updateShoppingCartItem(id, quantity);
 		return "redirect:/shoppingCart";
 	}
-	
+	//Item removal from shopping cart
 	@GetMapping("/removeItem/{id}")
 	public String removeItem(@PathVariable("id") Long id, HttpServletRequest request) {
 		String sessionToken = (String) request.getSession(false).getAttribute("sessionToken");
 		cartService.removeCartItemFromShoppingCart(id, sessionToken);
 		return "redirect:/shoppingCart";
 	}
-	
+	//Here shopping cart is cleared
 	@GetMapping("/clearShoppingCart")
 	public String clearShoppingString( HttpServletRequest request) {
 		String sessionToken = (String) request.getSession(false).getAttribute("sessionToken");

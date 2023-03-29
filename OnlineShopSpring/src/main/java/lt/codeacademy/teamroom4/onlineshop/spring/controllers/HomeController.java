@@ -20,9 +20,10 @@ import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.*;
-
+//This class handles functions, which do not require authentication to use
 @RestController
 public class HomeController {
+	//Autowiring services and repositories
 	@Autowired
 	private CustomerRepository customerRepository;
 
@@ -30,31 +31,37 @@ public class HomeController {
 	ProductService productService;
 	
 	@Autowired
-	CartItemRepository krepselisRep;
+	CartItemRepository cartRep;
 	
+	//Shows the main start page
 	@GetMapping("/")
 	public String startPage() {
 		return "index";
 	}
 	
+	//Shows all products
 	@GetMapping("/products")
 	public List<Product> getAllProduct(){
 		return productService.getAllProducts();
 	}
+	//Adds customers
 	@PostMapping("/add-customer")
 	public Customer createCustomer(@RequestBody Customer customer) {
 		Customer savedCustomer = customerRepository.save(customer);
 		return savedCustomer;
 
 	}
+	//Shows cart
 	@GetMapping("/cart")
-	public CartItem getKrepselis() {
-		return krepselisRep.findById(1L).get();
+	public CartItem getCart() {
+		return cartRep.findById(1L).get();
 	}
+	//Searches products by name
 	@GetMapping("/products/search/{searchName}")
 	public Product getCustomerByName(@PathVariable String searchName) {
 		return productService.findByName(searchName);
 	}
+	//Sorts products by name
 	@GetMapping("/products/sort-by-name-asc")
 	public List<Product> SortProductsByNameAsc() {
 		return productService.sortByNameAsc();
@@ -64,6 +71,7 @@ public class HomeController {
 		return productService.sortByNameDesc();
 	}
 	
+	//Sorts products by price
 	@GetMapping("/products/sort-by-price-asc")
 	public List<Product> SortProductsByPriceAsc() {
 		return productService.sortByNameAsc();
@@ -72,6 +80,8 @@ public class HomeController {
 	public List<Product> SortProductsByPriceDesc() {
 		return productService.sortByPriceDesc();
 	}
+	
+	//Sorts products by category
 	@GetMapping("/products/sort-by-category-asc")
 	public List<Product> SortProductsByCategoryAsc() {
 		return productService.sortByCategoryAsc();
@@ -81,10 +91,13 @@ public class HomeController {
 	public List<Product> SortProductsByCategoryDesc() {
 		return productService.sortByCategoryDesc();
 	}
+	//Filters products by brand
 	@GetMapping("/products/filter-by-brand/{brand}")
 	public List<Product> filterByBrand(@PathVariable Brands brand) {
 		return productService.filterBrand(brand);
 	}
+	//Filters products by max price
+	
 	@GetMapping("/products/filter-by-max-price/{maxPrice}")
 	public List<Product> filterByMaxPrice(@PathVariable Long maxPrice) {
 		return productService.filterByMaxPrice(maxPrice);
