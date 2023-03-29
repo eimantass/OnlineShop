@@ -6,8 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import lt.codeacademy.teamroom4.onlineshop.spring.utils.Categories;
-//This is the Product entity
+
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
 
 @Entity
 
@@ -17,7 +18,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private String brand;
+	private Brands brand;
 	private String photo;
 	private double price;
 	private String description;
@@ -29,7 +30,7 @@ public class Product {
 
 	
 
-	public Product(Long id, String name, String brand, String photo, double price, String description, Categories category) {
+	public Product(Long id, String name, Brands brand, String photo, double price, String description, Categories category) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -41,7 +42,7 @@ public class Product {
 	}
 
 	
-	public Product(Long id, String name, String brand, String photo, double price, String description, Categories category,
+	public Product(Long id, String name, Brands brand, String photo, double price, String description, Categories category,
 			ArrayList<String[]> parameters) {
 		super();
 		this.id = id;
@@ -55,7 +56,7 @@ public class Product {
 	}
 
 
-	public Product(String name, String brand, String photo, double price, String description, Categories category,
+	public Product(String name, Brands brand, String photo, double price, String description, Categories category,
 			ArrayList<String[]> parameters) {
 		super();
 		this.name = name;
@@ -68,7 +69,7 @@ public class Product {
 	}
 
 
-	public Product(String name,String brand,String photo, double price, String description, Categories categories) {
+	public Product(String name,Brands brand,String photo, double price, String description, Categories categories) {
 		this.name = name;
 		this.brand = brand;
 		this.photo = photo;
@@ -145,12 +146,12 @@ public class Product {
 	}
 
 
-	public String getBrand() {
+	public Brands getBrand() {
 		return brand;
 	}
 
 
-	public void setBrand(String brand) {
+	public void setBrand(Brands brand) {
 		this.brand = brand;
 	}
 
