@@ -4,7 +4,6 @@ import FooterMenu from "../layout/FooterMenu";
 
 
 import '../css/App.css'
-import CustomerList from "../layout/Customers";
 
 export function Help() {
     return (

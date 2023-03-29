@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import './css/LoginForm.css';
 
 function LoginForm() {
   const [username, setUsername] = useState("");
@@ -23,27 +24,29 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <div>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-      </div>
-      <button type="submit">Login</button>
-    </form>
+<form class="login-form" onSubmit={handleFormSubmit}>
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input
+      type="text"
+      id="username"
+      class="form-control"
+      value={username}
+      onChange={(event) => setUsername(event.target.value)}
+    />
+  </div>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      id="password"
+      class="form-control"
+      value={password}
+      onChange={(event) => setPassword(event.target.value)}
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
   );
 }
 
