@@ -68,6 +68,7 @@ public class ProductService {
 
 	}
 	public List<Product> sortByNameAsc() {
+
 		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
 	}
 
@@ -167,7 +168,7 @@ public class ProductService {
 		return filteredProducts;
 
 	}
-	/*
+	
 	public List<Product> filterByCpuSocket(String[] cpuParameters ) {
 		List<Product> allProducts = new ArrayList<Product>();
 		List<Product> filteredProducts = new ArrayList<Product>();
@@ -177,8 +178,9 @@ public class ProductService {
 		for (long i = 1; i <= allProducts.size(); i++) {
 			// Customer currentCustomer = customerRepository.getById(i);
 			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
-
-			if (currentProduct.getParameters().contains("LGA1200")) {
+			String cpuSocket = currentProduct.getParameters().get(0).toString();
+			
+			if (cpuSocket.equals("LGA1200")) {
 				
 				filteredProducts.add(currentProduct);
 			}
@@ -186,5 +188,4 @@ public class ProductService {
 		return filteredProducts;
 
 	}
-	*/
 }

@@ -63,6 +63,7 @@ public class ProductController {
 		currentProduct.setCategory(product.getCategory());
 		currentProduct.setPrice(product.getPrice());
 		currentProduct.setDescription(product.getDescription());
+		currentProduct.setDiscount(product.getDiscount());
 		return productRepository.save(product);
 	}
 

@@ -13,6 +13,8 @@ import javax.validation.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
+
 @Entity
 @Table(name = "customer")
 public class Customer {
@@ -43,7 +45,7 @@ public class Customer {
 	}
 	
 	public Customer(Long id, @NotNull @NotEmpty String fullName, long number, @NotNull @NotEmpty String email,
-			@NotNull @NotEmpty String password, String matchingPassword, double money) {
+			@NotNull @NotEmpty String password, String matchingPassword) {
 		this.id = id;
 		this.fullName = fullName;
 		this.number = number;
@@ -51,7 +53,7 @@ public class Customer {
 		this.password = password;
 		this.matchingPassword = matchingPassword;
 		this.role = CUSTOMER;
-		this.money = money;
+		this.money = MoneyGenerator.virtualMoney();
 	}
 
 	
@@ -62,11 +64,12 @@ public class Customer {
 		this.password = password;
 		this.role = CUSTOMER;
 		this.matchingPassword = matchingPassword;
+		this.money= MoneyGenerator.virtualMoney();
 	}
 
 
 	public Customer(@NotNull @NotEmpty String fullName, long number, @NotNull @NotEmpty String email,
-			@NotNull @NotEmpty String password, String matchingPassword, double money) {
+			@NotNull @NotEmpty String password, String matchingPassword) {
 		super();
 		this.fullName = fullName;
 		this.number = number;
@@ -74,7 +77,7 @@ public class Customer {
 		this.password = password;
 		this.matchingPassword = matchingPassword;
 		this.role = CUSTOMER;
-		this.money = money;
+		this.money = MoneyGenerator.virtualMoney();
 	}
 
 	public Long getId() {
