@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,6 +43,7 @@ public class HomeController {
 		return productService.getAllProducts();
 	}
 	@PostMapping("/add-customer")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public Customer createCustomer(@RequestBody Customer customer) {
 		Customer savedCustomer = customerRepository.save(customer);
 		return savedCustomer;

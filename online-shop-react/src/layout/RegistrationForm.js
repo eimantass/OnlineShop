@@ -4,12 +4,13 @@ import axios from 'axios';
 const RegistrationPage = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
+  const [number, setNumber] = useState('');
   const [password, setPassword] = useState('');
   const [matchingPassword, setMatchingPassword] = useState('');
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const newCustomer = { fullName, email, password, matchingPassword };
+    const newCustomer = { fullName, email, number, password, matchingPassword };
 
     axios.post('http://localhost:8080/add-customer', newCustomer)
       .then((response) => {
@@ -33,6 +34,10 @@ const RegistrationPage = () => {
         <label>
           Email:
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        </label>
+        <label>
+          Tel.number:
+          <input type="text" value={number} onChange={(e) => setNumber(e.target.value)} required />
         </label>
         <label>
           Password:
