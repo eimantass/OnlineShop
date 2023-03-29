@@ -42,6 +42,7 @@ public class Customer {
 	
 	public Customer() {
 	this.role = CUSTOMER;
+	this.money = MoneyGenerator.virtualMoney();
 	}
 	
 	public Customer(Long id, @NotNull @NotEmpty String fullName, long number, @NotNull @NotEmpty String email,
