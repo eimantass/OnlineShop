@@ -67,12 +67,6 @@ public class ProductService {
 		return null;
 
 	}
-	
-	public void deleteProductById(Long id) {
-		productRepository.deleteById(id);
-	}
-	
-
 	public List<Product> sortByNameAsc() {
 		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
 	}
@@ -101,60 +95,6 @@ public class ProductService {
 
 	public Product getProductById(Long id) {
 		return productRepository.getById(id);
-	}
-
-	public void saveProductToDB(MultipartFile file, String name, String description,
-			Double price, Brands brand) {
-		Product p = new Product();
-		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		if(fileName.contains("..")) {
-			System.out.println("not a valid file");
-		}
-		try {
-			p.setPhoto(Base64.getEncoder().encodeToString(file.getBytes()));
-		}catch(IOException e){
-			e.printStackTrace();
-		}
-		p.setDescription(description);
-		p.setName(name);
-		p.setBrand(brand);
-		p.setPrice(price);
-		Coupon c = new Coupon();
-		c.setDiscount(0);
-		p.setDiscount(c);
-		
-		productRepository.save(p);
-		
-	}
-	
-	public void saveProductDiscount(Long id, int discount) {
-		Product p = new Product();
-		p = productRepository.findById(id).get();
-		if(p.getDiscount() == null) {
-			Coupon c = new Coupon();
-			c.setDiscount(discount);
-			p.setDiscount(c);
-		}else {
-			p.getDiscount().setDiscount(discount);
-		}
-		productRepository.save(p);
-	}
-
-	
-	
-	public void changeProuctDiscount(Long id, int discount) {
-		Product p = new Product();
-		p = productRepository.findById(id).get();
-		p.getDiscount().setDiscount(discount);
-		productRepository.save(p);
-	}
-	
-
-	public void changeProductName(Long id, String name) {
-		Product p = new Product();
-		p = productRepository.findById(id).get();
-		p.setName(name);
-		productRepository.save(p);
 	}
 
 	public List<Product> filterBrand(Brands brand) {
