@@ -104,7 +104,7 @@ public class ProductService {
 	}
 
 	public void saveProductToDB(MultipartFile file, String name, String description,
-			Double price, String brand) {
+			Double price, Brands brand) {
 		Product p = new Product();
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		if(fileName.contains("..")) {
