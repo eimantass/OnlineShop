@@ -11,7 +11,7 @@ const RegistrationPage = () => {
     e.preventDefault();
     const newCustomer = { fullName, email, password, matchingPassword };
 
-    axios.post('http://localhost:8080/customers/add-customer', newCustomer)
+    axios.post('http://localhost:8080/add-customer', newCustomer)
       .then((response) => {
         console.log('Customer registered successfully:', response.data);
         // Redirect to login page or show success message
