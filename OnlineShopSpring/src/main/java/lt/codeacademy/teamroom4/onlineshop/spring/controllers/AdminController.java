@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/admins")
 
 public class AdminController {
+	//Autowiring repositories
 	@Autowired
 	private AdminRepository adminRepository;
 	
@@ -40,6 +41,7 @@ public class AdminController {
 	
 	@Autowired
 	private ServiceRepository serviceRepsitory;
+	
 	//This function is used to get list of all admins
 	@GetMapping
 	public List<Admin> getAdmins() {
