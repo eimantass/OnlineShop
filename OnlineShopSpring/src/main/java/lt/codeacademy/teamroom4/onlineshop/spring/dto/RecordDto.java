@@ -1,6 +1,6 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.dto;
 
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Line;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 
 public class RecordDto {
 	
@@ -12,12 +12,12 @@ public class RecordDto {
 	
 	public RecordDto() {}
 	
-	public RecordDto(Line line) {
+	public RecordDto(CartItem line) {
 		this.id = line.getProduct().getId();
 		this.name = line.getProduct().getName();
 		this.price = line.getProduct().getPrice();
-		this.amount = line.getAmount();
-		this.totalPrice = line.getSuma();
+		this.amount = line.getQuantity();
+		this.totalPrice = line.getSum();
 	}
 
 	public Long getId() {

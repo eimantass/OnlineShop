@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.dto.RecordDto;
 import lt.codeacademy.teamroom4.onlineshop.spring.dto.CartDto;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Line;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ServiceManager;
@@ -43,17 +44,7 @@ public class ProductService {
 		return productRepository.findAll();
 	}
 	
-	public CartDto getNewKrepselisDto() {
-		CartDto dto = new CartDto();
-		List<RecordDto> irasai = 
-				getAllProducts()
-				.stream()
-				.map(p -> new Line(p, 0))
-				.map(e -> new RecordDto(e))
-				.toList();
-		dto.setIrasai(irasai);
-		return dto;
-	}
+	
 	public Product findByName(String searchName) {
 		searchName = searchName.toUpperCase();
 		List<Product> allProducts = new ArrayList<Product>();
@@ -89,6 +80,10 @@ public class ProductService {
 	public List<Product> sortByCategoryDesc(){
 		return productRepository.findAll(Sort.by(Sort.Direction.DESC, "category"));
 
+	}
+
+	public Product getProductById(Long id) {
+		return productRepository.getById(id);
 	}
 
 }

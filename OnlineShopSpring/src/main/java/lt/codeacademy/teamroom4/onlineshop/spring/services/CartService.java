@@ -1,6 +1,7 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.services;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,38 +9,48 @@ import org.springframework.stereotype.Service;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.dto.RecordDto;
 import lt.codeacademy.teamroom4.onlineshop.spring.dto.CartDto;
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Line;
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
+
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
-import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.ShoppingCart;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepository;
 
 @Service
 public class CartService {
 
 	@Autowired
-	CartRepository cartRepository;
+	ShoppingCartRepository shoppingCartRepository;
 	
 	@Autowired
-	ProductRepository productRepository;
+	private ProductService productService;
 	
-	public List<CartDto> getAll(){
-		List<Cart> records = cartRepository.findAll();
-		return records.stream().map(k -> new CartDto(k)).toList();
+	public ShoppingCart addShoppingCartFirstTime(Long id, String sessionToken, int quantity) {
+		ShoppingCart shoppingCart = new ShoppingCart();
+		CartItem cartItem = new CartItem();
+		cartItem.setQuantity(quantity);
+		cartItem.setDate(new Date());
+		cartItem.setProduct(productService.getProductById(id));
+		shoppingCart.getCartItems().add(cartItem);
+		shoppingCart.setTokenSession(sessionToken);
+		return shoppingCartRepository.save(shoppingCart);
+		
 	}
-	
-	public void saveCart(CartDto cartDto) {
-		List<Line> lines = new ArrayList<>();
-		for(RecordDto record : cartDto.getRecords()) {
-			if(record.getAmount() <=0)
-				continue;
-			
-		Product product = productRepository.findById(record.getId()).get();
-		Line line = new Line(product, record.getAmount());
-		lines.add(line);
-			
+
+	public ShoppingCart addToExistingShoppingCart(Long id, String sessionToken, int quantity) {
+		ShoppingCart shoppingCart = shoppingCartRepository.findBySessionToken(sessionToken);
+		Product p = productService.getProductById(id);
+		for(CartItem item : shoppingCart.getCartItems()) {
+			if(p.getId().equals(item.getProduct().getId())) {
+				item.setQuantity(item.getQuantity()+quantity);
+				return shoppingCartRepository.save(shoppingCart);
+			}
 		}
-		Cart krepselis = new Cart(lines);
-		cartRepository.save(krepselis);
+		CartItem cartItem = new CartItem();
+		cartItem.setDate(new Date());
+		cartItem.setQuantity(quantity);
+		cartItem.setProduct(p);
+		shoppingCart.getCartItems().add(cartItem);
+		return shoppingCartRepository.save(shoppingCart);
 	}
 }

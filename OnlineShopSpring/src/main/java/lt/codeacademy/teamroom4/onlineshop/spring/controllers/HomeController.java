@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Customer;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
-import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartItemRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
 
 @RestController
@@ -21,7 +21,7 @@ public class HomeController {
 	ProductService productService;
 	
 	@Autowired
-	CartRepository krepselisRep;
+	CartItemRepository krepselisRep;
 	
 	@GetMapping("/")
 	public String startPage() {
@@ -34,7 +34,7 @@ public class HomeController {
 	}
 	
 	@GetMapping("/cart")
-	public Cart getKrepselis() {
+	public CartItem getKrepselis() {
 		return krepselisRep.findById(1L).get();
 	}
 	@GetMapping("/products/search/{searchName}")
