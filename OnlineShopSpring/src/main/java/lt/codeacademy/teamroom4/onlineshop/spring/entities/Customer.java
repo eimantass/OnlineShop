@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles.*;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -37,18 +38,19 @@ public class Customer {
 	private String role;
 	private double money;
 	
-	public Customer() {}
-
+	public Customer() {
+	this.role = CUSTOMER;
+	}
 	
 	public Customer(Long id, @NotNull @NotEmpty String fullName, long number, @NotNull @NotEmpty String email,
-			@NotNull @NotEmpty String password, String matchingPassword, String role, double money) {
+			@NotNull @NotEmpty String password, String matchingPassword, double money) {
 		this.id = id;
 		this.fullName = fullName;
 		this.number = number;
 		this.email = email;
 		this.password = password;
 		this.matchingPassword = matchingPassword;
-		this.role = role;
+		this.role = CUSTOMER;
 		this.money = money;
 	}
 
@@ -58,19 +60,20 @@ public class Customer {
 		this.fullName = fullName;
 		this.email = email;
 		this.password = password;
+		this.role = CUSTOMER;
 		this.matchingPassword = matchingPassword;
 	}
 
 
 	public Customer(@NotNull @NotEmpty String fullName, long number, @NotNull @NotEmpty String email,
-			@NotNull @NotEmpty String password, String matchingPassword, String role, double money) {
+			@NotNull @NotEmpty String password, String matchingPassword, double money) {
 		super();
 		this.fullName = fullName;
 		this.number = number;
 		this.email = email;
 		this.password = password;
 		this.matchingPassword = matchingPassword;
-		this.role = role;
+		this.role = CUSTOMER;
 		this.money = money;
 	}
 

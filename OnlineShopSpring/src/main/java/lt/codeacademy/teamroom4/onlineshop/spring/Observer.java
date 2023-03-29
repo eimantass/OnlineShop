@@ -21,13 +21,12 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ServiceRepository
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles.*;
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Brands.*;
-
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Categories.*;
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.*;
 //This class is used to generate dummy data;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.CPUParameters.*;
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.*;
 
-@Configuration
+ @Configuration
 public class Observer {
 	//Used to generate random amount of money
 	MoneyGenerator moneyGenerator = new MoneyGenerator();
@@ -71,10 +70,10 @@ public class Observer {
 	private void seedCustomer() {
 		List<Customer> customer = List.of(
 				new Customer(
-						null, "ViliusCustomer", 0, "viliusCustomer@gmail.com", "svbsdvisbv","svbsdvisbv" ,CUSTOMER, moneyGenerator.virtualMoney()
+						null, "ViliusCustomer", 0, "viliusCustomer@gmail.com", "svbsdvisbv","svbsdvisbv" , moneyGenerator.virtualMoney()
 						),
-				new Customer(null, "ViliusCustomer2", 0, "viliusCustomer2@gmail.com", "svbsdvisbv","svbsdvisbv" ,CUSTOMER, moneyGenerator.virtualMoney()),
-				new Customer(null, "ViliusCustomer3", 0, "viliusCustomer3@gmail.com", "svbsdvisbv","svbsdvisbv" ,CUSTOMER, moneyGenerator.virtualMoney())
+				new Customer(null, "ViliusCustomer2", 0, "viliusCustomer2@gmail.com", "svbsdvisbv","svbsdvisbv" , 5000),
+				new Customer(null, "ViliusCustomer3", 0, "viliusCustomer3@gmail.com", "svbsdvisbv","svbsdvisbv" , moneyGenerator.virtualMoney())
 
 				);
 		
@@ -98,17 +97,22 @@ public class Observer {
 		private void seedProduct() {
 			//List<CPUParameters> parameters = List.of(CPU_SOCKET,CPU_FREQUENCY);
 			//List<String> parameters = List.of(	("CPU_SOCKET = 1200"),		("CPU_CORES = 16"));
-			ArrayList<String[]> parameters= new ArrayList<>();
-			String[]	CPUparameters = {"CPU_SOCKET","lll"};
-			parameters.add(CPUparameters);
+			ArrayList<String[]> intelI3parametersArray= new ArrayList<>();
+			String[]	intelI3CPUparameters = {"CPU_SOCKET,", "LGA1200"};
+			intelI3parametersArray.add(intelI3CPUparameters);
+			
+			ArrayList<String[]> intelI5parametersArray= new ArrayList<>();
+			String[]	intelI5CPUparameters = {"CPU_SOCKET,", "LGA1700"};
+			intelI5parametersArray.add(intelI5CPUparameters);
+			
 			List<Product> product = List.of(
-					new Product("IntelI3",null, "foto.png",  120,"Quad Core CPU",CPU,parameters)
+					new Product("i3-10100F",INTEL, "foto.png",  67,"Quad Core CPU",CPU,intelI3parametersArray)
 					,
-					new Product("RX 6400XT", null,"foto.png", 160," 4gb gddr6 RX 6400XT gpu",GPU),
-					new Product("GTX 1650 Super",null,"foto.png",  220,"4 gb gddr6 GTX 1650 Super gpu",GPU),
-					new Product("4gb RAM", null,"foto.png", 30,"4 gb ddr3 ram",RAM),
-					new Product("IntelI5", null, "foto.png", 200,"12 core cpu",CPU),
-					new Product( "IntelI7", null, "foto.png", 250,"16 core cpu",CPU, parameters)		
+					new Product("RX 6400XT", AMD,"foto.png", 160," 4gb gddr6 RX 6400XT gpu",GPU),
+					new Product("GTX 1650 Super",NVIDIA,"foto.png",  220,"4 gb gddr6 GTX 1650 Super gpu",GPU),
+					new Product("4gb RAM", GOODRAM,"foto.png", 30,"4 gb ddr3 ram",RAM),
+					new Product("IntelI5", INTEL, "foto.png", 200,"12 core cpu",CPU),
+					new Product( "IntelI7", INTEL, "foto.png", 250,"16 core cpu",CPU, intelI5parametersArray)		
 );
 			
 			productRepository.saveAll(product);

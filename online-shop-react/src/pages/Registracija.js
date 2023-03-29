@@ -5,6 +5,7 @@ import FooterMenu from "../layout/FooterMenu";
 
 import '../css/App.css'
 import RegistrationPage from "../layout/RegistrationForm";
+import CustomerList from "../layout/Customers";
 
 export function Registracija() {
     return (
@@ -13,6 +14,9 @@ export function Registracija() {
         <SeachAndLogo/>
         {/* Registration Page */}
         <RegistrationPage/>
+
+        <h1>Customers List</h1> 
+        <CustomerList/>
         
         <FooterMenu/>
       </div>
