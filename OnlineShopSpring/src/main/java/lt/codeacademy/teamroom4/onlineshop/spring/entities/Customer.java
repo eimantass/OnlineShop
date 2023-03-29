@@ -38,8 +38,9 @@ public class Customer {
 	private String role;
 	private double money;
 	
-	public Customer() {}
-
+	public Customer() {
+	this.role = CUSTOMER;
+	}
 	
 	public Customer(Long id, @NotNull @NotEmpty String fullName, long number, @NotNull @NotEmpty String email,
 			@NotNull @NotEmpty String password, String matchingPassword, double money) {
