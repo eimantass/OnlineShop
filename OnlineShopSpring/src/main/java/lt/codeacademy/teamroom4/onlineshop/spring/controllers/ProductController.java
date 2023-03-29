@@ -38,7 +38,7 @@ public class ProductController {
 		modelMap.put("product", productService.findAll());
 		return "products/all";
 	}
-*/
+
 	 @GetMapping("/all")
 	public List<Product> getProducts() {
 		return productRepository.findAll();
