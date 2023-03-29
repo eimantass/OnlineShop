@@ -2,7 +2,7 @@ package lt.codeacademy.teamroom4.onlineshop.spring.dto;
 
 import java.util.List;
 
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 
 public class CartDto {
 	
@@ -11,14 +11,7 @@ public class CartDto {
 	
 	public CartDto() {}
 	
-	public CartDto(Cart cart) {
-		this.id = cart.getId();
-		
-		this.records = cart.getLines()
-				.stream()
-				.map(e -> new RecordDto(e))
-				.toList();
-	}
+	
 
 	public Long getId() {
 		return id;
