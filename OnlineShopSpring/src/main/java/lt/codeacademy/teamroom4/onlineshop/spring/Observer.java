@@ -26,7 +26,7 @@ import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.CPUParameters.*;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.*;
 
-/* @Configuration
+ @Configuration
 public class Observer {
 	//Used to generate random amount of money
 	MoneyGenerator moneyGenerator = new MoneyGenerator();
@@ -70,10 +70,10 @@ public class Observer {
 	private void seedCustomer() {
 		List<Customer> customer = List.of(
 				new Customer(
-						null, "ViliusCustomer", 0, "viliusCustomer@gmail.com", "svbsdvisbv","svbsdvisbv" ,CUSTOMER, moneyGenerator.virtualMoney()
+						null, "ViliusCustomer", 0, "viliusCustomer@gmail.com", "svbsdvisbv","svbsdvisbv" , moneyGenerator.virtualMoney()
 						),
-				new Customer(null, "ViliusCustomer2", 0, "viliusCustomer2@gmail.com", "svbsdvisbv","svbsdvisbv" ,CUSTOMER, moneyGenerator.virtualMoney()),
-				new Customer(null, "ViliusCustomer3", 0, "viliusCustomer3@gmail.com", "svbsdvisbv","svbsdvisbv" ,CUSTOMER, moneyGenerator.virtualMoney())
+				new Customer(null, "ViliusCustomer2", 0, "viliusCustomer2@gmail.com", "svbsdvisbv","svbsdvisbv" , 5000),
+				new Customer(null, "ViliusCustomer3", 0, "viliusCustomer3@gmail.com", "svbsdvisbv","svbsdvisbv" , moneyGenerator.virtualMoney())
 
 				);
 		
@@ -118,4 +118,3 @@ public class Observer {
 			productRepository.saveAll(product);
 			}
 }
-*/
