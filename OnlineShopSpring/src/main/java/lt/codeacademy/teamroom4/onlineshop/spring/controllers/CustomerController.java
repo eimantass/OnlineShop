@@ -29,14 +29,6 @@ public class CustomerController {
 	public Customer getCustomer(@PathVariable Long id) {
 		return customerRepository.findById(id).orElseThrow(RuntimeException::new);
 	}
-
-	@PostMapping("/add-customer")
-	public Customer createCustomer(@RequestBody Customer customer) {
-		Customer savedCustomer = customerRepository.save(customer);
-		return savedCustomer;
-
-	}
-
 	@PutMapping("/{id}")
 	public Customer updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
 		Customer currentCustomer = customerRepository.findById(id).orElseThrow(RuntimeException::new);

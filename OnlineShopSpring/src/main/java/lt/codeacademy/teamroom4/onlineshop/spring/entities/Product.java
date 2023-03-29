@@ -17,6 +17,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	private String brand;
 	private String photo;
 	private double price;
 	private String description;
@@ -28,10 +29,11 @@ public class Product {
 
 	
 
-	public Product(Long id, String name, String photo, double price, String description, Categories category) {
+	public Product(Long id, String name, String brand, String photo, double price, String description, Categories category) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.brand = brand;
 		this.photo = photo;
 		this.price = price;
 		this.description = description;
@@ -39,11 +41,12 @@ public class Product {
 	}
 
 	
-	public Product(Long id, String name, String photo, double price, String description, Categories category,
+	public Product(Long id, String name, String brand, String photo, double price, String description, Categories category,
 			ArrayList<String[]> parameters) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.brand = brand;
 		this.photo = photo;
 		this.price = price;
 		this.description = description;
@@ -52,10 +55,11 @@ public class Product {
 	}
 
 
-	public Product(String name, String photo, double price, String description, Categories category,
+	public Product(String name, String brand, String photo, double price, String description, Categories category,
 			ArrayList<String[]> parameters) {
 		super();
 		this.name = name;
+		this.brand = brand;
 		this.photo = photo;
 		this.price = price;
 		this.description = description;
@@ -64,8 +68,9 @@ public class Product {
 	}
 
 
-	public Product(String name,String photo, double price, String description, Categories categories) {
+	public Product(String name,String brand,String photo, double price, String description, Categories categories) {
 		this.name = name;
+		this.brand = brand;
 		this.photo = photo;
 		this.price = price;
 		this.description = description;
@@ -137,6 +142,16 @@ public class Product {
 
 	public void setParameters(ArrayList<String[]> parameters) {
 		this.parameters = parameters;
+	}
+
+
+	public String getBrand() {
+		return brand;
+	}
+
+
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 
 

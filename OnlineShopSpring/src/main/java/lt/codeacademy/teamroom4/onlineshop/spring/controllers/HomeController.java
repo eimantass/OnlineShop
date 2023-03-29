@@ -6,17 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Customer;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartItemRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CustomerRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
 
 @RestController
 public class HomeController {
-	
+	@Autowired
+	private CustomerRepository customerRepository;
+
 	@Autowired
 	ProductService productService;
 	
@@ -32,7 +37,12 @@ public class HomeController {
 	public List<Product> getAllProduct(){
 		return productService.getAllProducts();
 	}
-	
+	@PostMapping("/add-customer")
+	public Customer createCustomer(@RequestBody Customer customer) {
+		Customer savedCustomer = customerRepository.save(customer);
+		return savedCustomer;
+
+	}
 	@GetMapping("/cart")
 	public CartItem getKrepselis() {
 		return krepselisRep.findById(1L).get();

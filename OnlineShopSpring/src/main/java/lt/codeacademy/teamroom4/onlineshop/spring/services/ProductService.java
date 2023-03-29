@@ -25,8 +25,8 @@ public class ProductService {
 	
 	public List<Product> findAll(){
 		List<Product> products = new ArrayList<Product>();
-		products.add(new Product("Intel i3","thumb1.gif",120,"Quad Core CPU",CPU));
-		products.add(new Product("Intel i3","thumb2.gif",300,"Quad Core RAM",RAM));
+		products.add(new Product("Intel i3","thumb1.gif",null, 120,"Quad Core CPU",CPU));
+		products.add(new Product("Intel i3","thumb2.gif",null, 300,"Quad Core RAM",RAM));
 		return products;
 	}
 	
