@@ -50,5 +50,33 @@ public class CartController {
 		}
 		return "redirect:/";
 	}
+	
+	@GetMapping("/shoppingCart")
+	public String showShoppingCartView(HttpServletRequest request, Model model) {
+		return "shoppingCart";
+	}
+	
+	@PostMapping("/updateShoppingCart")
+	public String updateCartItem(@RequestParam("item_id") Long id,
+								 @RequestParam("quantity") int quantity) {
+		
+		cartService.updateShoppingCartItem(id, quantity);
+		return "redirect:/shoppingCart";
+	}
+	
+	@GetMapping("/removeItem/{id}")
+	public String removeItem(@PathVariable("id") Long id, HttpServletRequest request) {
+		String sessionToken = (String) request.getSession(false).getAttribute("sessionToken");
+		cartService.removeCartItemFromShoppingCart(id, sessionToken);
+		return "redirect:/shoppingCart";
+	}
+	
+	@GetMapping("/clearShoppingCart")
+	public String clearShoppingString( HttpServletRequest request) {
+		String sessionToken = (String) request.getSession(false).getAttribute("sessionToken");
+		request.getSession(false).removeAttribute("sessionToken");
+		cartService.clearShoppingCart(sessionToken);
+		return "redirect:/shoppingCart";
+	}
 
 }
