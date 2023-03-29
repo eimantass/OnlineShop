@@ -74,6 +74,7 @@ public class ProductService {
 	
 
 	public List<Product> sortByNameAsc() {
+
 		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
 	}
 
@@ -156,6 +157,7 @@ public class ProductService {
 		p.setName(name);
 		productRepository.save(p);
 	}
+
 
 	public List<Product> filterBrand(Brands brand) {
 
