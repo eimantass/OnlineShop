@@ -13,6 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles.*;
 //In this class security parameters are configured
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -20,14 +21,19 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
-			.authorizeRequests()
-			
-			.antMatchers("/**").permitAll()
-		.and()
-		.formLogin();
-		 
-		return http.build();
+		.authorizeRequests()
+		//.antMatchers("/admins/**").hasRole(ADMIN)
+		//.antMatchers("/customers/**").hasAnyRole(CUSTOMER, ADMIN)
+		//.antMatchers("/managers/**").hasAnyRole(MANAGER, ADMIN)
+		//.antMatchers("/manage-customers/**").hasAnyRole(SERVICEMANAGER,ADMIN)
+		//.antMatchers("/servicemanagers/**").hasAnyRole(SERVICEMANAGER,ADMIN)
+		.antMatchers("/**").permitAll()
+	.and()
+	.formLogin();
+		http.csrf().disable();
+	return http.build();
 	}
+	
 	//Over here test users are created
 	@Bean
 	public InMemoryUserDetailsManager userDetailsService() {
