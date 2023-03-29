@@ -3,6 +3,7 @@ package lt.codeacademy.teamroom4.onlineshop.spring.services;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepos
 public class CartService {
 
 	@Autowired
-	ShoppingCartRepository shoppingCartRepository;
+	private ShoppingCartRepository shoppingCartRepository;
 	
 	@Autowired
 	private ProductService productService;
@@ -32,7 +33,7 @@ public class CartService {
 		cartItem.setDate(new Date());
 		cartItem.setProduct(productService.getProductById(id));
 		shoppingCart.getCartItems().add(cartItem);
-		shoppingCart.setTokenSession(sessionToken);
+		shoppingCart.setSessionToken(sessionToken);
 		return shoppingCartRepository.save(shoppingCart);
 		
 	}
@@ -40,17 +41,26 @@ public class CartService {
 	public ShoppingCart addToExistingShoppingCart(Long id, String sessionToken, int quantity) {
 		ShoppingCart shoppingCart = shoppingCartRepository.findBySessionToken(sessionToken);
 		Product p = productService.getProductById(id);
-		for(CartItem item : shoppingCart.getCartItems()) {
-			if(p.getId().equals(item.getProduct().getId())) {
-				item.setQuantity(item.getQuantity()+quantity);
-				return shoppingCartRepository.save(shoppingCart);
+		Boolean productDoesExistInTheCart = false;
+		if(shoppingCart != null) {
+			Set<CartItem> items = (Set<CartItem>) shoppingCart.getCartItems();
+			for(CartItem item : items) {
+				if(item.getProduct().equals(p)) {
+					productDoesExistInTheCart = true;
+					item.setQuantity(item.getQuantity()+quantity);
+					shoppingCart.setCartItems(items);
+					return shoppingCartRepository.saveAndFlush(shoppingCart);
+				}
 			}
 		}
-		CartItem cartItem = new CartItem();
-		cartItem.setDate(new Date());
-		cartItem.setQuantity(quantity);
-		cartItem.setProduct(p);
-		shoppingCart.getCartItems().add(cartItem);
-		return shoppingCartRepository.save(shoppingCart);
+		if(!productDoesExistInTheCart && (shoppingCart != null)) {
+			CartItem cartItem = new CartItem();
+			cartItem.setDate(new Date());
+			cartItem.setQuantity(quantity);
+			cartItem.setProduct(p);
+			shoppingCart.getCartItems().add(cartItem);
+			return shoppingCartRepository.save(shoppingCart);
+		}
+		return this.addShoppingCartFirstTime(id, sessionToken, quantity);
 	}
 }

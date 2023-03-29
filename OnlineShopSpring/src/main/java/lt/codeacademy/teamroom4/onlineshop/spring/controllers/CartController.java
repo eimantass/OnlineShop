@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,15 +35,15 @@ public class CartController {
 	private ProductService productService;
 	
 	@Autowired
-	CartService cartService;
+	private CartService cartService;
 	
 	@PostMapping("/addToCart")
-	public String addToCart(HttpSession session, Model model, @RequestParam("id") Long id,
+	public String addToCart(HttpServletRequest request, Model model, @RequestParam("id") Long id,
 			@RequestParam("quantity") int quantity) {
-		String sessionToken = (String) session.getAttribute("sessionToken");
+		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
 		if(sessionToken == null) {
 			sessionToken = UUID.randomUUID().toString();
-			session.setAttribute("sessionToken", sessionToken);
+			request.getSession().setAttribute("sessionToken", sessionToken);
 			cartService.addShoppingCartFirstTime(id,sessionToken, quantity);
 		}else {
 			cartService.addToExistingShoppingCart(id, sessionToken, quantity);
