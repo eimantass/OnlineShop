@@ -14,6 +14,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.dto.CartDto;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ShoppingCart;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartItemRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepository;
 
@@ -22,6 +23,9 @@ public class CartService {
 
 	@Autowired
 	private ShoppingCartRepository shoppingCartRepository;
+	
+	@Autowired
+	private CartItemRepository cartItemRepository;
 	
 	@Autowired
 	private ProductService productService;
@@ -62,5 +66,35 @@ public class CartService {
 			return shoppingCartRepository.save(shoppingCart);
 		}
 		return this.addShoppingCartFirstTime(id, sessionToken, quantity);
+	}
+
+	public ShoppingCart getShoppingCartBySessionToken(String sessionToken) {
+		return shoppingCartRepository.findBySessionToken(sessionToken);
+	}
+
+	public CartItem updateShoppingCartItem(Long id, int quantity) {
+		CartItem cartItem = cartItemRepository.findById(id).get();
+		cartItem.setQuantity(quantity);
+		return cartItemRepository.saveAndFlush(cartItem);
+	}
+
+	public ShoppingCart removeCartItemFromShoppingCart(Long id, String sessionToken) {
+		ShoppingCart shoppingCart = shoppingCartRepository.findBySessionToken(sessionToken);
+		Set<CartItem> items = (Set<CartItem>) shoppingCart.getCartItems();
+		CartItem cartItem = null;
+		for(CartItem item : items) {
+			if(item.getId().equals(id)) {
+				cartItem = item;
+			}
+		}
+		items.remove(cartItem);
+		cartItemRepository.delete(cartItem);
+		shoppingCart.setCartItems(items);
+		return shoppingCartRepository.save(shoppingCart);
+	}
+
+	public void clearShoppingCart(String sessionToken) {
+		ShoppingCart sh = shoppingCartRepository.findBySessionToken(sessionToken);
+		shoppingCartRepository.delete(sh);
 	}
 }
