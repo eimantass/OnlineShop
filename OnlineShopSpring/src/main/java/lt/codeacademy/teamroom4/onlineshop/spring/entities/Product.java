@@ -1,10 +1,15 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
 import java.util.ArrayList;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
@@ -18,7 +23,13 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+
+	
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	//@JoinColumn(name = "product_id")
+	private Coupon discount;
 	private Brands brand;
+
 	private String photo;
 	private double price;
 	private String description;
@@ -146,6 +157,7 @@ public class Product {
 	}
 
 
+
 	public Brands getBrand() {
 		return brand;
 	}
@@ -153,6 +165,14 @@ public class Product {
 
 	public void setBrand(Brands brand) {
 		this.brand = brand;
+	}
+	
+	public Coupon getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Coupon discount) {
+		this.discount = discount;
 	}
 
 
