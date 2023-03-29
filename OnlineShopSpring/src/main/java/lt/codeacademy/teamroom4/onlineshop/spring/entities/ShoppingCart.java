@@ -35,7 +35,7 @@ public class ShoppingCart {
 	@OneToMany(cascade = CascadeType.ALL)
 	Collection<CartItem> cartItems;
 	
-	String tokenSession;
+	String sessionToken;
 	
 	public ShoppingCart() {
 		cartItems = new ArrayList<CartItem>();
@@ -80,13 +80,14 @@ public class ShoppingCart {
 		this.cartItems = cartItems;
 	}
 
-	public String getTokenSession() {
-		return tokenSession;
+	public String getSessionToken() {
+		return sessionToken;
 	}
 
-	public void setTokenSession(String tokenSession) {
-		this.tokenSession = tokenSession;
+	public void setSessionToken(String sessionToken) {
+		this.sessionToken = sessionToken;
 	}
+
 	
 	
 }
