@@ -53,6 +53,15 @@ public class Customer {
 	}
 
 	
+	public Customer(@NotNull @NotEmpty String fullName, @NotNull @NotEmpty String email,
+			@NotNull @NotEmpty String password, String matchingPassword) {
+		this.fullName = fullName;
+		this.email = email;
+		this.password = password;
+		this.matchingPassword = matchingPassword;
+	}
+
+
 	public Customer(@NotNull @NotEmpty String fullName, long number, @NotNull @NotEmpty String email,
 			@NotNull @NotEmpty String password, String matchingPassword, String role, double money) {
 		super();
