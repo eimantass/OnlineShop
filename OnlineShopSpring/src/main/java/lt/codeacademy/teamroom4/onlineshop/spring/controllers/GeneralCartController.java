@@ -12,7 +12,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
 
 @ControllerAdvice
 public class GeneralCartController {
-	
+	//Autowiring services
 	@Autowired
 	private CartService cartService;
 	

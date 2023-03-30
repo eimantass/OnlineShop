@@ -2,23 +2,13 @@ package lt.codeacademy.teamroom4.onlineshop.spring.services;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
-
-import lt.codeacademy.teamroom4.onlineshop.spring.dto.RecordDto;
-import lt.codeacademy.teamroom4.onlineshop.spring.dto.CartDto;
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Coupon;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.ServiceManager;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 
