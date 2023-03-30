@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './css/Customers.css';
 
 function CustomerList() {
   const [customers, setCustomers] = useState([]);
@@ -17,37 +18,37 @@ function CustomerList() {
   }
 
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Money</th>
-            <th>Role</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {customers.map(c =>
-            <tr key={c.id}>
-              <td>{c.id}</td>
-              <td>{c.fullName}</td>
-              <td>{c.email}</td>
-              <td>{c.number}</td>
-              <td>{c.money}</td>
-              <td>{c.role}</td>
-              <td>
-                <button onClick={() => handleDelete(c.id)}>Delete</button>
-                <button>Edit</button>
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Money</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {customers.map(c =>
+        <tr key={c.id}>
+          <td>{c.id}</td>
+          <td>{c.fullName}</td>
+          <td>{c.email}</td>
+          <td>{c.number}</td>
+          <td>{c.money}</td>
+          <td>{c.role}</td>
+          <td>
+            <button class="btn-delete" onClick={() => handleDelete(c.id)}>Delete</button>
+            <button class="btn-edit">Edit</button>
+          </td>
+        </tr>
+      )}
+    </tbody>
+  </table>
+</div>
   );
 }
 
