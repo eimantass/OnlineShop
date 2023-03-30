@@ -25,9 +25,9 @@ const RegistrationPage = () => {
   };
 
   return (
-<div class="registration-page">
+<div className="registration-page">
   <h1>New Customer Registration</h1>
-  <form class="registration-form" onSubmit={handleFormSubmit}>
+  <form className="registration-form" onSubmit={handleFormSubmit}>
     <label>
       Full Name:
       <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} required />

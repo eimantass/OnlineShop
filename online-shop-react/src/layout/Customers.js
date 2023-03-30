@@ -18,8 +18,8 @@ function CustomerList() {
   }
 
   return (
-<div class="table-container">
-  <table class="table">
+<div className="table-container">
+  <table className="table">
     <thead>
       <tr>
         <th>ID</th>
@@ -41,8 +41,8 @@ function CustomerList() {
           <td>{c.money}</td>
           <td>{c.role}</td>
           <td>
-            <button class="btn-delete" onClick={() => handleDelete(c.id)}>Delete</button>
-            <button class="btn-edit">Edit</button>
+            <button className="btn-delete" onClick={() => handleDelete(c.id)}>Delete</button>
+            <button className="btn-edit">Edit</button>
           </td>
         </tr>
       )}
