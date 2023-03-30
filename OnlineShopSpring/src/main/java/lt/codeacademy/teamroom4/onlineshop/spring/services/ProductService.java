@@ -164,18 +164,21 @@ public class ProductService {
 		List<Product> filteredProducts = new ArrayList<Product>();
 
 		allProducts.addAll(productRepository.findAll());
+		ArrayList<String[]> cpuSocket = allProducts.get(0).getParameters();
 
 		for (long i = 1; i <= allProducts.size(); i++) {
 			// Customer currentCustomer = customerRepository.getById(i);
 			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
-			String cpuSocket = currentProduct.getParameters().get(0).toString();
-			
-			if (cpuSocket.equals("LGA1200")) {
+			//String cpuSockets = currentProduct.getParameters().toString();
+			//System.out.println(cpuSocket);
+			if (cpuSocket.toArray().equals(cpuParameters)) {
 				
 				filteredProducts.add(currentProduct);
 			}
 		}
 		return filteredProducts;
+
+		//return cpuSocket.get(0);
 
 	}
 }

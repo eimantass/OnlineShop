@@ -151,6 +151,7 @@ public class Product {
 		return parameters;
 	}
 
+	
 
 	public void setParameters(ArrayList<String[]> parameters) {
 		this.parameters = parameters;
