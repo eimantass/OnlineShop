@@ -47,7 +47,6 @@ public class HomeController {
 	}
 	//Adds customers
 	@PostMapping("/add-customer")
-	@CrossOrigin(origins = "http://localhost:3000")
 	public Customer createCustomer(@RequestBody Customer customer) {
 		Customer savedCustomer = customerRepository.save(customer);
 		return savedCustomer;
