@@ -19,6 +19,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ManagerRepository
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ServiceRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles.*;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.*;

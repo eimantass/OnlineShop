@@ -14,6 +14,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles;
 
 @Entity
 @Table(name = "customer")
