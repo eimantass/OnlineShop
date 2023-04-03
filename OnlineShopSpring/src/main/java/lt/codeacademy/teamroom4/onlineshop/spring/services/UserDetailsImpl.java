@@ -14,10 +14,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
 
-@Service
-public class UserDetailsImpl  implements UserDetails {
+//@Service
+public class UserDetailsImpl implements UserDetails {
 
-	private static final long serialVersionUID = -1733438887553217919L;
+	private static final long serialVersionUID = -4135725549552217795L;
 	
 	private Long id;
 	private String username;
@@ -26,8 +26,8 @@ public class UserDetailsImpl  implements UserDetails {
 	@JsonIgnore
 	private String password;
 	
+	private Collection<? extends GrantedAuthority> authorities;
 	
-	public Collection<? extends GrantedAuthority> authorities;
 	
 	public UserDetailsImpl(Long id, String username, String email, String password,
 			Collection<? extends GrantedAuthority> authorities) {
@@ -50,6 +50,11 @@ public class UserDetailsImpl  implements UserDetails {
 				user.getPassword(),
 				authorities);	
 	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return authorities;
+	}
 	
 	public Long getId() {
 		return id;
@@ -58,7 +63,7 @@ public class UserDetailsImpl  implements UserDetails {
 	public String getEmail() {
 		return email;
 	}
-	
+
 	@Override
 	public String getPassword() {
 		return password;
@@ -90,11 +95,6 @@ public class UserDetailsImpl  implements UserDetails {
 	}
 
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return authorities;
-	}
-
-	@Override
 	public int hashCode() {
 		return Objects.hash(authorities, email, id, password, username);
 	}
@@ -109,7 +109,4 @@ public class UserDetailsImpl  implements UserDetails {
 		UserDetailsImpl user = (UserDetailsImpl) obj;
 		return Objects.equals(id, user.id);
 	}
-	
-	
-
 }
