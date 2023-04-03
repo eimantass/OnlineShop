@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ShoppingCart;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.CartService;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
-
+//This class shows the users shopping cart or creates empty one if user does not have one.
 @ControllerAdvice
 public class GeneralCartController {
 	//Autowiring services

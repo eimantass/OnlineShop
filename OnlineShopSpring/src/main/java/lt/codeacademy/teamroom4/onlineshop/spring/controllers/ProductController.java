@@ -20,11 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
-
+//This controller handles product mappings
 @RestController
 @RequestMapping("/products")
 
 public class ProductController {
+	//Autowiring repositories and services
 	@Autowired
 	private ProductRepository productRepository;
 	
@@ -33,29 +34,28 @@ public class ProductController {
 	
 	@GetMapping("/products")
 	@CrossOrigin(origins = "http://localhost:3000")
-
 	public String index(ModelMap modelMap) {
 		modelMap.put("product", productService.findAll());
 		return "products/all";
 	}
-
+	//Finding all products
 	 @GetMapping("/all")
 	public List<Product> getProducts() {
 		return productRepository.findAll();
 	}
-
+//Finding products by id
 	@GetMapping("/{id}")
 	public Product getProduct(@PathVariable Long id) {
 		return productRepository.findById(id).orElseThrow(RuntimeException::new);
 	}
-
+//Creating new products
 	@PostMapping("/create")
 	public Product createProduct(@RequestBody Product product) throws URISyntaxException {
 		Product savedProduct = productRepository.save(product);
 		return savedProduct;
 
 	}
-
+//Updating products
 	@PutMapping("/{id}")
 	public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
 		Product currentProduct = productRepository.findById(id).orElseThrow(RuntimeException::new);
@@ -66,7 +66,7 @@ public class ProductController {
 		currentProduct.setDiscount(product.getDiscount());
 		return productRepository.save(product);
 	}
-
+//Deleting products
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
 		productRepository.deleteById(id);

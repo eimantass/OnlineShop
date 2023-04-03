@@ -35,11 +35,12 @@ import payload.request.SignupRequest;
 import payload.response.JwtResponse;
 import payload.response.MessageResponse;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.*;
+//This class handles user authentication
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-	
+	//Autowiring services, utils and repositories
 	@Autowired
 	AuthenticationManager authenticationManager;
 	
@@ -54,7 +55,7 @@ public class AuthController {
 	
 	@Autowired
 	JwtUtils jwtUtils;
-	
+	//Signing users
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest){
 		Authentication authentication = authenticationManager.authenticate(
@@ -76,7 +77,7 @@ public class AuthController {
 				roles));
 	}
 	
-	
+	//Registering new users
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signupRequest){
 		if(userRepository.existsByUsername(signupRequest.getUsername())){

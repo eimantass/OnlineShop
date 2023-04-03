@@ -22,27 +22,27 @@ import org.springframework.web.bind.annotation.RestController;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Wallet;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ValidationErrorService;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.WalletService;
-
+//This controller handles wallet mappings
 @RestController
 @RequestMapping("/wallet")
 public class WalletController {
-	
+	//Autowiring services
 	@Autowired
 	WalletService walletService;
 	
 	@Autowired
 	ValidationErrorService validationErrorService;
-	
+	//Shows all wallets. This function will only be accessible to admin.
 	@GetMapping
 	public ResponseEntity<?> getAll(){
 		return new ResponseEntity<>(walletService.getAll(), HttpStatus.OK);
 	}
-	
+	//Gets wallet by id
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getById(@PathVariable Long id){
 		return new ResponseEntity<>(walletService.getById(id), HttpStatus.OK);
 	}
-	
+	//Creates new wallet
 	@PostMapping
 	public ResponseEntity<?> create(@Valid @RequestBody Wallet wallet, BindingResult result){
 		ResponseEntity errors = validationErrorService.validate(result);
@@ -50,7 +50,7 @@ public class WalletController {
 		Wallet walletSaved = walletService.createOrUpdate(wallet);
 		return new ResponseEntity<Wallet>(walletSaved, HttpStatus.CREATED);
 	}
-	
+	//Updates wallet
 	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@PathVariable Long id, @Valid @RequestBody Wallet wallet, BindingResult result){
 		ResponseEntity errors = validationErrorService.validate(result);
