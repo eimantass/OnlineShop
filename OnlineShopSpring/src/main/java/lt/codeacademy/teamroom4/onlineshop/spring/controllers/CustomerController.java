@@ -27,7 +27,6 @@ public class CustomerController {
 	private CustomerRepository customerRepository;
 	//All customers are shown here
 	@GetMapping("/all")
-	@CrossOrigin(origins = "http://localhost:3000")
 	public List<Customer> getAllCustomers() {
 	    return customerRepository.findAll();
 	}

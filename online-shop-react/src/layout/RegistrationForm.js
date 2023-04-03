@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './css/RegistrationForm.css';
 
 const RegistrationPage = () => {
   const [fullName, setFullName] = useState('');
@@ -24,32 +25,32 @@ const RegistrationPage = () => {
   };
 
   return (
-    <div>
-      <h1>Registration Page</h1>
-      <form onSubmit={handleFormSubmit}>
-        <label>
-          Full Name:
-          <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} required />
-        </label>
-        <label>
-          Email:
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </label>
-        <label>
-          Tel.number:
-          <input type="text" value={number} onChange={(e) => setNumber(e.target.value)} required />
-        </label>
-        <label>
-          Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </label>
-        <label>
-          Confirm Password:
-          <input type="password" value={matchingPassword} onChange={(e) => setMatchingPassword(e.target.value)} required />
-        </label>
-        <button type="submit">Register</button>
-      </form>
-    </div>
+<div className="registration-page">
+  <h1>New Customer Registration</h1>
+  <form className="registration-form" onSubmit={handleFormSubmit}>
+    <label>
+      Full Name:
+      <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} required />
+    </label>
+    <label>
+      Email:
+      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+    </label>
+    <label>
+      Tel.number:
+      <input type="text" value={number} onChange={(e) => setNumber(e.target.value)} required />
+    </label>
+    <label>
+      Password:
+      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+    </label>
+    <label>
+      Confirm Password:
+      <input type="password" value={matchingPassword} onChange={(e) => setMatchingPassword(e.target.value)} required />
+    </label>
+    <button type="submit">Register</button>
+  </form>
+</div>
   );
 };
 

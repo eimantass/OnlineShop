@@ -1,9 +1,0 @@
-.App {
-  text-align: center;
-}
-
-.FooterPlacer{
-  min-height: 100vh;
-  display: flex;
-  flex-direction:column;
-}
