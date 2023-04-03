@@ -24,6 +24,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.services.UserDetailsServiceImp
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles.*;
 //In this class security parameters are configured
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles.*;
 
 import javax.servlet.Filter;
 
@@ -55,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	//This function is used to encode passwords
 	@Bean
-	public PasswordEncoder passwordEncoder() {
+	public static PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	
@@ -67,4 +68,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.authenticated();
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
+	
 }
