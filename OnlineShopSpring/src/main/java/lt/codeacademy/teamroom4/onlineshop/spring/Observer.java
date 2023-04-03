@@ -14,12 +14,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.config.SecurityConfig;
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Admin;
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Customer;
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Manager;
+
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.ServiceManager;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.AdminRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CustomerRepository;
@@ -67,6 +64,9 @@ public class Observer {
 	public void seed(ContextRefreshedEvent event) {
 		seedRole();
 		seedUserAdmin();
+		seedUserCustomer();
+		seedUserManager();
+		seedUserServiceManager();
 //		seedAdmin();
 //		seedCustomer();
 //		seedServiceManager();
@@ -89,7 +89,27 @@ public class Observer {
 		List<User> admin = List.of(new User("admin", "admin@gmail.com", SecurityConfig.passwordEncoder().encode("administrator"),roles));
 
 		userRepository.saveAll(admin);
-
+	}
+	
+	private void seedUserCustomer(){	
+		Set<Role> roles = new HashSet<>();
+		roles.add(new Role(CUSTOMER));
+		List<User> customer = List.of(new User("customer", "customer@gmail.com",SecurityConfig.passwordEncoder().encode("customer"),roles));
+		userRepository.saveAll(customer);
+	}
+	
+	private void seedUserManager(){	
+		Set<Role> roles = new HashSet<>();
+		roles.add(new Role(MANAGER));
+		List<User> manager = List.of(new User("manager", "manager@gmail.com",SecurityConfig.passwordEncoder().encode("manager"),roles));
+		userRepository.saveAll(manager);
+	}
+	
+	private void seedUserServiceManager(){	
+		Set<Role> roles = new HashSet<>();
+		roles.add(new Role(SERVICEMANAGER));
+		List<User> serviceManager = List.of(new User("serviceManager", "serviceManager@gmail.com",SecurityConfig.passwordEncoder().encode("serviceManager"),roles));
+		userRepository.saveAll(serviceManager);
 	}
 	/*
 	 * private void seedAdmin() { List<Admin> admin = List .of(new
