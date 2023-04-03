@@ -18,6 +18,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles;
 
 @Entity
@@ -43,6 +44,11 @@ public class User {
 	@NotBlank
 	@Size(max=120)
 	private String password;
+	@NotBlank
+	@Size(max=11)
+	private long number;
+	
+	private double money;
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
@@ -58,6 +64,7 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.roles = roles;
+		this.money = MoneyGenerator.virtualMoney();
 	}
 
 	public User(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
@@ -66,6 +73,7 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.roles = roles;
+		this.money = MoneyGenerator.virtualMoney();
 	}
 
 	public User(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
@@ -73,6 +81,30 @@ public class User {
 		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.money = MoneyGenerator.virtualMoney();
+	}
+
+	public User(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password, @NotBlank @Size(max = 11) long number, double money,
+			Set<Role> roles) {
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.number = number;
+		this.money = MoneyGenerator.virtualMoney();
+		this.roles = roles;
+	}
+
+	public User(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password, @NotBlank @Size(max = 11) long number, double money,
+			Set<Role> roles) {
+		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.number = number;
+		this.money = MoneyGenerator.virtualMoney();
+		this.roles = roles;
 	}
 
 	public Long getId() {
@@ -113,6 +145,22 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public long getNumber() {
+		return number;
+	}
+
+	public void setNumber(long number) {
+		this.number = number;
+	}
+
+	public double getMoney() {
+		return money;
+	}
+
+	public void setMoney(double money) {
+		this.money = money;
 	}
 
 }

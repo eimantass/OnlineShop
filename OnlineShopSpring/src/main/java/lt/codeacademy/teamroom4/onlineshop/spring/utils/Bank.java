@@ -6,7 +6,7 @@ public class Bank {
 	
 	void pay(User cust, double pay) {
 		double balance = cust.getMoney();
-		String name = cust.getFullName();
+		String name = cust.getUsername();
 		if(balance >= pay) {
 			System.out.println(name + " pay " + pay);
 			
