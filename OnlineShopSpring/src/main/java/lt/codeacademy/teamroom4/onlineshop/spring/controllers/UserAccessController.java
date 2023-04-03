@@ -9,7 +9,7 @@ import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/user-access")
+@RequestMapping("/api/user-access")
 public class UserAccessController {
 	@GetMapping("/all")
 	public String allAccess() {
