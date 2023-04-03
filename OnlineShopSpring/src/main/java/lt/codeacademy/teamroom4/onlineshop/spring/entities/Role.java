@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles;
 
 
@@ -22,11 +23,11 @@ public class Role {
 	
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)
-	private Roles name;
+	private ERoles name;
 	
 	public Role() {}
 	
-	public Role(Roles name) {
+	public Role(ERoles name) {
 		this.name = name;
 	}
 
@@ -38,11 +39,11 @@ public class Role {
 		this.id = id;
 	}
 
-	public Roles getName() {
+	public ERoles getName() {
 		return name;
 	}
 
-	public void setName(Roles name) {
+	public void setName(ERoles name) {
 		this.name = name;
 	}
 	

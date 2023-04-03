@@ -18,10 +18,14 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.security.jwt.AuthEntryPointJwt;
+import lt.codeacademy.teamroom4.onlineshop.spring.security.jwt.AuthTokenFilter;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.UserDetailsServiceImpl;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles.*;
 //In this class security parameters are configured
+
+import javax.servlet.Filter;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -62,4 +66,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/api/auth/**").permitAll().antMatchers("/api/test/**").permitAll().anyRequest()
 				.authenticated();
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+	}
 }
