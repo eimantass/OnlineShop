@@ -25,6 +25,8 @@ import lt.codeacademy.teamroom4.onlineshop.spring.services.UserDetailsServiceImp
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles.*;
 //In this class security parameters are configured
 
+import javax.servlet.Filter;
+
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter{

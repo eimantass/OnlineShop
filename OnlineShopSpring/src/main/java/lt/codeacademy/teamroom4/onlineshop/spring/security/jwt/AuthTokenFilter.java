@@ -19,7 +19,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.services.UserDetailsServiceImpl;
 
+
 public class AuthTokenFilter extends OncePerRequestFilter {
+
 
 	@Autowired
 	private JwtUtils jwtUtils;
