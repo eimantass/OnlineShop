@@ -32,7 +32,7 @@ import payload.request.LoginRequest;
 import payload.request.SignupRequest;
 import payload.response.JwtResponse;
 import payload.response.MessageResponse;
-
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.*;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
@@ -97,31 +97,31 @@ public class AuthController {
 		Set<Role> roles = new HashSet<>();
 
 		if(strRoles == null) {
-			Role userRole = roleRepository.findByName(Roles.CUSTOMER).orElseThrow( () -> new RuntimeException("Error: Role is not found"));
+			Role userRole = roleRepository.findByName(CUSTOMER).orElseThrow( () -> new RuntimeException("Error: Role is not found"));
 			roles.add(userRole);
 		}else {
 			strRoles.forEach(role -> {
 				switch(role) {
 				case "admin":
-					Role adminRole = roleRepository.findByName(Roles.ADMIN)
+					Role adminRole = roleRepository.findByName(ADMIN)
 					.orElseThrow( () -> new RuntimeException("Error: Role is not found"));
 					roles.add(adminRole);
 
 					break;
 				case "man":
-					Role manRole = roleRepository.findByName(Roles.MANAGER)
+					Role manRole = roleRepository.findByName(MANAGER)
 					.orElseThrow( () -> new RuntimeException("Error: Role is not found"));
 					roles.add(manRole);
 
 					break;
 				case "serman":
-					Role sermanRole = roleRepository.findByName(Roles.SERVICEMANAGER)
+					Role sermanRole = roleRepository.findByName(SERVICEMANAGER)
 					.orElseThrow( () -> new RuntimeException("Error: Role is not found"));
 					roles.add(sermanRole);
 
 					break;
 				default:
-					Role userRole = roleRepository.findByName(Roles.CUSTOMER)
+					Role userRole = roleRepository.findByName(CUSTOMER)
 					.orElseThrow( () -> new RuntimeException("Error: Role is not found"));
 					roles.add(userRole);
 				}
