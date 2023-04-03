@@ -18,10 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Customer;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartItemRepository;
-import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CustomerRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 
@@ -30,8 +28,6 @@ import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands
 @RestController
 public class HomeController {
 	//Autowiring services and repositories
-	@Autowired
-	private CustomerRepository customerRepository;
 
 	@Autowired
 	ProductService productService;
@@ -51,12 +47,7 @@ public class HomeController {
 		return productService.getAllProducts();
 	}
 	//Adds customers
-	@PostMapping("/add-customer")
-	public Customer createCustomer(@RequestBody Customer customer) {
-		Customer savedCustomer = customerRepository.save(customer);
-		return savedCustomer;
-
-	}
+	
 	//Shows cart
 	@GetMapping("/cart")
 	public CartItem getCart() {
