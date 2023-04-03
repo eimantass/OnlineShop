@@ -22,6 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
+
 import lt.codeacademy.teamroom4.onlineshop.spring.security.jwt.JwtUtils;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.UserDetailsImpl;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles;
