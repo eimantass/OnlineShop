@@ -1,10 +1,10 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.utils;
 
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Customer;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
 
 public class Bank {
 	
-	void pay(Customer cust, double pay) {
+	void pay(User cust, double pay) {
 		double balance = cust.getMoney();
 		String name = cust.getFullName();
 		if(balance >= pay) {

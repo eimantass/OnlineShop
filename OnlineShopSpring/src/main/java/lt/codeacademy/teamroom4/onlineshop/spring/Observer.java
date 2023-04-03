@@ -18,12 +18,8 @@ import lt.codeacademy.teamroom4.onlineshop.spring.config.SecurityConfig;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
-import lt.codeacademy.teamroom4.onlineshop.spring.repositories.AdminRepository;
-import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CustomerRepository;
-import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ManagerRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
-import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ServiceRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
 
@@ -44,17 +40,6 @@ public class Observer {
 
 	@Autowired
 	private UserRepository userRepository;
-	@Autowired
-	private AdminRepository adminRepository;
-
-	@Autowired
-	private ManagerRepository managerRepository;
-
-	@Autowired
-	private CustomerRepository customerRepository;
-
-	@Autowired
-	private ServiceRepository serviceRepsitory;
 
 	@Autowired
 	private ProductRepository productRepository;
