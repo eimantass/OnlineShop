@@ -10,13 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles;
-import lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles;
-
 
 @Entity
 @Table(name="roles")
 public class Role {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -25,8 +22,11 @@ public class Role {
 	@Column(length = 20)
 	private ERoles name;
 	
-	public Role() {}
-	
+
+
+	public Role() {
+	}
+
 	public Role(ERoles name) {
 		this.name = name;
 	}
@@ -46,6 +46,5 @@ public class Role {
 	public void setName(ERoles name) {
 		this.name = name;
 	}
-	
 	
 }

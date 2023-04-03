@@ -8,16 +8,20 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 
+
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Admin;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Customer;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Manager;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ServiceManager;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.AdminRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CustomerRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ManagerRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ServiceRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles;
 
@@ -33,6 +37,8 @@ public class Observer {
 	MoneyGenerator moneyGenerator = new MoneyGenerator();
 
 	// Autowiring repositories
+	@Autowired
+	private RoleRepository roleRepository;
 	@Autowired
 	private AdminRepository adminRepository;
 
@@ -51,6 +57,7 @@ public class Observer {
 	// Used to activate seed function
 	@EventListener
 	public void seed(ContextRefreshedEvent event) {
+		seedRole();
 		seedAdmin();
 		seedCustomer();
 		seedServiceManager();
@@ -59,7 +66,17 @@ public class Observer {
 	}
 
 	// Seeding users and products
+	private void seedRole() {
+		List<Role> role = List.of(
+				new Role(ERoles.ADMIN),
+				new Role(ERoles.CUSTOMER),
+				new Role(ERoles.MANAGER),
+				new Role(ERoles.SERVICEMANAGER)
+				);
 
+		roleRepository.saveAll(role);
+
+	}
 	private void seedAdmin() {
 		List<Admin> admin = List
 				.of(new Admin("ViliusAdmin", "viliusAdmin@gmail.com", "svbsdvisbv", "svbsdvisbv", ADMIN));
