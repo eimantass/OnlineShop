@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import UserService from "../services/user.service";
 
 export default class BoardUser extends Component {
@@ -7,15 +6,15 @@ export default class BoardUser extends Component {
     super(props);
 
     this.state = {
-      content: ""
+      users: []
     };
   }
 
   componentDidMount() {
-    UserService.getUserBoard().then(
+    UserService.getAllUsers().then(
       response => {
         this.setState({
-          content: response.data
+          users: response.data
         });
       },
       error => {
@@ -35,7 +34,12 @@ export default class BoardUser extends Component {
     return (
       <div className="container">
         <header className="jumbotron">
-          <h3>{this.state.content}</h3>
+          <h3>Users:</h3>
+          <ul>
+            {this.state.users.map(user => (
+              <li key={user.id}>{user.username}</li>
+            ))}
+          </ul>
         </header>
       </div>
     );
