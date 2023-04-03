@@ -40,23 +40,13 @@ public class ProductService {
 	public List<Product> getAllProducts() {
 		return productRepository.findAll();
 	}
-
-	public Product findByName(String searchName) {
-		searchName = searchName.toUpperCase();
-		List<Product> allProducts = new ArrayList<Product>();
-		allProducts.addAll(productRepository.findAll());
-
-		for (long i = 1; i <= allProducts.size(); i++) {
-			// Customer currentCustomer = customerRepository.getById(i);
-			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
-			if (currentProduct.getName().toUpperCase().equals(searchName)) {
-				return (currentProduct);
-			}
-		}
-		// return customerRepository.findById((long) 1);
-		return null;
-
+	
+	//search products
+	public List<Product> searchProductByNameLike(String searchName) {
+		return productRepository.findByNameContainingIgnoreCase(searchName);
 	}
+	
+	
 	public List<Product> sortByNameAsc() {
 
 		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
@@ -181,4 +171,5 @@ public class ProductService {
 		//return cpuSocket.get(0);
 
 	}
+
 }

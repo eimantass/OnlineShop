@@ -10,7 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Customer;
@@ -57,10 +62,16 @@ public class HomeController {
 	public CartItem getCart() {
 		return cartRep.findById(1L).get();
 	}
+	
 	//Searches products by name
-	@GetMapping("/products/search/{searchName}")
-	public Product getCustomerByName(@PathVariable String searchName) {
-		return productService.findByName(searchName);
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView search(@RequestParam("value") String searchName) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("fragments/searchFragment");
+		List<Product> products = productService.searchProductByNameLike(searchName);
+		mv.addObject("products",products);
+		return mv;
 	}
 	//Sorts products by name
 	@GetMapping("/products/sort-by-name-asc")
