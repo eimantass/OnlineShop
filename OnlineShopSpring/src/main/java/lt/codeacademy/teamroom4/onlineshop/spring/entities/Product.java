@@ -34,7 +34,6 @@ public class Product {
 	private double price;
 	private String description;
 	private Categories category;
-	private Parameters parameter;
 	private ArrayList<String[]> parameters = new ArrayList<>();
 	//List<String> parameters = new ArrayList<String>();
 	
@@ -42,7 +41,7 @@ public class Product {
 
 	
 
-	public Product(Long id, String name, Brands brand, String photo, double price, String description, Categories category, Parameters parameter) {
+	public Product(Long id, String name, Brands brand, String photo, double price, String description, Categories category) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -51,12 +50,11 @@ public class Product {
 		this.price = price;
 		this.description = description;
 		this.category = category;
-		this.parameter = parameter;
 	}
 
 	
 	public Product(Long id, String name, Brands brand, String photo, double price, String description, Categories category,
-		Parameters parameter,ArrayList<String[]> parameters) {
+			ArrayList<String[]> parameters) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -65,13 +63,12 @@ public class Product {
 		this.price = price;
 		this.description = description;
 		this.category = category;
-		this.parameter = parameter;
 		this.parameters = parameters;
 	}
 
 
 	public Product(String name, Brands brand, String photo, double price, String description, Categories category,
-			ArrayList<String[]> parameters,Parameters parameter) {
+			ArrayList<String[]> parameters) {
 		super();
 		this.name = name;
 		this.brand = brand;
@@ -80,21 +77,22 @@ public class Product {
 		this.description = description;
 		this.category = category;
 		this.parameters = parameters;
-		this.parameter = parameter;
 	}
 
 
-	public Product(String name,Brands brand,String photo, double price, String description, Categories categories,Parameters parameter) {
+	public Product(String name,Brands brand,String photo, double price, String description, Categories categories) {
 		this.name = name;
 		this.brand = brand;
 		this.photo = photo;
 		this.price = price;
 		this.description = description;
 		this.category = categories;
-		this.parameter = parameter;
+		
+
 	}
 
-	public Product() {}
+	public Product() {
+	}
 
 	public Long getId() {
 		return id;
@@ -146,23 +144,20 @@ public class Product {
 		this.category = category;
 	}
 
-	public Parameters getParameter() {
-		return parameter;
-	}
 
-	public void setParameter(Parameters parameter) {
-		this.parameter = parameter;
-	}
-
+	
 
 	public ArrayList<String[]> getParameters() {
 		return parameters;
 	}
 
 	
+
 	public void setParameters(ArrayList<String[]> parameters) {
 		this.parameters = parameters;
 	}
+
+
 
 	public Brands getBrand() {
 		return brand;
