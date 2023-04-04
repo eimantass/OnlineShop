@@ -49,11 +49,11 @@ public class Observer {
 	@EventListener
 	public void seed(ContextRefreshedEvent event) {
 		// seedRole();
-		seedUserAdmin();
-		seedUserCustomer();
-		seedUserManager();
-		seedUserServiceManager();
-		seedProduct();
+		//seedUserAdmin();
+		//seedUserCustomer();
+		//seedUserManager();
+		//seedUserServiceManager();
+		//seedProduct();
 	}
 
 	// Seeding users and products

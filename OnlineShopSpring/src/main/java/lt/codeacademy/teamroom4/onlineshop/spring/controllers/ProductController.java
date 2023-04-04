@@ -22,6 +22,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
 //This controller handles product mappings
 @RestController
+@CrossOrigin(origins = "http://localhost:8081", allowCredentials = "true")
 @RequestMapping("/products")
 
 public class ProductController {

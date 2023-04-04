@@ -1,59 +1,45 @@
 import React, { Component } from "react";
-
-import UserService from "../services/user.service";
+import ProductService from "../services/product.service";
 import Categories from "./categories-menu";
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: ""
+      products: []
     };
   }
 
   componentDidMount() {
-    UserService.getPublicContent().then(
+    ProductService.getAllProducts().then(
       response => {
         this.setState({
-          content: response.data
+          products: response.data
         });
       },
       error => {
-        this.setState({
-          content:
-            (error.response && error.response.data) ||
-            error.message ||
-            error.toString()
-        });
+        console.log(error);
       }
     );
   }
 
   render() {
+    const { products } = this.state;
     return (
       <div>
-      <Categories/>
-  
+        <Categories />
         <main>
-          <h2 class="center">Test Text1</h2>
-  
-          <h1 class="center">Text2</h1>
-  
-          <h1 class="center">Text3</h1>
-  
-          <h1 class="center">Text4</h1>
-  
-          <h1>Text5</h1>
-  
-          <h1>Text6</h1>
-  
-          <h1>Text7</h1>
-  
-          <h1>Text8</h1>
-  
-          <h1>Text9</h1>
-  
-          <h1>Text10</h1>
+          <h2 className="center">Products List:</h2>
+          <ul>
+            {products.map(product => (
+              <li key={product.id}>
+                <h3>{product.name}</h3>
+                <p>{product.description}</p>
+                <p>Category: {product.category}</p>
+                <p>Price: ${product.price}</p>
+              </li>
+            ))}
+          </ul>
         </main>
       </div>
     );
