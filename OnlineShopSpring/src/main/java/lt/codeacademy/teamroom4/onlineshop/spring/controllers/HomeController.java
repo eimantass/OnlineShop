@@ -67,25 +67,21 @@ public class HomeController {
 	//Sorts products by name
 	@GetMapping("/products/sort-by-name/{direction}")
 	public List<Product> SortProductsByNameAsc(@PathVariable String direction) {
-		return productService.sortByNameAsc(direction);
+		return productService.sortByName(direction);
 	}
 
 	//Sorts products by price
 	@GetMapping("/products/sort-by-price/{direction}")
 	public List<Product> SortProductsByPrice(@PathVariable String direction) {
-		return productService.sortByPrice(direction);
+		return productService.sortByPriceAll(direction);
 	}
 	
 	//Sorts products by category
-	@GetMapping("/products/sort-by-category-asc")
-	public List<Product> SortProductsByCategoryAsc() {
-		return productService.sortByCategoryAsc();
+	@GetMapping("/products/sort-by-category/{direction}")
+	public List<Product> SortProductsByCategoryAsc(@PathVariable String direction) {
+		return productService.sortByCategoryAll(direction);
 	}
 	
-	@GetMapping("/products/sort-by-category-desc")
-	public List<Product> SortProductsByCategoryDesc() {
-		return productService.sortByCategoryDesc();
-	}
 	//Filters products by brand
 	@GetMapping("/products/filter-by-brand/{brand}")
 	public List<Product> filterByBrand(@PathVariable Brands brand) {
