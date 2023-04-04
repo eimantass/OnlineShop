@@ -101,12 +101,5 @@ public class HomeController {
 	public List<Product> filterByBothMinAndMaxPrice(@PathVariable Long minPrice, @PathVariable Long maxPrice) {
 		return productService.filterByMinAndMaxPrice(minPrice, maxPrice);
 	}
-	@GetMapping("/products/filter-by-cpu-socket")
-	public List<Product> filterByCpuSocket(String[] cpuParameters) {
-		ArrayList<String[]> intelI3parametersArray = new ArrayList<>();
-		String[] intelI3CPUparameters = { "CPU_SOCKET,", "LGA1200" };
-		intelI3parametersArray.add(intelI3CPUparameters);
-		
-		return productService.filterByCpuSocket(intelI3CPUparameters);
-	}
+
 }
