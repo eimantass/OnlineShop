@@ -53,7 +53,7 @@ public class Observer {
 		seedUserCustomer();
 		seedUserManager();
 		seedUserServiceManager();
-		//seedProduct();
+		seedProduct();
 	}
 
 	// Seeding users and products
@@ -105,14 +105,19 @@ public class Observer {
 		ArrayList<String[]> intelI5parametersArray = new ArrayList<>();
 		String[] intelI5CPUparameters = { "CPU_SOCKET,", "LGA1700" };
 		intelI5parametersArray.add(intelI5CPUparameters);
-		ArrayList<ProductParameters> cpuParameterList = new ArrayList<>();
-		//ProductParameters firstCPU = new ProductParameters("I3", "Intel");
-		//cpuParameterList.add(firstCPU);
-		
-		//List<Product> product = List.of(
-			//	new Product("i3-10100F", null, INTEL, "foto.png", 67, "Quad Core CPU", CPU, cpuParameterList));
+		Set<ProductParameters> cpuParameterList = new HashSet<>();
+		ProductParameters firstCPU = new ProductParameters("I3", "Intel");
+		cpuParameterList.add(firstCPU);
 
-		//productRepository.saveAll(product);
+		List<Product> product = List.of(
+				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", CPU),
+				new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu", GPU, cpuParameterList),
+				new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu", GPU, cpuParameterList),
+				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM),
+				new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", CPU),
+				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList));
+
+		productRepository.saveAll(product);
 	}
 	/*
 	 * private void seedAdmin() { List<Admin> admin = List .of(new

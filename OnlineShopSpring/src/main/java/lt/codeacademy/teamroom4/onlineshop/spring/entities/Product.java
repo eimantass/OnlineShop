@@ -1,6 +1,8 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,8 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
@@ -34,51 +40,12 @@ public class Product {
 	private double price;
 	private String description;
 	private Categories category;
-	private ArrayList<String[]> parameters = new ArrayList<>();
+	//@OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+	//@JsonManagedReference
+	@Transient
+	Set<ProductParameters> productParameters = new HashSet<>();
+	
 	//List<String> parameters = new ArrayList<String>();
-	
-	
-
-	
-
-	public Product(Long id, String name, Brands brand, String photo, double price, String description, Categories category) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.brand = brand;
-		this.photo = photo;
-		this.price = price;
-		this.description = description;
-		this.category = category;
-	}
-
-	
-	public Product(Long id, String name, Brands brand, String photo, double price, String description, Categories category,
-			ArrayList<String[]> parameters) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.brand = brand;
-		this.photo = photo;
-		this.price = price;
-		this.description = description;
-		this.category = category;
-		this.parameters = parameters;
-	}
-
-
-	public Product(String name, Brands brand, String photo, double price, String description, Categories category,
-			ArrayList<String[]> parameters) {
-		super();
-		this.name = name;
-		this.brand = brand;
-		this.photo = photo;
-		this.price = price;
-		this.description = description;
-		this.category = category;
-		this.parameters = parameters;
-	}
-
 
 	public Product(String name,Brands brand,String photo, double price, String description, Categories categories) {
 		this.name = name;
@@ -89,6 +56,30 @@ public class Product {
 		this.category = categories;
 		
 
+	}
+
+	public Product(String name, Brands brand, String photo, double price, String description,
+			Categories category, Set<ProductParameters> productParameters) {
+		super();
+		this.name = name;
+		this.brand = brand;
+		this.photo = photo;
+		this.price = price;
+		this.description = description;
+		this.category = category;
+		this.productParameters = productParameters;
+	}
+
+	public Product(Set<ProductParameters> productParameters) {
+		this.productParameters = productParameters;
+	}
+
+	public Set<ProductParameters> getProductParameters() {
+		return productParameters;
+	}
+
+	public void setProductParameters(Set<ProductParameters> productParameters) {
+		this.productParameters = productParameters;
 	}
 
 	public Product() {
@@ -143,21 +134,6 @@ public class Product {
 	public void setCategory(Categories category) {
 		this.category = category;
 	}
-
-
-	
-
-	public ArrayList<String[]> getParameters() {
-		return parameters;
-	}
-
-	
-
-	public void setParameters(ArrayList<String[]> parameters) {
-		this.parameters = parameters;
-	}
-
-
 
 	public Brands getBrand() {
 		return brand;
