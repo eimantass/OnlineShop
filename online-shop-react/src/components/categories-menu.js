@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './css/categoriesMenu.css';
+import './css/Body.css';
 
 function Categories() {
   return (
