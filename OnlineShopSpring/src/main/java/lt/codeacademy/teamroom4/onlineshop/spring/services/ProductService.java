@@ -57,7 +57,7 @@ public class ProductService {
 		return productRepository.findByNameContainingIgnoreCase(searchName);
 	}
 
-	public List<Product> sortByNameAsc(String direction) {
+	public List<Product> sortByName(String direction) {
 		if (direction == "desc") {
 			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
 		} else {
@@ -66,7 +66,7 @@ public class ProductService {
 	}
 
 
-	public List<Product> sortByPrice(String direction) {
+	public List<Product> sortByPriceAll(String direction) {
 		if (direction == "desc") {
 		return productRepository.findAll(Sort.by(Sort.Direction.DESC, "price"));
 
@@ -75,14 +75,15 @@ public class ProductService {
 		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "price"));
 	}}
 
-	public List<Product> sortByCategoryAsc() {
-		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "category"));
+	public List<Product> sortByCategoryAll(String direction) {
+
+	if (direction == "desc") {
+			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "category"));
 
 	}
-
-	public List<Product> sortByCategoryDesc() {
-		return productRepository.findAll(Sort.by(Sort.Direction.DESC, "category"));
-
+		else {
+		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "category"));
+	}
 	}
 
 	public Product getProductById(Long id) {
