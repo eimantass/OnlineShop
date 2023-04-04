@@ -1,6 +1,8 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -11,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
@@ -34,7 +38,10 @@ public class Product {
 	private double price;
 	private String description;
 	private Categories category;
-	private ArrayList<ProductParameters> productParameters = new ArrayList<>();
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	//@JoinColumn(name = "product_id")
+	@JsonManagedReference
+	private Set<ProductParameters> productParameters = new HashSet<>();
 	//private ArrayList<String[]> parameters = new ArrayList<>();
 	//List<String> parameters = new ArrayList<String>();
 	
@@ -55,7 +62,7 @@ public class Product {
 
 	
 	public Product(String name, Coupon discount, Brands brand, String photo, double price, String description,
-			Categories category, ArrayList<ProductParameters> productParameters) {
+			Categories category, Set<ProductParameters> productParameters) {
 		super();
 		this.name = name;
 		this.discount = discount;
@@ -69,7 +76,7 @@ public class Product {
 
 
 	public Product(Long id, String name, Coupon discount, Brands brand, String photo, double price, String description,
-			Categories category, ArrayList<ProductParameters> productParameters, ArrayList<String[]> parameters) {
+			Categories category, Set<ProductParameters> productParameters, ArrayList<String[]> parameters) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -189,6 +196,16 @@ public class Product {
 
 	public void setDiscount(Coupon discount) {
 		this.discount = discount;
+	}
+
+
+	public Set<ProductParameters> getProductParameters() {
+		return productParameters;
+	}
+
+
+	public void setProductParameters(Set<ProductParameters> productParameters) {
+		this.productParameters = productParameters;
 	}
 
 
