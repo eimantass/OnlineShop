@@ -9,9 +9,8 @@ import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
 import Profile from "./components/profile.component";
-
-
 import BoardAdmin from "./components/board-admin.component";
+import Cart from "./pages/Cart";
 // import footerMenu pages
 import About from "./pages/About";
 import Contacts from "./pages/Contacts";
@@ -141,6 +140,12 @@ class App extends Component {
                   Sign Up
                 </Link>
               </li>
+
+              <li className="nav-item">
+                <Link to={"/cart"} className="nav-link">
+                  Cart
+                </Link>
+                </li>
             </div>
           )}
         </nav>
@@ -152,8 +157,8 @@ class App extends Component {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
-
             <Route path="/admin" element={<BoardAdmin />} />
+            <Route path="/cart" element={<Cart />} />
             {/*Footer menu paths below: */}
             <Route path="/about" element={<About />} />
             <Route path="/contacts" element={<Contacts />} />
