@@ -1,10 +1,19 @@
+import TopMenu from "../layout/TopMenu";
+import SeachAndLogo from "../layout/searchandlogo";
+import FooterMenu from "../layout/FooterMenu";
 
-export default function Contacts() {
-  return (
-    <div>
-      <h1> Contacts page</h1>
-    </div>
-      
+
+import '../css/App.css'
+
+export function Contacts() {
+    return (
+      <div className="FooterPlacer">
+         <TopMenu/>
+         <SeachAndLogo/>
+        <h1 style={{textAlign: "center"}}>Kontaktai</h1>
+        {/* rest of your contact page content */}
+        <FooterMenu/>
+      </div>
     );
     
   }

@@ -1,0 +1,43 @@
+
+    /* Position the categories links - with background blue */
+
+  .categories {
+    background-color: rgb(40, 46, 243);
+    margin-top: 40px;
+    
+
+  }
+
+    /* Position the categories items style */
+
+  .categories ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center vertically */
+    text-align: center; 
+    transition: background-color 0.3s ease;
+
+  }
+
+    /* Margins between categories items*/
+
+  .categories li {
+    justify-content: center;
+    padding: 20px;
+  }
+
+    /* Hover on the categories items*/
+
+  .categories li:hover { 
+    background-color: rgb(195, 52, 217);
+    padding: 15px;
+  }
+
+  /* Remove underline from categories links and color the text white */
+
+  .categories li a {
+    text-decoration: none;
+    color: white;
+    justify-content: center;
+  }

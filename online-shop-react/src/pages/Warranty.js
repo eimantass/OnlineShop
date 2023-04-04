@@ -1,10 +1,18 @@
+import TopMenu from "../layout/TopMenu";
+import SeachAndLogo from "../layout/searchandlogo";
+import FooterMenu from "../layout/FooterMenu";
 
-export default function Warranty() {
-  return (
-    <div>
-      <h1> Warranty page</h1>
-    </div>
-      
+import '../css/App.css'
+
+export function Warranty() {
+    return (
+      <div className="FooterPlacer">
+        <TopMenu/>
+        <SeachAndLogo/>
+        <h1 style={{textAlign: "center"}}>Warranty page</h1>
+        {/* rest of your contact page content */}
+        <FooterMenu/>
+      </div>
     );
     
   }
