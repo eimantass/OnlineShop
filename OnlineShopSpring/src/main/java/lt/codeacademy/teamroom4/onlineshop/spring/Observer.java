@@ -106,8 +106,8 @@ public class Observer {
 		String[] intelI5CPUparameters = { "CPU_SOCKET,", "LGA1700" };
 		intelI5parametersArray.add(intelI5CPUparameters);
 		ArrayList<ProductParameters> cpuParameterList = new ArrayList<>();
-		ProductParameters firstCPU = new ProductParameters("I3", "Intel");
-		cpuParameterList.add(firstCPU);
+		//ProductParameters firstCPU = new ProductParameters("I3", "Intel");
+		//cpuParameterList.add(firstCPU);
 		
 		//List<Product> product = List.of(
 			//	new Product("i3-10100F", null, INTEL, "foto.png", 67, "Quad Core CPU", CPU, cpuParameterList));
