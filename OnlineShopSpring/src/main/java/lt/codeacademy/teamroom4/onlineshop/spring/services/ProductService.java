@@ -8,9 +8,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Coupon;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CategoryRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CouponRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.*;
 
@@ -19,6 +24,12 @@ public class ProductService {
 
 	@Autowired
 	ProductRepository productRepository;
+	
+	@Autowired
+	CouponRepository couponRepository;
+	
+	@Autowired
+	CategoryRepository categoryRepository;
 
 	public List<Product> findAll() {
 		List<Product> products = new ArrayList<Product>();
@@ -78,23 +89,25 @@ public class ProductService {
 		return productRepository.getById(id);
 	}
 
-	public List<Product> filterBrand(Brands brand) {
-
-		List<Product> allProducts = new ArrayList<Product>();
-		List<Product> filteredProducts = new ArrayList<Product>();
-
-		allProducts.addAll(productRepository.findAll());
-
-		for (long i = 1; i <= allProducts.size(); i++) {
-			// Customer currentCustomer = customerRepository.getById(i);
-			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
-
-			if (currentProduct.getBrand().equals(brand)) {
-				filteredProducts.add(currentProduct);
+	public List<Brands> getAllBrands() {
+		return  productRepository.findAllBrandsDistincts();
+	}
+	
+	public List<Categories> getAllCategories() {
+		return categoryRepository.findAll();
+	}
+	
+	public Product getProductWithBigestDiscount() {
+		Coupon discount = couponRepository.findMax();
+		List<Product> products = productRepository.findAll();
+		Product featuredProduct = null;
+		for(Product p : products ) {
+			if(p.getDiscount().equals(discount)) {
+				featuredProduct = p;
+				break;
 			}
 		}
-		// return customerRepository.findById((long) 1);
-		return filteredProducts;
+		return featuredProduct;
 	}
 
 	public List<Product> filterByMaxPrice(Long maxPrice) {
