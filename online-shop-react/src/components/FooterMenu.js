@@ -14,7 +14,7 @@ function FooterMenu() {
           <li><Link to="/returns">Prekių grąžinimas</Link></li>
           <li><Link to="/warranty">Garantinis aptarnavimas</Link></li>
           <li><Link to="/privacy">Privatumo politika</Link></li>
-          <li><Link to="/atsiliepimai">Atsiliepimai</Link></li>
+          <li><Link to="/feedback">Atsiliepimai</Link></li>
           <li><Link to="/help">Pagalba</Link></li>
         </ul>
       </nav>

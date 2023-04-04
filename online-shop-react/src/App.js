@@ -9,11 +9,19 @@ import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
 import Profile from "./components/profile.component";
-import BoardCustomer from "./components/board-customer.component";
-import BoardManager from "./components/board-manager.component";
-import BoardServiceManager from "./components/board-service-manager.component";
+
 
 import BoardAdmin from "./components/board-admin.component";
+// import footerMenu pages
+import About from "./pages/About";
+import Contacts from "./pages/Contacts";
+import Terms from "./pages/Terms";
+import Shipping from "./pages/Shipping";
+import Returns from "./pages/Returns";
+import Warranty from "./pages/Warranty";
+import Privacy from "./pages/Privacy";
+import Feedback from "./pages/Feedback";
+import Help from "./pages/Help";
 
 class App extends Component {
   constructor(props) {
@@ -134,10 +142,18 @@ class App extends Component {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/customer" element={<BoardCustomer />} />
-            <Route path="/manager" element={<BoardManager />} />
-            <Route path="/service-manager" element={<BoardServiceManager />} />
+
             <Route path="/admin" element={<BoardAdmin />} />
+            {/*Footer menu paths below: */}
+            <Route path="/about" element={<About />} />
+            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/shipping" element={<Shipping />} />
+            <Route path="/returns" element={<Returns/>} />
+            <Route path="/warranty" element={<Warranty/>} />
+            <Route path="/privacy" element={<Privacy/>} />
+            <Route path="/feedback" element={<Feedback/>} />
+            <Route path="/help" element={<Help/>} />
           </Routes>
         </div>
       </div>

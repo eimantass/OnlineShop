@@ -9,11 +9,8 @@ import '../css/App.css'
 export function Home() {
 
   return (
-    <div className="FooterPlacer">
-      <TopMenu/>
-      <SeachAndLogo/>
-      <Body/>
-      <FooterMenu/>
+    <div>
+      <h1> Feedback page</h1>
     </div>
       
     );
