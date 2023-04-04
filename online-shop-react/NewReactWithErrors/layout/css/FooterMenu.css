@@ -1,0 +1,30 @@
+/* Style the footer menu */
+.footer-menu {
+    
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: #333;
+
+  }
+
+  .aligner{
+    margin-top:auto;
+  }
+  
+  /* Style the menu items */
+  .footer-menu li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  
+  .footer-menu li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* Change the color of the menu item when hovered */
+  .footer-menu li a:hover {
+    color: #4CAF50;
+  }
