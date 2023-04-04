@@ -83,10 +83,10 @@ public class HomeController {
 	}
 	
 	//Filters products by brand
-//	@GetMapping("/products/filter-by-brand/{brand}")
-//	public List<Product> filterByBrand(@PathVariable Brands brand) {
-//		return productService.filterBrand(brand);
-//	}
+	@GetMapping("/products/filter-by-brand/{brand}")
+	public List<Product> filterByBrand(@PathVariable Brands brand) {
+		return productService.filterBrand(brand);
+	}
 	//Filters products by max price
 	
 	@GetMapping("/products/filter-by-max-price/{maxPrice}")
