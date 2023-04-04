@@ -38,10 +38,10 @@ public class Product {
 	private double price;
 	private String description;
 	private Categories category;
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	//@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	//@JoinColumn(name = "product_id")
-	@JsonManagedReference
-	private Set<ProductParameters> productParameters = new HashSet<>();
+	//@JsonManagedReference
+	//private Set<ProductParameters> productParameters = new HashSet<>();
 	//private ArrayList<String[]> parameters = new ArrayList<>();
 	//List<String> parameters = new ArrayList<String>();
 	
@@ -49,46 +49,7 @@ public class Product {
 
 	
 
-	public Product(Long id, String name, Brands brand, String photo, double price, String description, Categories category) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.brand = brand;
-		this.photo = photo;
-		this.price = price;
-		this.description = description;
-		this.category = category;
-	}
-
 	
-	public Product(String name, Coupon discount, Brands brand, String photo, double price, String description,
-			Categories category, Set<ProductParameters> productParameters) {
-		super();
-		this.name = name;
-		this.discount = discount;
-		this.brand = brand;
-		this.photo = photo;
-		this.price = price;
-		this.description = description;
-		this.category = category;
-		this.productParameters = productParameters;
-	}
-
-
-	public Product(Long id, String name, Coupon discount, Brands brand, String photo, double price, String description,
-			Categories category, Set<ProductParameters> productParameters, ArrayList<String[]> parameters) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.discount = discount;
-		this.brand = brand;
-		this.photo = photo;
-		this.price = price;
-		this.description = description;
-		this.category = category;
-		this.productParameters = productParameters;
-	}
-
 
 	public Product(Long id, String name, Brands brand, String photo, double price, String description, Categories category,
 			ArrayList<String[]> parameters) {
@@ -198,15 +159,6 @@ public class Product {
 		this.discount = discount;
 	}
 
-
-	public Set<ProductParameters> getProductParameters() {
-		return productParameters;
-	}
-
-
-	public void setProductParameters(Set<ProductParameters> productParameters) {
-		this.productParameters = productParameters;
-	}
 
 
 	@Override
