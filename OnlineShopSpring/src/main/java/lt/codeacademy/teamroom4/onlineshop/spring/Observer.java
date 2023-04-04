@@ -105,13 +105,14 @@ public class Observer {
 		ArrayList<String[]> intelI5parametersArray = new ArrayList<>();
 		String[] intelI5CPUparameters = { "CPU_SOCKET,", "LGA1700" };
 		intelI5parametersArray.add(intelI5CPUparameters);
-		ArrayList<ProductParameters> cpuParameter = new ArrayList<>();
-
+		ArrayList<ProductParameters> cpuParameterList = new ArrayList<>();
+		ProductParameters firstCPU = new ProductParameters("I3", "Intel");
+		cpuParameterList.add(firstCPU);
 		
-		List<Product> product = List.of(
-				new Product("i3-10100F", null, INTEL, "foto.png", 67, "Quad Core CPU", CPU, cpuParameter));
+		//List<Product> product = List.of(
+			//	new Product("i3-10100F", null, INTEL, "foto.png", 67, "Quad Core CPU", CPU, cpuParameterList));
 
-		productRepository.saveAll(product);
+		//productRepository.saveAll(product);
 	}
 	/*
 	 * private void seedAdmin() { List<Admin> admin = List .of(new
