@@ -106,13 +106,16 @@ public class Observer {
 		String[] intelI5CPUparameters = { "CPU_SOCKET,", "LGA1700" };
 		intelI5parametersArray.add(intelI5CPUparameters);
 		Set<ProductParameters> cpuParameterList = new HashSet<>();
+		Set<ProductParameters> gpuParameterList = new HashSet<>();
 		ProductParameters firstCPU = new ProductParameters("I3", "Intel");
+		ProductParameters firstGpu = new ProductParameters("RX 6400XT", "2321 Mhz");
+		gpuParameterList.add(firstGpu);
 		cpuParameterList.add(firstCPU);
 
 		List<Product> product = List.of(
 				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", CPU),
-				new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu", GPU, cpuParameterList),
-				new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu", GPU, cpuParameterList),
+				new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu", GPU, gpuParameterList),
+				new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu", GPU),
 				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM),
 				new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", CPU),
 				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList));
