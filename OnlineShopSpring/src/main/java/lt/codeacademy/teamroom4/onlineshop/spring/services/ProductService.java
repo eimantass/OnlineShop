@@ -40,29 +40,29 @@ public class ProductService {
 	public List<Product> getAllProducts() {
 		return productRepository.findAll();
 	}
-	
-	//search products
+
+	// search products
 	public List<Product> searchProductByNameLike(String searchName) {
 		return productRepository.findByNameContainingIgnoreCase(searchName);
 	}
-	
-	
-	public List<Product> sortByNameAsc() {
 
-		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+	public List<Product> sortByNameAsc(String direction) {
+		if (direction == "desc") {
+			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
+		} else {
+			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+		}
 	}
 
-	public List<Product> sortByNameDesc() {
-		return productRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
-	}
 
-	public List<Product> sortByPriceAsc() {
-		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "price"));
-	}
-
-	public List<Product> sortByPriceDesc() {
+	public List<Product> sortByPrice(String direction) {
+		if (direction == "desc") {
 		return productRepository.findAll(Sort.by(Sort.Direction.DESC, "price"));
-	}
+
+		}
+		else {
+		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "price"));
+	}}
 
 	public List<Product> sortByCategoryAsc() {
 		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "category"));
@@ -114,6 +114,7 @@ public class ProductService {
 		return filteredProducts;
 
 	}
+
 	public List<Product> filterByMinPrice(Long minPrice) {
 		List<Product> allProducts = new ArrayList<Product>();
 		List<Product> filteredProducts = new ArrayList<Product>();
@@ -131,6 +132,7 @@ public class ProductService {
 		return filteredProducts;
 
 	}
+
 	public List<Product> filterByMinAndMaxPrice(Long minPrice, Long maxPrice) {
 		List<Product> allProducts = new ArrayList<Product>();
 		List<Product> filteredProducts = new ArrayList<Product>();
@@ -141,15 +143,15 @@ public class ProductService {
 			// Customer currentCustomer = customerRepository.getById(i);
 			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
 
-			if ((currentProduct.getPrice() > minPrice) && (currentProduct.getPrice() < maxPrice )) {
+			if ((currentProduct.getPrice() > minPrice) && (currentProduct.getPrice() < maxPrice)) {
 				filteredProducts.add(currentProduct);
 			}
 		}
 		return filteredProducts;
 
 	}
-	
-	public List<Product> filterByCpuSocket(String[] cpuParameters ) {
+
+	public List<Product> filterByCpuSocket(String[] cpuParameters) {
 		List<Product> allProducts = new ArrayList<Product>();
 		List<Product> filteredProducts = new ArrayList<Product>();
 
@@ -159,16 +161,16 @@ public class ProductService {
 		for (long i = 1; i <= allProducts.size(); i++) {
 			// Customer currentCustomer = customerRepository.getById(i);
 			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
-			//String cpuSockets = currentProduct.getParameters().toString();
-			//System.out.println(cpuSocket);
+			// String cpuSockets = currentProduct.getParameters().toString();
+			// System.out.println(cpuSocket);
 			if (cpuSocket.toArray().equals(cpuParameters)) {
-				
+
 				filteredProducts.add(currentProduct);
 			}
 		}
 		return filteredProducts;
 
-		//return cpuSocket.get(0);
+		// return cpuSocket.get(0);
 
 	}
 

@@ -47,17 +47,17 @@ public class Observer {
 	// Used to activate seed function
 	@EventListener
 	public void seed(ContextRefreshedEvent event) {
-		//seedRole();
+		// seedRole();
 		seedUserAdmin();
 		seedUserCustomer();
 		seedUserManager();
 		seedUserServiceManager();
+		seedProduct();
 	}
 
 	// Seeding users and products
 	private void seedRole() {
-		List<Role> role = List.of(new Role(ADMIN), new Role(CUSTOMER), new Role(MANAGER),
-				new Role(SERVICEMANAGER));
+		List<Role> role = List.of(new Role(ADMIN), new Role(CUSTOMER), new Role(MANAGER), new Role(SERVICEMANAGER));
 
 		roleRepository.saveAll(role);
 
@@ -66,31 +66,55 @@ public class Observer {
 	private void seedUserAdmin() {
 		Set<Role> roles = new HashSet<>();
 		roles.add(new Role(ADMIN));
-		List<User> admin = List.of(new User("admin", "admin@gmail.com", SecurityConfig.passwordEncoder().encode("administrator"),roles));
+		List<User> admin = List.of(
+				new User("admin", "admin@gmail.com", SecurityConfig.passwordEncoder().encode("administrator"), roles));
 
 		userRepository.saveAll(admin);
 	}
-	
-	private void seedUserCustomer(){	
+
+	private void seedUserCustomer() {
 		Set<Role> roles = new HashSet<>();
 		roles.add(new Role(CUSTOMER));
-		List<User> customer = List.of(new User("customer", "customer@gmail.com",SecurityConfig.passwordEncoder().encode("customer"),roles));
+		List<User> customer = List.of(
+				new User("customer", "customer@gmail.com", SecurityConfig.passwordEncoder().encode("customer"), roles));
 		userRepository.saveAll(customer);
 	}
-	
-	private void seedUserManager(){	
+
+	private void seedUserManager() {
 		Set<Role> roles = new HashSet<>();
 		roles.add(new Role(MANAGER));
-		List<User> manager = List.of(new User("manager", "manager@gmail.com",SecurityConfig.passwordEncoder().encode("manager"),roles));
+		List<User> manager = List.of(
+				new User("manager", "manager@gmail.com", SecurityConfig.passwordEncoder().encode("manager"), roles));
 		userRepository.saveAll(manager);
 	}
-	
-	private void seedUserServiceManager(){	
+
+	private void seedUserServiceManager() {
 		Set<Role> roles = new HashSet<>();
 		roles.add(new Role(SERVICEMANAGER));
-		List<User> serviceManager = List.of(new User("serviceManager", "serviceManager@gmail.com",SecurityConfig.passwordEncoder().encode("serviceManager"),roles));
+		List<User> serviceManager = List.of(new User("serviceManager", "serviceManager@gmail.com",
+				SecurityConfig.passwordEncoder().encode("serviceManager"), roles));
 		userRepository.saveAll(serviceManager);
 	}
+
+	private void seedProduct() { 
+	  ArrayList<String[]>
+	  intelI3parametersArray = new ArrayList<>(); String[] intelI3CPUparameters = {
+	  "CPU_SOCKET,", "LGA1200" }; intelI3parametersArray.add(intelI3CPUparameters);
+	  
+	  ArrayList<String[]> intelI5parametersArray = new ArrayList<>(); String[]
+	  intelI5CPUparameters = { "CPU_SOCKET,", "LGA1700" };
+	  intelI5parametersArray.add(intelI5CPUparameters);
+	  
+	  List<Product> product = List.of( new Product("i3-10100F", INTEL, "foto.png",
+	  67, "Quad Core CPU", CPU, intelI3parametersArray), new Product("RX 6400XT",
+	  AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu", GPU), new
+	  Product("GTX 1650 Super", NVIDIA, "foto.png", 220,
+	  "4 gb gddr6 GTX 1650 Super gpu", GPU), new Product("4gb RAM", GOODRAM,
+	  "foto.png", 30, "4 gb ddr3 ram", RAM), new Product("IntelI5", INTEL,
+	  "foto.png", 200, "12 core cpu", CPU), new Product("IntelI7", INTEL,
+	  "foto.png", 250, "16 core cpu", CPU, intelI5parametersArray));
+	 
+	  productRepository.saveAll(product); }
 	/*
 	 * private void seedAdmin() { List<Admin> admin = List .of(new
 	 * Admin("ViliusAdmin", "viliusAdmin@gmail.com", "svbsdvisbv", "svbsdvisbv",
@@ -126,25 +150,5 @@ public class Observer {
 	 * 
 	 * managerRepository.saveAll(manager); }
 	 * 
-	 * private void seedProduct() { // List<CPUParameters> parameters =
-	 * List.of(CPU_SOCKET,CPU_FREQUENCY); // List<String> parameters = List.of(
-	 * ("CPU_SOCKET = 1200"), ("CPU_CORES = // 16")); ArrayList<String[]>
-	 * intelI3parametersArray = new ArrayList<>(); String[] intelI3CPUparameters = {
-	 * "CPU_SOCKET,", "LGA1200" }; intelI3parametersArray.add(intelI3CPUparameters);
-	 * 
-	 * ArrayList<String[]> intelI5parametersArray = new ArrayList<>(); String[]
-	 * intelI5CPUparameters = { "CPU_SOCKET,", "LGA1700" };
-	 * intelI5parametersArray.add(intelI5CPUparameters);
-	 * 
-	 * List<Product> product = List.of( new Product("i3-10100F", INTEL, "foto.png",
-	 * 67, "Quad Core CPU", CPU, intelI3parametersArray), new Product("RX 6400XT",
-	 * AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu", GPU), new
-	 * Product("GTX 1650 Super", NVIDIA, "foto.png", 220,
-	 * "4 gb gddr6 GTX 1650 Super gpu", GPU), new Product("4gb RAM", GOODRAM,
-	 * "foto.png", 30, "4 gb ddr3 ram", RAM), new Product("IntelI5", INTEL,
-	 * "foto.png", 200, "12 core cpu", CPU), new Product("IntelI7", INTEL,
-	 * "foto.png", 250, "16 core cpu", CPU, intelI5parametersArray));
-	 * 
-	 * productRepository.saveAll(product); }
 	 */
 }
