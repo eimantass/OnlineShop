@@ -8,8 +8,8 @@ class UserService {
     return axios.get(API_URL + 'all');
   }
 
-  getUserBoard() {
-    return axios.get(API_URL + 'users', { headers: authHeader() });
+  getCustomerBoard() {
+    return axios.get(API_URL + 'customer', { headers: authHeader() });
   }
 
   getAllUsers() {
@@ -17,9 +17,13 @@ class UserService {
   }
 
 
-  getModeratorBoard() {
-    return axios.get(API_URL + 'mod', { headers: authHeader() });
+  getManagerBoard() {
+    return axios.get(API_URL + 'manager', { headers: authHeader() });
   }
+  getServiceManagerBoard() {
+    return axios.get(API_URL + 'service-manager', { headers: authHeader() });
+  }
+ 
 
   getAdminBoard() {
     return axios.get(API_URL + 'admin', { headers: authHeader() });
