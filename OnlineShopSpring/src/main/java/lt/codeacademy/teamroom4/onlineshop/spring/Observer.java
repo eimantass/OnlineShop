@@ -47,11 +47,11 @@ public class Observer {
 	// Used to activate seed function
 	@EventListener
 	public void seed(ContextRefreshedEvent event) {
-		seedRole();
-//		seedUserAdmin();
-//		seedUserCustomer();
-//		seedUserManager();
-//		seedUserServiceManager();
+		//seedRole();
+		seedUserAdmin();
+		seedUserCustomer();
+		seedUserManager();
+		seedUserServiceManager();
 	}
 
 	// Seeding users and products
