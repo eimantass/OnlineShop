@@ -119,6 +119,7 @@ public class Observer {
 
 		productRepository.saveAll(product);
 	}
+
 	/*
 	 * private void seedAdmin() { List<Admin> admin = List .of(new
 	 * Admin("ViliusAdmin", "viliusAdmin@gmail.com", "svbsdvisbv", "svbsdvisbv",
