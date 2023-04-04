@@ -53,7 +53,7 @@ public class Observer {
 		seedUserCustomer();
 		seedUserManager();
 		seedUserServiceManager();
-		seedProduct();
+		//seedProduct();
 	}
 
 	// Seeding users and products
