@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -40,9 +42,13 @@ public class Product {
 	private double price;
 	private String description;
 	private Categories category;
-	//@OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+	
 	//@JsonManagedReference
-	@Transient
+	//@Transient
+	//@Column
+	//@ElementCollection()
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	 @JoinColumn(name = "product_id", referencedColumnName = "id")
 	Set<ProductParameters> productParameters = new HashSet<>();
 	
 	//List<String> parameters = new ArrayList<String>();
@@ -73,7 +79,7 @@ public class Product {
 	public Product(Set<ProductParameters> productParameters) {
 		this.productParameters = productParameters;
 	}
-
+	
 	public Set<ProductParameters> getProductParameters() {
 		return productParameters;
 	}
