@@ -52,11 +52,6 @@ public class Observer {
 		seedUserCustomer();
 		seedUserManager();
 		seedUserServiceManager();
-//		seedAdmin();
-//		seedCustomer();
-//		seedServiceManager();
-//		seedManager();
-//		seedProduct();
 	}
 
 	// Seeding users and products
