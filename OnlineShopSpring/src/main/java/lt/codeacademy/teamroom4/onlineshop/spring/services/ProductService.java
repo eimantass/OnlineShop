@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Coupon;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Parameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CategoryRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CouponRepository;
@@ -33,8 +34,8 @@ public class ProductService {
 
 	public List<Product> findAll() {
 		List<Product> products = new ArrayList<Product>();
-		products.add(new Product("Intel i3", INTEL, "thumb1.gif", 120, "Quad Core CPU", CPU));
-		products.add(new Product("Intel i3", INTEL, "thumb2.gif", 300, "Quad Core RAM", RAM));
+		products.add(new Product("Intel i3", INTEL, "thumb1.gif", 120, "Quad Core CPU", CPU, new Parameters("Talpa", "500GB")));
+		products.add(new Product("Intel i3", INTEL, "thumb2.gif", 300, "Quad Core RAM", RAM,new Parameters("Greitis", "3200MHz")));
 		return products;
 	}
 
