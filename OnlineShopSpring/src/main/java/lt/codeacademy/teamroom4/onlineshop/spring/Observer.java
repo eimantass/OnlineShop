@@ -49,11 +49,11 @@ public class Observer {
 	@EventListener
 	public void seed(ContextRefreshedEvent event) {
 		// seedRole();
-		//seedUserAdmin();
-		//seedUserCustomer();
-		//seedUserManager();
-		//seedUserServiceManager();
-		//seedProduct();
+		seedUserAdmin();
+		seedUserCustomer();
+		seedUserManager();
+		seedUserServiceManager();
+		seedProduct();
 	}
 
 	// Seeding users and products
@@ -118,6 +118,7 @@ public class Observer {
 				new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu", GPU),
 				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM),
 				new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", CPU),
+				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList),
 				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList));
 
 		productRepository.saveAll(product);
