@@ -1,22 +1,21 @@
 import React from 'react';
-import './css/footerMenu.css'; // Import your CSS file
+import { Link } from 'react-router-dom';
+import './css/footerMenu.css';
 
 function FooterMenu() {
-    return (
-  <div className='aligner'>
-    {/* Create your footer menu */}
+  return (
+    <div className='aligner'>
       <nav className="footer-menu">
         <ul className="menu">
-
-          <li><a href="/about">Apie mus</a></li>
-          <li><a href="/contacts">Kontaktai</a></li>
-          <li><a href="/terms">Pirkimo/Pardavimo taisyklės</a></li>
-          <li><a href="/shipping">Prekių pristatymas</a></li>
-          <li><a href="/returns">Prekių grąžinimas</a></li>
-          <li><a href="/warranty">Garantinis aptarnavimas</a></li>
-          <li><a href="/privacy">Privatumo politika</a></li>
-          <li><a href="/atsiliepimai">Atsiliepimai</a></li>
-          <li><a href="/help">Pagalba</a></li>
+          <li><Link to="/about">Apie mus</Link></li>
+          <li><Link to="/contacts">Kontaktai</Link></li>
+          <li><Link to="/terms">Pirkimo/Pardavimo taisyklės</Link></li>
+          <li><Link to="/shipping">Prekių pristatymas</Link></li>
+          <li><Link to="/returns">Prekių grąžinimas</Link></li>
+          <li><Link to="/warranty">Garantinis aptarnavimas</Link></li>
+          <li><Link to="/privacy">Privatumo politika</Link></li>
+          <li><Link to="/feedback">Atsiliepimai</Link></li>
+          <li><Link to="/help">Pagalba</Link></li>
         </ul>
       </nav>
     </div>
