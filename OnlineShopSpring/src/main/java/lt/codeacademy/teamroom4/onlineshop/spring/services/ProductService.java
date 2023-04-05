@@ -116,9 +116,9 @@ public class ProductService {
 
 	
 	//galima atsifiltruoti pagal didziausia nuolaida
-	public Product getProductWithBigestDiscount() {
-		return productRepository.findProductWithBiggestDiscount();
-	}
+//	public Product getProductWithBigestDiscount() {
+//		return productRepository.findProductWithBiggestDiscount();
+//	}
 	
 	
 	public List<Product> filterByMaxPrice(Long maxPrice) {

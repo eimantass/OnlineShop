@@ -28,6 +28,6 @@ public class GeneralCartController {
 		}
 		model.addAttribute("categories", productService.getAllCategories());
 		model.addAttribute("brands", productService.getAllBrands());
-		model.addAttribute("featured", productService.getProductWithBigestDiscount());
+		//model.addAttribute("featured", productService.getProductWithBigestDiscount());
 	}
 }

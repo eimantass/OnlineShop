@@ -14,8 +14,4 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	
 	@Query("SELECT DISTINCT brand FROM Product")
 	List<Brands> findAllBrandsDistincts();
-	@Query("SELECT MAX(discount) FROM Product") 
-	Product findProductWithBiggestDiscount();
-	@Query("SELECT * FROM `internetine-parduotuve`.product WHERE Price BETWEEN 100 AND 200")
-	List<Product>  filterProductsByPrice();
 }
