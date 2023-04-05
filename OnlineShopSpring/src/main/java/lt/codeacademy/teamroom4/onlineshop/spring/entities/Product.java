@@ -8,6 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,17 +32,24 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column
 	private String name;
 
-	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	//@JoinColumn(name = "product_id")
-	private Coupon discount;
-	private Brands brand;
+	@JoinColumn(name = "discount")
 
+	private Coupon discount;
+	@Enumerated(EnumType.STRING)
+	@Column
+	private Brands brand;
+	@Column
 	private String photo;
+	@Column
 	private double price;
+	@Column
 	private String description;
+	@Enumerated(EnumType.STRING)
+	@Column
 	private Categories category;
 	
 	//@JsonManagedReference
@@ -62,6 +71,32 @@ public class Product {
 		this.category = categories;
 		
 
+	}
+
+	public Product(Long id, String name, Coupon discount, Brands brand, String photo, double price, String description,
+			Categories category, Set<ProductParameters> productParameters) {
+		this.id = id;
+		this.name = name;
+		this.discount = discount;
+		this.brand = brand;
+		this.photo = photo;
+		this.price = price;
+		this.description = description;
+		this.category = category;
+		this.productParameters = productParameters;
+	}
+
+	public Product(String name, Coupon discount, Brands brand, String photo, double price, String description,
+			Categories category, Set<ProductParameters> productParameters) {
+		super();
+		this.name = name;
+		this.discount = discount;
+		this.brand = brand;
+		this.photo = photo;
+		this.price = price;
+		this.description = description;
+		this.category = category;
+		this.productParameters = productParameters;
 	}
 
 	public Product(String name, Brands brand, String photo, double price, String description,
