@@ -67,7 +67,7 @@ public class HomeController {
 	//Sorts products by name
 	@GetMapping("/products/sort-by-name/{direction}")
 	public List<Product> SortProductsByNameAsc(@PathVariable String direction) {
-		return productService.sortByName(direction);
+		return productService.sortByNameAll(direction);
 	}
 
 	//Sorts products by price
@@ -83,10 +83,13 @@ public class HomeController {
 	}
 	
 	//Filters products by brand
-	@GetMapping("/products/filter-by-brand/{brand}")
-	public List<Product> filterByBrand(@PathVariable Brands brand) {
-		return productService.filterBrand(brand);
-	}
+	
+	//@GetMapping("/products/filter-by-brand/{brand}")
+	//public List<Product> filterByBrand(@PathVariable Brands brand) {
+		//return productService.filterBrand(brand);
+	//}
+	
+	
 	//Filters products by max price
 	
 	@GetMapping("/products/filter-by-max-price/{maxPrice}")
@@ -102,4 +105,5 @@ public class HomeController {
 		return productService.filterByMinAndMaxPrice(minPrice, maxPrice);
 	}
 
+	
 }

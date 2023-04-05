@@ -8,17 +8,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Coupon;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CouponRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.*;
+
 
 @Service
 public class ProductService {
 
 	@Autowired
 	ProductRepository productRepository;
+	
+	@Autowired
+	CouponRepository couponRepository;
+	
+	//@Autowired
+	//CategoryRepository categoryRepository;
 
 	public List<Product> findAll() {
 		List<Product> products = new ArrayList<Product>();
@@ -40,13 +51,29 @@ public class ProductService {
 	public List<Product> getAllProducts() {
 		return productRepository.findAll();
 	}
-
-	// search products
+	
+	//search products
 	public List<Product> searchProductByNameLike(String searchName) {
 		return productRepository.findByNameContainingIgnoreCase(searchName);
 	}
-
-	public List<Product> sortByName(String direction) {
+	
+	
+	public List<Product> sortByNameAll(String direction, List<Product> filteredProducts) {
+		if (direction == "desc") {
+			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
+		} else {
+			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+		}
+	}
+	public List<Product> sortByDiscountAll(String direction) {
+		if (direction == "desc") {
+			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "discount"));
+		} else {
+			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "discount"));
+		}
+		}
+	
+	public List<Product> sortByNameAll(String direction) {
 		if (direction == "desc") {
 			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
 		} else {
@@ -79,24 +106,17 @@ public class ProductService {
 		return productRepository.getById(id);
 	}
 
-	public List<Product> filterBrand(Brands brand) {
-
-		List<Product> allProducts = new ArrayList<Product>();
-		List<Product> filteredProducts = new ArrayList<Product>();
-
-		allProducts.addAll(productRepository.findAll());
-
-		for (long i = 1; i <= allProducts.size(); i++) {
-			// Customer currentCustomer = customerRepository.getById(i);
-			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
-
-			if (currentProduct.getBrand().equals(brand)) {
-				filteredProducts.add(currentProduct);
-			}
-		}
-		// return customerRepository.findById((long) 1);
-		return filteredProducts;
+	public List<Brands> getAllBrands() {
+		return  productRepository.findAllBrandsDistincts();
 	}
+	
+//	public List<Categories> getAllCategories() {
+//		return categoryRepository.findAll();
+//	}
+//	public Product getProductWithBigestDiscount() {
+//		return productRepository.findProductWithBiggestDiscount();
+//	}
+	
 
 	public List<Product> filterByMaxPrice(Long maxPrice) {
 		List<Product> allProducts = new ArrayList<Product>();
@@ -115,7 +135,6 @@ public class ProductService {
 		return filteredProducts;
 
 	}
-
 	public List<Product> filterByMinPrice(Long minPrice) {
 		List<Product> allProducts = new ArrayList<Product>();
 		List<Product> filteredProducts = new ArrayList<Product>();
@@ -133,7 +152,6 @@ public class ProductService {
 		return filteredProducts;
 
 	}
-
 	public List<Product> filterByMinAndMaxPrice(Long minPrice, Long maxPrice) {
 		List<Product> allProducts = new ArrayList<Product>();
 		List<Product> filteredProducts = new ArrayList<Product>();
@@ -144,13 +162,15 @@ public class ProductService {
 			// Customer currentCustomer = customerRepository.getById(i);
 			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
 
-			if ((currentProduct.getPrice() > minPrice) && (currentProduct.getPrice() < maxPrice)) {
+			if ((currentProduct.getPrice() > minPrice) && (currentProduct.getPrice() < maxPrice )) {
 				filteredProducts.add(currentProduct);
 			}
 		}
 		return filteredProducts;
 
 	}
+	
+
 
 	
 
