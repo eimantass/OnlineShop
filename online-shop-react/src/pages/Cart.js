@@ -1,4 +1,3 @@
-import FooterMenu from "../layout/FooterMenu";
 
 export default function Cart() {
     return (

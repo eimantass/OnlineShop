@@ -59,8 +59,23 @@ public class ProductService {
 			return productRepository.findByNameContainingIgnoreCase(searchName);
 	}
 
-
-	public List<Product> sortByName(String direction) {
+	
+	public List<Product> sortByName(String direction, List<Product> filteredProducts) {
+		if (direction == "desc") {
+			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
+		} else {
+			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+		}
+	}
+	public List<Product> sortByDiscountAll(String direction) {
+		if (direction == "desc") {
+			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "discount"));
+		} else {
+			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "discount"));
+		}
+		}
+	
+	public List<Product> sortByNameAll(String direction) {
 		if (direction == "desc") {
 			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
 		} else {
@@ -98,21 +113,14 @@ public class ProductService {
 	public List<Categories> getAllCategories() {
 		return categoryRepository.findAll();
 	}
+
 	
 	//galima atsifiltruoti pagal didziausia nuolaida
 	public Product getProductWithBigestDiscount() {
-		Coupon discount = couponRepository.findMax();
-		List<Product> products = productRepository.findAll();
-		Product featuredProduct = null;
-		for(Product p : products ) {
-			if(p.getDiscount().equals(discount)) {
-				featuredProduct = p;
-				break;
-			}
-		}
-		return featuredProduct;
+		return productRepository.findProductWithBiggestDiscount();
 	}
-
+	
+	
 	public List<Product> filterByMaxPrice(Long maxPrice) {
 		List<Product> allProducts = new ArrayList<Product>();
 		List<Product> filteredProducts = new ArrayList<Product>();
@@ -190,5 +198,5 @@ public class ProductService {
 			return filteredProducts;
 			//return cpuSocket.get(0);
 	}*/
-
 }
+

@@ -12,7 +12,16 @@ import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
-
+// Import CategoriesMenu pages
+import StaliniaiKompiuteriai from "./pages/categoriesMenuPages/staliniai-kompiuteriai";
+import NesiojamiejiKompiuteriai from "./pages/categoriesMenuPages/nesiojamieji-kompiuteriai";
+import KompiuteriuKomponentai from "./pages/categoriesMenuPages/kompiuteriu-komponentai";
+import Monitoriai from "./pages/categoriesMenuPages/monitoriai";
+import Mobilieji from "./pages/categoriesMenuPages/mobilieji";
+import Plansetiniai from "./pages/categoriesMenuPages/plansetiniai";
+import Spausdintuvai from "./pages/categoriesMenuPages/spausdintuvai";
+import Konsoles from "./pages/categoriesMenuPages/konsoles";
+import Zaidimai from "./pages/categoriesMenuPages/zaidimai";
 // Import FooterMenu pages
 import About from "./pages/About";
 import Contacts from "./pages/Contacts";
@@ -139,6 +148,16 @@ class App extends Component {
             <Route path="/user" element={<BoardUser/>} />
             <Route path="/mod" element={<BoardModerator/>} />
             <Route path="/admin" element={<BoardAdmin/>} />
+            {/* Routes to CategoriesMenu pages */}
+            <Route path="/staliniai-kompiuteriai" element={<StaliniaiKompiuteriai/>} />
+            <Route path="/nesiojamieji-kompiuteriai" element={<NesiojamiejiKompiuteriai/>} />
+            <Route path="/kompiuteriu-komponentai" element={<KompiuteriuKomponentai/>} />
+            <Route path="/monitoriai" element={<Monitoriai/>} />
+            <Route path="/mobilieji-telefonai" element={<Mobilieji/>} />
+            <Route path="/plansetiniai-kompiuteriai" element={<Plansetiniai/>} />
+            <Route path="/spausdintuvai" element={<Spausdintuvai/>} />
+            <Route path="/zaidimu-konsoles" element={<Konsoles/>} />
+            <Route path="/zaidimai" element={<Zaidimai/>} />
             {/* Routes to footerMenu pages */}
             <Route path="/about" element={<About/>} />
             <Route path="/contacts" element={<Contacts/>} />
@@ -158,3 +177,4 @@ class App extends Component {
 }
 
 export default App;
+
