@@ -1,17 +1,17 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.dto;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
-
+//DTO
 public class RecordDto {
-	
+	//DTO variables
 	Long id;
 	String name;
 	int amount;
 	double totalPrice;
 	double price;
-	
+	//Constructs empty record
 	public RecordDto() {}
-	
+	//Constructs record with data
 	public RecordDto(CartItem line) {
 		this.id = line.getProduct().getId();
 		this.name = line.getProduct().getName();
@@ -19,7 +19,7 @@ public class RecordDto {
 		this.amount = line.getQuantity();
 		this.totalPrice = line.getSum();
 	}
-
+	// Getters/Setters
 	public Long getId() {
 		return id;
 	}
@@ -59,7 +59,7 @@ public class RecordDto {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
+	//Returns object in string format
 	@Override
 	public String toString() {
 		return "IrasasDto [id=" + id + ", pavadinimas=" + name + ", kiekis=" + amount + ", suma=" + totalPrice

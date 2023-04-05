@@ -14,11 +14,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-
+//This is ShoppingCart entity
 @Entity
 @Table(name = "shoppingcart")
 public class ShoppingCart {
-	
+	//ShoppingCart variables
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
@@ -37,10 +37,11 @@ public class ShoppingCart {
 	
 	String sessionToken;
 	
+	//Constructor
 	public ShoppingCart() {
 		cartItems = new ArrayList<CartItem>();
 	}
-
+	// Getters/Setters
 	public Long getId() {
 		return id;
 	}

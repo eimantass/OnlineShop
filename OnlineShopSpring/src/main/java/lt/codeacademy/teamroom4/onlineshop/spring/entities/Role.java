@@ -10,10 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles;
-
+//This is Roles entity
 @Entity
 @Table(name="roles")
 public class Role {
+	//Roles variables
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -23,14 +24,14 @@ public class Role {
 	private ERoles name;
 	
 
-
+	//Constructors
 	public Role() {
 	}
 
 	public Role(ERoles name) {
 		this.name = name;
 	}
-
+	// Setters/Getters
 	public Integer getId() {
 		return id;
 	}

@@ -20,11 +20,11 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 
-
+//This is an cartItem entity
 @Entity
 @Table(name = "cartitem")
 public class CartItem {
-	
+	//CartItem variables
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
@@ -37,7 +37,7 @@ public class CartItem {
 	@Cascade(CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "product_id" , referencedColumnName = "id")
 	Product product;
-
+	// Getters/Setters
 	public Long getId() {
 		return id;
 	}
@@ -73,12 +73,12 @@ public class CartItem {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
+	//Returns object hash code
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-
+	//Compares to another CartItem
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

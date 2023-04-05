@@ -3,16 +3,16 @@ package lt.codeacademy.teamroom4.onlineshop.spring.dto;
 import java.util.List;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
-
+//DTO
 public class CartDto {
-	
+	//DTO variables
 	Long id;
 	List<RecordDto> records;
-	
+	//Constructing empty CartDto
 	public CartDto() {}
 	
 	
-
+	//Getters and Setters
 	public Long getId() {
 		return id;
 	}
@@ -35,7 +35,7 @@ public class CartDto {
 				.mapToDouble(e -> e.getSuma())
 				.sum();
 	}
-	
+	//Returns total price
 	public String toString() {
 		String answer = "id= " + id + ", suma " + getTotalPrice();
 		if(records == null)

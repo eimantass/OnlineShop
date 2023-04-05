@@ -32,7 +32,7 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
-	
+	//Shows all products
 	@GetMapping("/products")
 	@CrossOrigin(origins = "http://localhost:3000")
 	public String index(ModelMap modelMap) {

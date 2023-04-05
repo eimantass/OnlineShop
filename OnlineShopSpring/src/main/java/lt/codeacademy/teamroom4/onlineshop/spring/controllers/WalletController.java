@@ -59,7 +59,7 @@ public class WalletController {
 		Wallet walletSaved = walletService.createOrUpdate(wallet);
 		return new ResponseEntity<Wallet>(walletSaved, HttpStatus.OK);
 	}
-	
+	//Deletes wallet
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id){
 		walletService.delete(id);

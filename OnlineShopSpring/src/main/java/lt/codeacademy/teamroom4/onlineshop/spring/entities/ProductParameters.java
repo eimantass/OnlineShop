@@ -4,15 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+//This is ProductParameters entity
 @Entity
 public class ProductParameters {
+	//ProductParameters variables
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String description;
-	
+	// Constructors
 	public ProductParameters() {}
 	
 	public ProductParameters(Long id, String name, String description) {
@@ -25,7 +26,7 @@ public class ProductParameters {
 		this.name = name;
 		this.description = description;
 	}
-
+	// Setters/Getters
 	public Long getId() {
 		return id;
 	}
