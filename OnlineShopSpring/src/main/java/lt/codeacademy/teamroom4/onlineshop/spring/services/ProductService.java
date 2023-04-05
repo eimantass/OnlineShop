@@ -57,8 +57,22 @@ public class ProductService {
 		return productRepository.findByNameContainingIgnoreCase(searchName);
 	}
 	
+	public List<Product> sortByName(String direction, List<Product> filteredProducts) {
+		if (direction == "desc") {
+			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
+		} else {
+			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+		}
+	}
+	public List<Product> sortByDiscountAll(String direction) {
+		if (direction == "desc") {
+			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "discount"));
+		} else {
+			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "discount"));
+		}
+		}
 	
-	public List<Product> sortByName(String direction) {
+	public List<Product> sortByNameAll(String direction) {
 		if (direction == "desc") {
 			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
 		} else {
@@ -98,20 +112,11 @@ public class ProductService {
 	public List<Categories> getAllCategories() {
 		return categoryRepository.findAll();
 	}
-	
 	public Product getProductWithBigestDiscount() {
-		Coupon discount = couponRepository.findMax();
-		List<Product> products = productRepository.findAll();
-		Product featuredProduct = null;
-		for(Product p : products ) {
-			if(p.getDiscount().equals(discount)) {
-				featuredProduct = p;
-				break;
-			}
-		}
-		return featuredProduct;
+		return productRepository.findProductWithBiggestDiscount();
 	}
-
+	
+	
 	public List<Product> filterByMaxPrice(Long maxPrice) {
 		List<Product> allProducts = new ArrayList<Product>();
 		List<Product> filteredProducts = new ArrayList<Product>();
@@ -163,28 +168,17 @@ public class ProductService {
 		return filteredProducts;
 
 	}
-	
-	/*public List<Product> filterByCpuSocket(String[] cpuParameters ) {
-		List<Product> allProducts = new ArrayList<Product>();
-		List<Product> filteredProducts = new ArrayList<Product>();
-
-		allProducts.addAll(productRepository.findAll());
-		ArrayList<String[]> cpuSocket = allProducts.get(0).getParameters();
-
-		for (long i = 1; i <= allProducts.size(); i++) {
-			// Customer currentCustomer = customerRepository.getById(i);
-			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
-			//String cpuSockets = currentProduct.getParameters().toString();
-			//System.out.println(cpuSocket);
-			if (cpuSocket.toArray().equals(cpuParameters)) {
-				
-				filteredProducts.add(currentProduct);
-			}
+	/*public Product getProductWithBigestDiscount() {
+	Coupon discount = couponRepository.findMax();
+	List<Product> products = productRepository.findAll();
+	Product featuredProduct = null;
+	for(Product p : products ) {
+		if(p.getDiscount().equals(discount)) {
+			featuredProduct = p;
+			break;
 		}
-		return filteredProducts;
-
-		//return cpuSocket.get(0);
-
 	}
+	return featuredProduct;
+}
 */
 }
