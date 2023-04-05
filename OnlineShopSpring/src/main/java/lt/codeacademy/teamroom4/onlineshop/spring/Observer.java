@@ -46,7 +46,7 @@ public class Observer {
 	private ProductRepository productRepository;
 
 	// Used to activate seed function
-	@EventListener
+	//@EventListener
 	public void seed(ContextRefreshedEvent event) {
 		// seedRole();
 		seedUserAdmin();
