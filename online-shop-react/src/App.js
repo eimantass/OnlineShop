@@ -12,6 +12,7 @@ import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
+import AdminControllMenuAAM from "./pages/AdminControllMenuP";
 
 class App extends Component {
   constructor(props) {
@@ -127,6 +128,7 @@ class App extends Component {
             <Route path="/user" element={<BoardUser />} />
             <Route path="/mod" element={<BoardModerator />} />
             <Route path="/admin" element={<BoardAdmin />} />
+            <Route path="/Controll-panel" element={<AdminControllMenuAAM/>}/>
           </Routes>
         </div>
       </div>
