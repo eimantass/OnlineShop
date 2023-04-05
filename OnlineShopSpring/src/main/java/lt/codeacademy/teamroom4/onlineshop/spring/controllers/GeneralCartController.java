@@ -16,9 +16,6 @@ public class GeneralCartController {
 	@Autowired
 	private CartService cartService;
 	
-	@Autowired
-	private ProductService productService;
-	
 	public void populateModel(Model model, HttpServletRequest request) {
 		String sessionToken = (String) request.getSession(false).getAttribute("sessionToken");
 		if(sessionToken == null) {
