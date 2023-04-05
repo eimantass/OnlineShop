@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/footerMenu.css'; // Import your CSS file
+import './css/FooterMenu.css'; // Import your CSS file
 
 function FooterMenu() {
     return (
