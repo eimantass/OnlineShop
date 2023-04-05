@@ -16,6 +16,9 @@ public class GeneralCartController {
 	@Autowired
 	private CartService cartService;
 	
+	@Autowired
+	private ProductService productService;
+	
 	public void populateModel(Model model, HttpServletRequest request) {
 		String sessionToken = (String) request.getSession(false).getAttribute("sessionToken");
 		if(sessionToken == null) {
@@ -24,5 +27,9 @@ public class GeneralCartController {
 			model.addAttribute("shoppingCart",cartService.getShoppingCartBySessionToken(sessionToken));
 		}
 		
+		model.addAttribute("categories", productService.getAllCategories());
+		model.addAttribute("brands", productService.getAllBrands());
+		model.addAttribute("parameters", productService.getAllParameters());
+		model.addAttribute("featured", productService.getProductWithBigestDiscount());
 	}
 }
