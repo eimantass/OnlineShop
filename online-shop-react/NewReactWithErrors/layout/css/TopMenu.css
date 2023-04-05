@@ -1,0 +1,79 @@
+.logo-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 5px;
+  left: 120px;
+}
+
+/* Center the search bar on page*/
+
+.search-form {
+  margin-top: 50px;
+  margin-left: 380px;
+}
+
+/* Search bar dementions */
+
+.search-form input {
+  width: 500px;
+  height: 20px;
+  padding: 5px;
+}
+
+  /* Search button style */
+
+.search-form button {
+  width: 50px;
+  height: 30px;
+  background-color: rgb(40, 37, 234);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+  margin-left: 5px;
+  transition: background-color 0.3s ease;
+}
+
+  /* Search button style on hover */
+
+.search-form button:hover {
+  background-color: rgb(103, 7, 118);
+}
+
+/* Style the menu */
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    overflow: hidden;
+  }
+  
+  /* Style the menu items */
+  .menu li {
+    float: left;
+  }
+  
+  .menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the background color of the active menu item */
+  .menu li a.active {
+    background-color: #4CAF50;
+  }
+  
+  /* Change the color of the menu item when hovered */
+  .menu li a:hover {
+    background-color: #555;
+  }

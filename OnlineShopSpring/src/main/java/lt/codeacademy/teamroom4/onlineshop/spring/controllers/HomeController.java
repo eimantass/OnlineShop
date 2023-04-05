@@ -102,4 +102,5 @@ public class HomeController {
 		return productService.filterByMinAndMaxPrice(minPrice, maxPrice);
 	}
 
+	
 }
