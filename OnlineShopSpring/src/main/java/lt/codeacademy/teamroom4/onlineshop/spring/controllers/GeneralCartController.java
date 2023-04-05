@@ -26,6 +26,8 @@ public class GeneralCartController {
 		}else {
 			model.addAttribute("shoppingCart",cartService.getShoppingCartBySessionToken(sessionToken));
 		}
-		
+		model.addAttribute("categories", productService.getAllCategories());
+		model.addAttribute("brands", productService.getAllBrands());
+		model.addAttribute("featured", productService.getProductWithBigestDiscount());
 	}
 }
