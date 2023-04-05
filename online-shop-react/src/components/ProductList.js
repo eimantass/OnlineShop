@@ -1,80 +1,50 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import ProductService from "../services/product.service";
 
-class ProductList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      products: [],
-      cart: []
-    };
-    this.handleAddToCart = this.handleAddToCart.bind(this);
-    this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this);
-  }
+function ProductList() {
+  const [products, setProducts] = useState([]);
 
-  componentDidMount() {
-    ProductService.getAllProducts().then(
-      response => {
-        this.setState({
-          products: response.data
-        });
-      },
-      error => {
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await ProductService.getAllProducts();
+        setProducts(response.data);
+      } catch (error) {
         console.log(error);
       }
-    );
-  }
-
-  handleAddToCart(product) {
-    const { cart } = this.state;
-    const existingItem = cart.find(item => item.product.id === product.id);
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
-      cart.push({ product: product, quantity: 1 });
     }
-    this.setState({ cart: cart });
-  }
+    fetchData();
+  }, []);
 
-  handleRemoveFromCart(product) {
-    const { cart } = this.state;
-    const existingItem = cart.find(item => item.product.id === product.id);
-    if (existingItem.quantity > 1) {
-      existingItem.quantity -= 1;
-    } else {
-      const itemIndex = cart.findIndex(item => item.product.id === product.id);
-      cart.splice(itemIndex, 1);
-    }
-    this.setState({ cart: cart });
-  }
-
-  render() {
-    const { products, cart } = this.state;
-    const user = JSON.parse(localStorage.getItem('user'));
-    const isAuthenticated = user && user.accessToken;
-
-    return (
-      <main>
-        <h2 className="center">Products List:</h2>
-        <ul>
-          {products.map(product => (
-            <li key={product.id}>
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
-              <p>Category: {product.category}</p>
-              <p>Price: ${product.price}</p>
-              {isAuthenticated && (
-                <>
-                  <button onClick={() => this.handleAddToCart(product)}>Add to Cart</button>
-                  <button onClick={() => this.handleRemoveFromCart(product)}>Remove from Cart</button>
-                </>
-              )}
-            </li>
-          ))}
-        </ul>
-      </main>
-    );
-  }
+  return (
+    <main>
+      <h2 className="center">Products List:</h2>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>
+            <h3>{product.name}</h3>
+            <img src={product.photo} alt={product.name} />
+            <p>{product.description}</p>
+            <p>Category: {product.category.name}</p>
+            <p>Price: ${product.price}</p>
+            {product.productParameters.length > 0 && (
+              <ul>
+                {product.productParameters.map((parameter) => (
+                  <li key={parameter.id}>
+                    <p>{parameter.name}: {parameter.description}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
 }
 
 export default ProductList;
+
+
+
+
