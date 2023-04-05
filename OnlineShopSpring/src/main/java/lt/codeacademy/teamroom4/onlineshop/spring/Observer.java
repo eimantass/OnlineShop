@@ -102,10 +102,13 @@ public class Observer {
 		userRepository.saveAll(serviceManager);
 	}
 	private void seedCoupons() {
-		Coupon discount1 = new Coupon(10);
-		Coupon discount2 = new Coupon(20);
-		couponRepository.save(discount1);
-		couponRepository.save(discount2);
+		List<Coupon> discountCoupons = List.of(
+				new Coupon(0),
+				new Coupon(10),
+				new Coupon(20));	
+		
+		couponRepository.saveAll(discountCoupons);
+		
 
 	}
 	private void seedProduct() {
@@ -119,13 +122,13 @@ public class Observer {
 		Category gpu = new Category(GPU);
 		List<Coupon> coupons= couponRepository.findAll();
 		List<Product> product = List.of(
-				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", cpu,cpuParameterList,coupons.get(0)),
+				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", cpu,cpuParameterList),
 				new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu", gpu, gpuParameterList,coupons.get(0)),
 				new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu", gpu,gpuParameterList, coupons.get(0)),
 				//new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", cpu,gpuParameterList, coupons.get(0)),
 				//new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", cpu),
 				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", cpu, cpuParameterList,coupons.get(0)),
-				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", cpu, cpuParameterList,coupons.get(1)));
+				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", cpu, cpuParameterList,coupons.get(2)));
 
 		productRepository.saveAll(product);
 	}

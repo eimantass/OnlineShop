@@ -99,7 +99,6 @@ public class Product {
 		this.category = category;
 		this.productParameters = productParameters;
 	}
-
 	public Product(String name, Brands brand, String photo, double price, String description,
 			Category category, Set<ProductParameters> productParameters) {
 		super();
