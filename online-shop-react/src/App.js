@@ -8,6 +8,7 @@ import AuthService from "./services/auth.service";
 import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
+import Cart from "./pages/Cart";
 import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
@@ -100,11 +101,19 @@ class App extends Component {
             )}
 
             {currentUser && (
+              <>
               <li className="nav-item">
                 <Link to={"/user"} className="nav-link">
                   User
                 </Link>
               </li>
+              {/* Logged user can see the cart */}
+              <li className="nav-item">
+                <Link to={"/cart"} className="nav-link">
+                  Cart
+                </Link>
+              </li>
+              </>
             )}
           </div>
 
@@ -143,6 +152,7 @@ class App extends Component {
             <Route path="/" element={<Home/>} />
             <Route path="/home" element={<Home/>} />
             <Route path="/login" element={<Login/>} />
+            <Route path="/cart" element={<Cart/>} />
             <Route path="/register" element={<Register/>} />
             <Route path="/profile" element={<Profile/>} />
             <Route path="/user" element={<BoardUser/>} />
