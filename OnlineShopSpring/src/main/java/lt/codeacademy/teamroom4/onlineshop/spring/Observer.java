@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.config.SecurityConfig;
-
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Category;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ProductParameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
@@ -111,15 +111,17 @@ public class Observer {
 		ProductParameters firstGpu = new ProductParameters("RX 6400XT", "2321 Mhz");
 		gpuParameterList.add(firstGpu);
 		cpuParameterList.add(firstCPU);
+		Category cpu = new Category(CPU);
+		Category gpu = new Category(GPU);
 
 		List<Product> product = List.of(
-				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", CPU),
-				new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu", GPU, gpuParameterList),
-				new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu", GPU),
-				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM),
-				new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", CPU),
-				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList),
-				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList));
+				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", cpu),
+				new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu", gpu, gpuParameterList),
+				new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu", gpu),
+				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", cpu),
+				new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", cpu),
+				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", cpu, cpuParameterList),
+				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", cpu, cpuParameterList));
 
 		productRepository.saveAll(product);
 	}

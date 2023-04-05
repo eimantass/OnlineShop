@@ -48,9 +48,11 @@ public class Product {
 	private double price;
 	@Column
 	private String description;
+	
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "category", referencedColumnName = "id")
 	@Enumerated(EnumType.STRING)
-	@Column
-	private Categories category;
+	private Category category;
 	
 	//@JsonManagedReference
 	//@Transient
@@ -62,7 +64,7 @@ public class Product {
 	
 	//List<String> parameters = new ArrayList<String>();
 
-	public Product(String name,Brands brand,String photo, double price, String description, Categories categories) {
+	public Product(String name,Brands brand,String photo, double price, String description, Category categories) {
 		this.name = name;
 		this.brand = brand;
 		this.photo = photo;
@@ -74,7 +76,7 @@ public class Product {
 	}
 
 	public Product(Long id, String name, Coupon discount, Brands brand, String photo, double price, String description,
-			Categories category, Set<ProductParameters> productParameters) {
+			Category category, Set<ProductParameters> productParameters) {
 		this.id = id;
 		this.name = name;
 		this.discount = discount;
@@ -87,7 +89,7 @@ public class Product {
 	}
 
 	public Product(String name, Coupon discount, Brands brand, String photo, double price, String description,
-			Categories category, Set<ProductParameters> productParameters) {
+			Category category, Set<ProductParameters> productParameters) {
 		super();
 		this.name = name;
 		this.discount = discount;
@@ -100,7 +102,7 @@ public class Product {
 	}
 
 	public Product(String name, Brands brand, String photo, double price, String description,
-			Categories category, Set<ProductParameters> productParameters) {
+			Category category, Set<ProductParameters> productParameters) {
 		super();
 		this.name = name;
 		this.brand = brand;
@@ -168,11 +170,11 @@ public class Product {
 		this.description = description;
 	}
 	
-	public Categories getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 
-	public void setCategory(Categories category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
 
