@@ -19,91 +19,108 @@ import org.springframework.web.servlet.ModelAndView;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.ProductParameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartItemRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.*;
+
 //This class handles functions, which do not require authentication to use
 @RestController
 public class HomeController {
-	//Autowiring services and repositories
+	// Autowiring services and repositories
 
 	@Autowired
 	ProductService productService;
-	
+
 	@Autowired
 	CartItemRepository cartRep;
-	
-	//Shows the main start page
+
+	// Shows the main start page
 	@GetMapping("/")
 	public String startPage() {
 		return "index";
 	}
-	
-	//Shows all products
+
+	// Shows all products
 	@GetMapping("/products")
-	public List<Product> getAllProduct(){
+	public List<Product> getAllProduct() {
 		return productService.getAllProducts();
 	}
-	//Adds customers
-	
-	//Shows cart
+	// Adds customers
+
+	// Shows cart
 	@GetMapping("/cart")
 	public CartItem getCart() {
 		return cartRep.findById(1L).get();
 	}
-	
-	//Searches products by name
+
+	// Searches products by name
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	@ResponseBody
 	public ModelAndView search(@RequestParam("value") String searchName) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("fragments/searchFragment");
 		List<Product> products = productService.searchProductByNameLike(searchName);
-		mv.addObject("products",products);
+		mv.addObject("products", products);
 		return mv;
 	}
-	//Sorts products by name
+
+	// Sorts products by name
 	@GetMapping("/products/sort-by-name/{direction}")
 	public List<Product> SortProductsByNameAsc(@PathVariable String direction) {
 		return productService.sortByNameAll(direction);
 	}
 
-	//Sorts products by price
+	// Sorts products by price
 	@GetMapping("/products/sort-by-price/{direction}")
 	public List<Product> SortProductsByPrice(@PathVariable String direction) {
 		return productService.sortByPriceAll(direction);
 	}
-	
-	//Sorts products by category
+
+	// Sorts products by category
 	@GetMapping("/products/sort-by-category/{direction}")
 	public List<Product> SortProductsByCategoryAsc(@PathVariable String direction) {
 		return productService.sortByCategoryAll(direction);
 	}
-	
-	//Filters products by brand
-	
-	//@GetMapping("/products/filter-by-brand/{brand}")
-	//public List<Product> filterByBrand(@PathVariable Brands brand) {
-		//return productService.filterBrand(brand);
-	//}
-	
-	
-	//Filters products by max price
-	
+
+	// Filters products by brand
+
+	// @GetMapping("/products/filter-by-brand/{brand}")
+	// public List<Product> filterByBrand(@PathVariable Brands brand) {
+	// return productService.filterBrand(brand);
+	// }
+
+	// Filters products by max price
+
 	@GetMapping("/products/filter-by-max-price/{maxPrice}")
 	public List<Product> filterByMaxPrice(@PathVariable Long maxPrice) {
 		return productService.filterByMaxPrice(maxPrice);
 	}
+
 	@GetMapping("/products/filter-by-min-price/{minPrice}")
 	public List<Product> filterByMinPrice(@PathVariable Long minPrice) {
 		return productService.filterByMinPrice(minPrice);
 	}
+
 	@GetMapping("/products/filter-by-both-min-and-max-price/{minPrice}/{maxPrice}")
 	public List<Product> filterByBothMinAndMaxPrice(@PathVariable Long minPrice, @PathVariable Long maxPrice) {
 		return productService.filterByMinAndMaxPrice(minPrice, maxPrice);
 	}
 
-	
+	@GetMapping("/products/get-all-brands")
+	public List<Brands> getAllBrands() {
+		return productService.getAllBrands();
+	}
+
+	@GetMapping("/products/get-all-parameters")
+	public List<ProductParameters> getAllParameters() {
+		return productService.getAllParameters();
+	}
+
+@GetMapping("/products/get-product-with-biggest-discount")
+public Product getProductWithBiggestDiscount() {
+	return productService.getProductWithBigestDiscount();
+	}
 }
