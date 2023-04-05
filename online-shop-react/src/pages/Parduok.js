@@ -7,7 +7,7 @@ import '../css/App.css'
 
 export function Parduok() {
     return (
-      <div className="FooterPlacer">
+      <div>
         <TopMenu/>
         <SeachAndLogo/>
         <h1 style={{textAlign: "center"}}>Parduok page</h1>
