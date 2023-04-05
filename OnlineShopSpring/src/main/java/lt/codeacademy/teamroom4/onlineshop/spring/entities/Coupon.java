@@ -25,6 +25,22 @@ public class Coupon {
 		this.discount = discount;
 	}
 
+	public Coupon() {
+	}
+
+	public Coupon(Long id, int discount) {
+		super();
+		this.id = id;
+		this.discount = discount;
+	}
+
+	public Coupon(Long id, int discount, boolean isDiscount) {
+		super();
+		this.id = id;
+		this.discount = discount;
+		this.isDiscount = isDiscount;
+	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}

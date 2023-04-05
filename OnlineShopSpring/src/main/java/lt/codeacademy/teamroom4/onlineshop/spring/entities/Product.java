@@ -75,8 +75,8 @@ public class Product {
 
 	}
 
-	public Product(Long id, String name, Coupon discount, Brands brand, String photo, double price, String description,
-			Category category, Set<ProductParameters> productParameters) {
+	public Product(Long id, String name, Brands brand, String photo, double price, String description,
+			Category category, Set<ProductParameters> productParameters, Coupon discount) {
 		this.id = id;
 		this.name = name;
 		this.discount = discount;
@@ -88,8 +88,8 @@ public class Product {
 		this.productParameters = productParameters;
 	}
 
-	public Product(String name, Coupon discount, Brands brand, String photo, double price, String description,
-			Category category, Set<ProductParameters> productParameters) {
+	public Product(String name, Brands brand, String photo, double price, String description,
+			Category category, Set<ProductParameters> productParameters, Coupon discount) {
 		super();
 		this.name = name;
 		this.discount = discount;
