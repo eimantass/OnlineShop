@@ -5,7 +5,6 @@ export default function Cart() {
         
         <h1>Krepselis page</h1>
         
-        
       </div>
     );
     

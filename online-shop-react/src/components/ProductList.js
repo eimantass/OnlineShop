@@ -50,6 +50,9 @@ class ProductList extends Component {
 
   render() {
     const { products, cart } = this.state;
+    const user = JSON.parse(localStorage.getItem('user'));
+    const isAuthenticated = user && user.accessToken;
+
     return (
       <main>
         <h2 className="center">Products List:</h2>
@@ -60,8 +63,12 @@ class ProductList extends Component {
               <p>{product.description}</p>
               <p>Category: {product.category}</p>
               <p>Price: ${product.price}</p>
-              <button onClick={() => this.handleAddToCart(product)}>Add to Cart</button>
-              <button onClick={() => this.handleRemoveFromCart(product)}>Remove from Cart</button>
+              {isAuthenticated && (
+                <>
+                  <button onClick={() => this.handleAddToCart(product)}>Add to Cart</button>
+                  <button onClick={() => this.handleRemoveFromCart(product)}>Remove from Cart</button>
+                </>
+              )}
             </li>
           ))}
         </ul>
