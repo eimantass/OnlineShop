@@ -20,6 +20,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ProductParameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CouponRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
@@ -45,7 +46,9 @@ public class Observer {
 
 	@Autowired
 	private ProductRepository productRepository;
-
+	@Autowired
+	private CouponRepository couponRepository;
+	
 	// Used to activate seed function
 	@EventListener
 	public void seed(ContextRefreshedEvent event) {
@@ -54,6 +57,7 @@ public class Observer {
 		seedUserCustomer();
 		seedUserManager();
 		seedUserServiceManager();
+		seedCoupons();
 		seedProduct();
 	}
 
@@ -97,7 +101,13 @@ public class Observer {
 				SecurityConfig.passwordEncoder().encode("serviceManager"), roles));
 		userRepository.saveAll(serviceManager);
 	}
+	private void seedCoupons() {
+		Coupon discount1 = new Coupon(10);
+		Coupon discount2 = new Coupon(20);
+		couponRepository.save(discount1);
+		couponRepository.save(discount2);
 
+	}
 	private void seedProduct() {
 		Set<ProductParameters> cpuParameterList = new HashSet<>();
 		Set<ProductParameters> gpuParameterList = new HashSet<>();
@@ -107,17 +117,15 @@ public class Observer {
 		cpuParameterList.add(firstCPU);
 		Category cpu = new Category(CPU);
 		Category gpu = new Category(GPU);
-		Coupon discount1 = new Coupon(10);
-		Coupon discount2 = new Coupon(20);
-		
+		List<Coupon> coupons= couponRepository.findAll();
 		List<Product> product = List.of(
-				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", cpu,cpuParameterList, discount1),
-				new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu", gpu, gpuParameterList,discount1),
-				new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu", gpu),
-				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", cpu),
-				new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", cpu),
-				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", cpu, cpuParameterList,discount2),
-				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", cpu, cpuParameterList,discount2));
+				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", cpu,cpuParameterList,coupons.get(0)),
+				new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu", gpu, gpuParameterList,coupons.get(0)),
+				new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu", gpu,gpuParameterList, coupons.get(0)),
+				//new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", cpu,gpuParameterList, coupons.get(0)),
+				//new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", cpu),
+				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", cpu, cpuParameterList,coupons.get(0)),
+				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", cpu, cpuParameterList,coupons.get(1)));
 
 		productRepository.saveAll(product);
 	}

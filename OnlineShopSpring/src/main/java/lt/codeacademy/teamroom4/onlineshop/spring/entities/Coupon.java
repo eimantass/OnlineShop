@@ -41,15 +41,10 @@ public class Coupon {
 		this.isDiscount = isDiscount;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 	public int getDiscount() {
 		return discount;
 	}
-	public void setDiscount(int discount) {
-		this.discount = discount;
-	}
+
 	public boolean isDiscount() {
 		if(this.discount != 0)
 			return true;
