@@ -98,29 +98,34 @@ public class HomeController {
 	public List<Product> filterByMaxPrice(@PathVariable Long maxPrice) {
 		return productService.filterByMaxPrice(maxPrice);
 	}
+	// Filters products by min price
 
 	@GetMapping("/products/filter-by-min-price/{minPrice}")
 	public List<Product> filterByMinPrice(@PathVariable Long minPrice) {
 		return productService.filterByMinPrice(minPrice);
 	}
+	// Filters products by both min and max price
 
 	@GetMapping("/products/filter-by-both-min-and-max-price/{minPrice}/{maxPrice}")
 	public List<Product> filterByBothMinAndMaxPrice(@PathVariable Long minPrice, @PathVariable Long maxPrice) {
 		return productService.filterByMinAndMaxPrice(minPrice, maxPrice);
 	}
+	// Gets all brands
 
 	@GetMapping("/products/get-all-brands")
 	public List<Brands> getAllBrands() {
 		return productService.getAllBrands();
 	}
 
+	// Gets all parameters
 	@GetMapping("/products/get-all-parameters")
 	public List<ProductParameters> getAllParameters() {
 		return productService.getAllParameters();
+	}	
+	//Finds product with biggest discount
+	@GetMapping("/products/get-product-with-biggest-discount")
+	public Product getProductWithBiggestDiscount() {
+		return productService.getProductWithBigestDiscount();
 	}
-
-@GetMapping("/products/get-product-with-biggest-discount")
-public Product getProductWithBiggestDiscount() {
-	return productService.getProductWithBigestDiscount();
-	}
+	
 }

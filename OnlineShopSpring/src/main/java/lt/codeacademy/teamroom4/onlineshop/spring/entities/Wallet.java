@@ -13,13 +13,13 @@ import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+//This is Wallet entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class Wallet {
-	
+	//Wallet variables
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -38,7 +38,7 @@ public class Wallet {
 	@Max(3)
 	private Integer priority;
 	private Double currentBalance;
-	
+	// Setters/Getters
 	@PrePersist
 	public void setBalance() {
 		this.currentBalance = new Double(0);
