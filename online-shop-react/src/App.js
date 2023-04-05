@@ -12,6 +12,17 @@ import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
+
+// Import FooterMenu pages
+import About from "./pages/About";
+import Contacts from "./pages/Contacts";
+import Terms from "./pages/Terms";
+import Shipping from "./pages/Shipping";
+import Returns from "./pages/Returns";
+import Warranty from "./pages/Warranty";
+import Privacy from "./pages/Privacy";
+import Feedback from "./pages/Feedback";
+import Help from "./pages/Help";
 import AdminControllMenuAAM from "./pages/AdminControllMenuP";
 
 class App extends Component {
@@ -120,14 +131,24 @@ class App extends Component {
 
         <div className="container mt-3">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/user" element={<BoardUser />} />
-            <Route path="/mod" element={<BoardModerator />} />
-            <Route path="/admin" element={<BoardAdmin />} />
+            <Route path="/" element={<Home/>} />
+            <Route path="/home" element={<Home/>} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/register" element={<Register/>} />
+            <Route path="/profile" element={<Profile/>} />
+            <Route path="/user" element={<BoardUser/>} />
+            <Route path="/mod" element={<BoardModerator/>} />
+            <Route path="/admin" element={<BoardAdmin/>} />
+            {/* Routes to footerMenu pages */}
+            <Route path="/about" element={<About/>} />
+            <Route path="/contacts" element={<Contacts/>} />
+            <Route path="/terms" element={<Terms/>} />
+            <Route path="/shipping" element={<Shipping/>} />
+            <Route path="/returns" element={<Returns/>} />
+            <Route path="/warranty" element={<Warranty/>} />
+            <Route path="/privacy" element={<Privacy/>} />
+            <Route path="/feedback" element={<Feedback/>} />
+            <Route path="/help" element={<Help/>} />
             <Route path="/Controll-panel" element={<AdminControllMenuAAM/>}/>
           </Routes>
         </div>
