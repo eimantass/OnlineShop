@@ -136,7 +136,7 @@ public class ProductService {
 			List<Product> products = productRepository.findAll();
 			Product featuredProduct = null;
 			for(Product p : products) {
-				if(p.getDiscount().equals(discount)) {
+				if(p.getDiscount(). equals(discount)) {
 					featuredProduct = p;
 					break;
 				}
