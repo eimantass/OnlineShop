@@ -58,31 +58,33 @@ public class ProductService {
 	}
 	
 	
-	public List<Product> sortByNameAsc() {
-
-		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+	public List<Product> sortByName(String direction) {
+		if (direction == "desc") {
+			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
+		} else {
+			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+		}
 	}
 
-	public List<Product> sortByNameDesc() {
-		return productRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
-	}
 
-	public List<Product> sortByPriceAsc() {
-		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "price"));
-	}
-
-	public List<Product> sortByPriceDesc() {
+	public List<Product> sortByPriceAll(String direction) {
+		if (direction == "desc") {
 		return productRepository.findAll(Sort.by(Sort.Direction.DESC, "price"));
-	}
 
-	public List<Product> sortByCategoryAsc() {
+		}
+		else {
+		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "price"));
+	}}
+
+	public List<Product> sortByCategoryAll(String direction) {
+
+	if (direction == "desc") {
+			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "category"));
+
+	}
+		else {
 		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "category"));
-
 	}
-
-	public List<Product> sortByCategoryDesc() {
-		return productRepository.findAll(Sort.by(Sort.Direction.DESC, "category"));
-
 	}
 
 	public Product getProductById(Long id) {
