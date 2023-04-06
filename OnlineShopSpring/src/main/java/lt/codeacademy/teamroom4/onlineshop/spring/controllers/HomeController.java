@@ -86,7 +86,6 @@ public class HomeController {
 
 			  }}
 		else if (filterType ==1) {
-			List<Product> filteredProducts =filterByMaxPrice(100) ;
 			
 		//	return productRepository2.findAll();
 		}
@@ -102,23 +101,11 @@ public class HomeController {
 	// }
 
 	// Filters products by max price
-
-	@GetMapping("/products/filter-by-max-price/{maxPrice}/")
-	public List<Product> filterByMaxPrice(@PathVariable int maxPrice) {
-		return productService.filterByMaxPrice(maxPrice);
+	@GetMapping("/products/filter-price/{minPrice}/{maxPrice}")
+	public List<Product> filterByPrice(@PathVariable Long minPrice, @PathVariable Long maxPrice) {
+		return productService.filterByPrice(minPrice, maxPrice);
 	}
-	// Filters products by min price
-
-	@GetMapping("/products/filter-by-min-price/{minPrice}")
-	public List<Product> filterByMinPrice(@PathVariable Long minPrice) {
-		return productService.filterByMinPrice(minPrice);
-	}
-	// Filters products by both min and max price
-
-	@GetMapping("/products/filter-by-both-min-and-max-price/{minPrice}/{maxPrice}")
-	public List<Product> filterByBothMinAndMaxPrice(@PathVariable Long minPrice, @PathVariable Long maxPrice) {
-		return productService.filterByMinAndMaxPrice(minPrice, maxPrice);
-	}
+	
 	// Gets all brands
 
 	@GetMapping("/products/get-all-brands")

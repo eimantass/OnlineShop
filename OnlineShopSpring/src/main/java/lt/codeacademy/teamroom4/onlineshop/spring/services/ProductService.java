@@ -25,41 +25,38 @@ import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.*;
 
-
 @Service
 public class ProductService {
 
 	@Autowired
 	ProductRepository productRepository;
-	
+
 	@Autowired
 	CouponRepository couponRepository;
-	
+
 	@Autowired
 	CategoryRepository categoryRepository;
-	
+
 	@Autowired
 	ProductParameterRepository productParameterRepository;
 
-	
-	
 	public List<Product> sortByNameFiltered(String direction, List<Product> filteredProducts) {
-		
+
 		if (direction == "desc") {
 			return filteredProducts;
 		} else {
 			return filteredProducts;
 		}
 	}
-	
+
 	public List<Product> sortByDiscountAll(String direction) {
 		if (direction == "desc") {
 			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "discount"));
 		} else {
 			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "discount"));
 		}
-		}
-	
+	}
+
 	public List<Product> sortByNameAll(String direction) {
 		if (direction == "desc") {
 			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
@@ -68,91 +65,86 @@ public class ProductService {
 		}
 	}
 
-
 	public List<Product> sortByPriceAll(String direction) {
 		if (direction == "desc") {
-		return productRepository.findAll(Sort.by(Sort.Direction.DESC, "price"));
+			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "price"));
 
+		} else {
+			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "price"));
 		}
-		else {
-		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "price"));
-	}}
+	}
 
 	public List<Product> sortByCategoryAll(String direction) {
 
-	if (direction == "desc") {
+		if (direction == "desc") {
 			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "category"));
 
+		} else {
+			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "category"));
+		}
 	}
-		else {
-		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "category"));
-	}
-	}
+
 	public List<Product> sortByBrandAll(String direction) {
 
 		if (direction == "desc") {
-				return productRepository.findAll(Sort.by(Sort.Direction.DESC, "brand"));
+			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "brand"));
 
-		}
-			else {
+		} else {
 			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "brand"));
 		}
-		}
+	}
 
 	public Product getProductById(Long id) {
 		return productRepository.getById(id);
 	}
-	
-	
-	
-	
-	//gauname visus produktus
+
+	// gauname visus produktus
 	public List<Product> getAllProducts() {
 		return productRepository.findAll();
 	}
-	
-	//slidebar pagal kaina
-	public List<Product> searchByPrice(double min, double max){
+
+	// slidebar pagal kaina
+	public List<Product> searchByPrice(double min, double max) {
 		return productRepository.search(min, max);
 	}
-	
-	//search products
+
+	// search products
 	public List<Product> searchProductByNameLike(String searchName) {
 		return productRepository.findByNameContainingIgnoreCase(searchName);
 	}
 
-	//galima atsifiltruoti pagal branda
+	// galima atsifiltruoti pagal branda
 	public List<Brands> getAllBrands() {
-		return  productRepository.findAllBrandsDistincts();
+		return productRepository.findAllBrandsDistincts();
 	}
-	
-	//galima atsifiltruoti pagal kategorija
+
+	// galima atsifiltruoti pagal kategorija
 	public List<Category> getAllCategories() {
 		return categoryRepository.findAll();
 	}
-	
-	//galima atsifiltruoti pagal parametrus
+
+	// galima atsifiltruoti pagal parametrus
 	public List<ProductParameters> getAllParameters() {
 		return productParameterRepository.findAll();
 	}
-	
-	//galima atsifiltruoti pagal didziausia nuolaida
-		public Product getProductWithBigestDiscount() {
-			Coupon discount = couponRepository.findMax();
-			List<Product> products = productRepository.findAll();
-			Product featuredProduct = null;
-			for(Product p : products) {
-				if(p.getDiscount() != null) {
-				if(p.getDiscount().equals(discount)) {
+
+	// galima atsifiltruoti pagal didziausia nuolaida
+	public Product getProductWithBigestDiscount() {
+		Coupon discount = couponRepository.findMax();
+		List<Product> products = productRepository.findAll();
+		Product featuredProduct = null;
+		for (Product p : products) {
+			if (p.getDiscount() != null) {
+				if (p.getDiscount().equals(discount)) {
 					featuredProduct = p;
 					break;
 				}
-			}}
-			return featuredProduct;
+			}
 		}
-	
+		return featuredProduct;
+	}
 
-	public List<Product> filterByMaxPrice(int maxPrice) {
+	public List<Product> filterByPrice(Long minPrice, Long maxPrice) {
 		List<Product> allProducts = new ArrayList<Product>();
 		List<Product> filteredProducts = new ArrayList<Product>();
 
@@ -161,48 +153,38 @@ public class ProductService {
 		for (long i = 1; i <= allProducts.size(); i++) {
 			// Customer currentCustomer = customerRepository.getById(i);
 			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
-
-			if (currentProduct.getPrice() < maxPrice) {
+			if (minPrice != 0 && maxPrice == 0) {
+				filterByMinPrice(minPrice, filteredProducts, currentProduct);
+			} else if (minPrice != 0 && maxPrice != 0) {
+				FilterByBothMinAndMaxPrice(minPrice, maxPrice, filteredProducts, currentProduct);
+			} 
+			else if(minPrice == 0 && maxPrice != 0) {
+				filterByMaxPrice(minPrice, maxPrice, filteredProducts, currentProduct);
+			}
+			else if(minPrice == 0 && maxPrice == 0) {
 				filteredProducts.add(currentProduct);
 			}
 		}
 		return filteredProducts;
 
 	}
-	public List<Product> filterByMinPrice(Long minPrice) {
-		List<Product> allProducts = new ArrayList<Product>();
-		List<Product> filteredProducts = new ArrayList<Product>();
 
-		allProducts.addAll(productRepository.findAll());
-
-		for (long i = 1; i <= allProducts.size(); i++) {
-			// Customer currentCustomer = customerRepository.getById(i);
-			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
-
-			if (currentProduct.getPrice() > minPrice) {
-				filteredProducts.add(currentProduct);
+	private void filterByMaxPrice(Long minPrice, Long maxPrice, List<Product> filteredProducts,
+			Product currentProduct) {
+		if ((currentProduct.getPrice() > minPrice) && (currentProduct.getPrice() < maxPrice)) {
+			filteredProducts.add(currentProduct);
 			}
-		}
-		return filteredProducts;
-
 	}
-	
-	public List<Product> filterByMinAndMaxPrice(Long minPrice, Long maxPrice) {
-		List<Product> allProducts = new ArrayList<Product>();
-		List<Product> filteredProducts = new ArrayList<Product>();
 
-		allProducts.addAll(productRepository.findAll());
+	private void FilterByBothMinAndMaxPrice(Long minPrice, Long maxPrice, List<Product> filteredProducts,
+			Product currentProduct) {
+		filterByMaxPrice(minPrice, maxPrice, filteredProducts, currentProduct);
+	}
 
-		for (long i = 1; i <= allProducts.size(); i++) {
-			// Customer currentCustomer = customerRepository.getById(i);
-			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
-
-			if ((currentProduct.getPrice() > minPrice) && (currentProduct.getPrice() < maxPrice )) {
-				filteredProducts.add(currentProduct);
-			}
+	private void filterByMinPrice(Long minPrice, List<Product> filteredProducts, Product currentProduct) {
+		if (currentProduct.getPrice() > minPrice) {
+			filteredProducts.add(currentProduct);
 		}
-		return filteredProducts;
-
 	}
 
 }
