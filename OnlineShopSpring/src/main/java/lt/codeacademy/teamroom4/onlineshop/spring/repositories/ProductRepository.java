@@ -2,6 +2,7 @@ package lt.codeacademy.teamroom4.onlineshop.spring.repositories;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,5 +18,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	List<Brands> findAllBrandsDistincts();
 	
 	@Query("from Product where price between :min and :max")
-	List<Product> search(@Param("min") double min, @Param("max") double max);
+	List<Product> search(Sort sort, @Param("min") double min, @Param("max") double max);
 }
