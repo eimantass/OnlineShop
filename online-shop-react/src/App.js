@@ -9,6 +9,7 @@ import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
 import Profile from "./components/profile.component";
+import CustomersListBoard from "./components/board-customerslist.component";
 import CustomerBoard from "./components/board-customer.component";
 import ManagerBoard from "./components/board-manager.component";
 import AdminBoard from "./components/board-admin.component";
@@ -97,13 +98,23 @@ class App extends Component {
                 </Link>
               </li>
             )}
+
+            {currentUser && (
+              <li className="nav-item">
+                <Link to={"/customer"} className="nav-link">
+                CUSTOMER BOARD
+                </Link>
+              </li>
+              
+            )}
            
             {currentUser && (
               <li className="nav-item">
                 <Link to={"/customers"} className="nav-link">
-                CUSTOMER LIST
+                CUSTOMERS LIST
                 </Link>
               </li>
+
             )}
           </div>
 
@@ -144,7 +155,8 @@ class App extends Component {
             <Route path="/login" element={<Login/>} />
             <Route path="/register" element={<Register/>} />
             <Route path="/profile" element={<Profile/>} />
-            <Route path="/customers" element={<CustomerBoard/>} />
+            <Route path="/customers" element={<CustomersListBoard/>} />
+            <Route path="/customer" element={<CustomerBoard/>} />
             <Route path="/manager" element={<ManagerBoard/>} />
             <Route path="/admin" element={<AdminBoard/>} />
             {/* Routes to CategoriesMenu pages */}

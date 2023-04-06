@@ -1,10 +1,15 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +33,33 @@ public class UserAccessController {
 	public List<User> getAllUsers() {
 		return userRepository.findAll();
 	}
+	// Get a single user by ID
+	@GetMapping("/customers/{id}")
+	public User getUserById(@PathVariable Long id) {
+	    return userRepository.findById(id).orElseThrow();
+	}
+	// Update an existing user
+	@PutMapping("/customers/{id}")
+	public User updateUser(@PathVariable Long id, @RequestBody User userRequest) {
+	    return userRepository.findById(id).map(user -> {
+	        user.setUsername(userRequest.getUsername());
+	        user.setEmail(userRequest.getEmail());
+	        user.setPassword(userRequest.getPassword());
+	        user.setNumber(userRequest.getNumber());
+	        user.setMoney(userRequest.getMoney());
+	        user.setRoles(userRequest.getRoles());
+	        return userRepository.save(user);
+	    }).orElseThrow();
+	}
+	//Delete a user by ID
+	@DeleteMapping("/customers/{id}")
+	public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+	    return userRepository.findById(id).map(user -> {
+	        userRepository.delete(user);
+	        return ResponseEntity.ok().build();
+	    }).orElseThrow();
+	}
+	
 	//Shows the content that is visible without logging in
 	@GetMapping("/all")
 	public String allAccess() {

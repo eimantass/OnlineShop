@@ -5,12 +5,31 @@ const API_URL = 'http://localhost:8080/api/user-access/';
 
 class UserService {
 
-  getCustomerBoardMethod() {
-    return axios.get(API_URL + 'customer', { headers: authHeader() });
-  }
-
   getAllCustomersMethod() {
     return axios.get(API_URL + 'customers', { headers: authHeader() });
+  }
+
+  getCustomerByIdMethod(id) {
+    return axios.get(API_URL + 'customers/' + id, { headers: authHeader() });
+  }
+
+  updateCustomerMethod(id, username, email, password, number, money, roles) {
+    return axios.put(API_URL + 'customers/' + id, {
+      username,
+      email,
+      password,
+      number,
+      money,
+      roles
+    }, { headers: authHeader() });
+  }
+
+  deleteCustomerMethod(id) {
+    return axios.delete(API_URL + 'customers/' + id, { headers: authHeader() });
+  }
+
+  getCustomerBoardMethod() {
+    return axios.get(API_URL + 'customer', { headers: authHeader() });
   }
 
   getManagerBoardMethod() {
