@@ -24,37 +24,37 @@ public class UserAccessController {
 	UserRepository userRepository;
 	
 	// Return all usersList
-	@GetMapping("/users")
+	@GetMapping("/customers")
 	public List<User> getAllUsers() {
 		return userRepository.findAll();
 	}
 	//Shows the content that is visible without logging in
 	@GetMapping("/all")
 	public String allAccess() {
-		return "Public Content.";
+		return "This is the Public content from UserAccessController! @GetMapping(\"/all\") ";
 	}
 	//Shows customer board
 	@GetMapping("/customer")
-	@PreAuthorize("hasRole('CUSTOMER') or hasRole('ADMIN') or hasRole('SERVICEMANAGER')" )
+	//@PreAuthorize("hasRole('CUSTOMER') or hasRole('ADMIN') or hasRole('SERVICEMANAGER')" )
 	public String userAccess() {
-	return "Customer Content.";
+	return "This is the CustomerBoard from UserAccessController! @GetMapping(\"/customer\")";
 	}
 	//Shows manager board
 	@GetMapping("/manager")
-	@PreAuthorize("hasRole('MANAGER') or hasRole('ADMIN')")
+	//@PreAuthorize("hasRole('MANAGER') or hasRole('ADMIN')")
 	public String managerAccess() {
-	return "Moderator Board.";
+	return "This is the Manager Board from UserAccessController! @GetMapping(\"/manager\")";
 	}
 	//Show Service Manager board
 	@GetMapping("/service-manager")
-	@PreAuthorize("hasRole('SERVICEMANAGER') or hasRole('ADMIN')")
+	//@PreAuthorize("hasRole('SERVICEMANAGER') or hasRole('ADMIN')")
 	public String serviceManagerAccess() {
-	return "Service Manager Board";
+	return "This is the ServiceManger Board from UserAccessController! @GetMapping(\"/service-manager\")";
 	}
 	//Shows admin board
 	@GetMapping("/admin")
-	@PreAuthorize("hasRole('ADMIN')")
+	//@PreAuthorize("hasRole('ADMIN')")
 	public String adminAccess() {
-		return "Admin Board.";
+		return "This is the Admin Board from UserAccessController! @GetMapping(\"/admin\")";
 	}
 }

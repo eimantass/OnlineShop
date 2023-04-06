@@ -4,24 +4,20 @@ import authHeader from './auth-header';
 const API_URL = 'http://localhost:8080/api/user-access/';
 
 class UserService {
-  getPublicContent() {
-    return axios.get(API_URL + 'all');
+
+  getCustomerBoardMethod() {
+    return axios.get(API_URL + 'customer', { headers: authHeader() });
   }
 
-  getUserBoard() {
-    return axios.get(API_URL + 'users', { headers: authHeader() });
+  getAllCustomersMethod() {
+    return axios.get(API_URL + 'customers', { headers: authHeader() });
   }
 
-  getAllUsers() {
-    return axios.get(API_URL + 'users', { headers: authHeader() });
+  getManagerBoardMethod() {
+    return axios.get(API_URL + 'manager', { headers: authHeader() });
   }
 
-
-  getModeratorBoard() {
-    return axios.get(API_URL + 'mod', { headers: authHeader() });
-  }
-
-  getAdminBoard() {
+  getAdminBoardMethod() {
     return axios.get(API_URL + 'admin', { headers: authHeader() });
   }
 }
