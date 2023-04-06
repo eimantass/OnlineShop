@@ -32,13 +32,6 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
-	//Shows all products
-	@GetMapping("/products")
-	@CrossOrigin(origins = "http://localhost:3000")
-	public String index(ModelMap modelMap) {
-		modelMap.put("product", productService.findAll());
-		return "products/all";
-	}
 	//Finding all products
 	 @GetMapping("/all")
 	public List<Product> getProducts() {
