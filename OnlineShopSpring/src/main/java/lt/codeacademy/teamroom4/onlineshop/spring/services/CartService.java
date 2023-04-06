@@ -38,6 +38,7 @@ public class CartService {
 		cartItem.setProduct(productService.getProductById(id));
 		shoppingCart.getCartItems().add(cartItem);
 		shoppingCart.setSessionToken(sessionToken);
+		shoppingCart.setDate(new Date());
 		return shoppingCartRepository.save(shoppingCart);
 		
 	}
