@@ -1,31 +1,28 @@
 import React, { Component } from "react";
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import UserService from "../services/user.service";
 
-class EditCustomer extends Component {
-  constructor(props) {
-    super(props);
+export default function EditCustomer(props) {
+  const navigate = useNavigate();
 
-    this.state = {
-      id: null,
-      username: "",
-      email: "",
-      password: "",
-      number: "",
-      money: "",
-      roles: [],
-      successful: false,
-      message: ""
-    };
-  }
+  const [state, setState] = React.useState({
+    id: null,
+    username: "",
+    email: "",
+    password: "",
+    number: "",
+    money: "",
+    roles: [],
+    successful: false,
+    message: ""
+  });
 
-  componentDidMount() {
-    const { id } = this.props.match.params;
+  const { id } = props.match.params;
 
+  React.useEffect(() => {
     UserService.getCustomerById(id).then((response) => {
-      const { id, username, email, password, number, money, roles } =
-        response.data;
-      this.setState({
+      const { id, username, email, password, number, money, roles } = response.data;
+      setState({
         id: id,
         username: username,
         email: email,
@@ -35,24 +32,26 @@ class EditCustomer extends Component {
         roles: roles
       });
     });
-  }
+  }, [id]);
 
-  handleInputChange = (event) => {
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
-    this.setState({
+    setState(prevState => ({
+      ...prevState,
       [name]: value
-    });
+    }));
   };
 
-  handleFormSubmit = (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    this.setState({
+    setState(prevState => ({
+      ...prevState,
       message: "",
       successful: false
-    });
+    }));
 
-    const { id, username, email, password, number, money, roles } = this.state;
+    const { id, username, email, password, number, money, roles } = state;
 
     UserService.updateCustomer(id, {
       username: username,
@@ -63,10 +62,12 @@ class EditCustomer extends Component {
       roles: roles
     })
       .then((response) => {
-        this.setState({
+        setState(prevState => ({
+          ...prevState,
           message: response.data.message,
           successful: true
-        });
+        }));
+        navigate(`/customer/${id}`);
       })
       .catch((error) => {
         const message =
@@ -76,53 +77,40 @@ class EditCustomer extends Component {
           error.message ||
           error.toString();
 
-        this.setState({
+        setState(prevState => ({
+          ...prevState,
           successful: false,
           message: message
-        });
+        }));
       });
   };
 
-  render() {
-    const {
-      id,
-      username,
-      email,
-      password,
-      number,
-      money,
-      roles,
-      successful,
-      message
-    } = this.state;
+  const {
+    username,
+    email,
+    password,
+    number,
+    money,
+    roles,
+    successful,
+    message
+  } = state;
 
-    return (
-      <div className="container">
-        <header className="jumbotron">
-          <h3>Edit Customer</h3>
-        </header>
-        {message && (
-          <div
-            className={
-              successful
-                ? "alert alert-success"
-                : "alert alert-danger"
-            }
-            role="alert"
-          >
-            {message}
-          </div>
-        )}
-        <form onSubmit={this.handleFormSubmit}>
+  return (
+    <div className="col-md-12">
+      <div className="card card-container">
+        <h3>Edit Customer</h3>
+        <form onSubmit={handleFormSubmit}>
           <div className="form-group">
             <label htmlFor="username">Username</label>
             <input
               type="text"
               className="form-control"
               id="username"
-              name="username"
+              required
               value={username}
-              onChange={this.handleInputChange}
+              onChange={handleInputChange}
+              name="username"
             />
           </div>
 
@@ -132,9 +120,10 @@ class EditCustomer extends Component {
               type="email"
               className="form-control"
               id="email"
-              name="email"
+              required
               value={email}
-              onChange={this.handleInputChange}
+              onChange={handleInputChange}
+              name="email"
             />
           </div>
 
@@ -144,52 +133,68 @@ class EditCustomer extends Component {
               type="password"
               className="form-control"
               id="password"
-              name="password"
+              required
               value={password}
-              onChange={this.handleInputChange}
+              onChange={handleInputChange}
+              name="password"
             />
           </div>
 
           <div className="form-group">
-        <label htmlFor="number">Number</label>
-        <input
-          type="text"
-          className="form-control"
-          id="number"
-          name="number"
-          value={number}
-          onChange={this.handleInputChange}
-        />
-      </div>
+            <label htmlFor="number">Number</label>
+            <input
+              type="text"
+              className="form-control"
+              id="number"
+              required
+              value={number}
+              onChange={handleInputChange}
+              name="number"
+            />
+          </div>
 
-      <div className="form-group">
-        <label htmlFor="money">Money</label>
-        <input
-          type="number"
-          className="form-control"
-          id="money"
-          name="money"
-          value={money}
-          onChange={this.handleInputChange}
-        />
-      </div>
+          <div className="form-group">
+            <label htmlFor="money">Money</label>
+            <input
+              type="text"
+              className="form-control"
+              id="money"
+              required
+              value={money}
+              onChange={handleInputChange}
+              name="money"
+            />
+          </div>
 
-      <div className="form-group">
-        <label htmlFor="roles">Roles</label>
-        <input
-          type="text"
-          className="form-control"
-          id="roles"
-          name="roles"
-          value={roles}
-          onChange={this.handleInputChange}
-        />
-      </div>
+          <div className="form-group">
+            <label htmlFor="roles">Roles</label>
+            <input
+              type="text"
+              className="form-control"
+              id="roles"
+              required
+              value={roles}
+              onChange={handleInputChange}
+              name="roles"
+            />
+          </div>
 
-      <button className="btn btn-primary">Save Changes</button>
-    </form>
-  </div>
-);
-        }
-    }
-    export default withRouter(EditCustomer);
+          <div className="form-group">
+            <button className="btn btn-primary btn-block">Save Changes</button>
+          </div>
+
+          {message && (
+            <div className="form-group">
+              <div
+                className={successful ? "alert alert-success" : "alert alert-danger"}
+                role="alert"
+              >
+                {message}
+              </div>
+            </div>
+          )}
+        </form>
+      </div>
+    </div>
+  );
+}
