@@ -33,6 +33,9 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	
+	
+	
 	@GetMapping("/products")
 	@CrossOrigin(origins = "http://localhost:3000")
 	public String index(ModelMap modelMap) {

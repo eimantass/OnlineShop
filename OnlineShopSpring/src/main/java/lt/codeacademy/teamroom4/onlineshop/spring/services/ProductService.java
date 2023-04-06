@@ -56,16 +56,6 @@ public class ProductService {
 		}
 		return null;
 	}
-
-	public List<Product> getAllProducts() {
-		return productRepository.findAll();
-	}
-	
-	//search products
-	public List<Product> searchProductByNameLike(String searchName) {
-		return productRepository.findByNameContainingIgnoreCase(searchName);
-	}
-	
 	
 	public List<Product> sortByNameAll(String direction, List<Product> filteredProducts) {
 		if (direction == "desc") {
@@ -113,6 +103,24 @@ public class ProductService {
 
 	public Product getProductById(Long id) {
 		return productRepository.getById(id);
+	}
+	
+	
+	
+	
+	//gauname visus produktus
+	public List<Product> getAllProducts() {
+		return productRepository.findAll();
+	}
+	
+	//slidebar pagal kaina
+	public List<Product> searchByPrice(double min, double max){
+		return productRepository.search(min, max);
+	}
+	
+	//search products
+	public List<Product> searchProductByNameLike(String searchName) {
+		return productRepository.findByNameContainingIgnoreCase(searchName);
 	}
 
 	//galima atsifiltruoti pagal branda
