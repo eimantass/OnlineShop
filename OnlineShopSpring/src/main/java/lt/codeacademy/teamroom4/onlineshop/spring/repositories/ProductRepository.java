@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
@@ -14,4 +15,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	
 	@Query("SELECT DISTINCT brand FROM Product")
 	List<Brands> findAllBrandsDistincts();
+	
+	@Query("from Product where price between :min and :max")
+	List<Product> search(@Param("min") double min, @Param("max") double max);
 }
