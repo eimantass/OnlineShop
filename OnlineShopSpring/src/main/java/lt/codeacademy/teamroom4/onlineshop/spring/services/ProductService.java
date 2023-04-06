@@ -151,7 +151,9 @@ public class ProductService {
 	public List<Product> searchProductByNameLike(String searchName) {
 		return productRepository.findByNameContainingIgnoreCase(searchName);
 	}
-
+	public List<Product> searchProductByCategory(Category category){
+		return productRepository.findAllWithCategory(category);
+	}
 	// galima atsifiltruoti pagal branda
 	public List<Brands> getAllBrands() {
 		return productRepository.findAllBrandsDistincts();

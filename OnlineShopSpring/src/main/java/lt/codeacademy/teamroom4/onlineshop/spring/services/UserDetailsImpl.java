@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
-
+//This class creates new user after registration
 //@Service
 public class UserDetailsImpl implements UserDetails {
 

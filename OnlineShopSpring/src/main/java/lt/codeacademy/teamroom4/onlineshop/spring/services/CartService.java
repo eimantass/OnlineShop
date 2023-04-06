@@ -17,10 +17,10 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.ShoppingCart;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartItemRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepository;
-
+//This class handles cart functions
 @Service
 public class CartService {
-
+	//Autowiring services and repositories
 	@Autowired
 	private ShoppingCartRepository shoppingCartRepository;
 	
@@ -29,7 +29,7 @@ public class CartService {
 	
 	@Autowired
 	private ProductService productService;
-	
+	//Adding first item to the shopping cart
 	public ShoppingCart addShoppingCartFirstTime(Long id, String sessionToken, int quantity) {
 		ShoppingCart shoppingCart = new ShoppingCart();
 		CartItem cartItem = new CartItem();
@@ -41,7 +41,7 @@ public class CartService {
 		return shoppingCartRepository.save(shoppingCart);
 		
 	}
-
+	//Adding items to existing shopping cart
 	public ShoppingCart addToExistingShoppingCart(Long id, String sessionToken, int quantity) {
 		ShoppingCart shoppingCart = shoppingCartRepository.findBySessionToken(sessionToken);
 		Product p = productService.getProductById(id);
@@ -67,17 +67,17 @@ public class CartService {
 		}
 		return this.addShoppingCartFirstTime(id, sessionToken, quantity);
 	}
-
+	//Getting shopping cart by sessionToken
 	public ShoppingCart getShoppingCartBySessionToken(String sessionToken) {
 		return shoppingCartRepository.findBySessionToken(sessionToken);
 	}
-
+	//Updating shopping cart items
 	public CartItem updateShoppingCartItem(Long id, int quantity) {
 		CartItem cartItem = cartItemRepository.findById(id).get();
 		cartItem.setQuantity(quantity);
 		return cartItemRepository.saveAndFlush(cartItem);
 	}
-
+	//Removing item from shopping cart
 	public ShoppingCart removeCartItemFromShoppingCart(Long id, String sessionToken) {
 		ShoppingCart shoppingCart = shoppingCartRepository.findBySessionToken(sessionToken);
 		Set<CartItem> items = (Set<CartItem>) shoppingCart.getCartItems();
@@ -92,7 +92,7 @@ public class CartService {
 		shoppingCart.setCartItems(items);
 		return shoppingCartRepository.save(shoppingCart);
 	}
-
+	//Clearing shopping cart
 	public void clearShoppingCart(String sessionToken) {
 		ShoppingCart sh = shoppingCartRepository.findBySessionToken(sessionToken);
 		shoppingCartRepository.delete(sh);

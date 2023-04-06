@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Category;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ProductParameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartItemRepository;
@@ -137,6 +138,11 @@ public class HomeController {
 	public List<Product> SortProductsByNameAsc(@PathVariable int direction) {
 		return productService.sortByNameAll(direction);
 	}
+	@GetMapping("/products/filter-by-category/{category}")
+	public List<Product> SortProductsByNameAsc(@PathVariable Category category) {
+		return productService.searchProductByCategory(category);
+	}
+	
 	/*
 	 * // Sorts products by price
 	 * 
