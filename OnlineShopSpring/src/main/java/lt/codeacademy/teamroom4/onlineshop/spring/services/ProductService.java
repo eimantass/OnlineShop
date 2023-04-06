@@ -3,6 +3,7 @@ package lt.codeacademy.teamroom4.onlineshop.spring.services;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.Enumerated;
@@ -51,13 +52,15 @@ public class ProductService {
 	}
 	
 	
-	public List<Product> sortByNameAll(String direction, List<Product> filteredProducts) {
+	public List<Product> sortByNameFiltered(String direction, List<Product> filteredProducts) {
+		
 		if (direction == "desc") {
-			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
+			return filteredProducts;
 		} else {
-			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+			return filteredProducts;
 		}
 	}
+	
 	public List<Product> sortByDiscountAll(String direction) {
 		if (direction == "desc") {
 			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "discount"));
@@ -94,6 +97,16 @@ public class ProductService {
 		return productRepository.findAll(Sort.by(Sort.Direction.ASC, "category"));
 	}
 	}
+	public List<Product> sortByBrandAll(String direction) {
+
+		if (direction == "desc") {
+				return productRepository.findAll(Sort.by(Sort.Direction.DESC, "brand"));
+
+		}
+			else {
+			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "brand"));
+		}
+		}
 
 	public Product getProductById(Long id) {
 		return productRepository.getById(id);
@@ -148,7 +161,7 @@ public class ProductService {
 		}
 	
 
-	public List<Product> filterByMaxPrice(Long maxPrice) {
+	public List<Product> filterByMaxPrice(int maxPrice) {
 		List<Product> allProducts = new ArrayList<Product>();
 		List<Product> filteredProducts = new ArrayList<Product>();
 
