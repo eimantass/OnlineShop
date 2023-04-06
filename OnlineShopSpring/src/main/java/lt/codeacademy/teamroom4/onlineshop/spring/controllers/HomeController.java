@@ -21,6 +21,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ProductParameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartItemRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.FilteredProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 
@@ -30,7 +31,7 @@ import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands
 @RestController
 public class HomeController {
 	// Autowiring services and repositories
-
+	
 	@Autowired
 	ProductService productService;
 
@@ -66,25 +67,34 @@ public class HomeController {
 		mv.addObject("products", products);
 		return mv;
 	}
+	//Initial sorting before applying filters
+	@GetMapping("/products/sort-by/{filterType}/{method}/{direction}/{minPrice}/{maxPrice}")
+	public List<Product> SortProductsByName(@PathVariable int filterType, @PathVariable int method,@PathVariable String direction, @PathVariable int minPrice, @PathVariable int maxPrice) {
+		if(filterType ==0) {
+		switch (method) {
+		  case 1:
+			  return productService.sortByNameAll(direction);
+		  case 2:
+			  return productService.sortByPriceAll(direction);
+		  case 3:
+			  return productService.sortByCategoryAll(direction);
+		  case 4:
+			  return productService.sortByDiscountAll(direction);
+		  case 5:
+			  return productService.sortByBrandAll(direction);
+		  default:
+			  return productService.sortByNameAll(direction);
 
-	// Sorts products by name
-	@GetMapping("/products/sort-by-name/{direction}")
-	public List<Product> SortProductsByNameAsc(@PathVariable String direction) {
-		return productService.sortByNameAll(direction);
+			  }}
+		else if (filterType ==1) {
+			List<Product> filteredProducts =filterByMaxPrice(100) ;
+			
+		//	return productRepository2.findAll();
+		}
+		return null;
+		
 	}
-
-	// Sorts products by price
-	@GetMapping("/products/sort-by-price/{direction}")
-	public List<Product> SortProductsByPrice(@PathVariable String direction) {
-		return productService.sortByPriceAll(direction);
-	}
-
-	// Sorts products by category
-	@GetMapping("/products/sort-by-category/{direction}")
-	public List<Product> SortProductsByCategoryAsc(@PathVariable String direction) {
-		return productService.sortByCategoryAll(direction);
-	}
-
+	
 	// Filters products by brand
 
 	// @GetMapping("/products/filter-by-brand/{brand}")
@@ -94,8 +104,8 @@ public class HomeController {
 
 	// Filters products by max price
 
-	@GetMapping("/products/filter-by-max-price/{maxPrice}")
-	public List<Product> filterByMaxPrice(@PathVariable Long maxPrice) {
+	@GetMapping("/products/filter-by-max-price/{maxPrice}/")
+	public List<Product> filterByMaxPrice(@PathVariable int maxPrice) {
 		return productService.filterByMaxPrice(maxPrice);
 	}
 	// Filters products by min price
@@ -129,3 +139,22 @@ public class HomeController {
 	}
 	
 }
+/*
+// Sorts products by name
+@GetMapping("/products/sort-by-name/{direction}")
+public List<Product> SortProductsByNameAsc(@PathVariable String direction) {
+	return productService.sortByNameAll(direction);
+}
+
+// Sorts products by price
+@GetMapping("/products/sort-by-price/{direction}")
+public List<Product> SortProductsByPrice(@PathVariable String direction) {
+	return productService.sortByPriceAll(direction);
+}
+
+// Sorts products by category
+@GetMapping("/products/sort-by-category/{direction}")
+public List<Product> SortProductsByCategoryAsc(@PathVariable String direction) {
+	return productService.sortByCategoryAll(direction);
+}
+*/
