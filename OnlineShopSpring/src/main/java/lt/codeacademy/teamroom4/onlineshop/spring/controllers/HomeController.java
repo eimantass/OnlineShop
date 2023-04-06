@@ -21,7 +21,6 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ProductParameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartItemRepository;
-import lt.codeacademy.teamroom4.onlineshop.spring.repositories.FilteredProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 
