@@ -20,14 +20,14 @@ import javax.validation.constraints.Size;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles;
-
+//This is user entity
 @Entity
 @Table(name = "users", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "username"),
 		@UniqueConstraint(columnNames = "email")
 })
 public class User {
-	
+	//User variables
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -54,7 +54,7 @@ public class User {
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
 	   inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
-	
+	//Cosntructors
 	public User() {}
 
 	public User(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
@@ -106,7 +106,7 @@ public class User {
 		this.money = MoneyGenerator.virtualMoney();
 		this.roles = roles;
 	}
-
+	// Setters/Getters
 	public Long getId() {
 		return id;
 	}

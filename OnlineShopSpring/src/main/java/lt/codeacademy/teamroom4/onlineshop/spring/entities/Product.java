@@ -24,17 +24,17 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
-
+//This is an product entity
 @Entity
-
 @Table(name = "product")
 public class Product {
+	//Product variables
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column
 	private String name;
-
+	
 	@OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "discount")
 	private Coupon discount;
@@ -62,7 +62,9 @@ public class Product {
 	Set<ProductParameters> productParameters = new HashSet<>();
 	
 	//List<String> parameters = new ArrayList<String>();
-
+	//Product constructors
+	public Product() {
+	}
 	public Product(String name,Brands brand,String photo, double price, String description, Category categories) {
 		this.name = name;
 		this.brand = brand;
@@ -110,7 +112,7 @@ public class Product {
 		this.category = category;
 		this.productParameters = productParameters;
 	}
-
+	//Product getters/setters
 	public Product(Set<ProductParameters> productParameters) {
 		this.productParameters = productParameters;
 	}
@@ -123,8 +125,7 @@ public class Product {
 		this.productParameters = productParameters;
 	}
 
-	public Product() {
-	}
+	
 
 	public Long getId() {
 		return id;
@@ -193,7 +194,7 @@ public class Product {
 		this.discount = discount;
 	}
 
-
+	//Returns product values in String
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", photo=" + photo + ", price=" + price + ", description="

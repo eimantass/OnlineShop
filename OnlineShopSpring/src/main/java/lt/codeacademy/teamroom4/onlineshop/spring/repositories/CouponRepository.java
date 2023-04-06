@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Coupon;
-
+//This repository stores and retrieves coupons
 @Repository
 public interface CouponRepository extends JpaRepository<Coupon, Long> {
 	
