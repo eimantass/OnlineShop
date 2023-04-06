@@ -1,47 +1,42 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
+
 import UserService from "../services/user.service";
 
-export default class BoardCustomer extends Component {
-  constructor(props) {
-    super(props);
+export default class CustomerBoard extends Component{
+    constructor(props){
+        super(props);
 
-    this.state = {
-      users: []
-    };
-  }
+        this.state = {
+            content: ""
+        };
+    }
 
-  componentDidMount() {
-    UserService.getAllUsers().then(
-      response => {
-        this.setState({
-          users: response.data
-        });
-      },
-      error => {
-        this.setState({
-          content:
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString()
-        });
-      }
-    );
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <header className="jumbotron">
-          <h3>Users:</h3>
-          <ul>
-            {this.state.users.map(user => (
-              <li key={user.id}>{user.username}</li>
-            ))}
-          </ul>
-        </header>
-      </div>
-    );
-  }
+    componentDidMount(){
+        UserService.getCustomerBoardMethod().then(
+            response => {
+                this.setState({
+                    content: response.data
+                });
+            },
+            error =>{
+                this.setState({
+                    content:
+                    (error.response &&
+                        error.response.data &&
+                        error.response.data.message) ||
+                        error.message ||
+                        error.toString()
+                });
+            }
+        );
+    }
+    render() {
+        return (
+          <div className="container">
+            <header className="jumbotron">
+              <h3>{this.state.content}</h3>
+            </header>
+          </div>
+        );
+    }
 }

@@ -4,24 +4,39 @@ import authHeader from './auth-header';
 const API_URL = 'http://localhost:8080/api/user-access/';
 
 class UserService {
-  getPublicContent() {
-    return axios.get(API_URL + 'all');
+
+  getAllCustomersMethod() {
+    return axios.get(API_URL + 'customers', { headers: authHeader() });
   }
 
-  getUserBoard() {
-    return axios.get(API_URL + 'users', { headers: authHeader() });
+  getCustomerByIdMethod(id) {
+    return axios.get(API_URL + 'customers/' + id, { headers: authHeader() });
   }
 
-  getAllUsers() {
-    return axios.get(API_URL + 'users', { headers: authHeader() });
+  updateCustomerMethod(id, username, email, password, number, money, roles) {
+    return axios.put(API_URL + 'customers/' + id, {
+      username,
+      email,
+      password,
+      number,
+      money,
+      roles
+    }, { headers: authHeader() });
   }
 
-
-  getModeratorBoard() {
-    return axios.get(API_URL + 'mod', { headers: authHeader() });
+  deleteCustomerMethod(id) {
+    return axios.delete(API_URL + 'customers/' + id, { headers: authHeader() });
   }
 
-  getAdminBoard() {
+  getCustomerBoardMethod() {
+    return axios.get(API_URL + 'customer', { headers: authHeader() });
+  }
+
+  getManagerBoardMethod() {
+    return axios.get(API_URL + 'manager', { headers: authHeader() });
+  }
+
+  getAdminBoardMethod() {
     return axios.get(API_URL + 'admin', { headers: authHeader() });
   }
 }

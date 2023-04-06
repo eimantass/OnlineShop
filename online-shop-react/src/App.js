@@ -9,9 +9,10 @@ import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
 import Profile from "./components/profile.component";
-import BoardUser from "./components/board-user.component";
-import BoardModerator from "./components/board-moderator.component";
-import BoardAdmin from "./components/board-admin.component";
+import CustomersListBoard from "./components/board-customerslist.component";
+import CustomerBoard from "./components/board-customer.component";
+import ManagerBoard from "./components/board-manager.component";
+import AdminBoard from "./components/board-admin.component";
 // Import CategoriesMenu pages
 import StaliniaiKompiuteriai from "./pages/categoriesMenuPages/staliniai-kompiuteriai";
 import NesiojamiejiKompiuteriai from "./pages/categoriesMenuPages/nesiojamieji-kompiuteriai";
@@ -32,7 +33,6 @@ import Warranty from "./pages/Warranty";
 import Privacy from "./pages/Privacy";
 import Feedback from "./pages/Feedback";
 import Help from "./pages/Help";
-import AdminControllMenuAAM from "./pages/AdminControllMenuP";
 
 class App extends Component {
   constructor(props) {
@@ -40,7 +40,7 @@ class App extends Component {
     this.logOut = this.logOut.bind(this);
 
     this.state = {
-      showModeratorBoard: false,
+      showManagerBoard: false,
       showAdminBoard: false,
       currentUser: undefined,
     };
@@ -52,8 +52,8 @@ class App extends Component {
     if (user) {
       this.setState({
         currentUser: user,
-        showModeratorBoard: user.roles.includes("ROLE_MODERATOR"),
-        showAdminBoard: user.roles.includes("ROLE_ADMIN"),
+        showManagerBoard: user.roles.includes("MANAGER", "SERVICEMANAGER"),
+        showAdminBoard: user.roles.includes("ADMIN"),
       });
     }
   }
@@ -61,14 +61,14 @@ class App extends Component {
   logOut() {
     AuthService.logout();
     this.setState({
-      showModeratorBoard: false,
+      showManagerBoard: false,
       showAdminBoard: false,
       currentUser: undefined,
     });
   }
 
   render() {
-    const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
+    const { currentUser, showManagerBoard, showAdminBoard } = this.state;
 
     return (
       <div>
@@ -83,10 +83,10 @@ class App extends Component {
               </Link>
             </li>
 
-            {showModeratorBoard && (
+            {showManagerBoard && (
               <li className="nav-item">
-                <Link to={"/mod"} className="nav-link">
-                  Moderator Board
+                <Link to={"/manager"} className="nav-link">
+                  Manager Board
                 </Link>
               </li>
             )}
@@ -98,13 +98,23 @@ class App extends Component {
                 </Link>
               </li>
             )}
+
+            {currentUser && (
+              <li className="nav-item">
+                <Link to={"/customer"} className="nav-link">
+                CUSTOMER BOARD
+                </Link>
+              </li>
+              
+            )}
            
             {currentUser && (
               <li className="nav-item">
-                <Link to={"/user"} className="nav-link">
-                {currentUser.roles} Board
+                <Link to={"/customers"} className="nav-link">
+                CUSTOMERS LIST
                 </Link>
               </li>
+
             )}
           </div>
 
@@ -145,9 +155,10 @@ class App extends Component {
             <Route path="/login" element={<Login/>} />
             <Route path="/register" element={<Register/>} />
             <Route path="/profile" element={<Profile/>} />
-            <Route path="/user" element={<BoardUser/>} />
-            <Route path="/mod" element={<BoardModerator/>} />
-            <Route path="/admin" element={<BoardAdmin/>} />
+            <Route path="/customers" element={<CustomersListBoard/>} />
+            <Route path="/customer" element={<CustomerBoard/>} />
+            <Route path="/manager" element={<ManagerBoard/>} />
+            <Route path="/admin" element={<AdminBoard/>} />
             {/* Routes to CategoriesMenu pages */}
             <Route path="/staliniai-kompiuteriai" element={<StaliniaiKompiuteriai/>} />
             <Route path="/nesiojamieji-kompiuteriai" element={<NesiojamiejiKompiuteriai/>} />
@@ -168,7 +179,6 @@ class App extends Component {
             <Route path="/privacy" element={<Privacy/>} />
             <Route path="/feedback" element={<Feedback/>} />
             <Route path="/help" element={<Help/>} />
-            <Route path="/Controll-panel" element={<AdminControllMenuAAM/>}/>
           </Routes>
         </div>
       </div>

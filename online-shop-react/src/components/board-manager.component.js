@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 import UserService from "../services/user.service";
 
-export default class BoardManager extends Component{
+export default class ManagerBoard extends Component{
     constructor(props){
         super(props);
 
@@ -12,7 +12,7 @@ export default class BoardManager extends Component{
     }
 
     componentDidMount(){
-        UserService.getManagerBoard().then(
+        UserService.getManagerBoardMethod().then(
             response => {
                 this.setState({
                     content: response.data
