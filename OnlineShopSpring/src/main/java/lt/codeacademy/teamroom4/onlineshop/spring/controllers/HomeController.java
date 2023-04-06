@@ -30,7 +30,7 @@ import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands
 @RestController
 public class HomeController {
 	// Autowiring services and repositories
-	
+
 	@Autowired
 	ProductService productService;
 
@@ -66,33 +66,39 @@ public class HomeController {
 		mv.addObject("products", products);
 		return mv;
 	}
-	//Initial sorting before applying filters
-	@GetMapping("/products/sort-by/{filterType}/{method}/{direction}/{minPrice}/{maxPrice}")
-	public List<Product> SortProductsByName(@PathVariable int filterType, @PathVariable int method,@PathVariable String direction, @PathVariable int minPrice, @PathVariable int maxPrice) {
-		if(filterType ==0) {
-		switch (method) {
-		  case 1:
-			  return productService.sortByNameAll(direction);
-		  case 2:
-			  return productService.sortByPriceAll(direction);
-		  case 3:
-			  return productService.sortByCategoryAll(direction);
-		  case 4:
-			  return productService.sortByDiscountAll(direction);
-		  case 5:
-			  return productService.sortByBrandAll(direction);
-		  default:
-			  return productService.sortByNameAll(direction);
 
-			  }}
-		else if (filterType ==1) {
+	// Initial sorting before applying filters
+	// http://localhost:8080/products/sort-by/filter/0/sorting-method/1/direction/1/min-price/0/maxPrice/100
+	@GetMapping("/products/sort-by/filter/{filterType}/sorting-method/{sortingMethod}/direction/{direction}/min-price/{minPrice}/maxPrice/{maxPrice}")
+	public List<Product> SortProductsByName(@PathVariable int filterType, @PathVariable int sortingMethod,
+			@PathVariable int direction, @PathVariable int minPrice, @PathVariable int maxPrice) {
+		if (filterType == 0) {
+			switch (sortingMethod) {
+			case 1:
+				return productService.sortByNameAll(direction);
+
+			case 2:
+				return productService.sortByPriceAll(direction);
+			case 3:
+				return productService.sortByCategoryAll(direction);
+			case 4:
+				return productService.sortByDiscountAll(direction);
+			case 5:
+				return productService.sortByBrandAll(direction);
+
+			default:
+				return productService.sortByNameAll(direction);
+
+			}
+		} else if (filterType == 1) {
 			
-		//	return productRepository2.findAll();
+			return productService.searchByPrice(minPrice, maxPrice,direction,sortingMethod);
+			// return productRepository2.findAll();
 		}
 		return null;
-		
+
 	}
-	
+
 	// Filters products by brand
 
 	// @GetMapping("/products/filter-by-brand/{brand}")
@@ -101,11 +107,11 @@ public class HomeController {
 	// }
 
 	// Filters products by max price
-	@GetMapping("/products/filter-price/{minPrice}/{maxPrice}")
-	public List<Product> filterByPrice(@PathVariable Long minPrice, @PathVariable Long maxPrice) {
-		return productService.filterByPrice(minPrice, maxPrice);
-	}
-	
+	/*
+	 * @GetMapping("/products/filter-price/{minPrice}/{maxPrice}") public
+	 * List<Product> filterByPrice(@PathVariable int minPrice, @PathVariable int
+	 * maxPrice) { return productService.filterByPrice(minPrice, maxPrice); }
+	 */
 	// Gets all brands
 
 	@GetMapping("/products/get-all-brands")
@@ -117,30 +123,32 @@ public class HomeController {
 	@GetMapping("/products/get-all-parameters")
 	public List<ProductParameters> getAllParameters() {
 		return productService.getAllParameters();
-	}	
-	//Finds product with biggest discount
+	}
+
+	// Finds product with biggest discount
 	@GetMapping("/products/get-product-with-biggest-discount")
 	public Product getProductWithBiggestDiscount() {
 		return productService.getProductWithBigestDiscount();
 	}
-	
-}
-/*
+
+//}
+
 // Sorts products by name
-@GetMapping("/products/sort-by-name/{direction}")
-public List<Product> SortProductsByNameAsc(@PathVariable String direction) {
-	return productService.sortByNameAll(direction);
+	@GetMapping("/products/sort-by-name/{direction}")
+	public List<Product> SortProductsByNameAsc(@PathVariable int direction) {
+		return productService.sortByNameAll(direction);
+	}
+	/*
+	 * // Sorts products by price
+	 * 
+	 * @GetMapping("/products/sort-by-price/{direction}") public List<Product>
+	 * SortProductsByPrice(@PathVariable String direction) { return
+	 * productService.sortByPriceAll(direction); }
+	 * 
+	 * // Sorts products by category
+	 * 
+	 * @GetMapping("/products/sort-by-category/{direction}") public List<Product>
+	 * SortProductsByCategoryAsc(@PathVariable String direction) { return
+	 * productService.sortByCategoryAll(direction); }
+	 */
 }
-
-// Sorts products by price
-@GetMapping("/products/sort-by-price/{direction}")
-public List<Product> SortProductsByPrice(@PathVariable String direction) {
-	return productService.sortByPriceAll(direction);
-}
-
-// Sorts products by category
-@GetMapping("/products/sort-by-category/{direction}")
-public List<Product> SortProductsByCategoryAsc(@PathVariable String direction) {
-	return productService.sortByCategoryAll(direction);
-}
-*/

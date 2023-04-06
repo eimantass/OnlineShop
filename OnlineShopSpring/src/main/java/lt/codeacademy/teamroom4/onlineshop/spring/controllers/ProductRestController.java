@@ -26,7 +26,7 @@ public class ProductRestController {
 					headers = {"Accept=application/json"})
 	public ResponseEntity<List<Product>> search(@PathVariable("min") double min, @PathVariable("max") double max ){
 		try {
-			List<Product> products = productService.searchByPrice(min, max);
+			List<Product> products = productService.searchByPrice(min, max, 0, 0);
 			return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
 		}catch(Exception e) {
 			return new ResponseEntity<List<Product>>(HttpStatus.BAD_REQUEST);
