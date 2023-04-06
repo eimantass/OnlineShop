@@ -91,7 +91,6 @@ public class HomeController {
 
 			}
 		} else if (filterType == 1) {
-			
 			return productService.searchByPrice(minPrice, maxPrice,direction,sortingMethod);
 			// return productRepository2.findAll();
 		}
