@@ -34,7 +34,7 @@ public class Product {
 	private Long id;
 	@Column
 	private String name;
-	
+	@Enumerated(EnumType.STRING)
 	@OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "discount")
 	private Coupon discount;
@@ -47,10 +47,9 @@ public class Product {
 	private double price;
 	@Column
 	private String description;
-	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "category", referencedColumnName = "id")
 	@Enumerated(EnumType.STRING)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "category", referencedColumnName = "name")
 	private Category category;
 	
 	//@JsonManagedReference
