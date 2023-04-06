@@ -41,15 +41,6 @@ public class ProductService {
 	@Autowired
 	ProductParameterRepository productParameterRepository;
 
-
-	public List<Product> getAllProducts() {
-		return productRepository.findAll();
-	}
-	
-	//search products
-	public List<Product> searchProductByNameLike(String searchName) {
-		return productRepository.findByNameContainingIgnoreCase(searchName);
-	}
 	
 	
 	public List<Product> sortByNameFiltered(String direction, List<Product> filteredProducts) {
