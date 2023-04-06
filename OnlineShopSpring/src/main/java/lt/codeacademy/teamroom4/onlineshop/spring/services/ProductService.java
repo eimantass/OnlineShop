@@ -96,6 +96,13 @@ public class ProductService {
 
 	// slidebar pagal kaina
 	public List<Product> searchByPrice(double min, double max, int direction, int sortingMethod) {
+		if(max <= 0) {
+		max = Integer.MAX_VALUE;
+		}
+		return sortingPlusPriceFiltering(min, max, direction, sortingMethod);
+	}
+
+	private List<Product> sortingPlusPriceFiltering(double min, double max, int direction, int sortingMethod) {
 		switch (sortingMethod) {
 		case 1:
 			if (direction == 1) {
@@ -106,14 +113,14 @@ public class ProductService {
 			}
 
 		case 2:
-			if (direction == 2) {
+			if (direction == 1) {
 				return productRepository.search(Sort.by(Sort.Direction.DESC, "price"), min, max);
 			} else {
 				return productRepository.search(Sort.by(Sort.Direction.ASC, "price"), min, max);
 
 			}
 		case 3:
-			if (direction == 3) {
+			if (direction == 1) {
 				return productRepository.search(Sort.by(Sort.Direction.DESC, "category"), min, max);
 			} else {
 				return productRepository.search(Sort.by(Sort.Direction.ASC, "category"), min, max);
@@ -121,7 +128,7 @@ public class ProductService {
 			}
 			
 		case 4:
-			if (direction == 4) {
+			if (direction == 1) {
 				return productRepository.search(Sort.by(Sort.Direction.DESC, "discount"), min, max);
 			} else {
 				return productRepository.search(Sort.by(Sort.Direction.ASC, "discount"), min, max);
@@ -129,7 +136,7 @@ public class ProductService {
 			}
 			
 		case 5:
-			if (direction == 5) {
+			if (direction == 1) {
 				return productRepository.search(Sort.by(Sort.Direction.DESC, "brand"), min, max);
 			} else {
 				return productRepository.search(Sort.by(Sort.Direction.ASC, "brand"), min, max);
