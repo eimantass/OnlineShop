@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Route, Link, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -13,6 +13,7 @@ import CustomersListBoard from "./components/board-customerslist.component";
 import CustomerBoard from "./components/board-customer.component";
 import ManagerBoard from "./components/board-manager.component";
 import AdminBoard from "./components/board-admin.component";
+import EditCustomer from "./components/EditCustomer";
 // Import CategoriesMenu pages
 import StaliniaiKompiuteriai from "./pages/categoriesMenuPages/staliniai-kompiuteriai";
 import NesiojamiejiKompiuteriai from "./pages/categoriesMenuPages/nesiojamieji-kompiuteriai";
@@ -33,6 +34,7 @@ import Warranty from "./pages/Warranty";
 import Privacy from "./pages/Privacy";
 import Feedback from "./pages/Feedback";
 import Help from "./pages/Help";
+import { Switch } from "react-router";
 
 class App extends Component {
   constructor(props) {
@@ -71,6 +73,8 @@ class App extends Component {
     const { currentUser, showManagerBoard, showAdminBoard } = this.state;
 
     return (
+      <>
+      
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <Link to={"/"} className="navbar-brand">
@@ -149,39 +153,41 @@ class App extends Component {
         </nav>
 
         <div className="container mt-3">
-          <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/home" element={<Home/>} />
-            <Route path="/login" element={<Login/>} />
-            <Route path="/register" element={<Register/>} />
-            <Route path="/profile" element={<Profile/>} />
-            <Route path="/customers" element={<CustomersListBoard/>} />
-            <Route path="/customer" element={<CustomerBoard/>} />
-            <Route path="/manager" element={<ManagerBoard/>} />
-            <Route path="/admin" element={<AdminBoard/>} />
-            {/* Routes to CategoriesMenu pages */}
-            <Route path="/staliniai-kompiuteriai" element={<StaliniaiKompiuteriai/>} />
-            <Route path="/nesiojamieji-kompiuteriai" element={<NesiojamiejiKompiuteriai/>} />
-            <Route path="/kompiuteriu-komponentai" element={<KompiuteriuKomponentai/>} />
-            <Route path="/monitoriai" element={<Monitoriai/>} />
-            <Route path="/mobilieji-telefonai" element={<Mobilieji/>} />
-            <Route path="/plansetiniai-kompiuteriai" element={<Plansetiniai/>} />
-            <Route path="/spausdintuvai" element={<Spausdintuvai/>} />
-            <Route path="/zaidimu-konsoles" element={<Konsoles/>} />
-            <Route path="/zaidimai" element={<Zaidimai/>} />
-            {/* Routes to footerMenu pages */}
-            <Route path="/about" element={<About/>} />
-            <Route path="/contacts" element={<Contacts/>} />
-            <Route path="/terms" element={<Terms/>} />
-            <Route path="/shipping" element={<Shipping/>} />
-            <Route path="/returns" element={<Returns/>} />
-            <Route path="/warranty" element={<Warranty/>} />
-            <Route path="/privacy" element={<Privacy/>} />
-            <Route path="/feedback" element={<Feedback/>} />
-            <Route path="/help" element={<Help/>} />
-          </Routes>
+        <Routes>
+    <Route exact path="/" element={<Home />} />
+    <Route path="/home" element={<Home />} />
+    <Route path="/login" element={<Login/>} />
+    <Route path="/register" element={<Register/>} />
+    <Route path="/profile" element={<Profile/>} />
+    <Route path="/customers" element={<CustomersListBoard/>} />
+    <Route path="/customer" element={<CustomerBoard/>} />
+    <Route path="/manager" element={<ManagerBoard/>} />
+    <Route path="/admin" element={<AdminBoard/>} />
+    <Route path="/edit-customer/:id" element={<EditCustomer/>} />
+    {/* Routes to CategoriesMenu pages */}
+    <Route path="/staliniai-kompiuteriai" element={<StaliniaiKompiuteriai/>} />
+    <Route path="/nesiojamieji-kompiuteriai" element={<NesiojamiejiKompiuteriai/>} />
+    <Route path="/kompiuteriu-komponentai" element={<KompiuteriuKomponentai/>} />
+    <Route path="/monitoriai" element={<Monitoriai/>} />
+    <Route path="/mobilieji-telefonai" element={<Mobilieji/>} />
+    <Route path="/plansetiniai-kompiuteriai" element={<Plansetiniai/>} />
+    <Route path="/spausdintuvai" element={<Spausdintuvai/>} />
+    <Route path="/zaidimu-konsoles" element={<Konsoles/>} />
+    <Route path="/zaidimai" element={<Zaidimai/>} />
+    {/* Routes to footerMenu pages */}
+    <Route path="/about" element={<About/>} />
+    <Route path="/contacts" element={<Contacts/>} />
+    <Route path="/terms" element={<Terms/>} />
+    <Route path="/shipping" element={<Shipping/>} />
+    <Route path="/returns" element={<Returns/>} />
+    <Route path="/warranty" element={<Warranty/>} />
+    <Route path="/privacy" element={<Privacy/>} />
+    <Route path="/feedback" element={<Feedback/>} />
+    <Route path="/help" element={<Help/>} />
+    </Routes>
         </div>
       </div>
+      </>
     );
   }
 }

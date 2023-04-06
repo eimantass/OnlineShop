@@ -16,9 +16,29 @@ function ProductList() {
     fetchData();
   }, []);
 
+  const handleAddProduct = async () => {
+    try {
+      const newProduct = { name: "New Product", price: 0 };
+      const response = await ProductService.createProduct(newProduct);
+      setProducts([...products, response.data]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleRemoveProduct = async (id) => {
+    try {
+      await ProductService.deleteProduct(id);
+      setProducts(products.filter((product) => product.id !== id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <main>
       <h2 className="center">Products List:</h2>
+      <button onClick={handleAddProduct}>Add Product</button>
       <ul>
         {products.map((product) => (
           <li key={product.id}>
@@ -31,11 +51,16 @@ function ProductList() {
               <ul>
                 {product.productParameters.map((parameter) => (
                   <li key={parameter.id}>
-                    <p>{parameter.name}: {parameter.description}</p>
+                    <p>
+                      {parameter.name}: {parameter.description}
+                    </p>
                   </li>
                 ))}
               </ul>
             )}
+            <button onClick={() => handleRemoveProduct(product.id)}>
+              Remove
+            </button>
           </li>
         ))}
       </ul>
