@@ -50,7 +50,7 @@ public class Observer {
 	private CouponRepository couponRepository;
 	
 	// Used to activate seed function
-	@EventListener
+	//@EventListener
 	public void seed(ContextRefreshedEvent event) {
 		// seedRole();
 		seedUserAdmin();
