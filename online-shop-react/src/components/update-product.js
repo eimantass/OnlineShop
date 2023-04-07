@@ -4,25 +4,24 @@ import ProductService from "../services/product.service";
 
 function UpdateProduct() {
   const { id } = useParams();
-  const [product, setProduct] = useState({
-    name: "",
-    price: "",
-    description: "",
-    discount: "",
-    photo: "",
-  });
+  const [product, setProduct] = useState({});
+  const [categories, setCategories] = useState([]);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       try {
-        const response = await ProductService.getProductById(id);
-        setProduct(response.data);
+        const [productResponse, categoriesResponse] = await Promise.all([
+          ProductService.getProductById(id),
+          ProductService.getCategories(),
+        ]);
+        setProduct(productResponse.data);
+        setCategories(categoriesResponse.data);
       } catch (error) {
         console.log(error);
       }
-    }
+    };
     fetchData();
   }, [id]);
 
@@ -36,9 +35,12 @@ function UpdateProduct() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     try {
-      await ProductService.updateProduct(id, product);
+      const { id, category, ...productData } = product;
+      const existingCategory = await ProductService.getCategories(category.id);
+      const updatedProduct = { ...productData, category: existingCategory };
+      await ProductService.updateProduct(id, updatedProduct);
       setMessage("The product was updated successfully!");
       navigate("/home");
     } catch (error) {
@@ -53,48 +55,69 @@ function UpdateProduct() {
       {message && <p>{message}</p>}
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Name:</label>
+          <label htmlFor="name">Name:</label>
           <input
+            id="name"
             type="text"
             name="name"
-            value={product.name}
+            value={product.name || ''}
             onChange={handleInputChange}
           />
         </div>
         <div>
-          <label>Price:</label>
+          <label htmlFor="price">Price:</label>
           <input
+            id="price"
             type="number"
             name="price"
-            value={product.price}
+            value={product.price || ''}
             onChange={handleInputChange}
           />
         </div>
         <div>
-          <label>Description:</label>
+          <label htmlFor="description">Description:</label>
           <textarea
+            id="description"
             name="description"
-            value={product.description}
+            value={product.description || ''}
             onChange={handleInputChange}
           ></textarea>
         </div>
         <div>
-          <label>Discount:</label>
+          <label htmlFor="discount">Discount:</label>
           <input
+            id="discount"
             type="number"
             name="discount"
-            value={product.discount}
+            value={product.discount || ''}
             onChange={handleInputChange}
           />
         </div>
         <div>
-          <label>Photo:</label>
+          <label htmlFor="photo">Photo:</label>
           <input
+            id="photo"
             type="text"
             name="photo"
-            value={product.photo}
+            value={product.photo || ''}
             onChange={handleInputChange}
           />
+        </div>
+        <div>
+          <label htmlFor="category">Category:</label>
+          <select
+  id="category"
+  name="category"
+  value={product.category ? product.category.id : ''}
+  onChange={handleInputChange}
+>
+  <option value="">Select a category</option>
+  {categories.map((category) => (
+    <option key={category.id} value={category.id}>
+      {category.name}
+    </option>
+  ))}
+</select>
         </div>
         <button type="submit">Save Changes</button>
       </form>
