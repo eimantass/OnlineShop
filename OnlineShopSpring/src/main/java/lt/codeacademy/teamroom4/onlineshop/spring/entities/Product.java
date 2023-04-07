@@ -48,7 +48,7 @@ public class Product {
 	@Column
 	private String description;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "category", referencedColumnName = "id")
 	@Enumerated(EnumType.STRING)
 	private Category category;
@@ -57,7 +57,7 @@ public class Product {
 	//@Transient
 	//@Column
 	//@ElementCollection()
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH}, orphanRemoval = true)
 	 @JoinColumn(name = "product_id", referencedColumnName = "id")
 	Set<ProductParameters> productParameters = new HashSet<>();
 	
