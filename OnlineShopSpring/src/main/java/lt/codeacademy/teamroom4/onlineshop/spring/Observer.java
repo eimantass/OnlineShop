@@ -21,11 +21,15 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ProductParameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.WishList;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.WishListItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CategoryRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CouponRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListItemRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.*;
@@ -52,6 +56,10 @@ public class Observer {
 	private CouponRepository couponRepository;
 	@Autowired
 	private CategoryRepository categoryRepository;
+	@Autowired
+	private WishListItemRepository wishListItemRepository;
+	@Autowired
+	private WishListRepository wishListRepository;
 	// Used to activate seed function
 	 @EventListener
 	public void seed(ContextRefreshedEvent event) {
@@ -62,8 +70,9 @@ public class Observer {
 		seedUserServiceManager();
 		seedCoupons();
 		seedCategory();
-
 		seedProduct();
+		seedWishListItemRepository();
+		seedWishList();
 	}
 
 	// Seeding users and products
@@ -128,12 +137,12 @@ public class Observer {
 		Category category =categoryRepository.getById((long) 1);
 	List<Product> product = List.of(
 				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", categoryList.get(1),cpuParameterList),
-				new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu",categoryList.get(1), gpuParameterList,coupons.get(0)),
-				new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu",categoryList.get(1),gpuParameterList, coupons.get(0)),
+				new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu",categoryList.get(1), gpuParameterList),
+				new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu",categoryList.get(1),gpuParameterList),
 			//	new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", cpu,gpuParameterList, coupons.get(0)),
 				//new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", cpu),
-			new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", categoryList.get(0), cpuParameterList,coupons.get(0)),
-				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu",categoryList.get(1), cpuParameterList,coupons.get(2)));
+			new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", categoryList.get(0), cpuParameterList),
+				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu",categoryList.get(1), cpuParameterList));
 
 		productRepository.saveAll(product);
 	}
@@ -153,6 +162,14 @@ public class Observer {
 		categoryRepository.saveAll(categoryList);
 	}
 
+	private void seedWishListItemRepository() {
+	WishListItem blank = new WishListItem();
+	wishListItemRepository.save(blank);
+	}
+	private void seedWishList() {
+	WishList  blank = new WishList();	
+	wishListRepository.save(blank);
+	}
 	/*
 	 * private void seedAdmin() { List<Admin> admin = List .of(new
 	 * Admin("ViliusAdmin", "viliusAdmin@gmail.com", "svbsdvisbv", "svbsdvisbv",
