@@ -8,16 +8,19 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.*;
 
+import java.net.URISyntaxException;
 import java.util.List;
 //This controller handles user access accordingly to roles
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -59,7 +62,10 @@ public class UserAccessController {
 	        return ResponseEntity.ok().build();
 	    }).orElseThrow();
 	}
-	
+	@PostMapping("/customers/create")
+	public User createUser(@RequestBody User user) throws URISyntaxException {
+		User savedUser = userRepository.save(user);
+		return savedUser;}
 	//Shows the content that is visible without logging in
 	@GetMapping("/all")
 	public String allAccess() {
