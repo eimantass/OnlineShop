@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Category;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
@@ -48,7 +49,11 @@ public class ProductController {
 	public Product createProduct(@RequestBody Product product) throws URISyntaxException {
 		Product savedProduct = productRepository.save(product);
 		return savedProduct;
-
+	}
+	//Finding all categories
+	@GetMapping("/categories")
+	public List<Category> getCategories() {
+	    return productService.getAllCategories();
 	}
 //Updating products
 	@PutMapping("/{id}")
