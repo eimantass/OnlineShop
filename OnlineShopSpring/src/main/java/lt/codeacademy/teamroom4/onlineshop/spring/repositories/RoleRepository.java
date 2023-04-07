@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles;
-
+//This repository stores user roles
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
 	Optional<Role> findByName(ERoles name);
