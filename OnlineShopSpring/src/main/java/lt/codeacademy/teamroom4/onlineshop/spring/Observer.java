@@ -53,7 +53,7 @@ public class Observer {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	// Used to activate seed function
-	 @EventListener
+	// @EventListener
 	public void seed(ContextRefreshedEvent event) {
 		// seedRole();
 		seedUserAdmin();

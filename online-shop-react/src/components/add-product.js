@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProductService from "../services/product.service";
 import { useNavigate } from "react-router-dom";
 
@@ -8,8 +8,16 @@ function AddProductForm() {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState("");
-
+  const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const response = await ProductService.getCategories();
+      setCategories(response.data);
+    };
+    fetchCategories();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -61,9 +69,11 @@ function AddProductForm() {
             onChange={(event) => setCategory(event.target.value)}
           >
             <option value="">Select a category</option>
-            <option value="1">Category 1</option>
-            <option value="2">Category 2</option>
-            <option value="3">Category 3</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
           </select>
         </div>
         <div>
