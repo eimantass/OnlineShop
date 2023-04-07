@@ -35,7 +35,7 @@ public class Product {
 	@Column
 	private String name;
 	
-	@OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+	@OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, orphanRemoval = true)
 	@JoinColumn(name = "discount")
 	private Coupon discount;
 	@Enumerated(EnumType.STRING)
