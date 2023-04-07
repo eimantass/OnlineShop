@@ -44,8 +44,6 @@ public class Observer {
 	MoneyGenerator moneyGenerator = new MoneyGenerator();
 
 	// Autowiring repositories
-	@Autowired
-	private RoleRepository roleRepository;
 
 	@Autowired
 	private UserRepository userRepository;
@@ -61,7 +59,7 @@ public class Observer {
 	@Autowired
 	private WishListRepository wishListRepository;
 	// Used to activate seed function
-	// @EventListener
+	@EventListener
 	public void seed(ContextRefreshedEvent event) {
 		// seedRole();
 		seedUserAdmin();
@@ -76,12 +74,6 @@ public class Observer {
 	}
 
 	// Seeding users and products
-	private void seedRole() {
-		List<Role> role = List.of(new Role(ADMIN), new Role(CUSTOMER), new Role(MANAGER), new Role(SERVICEMANAGER));
-
-		roleRepository.saveAll(role);
-
-	}
 
 	private void seedUserAdmin() {
 		Set<Role> roles = new HashSet<>();
@@ -158,7 +150,18 @@ public class Observer {
 		new Category(FANS),
 		new Category(DESKTOPCOMPUTER),
 		new Category(LAPTOPCOMPUTER),
-		new Category(ALLINONECOMPUTER));
+		new Category(ALLINONECOMPUTER),
+		new Category(MONITORS),
+		new Category(PHONES),
+		new Category(TABLETS),
+		new Category(PRINTERS),
+		new Category(GAMECONSOLES),
+		new Category(GAMES));
+
+
+
+		;
+		
 		categoryRepository.saveAll(categoryList);
 	}
 
