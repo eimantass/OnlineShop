@@ -3,6 +3,8 @@ package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,8 @@ import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
 @RequestMapping("/products")
 
 public class ProductController {
+	
+	private static final Logger log = LoggerFactory.getLogger(ProductController.class);
 	//Autowiring repositories and services
 	@Autowired
 	private ProductRepository productRepository;
@@ -57,15 +61,23 @@ public class ProductController {
 	}
 //Updating products
 	@PutMapping("/{id}")
-	public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
-		Product currentProduct = productRepository.findById(id).orElseThrow(RuntimeException::new);
-		currentProduct.setName(product.getName());
-		currentProduct.setCategory(product.getCategory());
-		currentProduct.setPrice(product.getPrice());
-		currentProduct.setDescription(product.getDescription());
-		currentProduct.setDiscount(product.getDiscount());
-		return productRepository.save(product);
-	}
+    public Product updateProduct(@PathVariable Long id, @RequestBody Product updatedProduct) {
+        return productRepository.findById(id)
+                .map(product -> {
+                    product.setName(updatedProduct.getName());
+                    product.setCategory(updatedProduct.getCategory());
+                    product.setPrice(updatedProduct.getPrice());
+                    product.setDescription(updatedProduct.getDescription());
+                    product.setDiscount(updatedProduct.getDiscount());
+                    Product savedProduct = productRepository.save(product);
+                    log.info("Product with id {} updated successfully: {}", id, savedProduct);
+                    return savedProduct;
+                })
+                .orElseThrow(() -> {
+                    log.error("Product with id {} not found for update", id);
+                    return new RuntimeException("Product with id " + id + " not found for update");
+                });
+    }
 //Deleting products
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
