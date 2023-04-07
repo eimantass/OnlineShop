@@ -184,45 +184,4 @@ public class ProductService {
 		}
 		return featuredProduct;
 	}
-
-//	public List<Product> filterByPrice(int minPrice, int maxPrice, String direction) {
-//		List<Product> allProducts = new ArrayList<Product>();
-//
-//		List<Product> filteredProducts = new ArrayList<Product>();
-//		if (direction == "asc") {
-//			allProducts.addAll(productRepository.findAll());
-//		} else {
-//			allProducts.addAll(productRepository.findAll());
-//
-//		}
-//		for (long i = 1; i <= allProducts.size(); i++) {
-//			// Customer currentCustomer = customerRepository.getById(i);
-//			Product currentProduct = productRepository.findById(i).orElseThrow(RuntimeException::new);
-//			if (minPrice != 0 && maxPrice == 0) {
-//				filterByMinPrice(minPrice, filteredProducts, currentProduct);
-//			} else if (minPrice != 0 && maxPrice != 0) {
-//				FilterByBothMinAndMaxPrice(minPrice, maxPrice, filteredProducts, currentProduct);
-//			} else if (minPrice == 0 && maxPrice != 0) {
-//				filterByMaxPrice(minPrice, maxPrice, filteredProducts, currentProduct);
-//			} else if (minPrice == 0 && maxPrice == 0) {
-//				filteredProducts.add(currentProduct);
-//			}
-//		}
-//		return filteredProducts;
-//
-//	}
-
-	/*
-	 * private void filterByMaxPrice(int minPrice, int maxPrice, List<Product>
-	 * filteredProducts, Product currentProduct) { if ((currentProduct.getPrice() >
-	 * minPrice) && (currentProduct.getPrice() < maxPrice)) {
-	 * filteredProducts.add(currentProduct); } } private void
-	 * FilterByBothMinAndMaxPrice(int minPrice, int maxPrice, List<Product>
-	 * filteredProducts, Product currentProduct) { filterByMaxPrice(minPrice,
-	 * maxPrice, filteredProducts, currentProduct); }
-	 * 
-	 * private void filterByMinPrice(int minPrice, List<Product> filteredProducts,
-	 * Product currentProduct) { if (currentProduct.getPrice() > minPrice) {
-	 * filteredProducts.add(currentProduct); } }
-	 */
 }
