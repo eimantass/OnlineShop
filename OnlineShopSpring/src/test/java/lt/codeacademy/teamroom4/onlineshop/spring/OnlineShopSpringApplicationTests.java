@@ -8,6 +8,7 @@ class OnlineShopSpringApplicationTests {
 
 	@Test
 	void contextLoads() {
+	
 	}
 
 }

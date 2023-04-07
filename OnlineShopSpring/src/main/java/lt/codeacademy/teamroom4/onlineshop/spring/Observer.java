@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -30,6 +31,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListItemRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.services.UserDetailsServiceImpl;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.*;
@@ -58,8 +60,11 @@ public class Observer {
 	private WishListItemRepository wishListItemRepository;
 	@Autowired
 	private WishListRepository wishListRepository;
+	
+	
+
 	// Used to activate seed function
-	@EventListener
+	//@EventListener
 	public void seed(ContextRefreshedEvent event) {
 		// seedRole();
 		seedUserAdmin();
