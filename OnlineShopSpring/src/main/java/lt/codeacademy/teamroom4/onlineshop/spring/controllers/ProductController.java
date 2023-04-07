@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Category;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
@@ -32,13 +33,7 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
-	
-	@GetMapping("/products")
-	@CrossOrigin(origins = "http://localhost:3000")
-	public String index(ModelMap modelMap) {
-		modelMap.put("product", productService.findAll());
-		return "products/all";
-	}
+
 	//Finding all products
 	 @GetMapping("/all")
 	public List<Product> getProducts() {
@@ -54,7 +49,11 @@ public class ProductController {
 	public Product createProduct(@RequestBody Product product) throws URISyntaxException {
 		Product savedProduct = productRepository.save(product);
 		return savedProduct;
-
+	}
+	//Finding all categories
+	@GetMapping("/categories")
+	public List<Category> getCategories() {
+	    return productService.getAllCategories();
 	}
 //Updating products
 	@PutMapping("/{id}")
@@ -68,7 +67,7 @@ public class ProductController {
 		return productRepository.save(product);
 	}
 //Deleting products
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
 		productRepository.deleteById(id);
 		return ResponseEntity.ok().build();

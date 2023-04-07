@@ -61,12 +61,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 	//This function configures endpoint access permissions
 	@Override
-protected void configure(HttpSecurity http) throws Exception {
+	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable();
 //		http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-//				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-//				.antMatchers("/api/auth/**").permitAll().antMatchers("/api/user-access**").permitAll().anyRequest()
+//			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
+//			.antMatchers("/products").permitAll().antMatchers("/api/auth/**").permitAll().antMatchers("/api/user-access**").permitAll().anyRequest()
 //				.authenticated();
-//		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+//	http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 	
 }

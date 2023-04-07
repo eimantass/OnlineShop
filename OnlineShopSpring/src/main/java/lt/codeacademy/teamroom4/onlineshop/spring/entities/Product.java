@@ -8,6 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,38 +24,48 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
-
+//This is an product entity
 @Entity
-
 @Table(name = "product")
 public class Product {
+	//Product variables
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column
 	private String name;
-
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	//@JoinColumn(name = "product_id")
+	@OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+	@JoinColumn(name = "discount")
 	private Coupon discount;
+	@Enumerated(EnumType.STRING)
+	@Column
 	private Brands brand;
-
+	@Column
 	private String photo;
+	@Column
 	private double price;
+	@Column
 	private String description;
-	private Categories category;
+	
+	@OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@JoinColumn(name = "category", referencedColumnName = "id")
+	@Enumerated(EnumType.STRING)
+	private Category category;
 	
 	//@JsonManagedReference
 	//@Transient
 	//@Column
 	//@ElementCollection()
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH}, orphanRemoval = true)
 	 @JoinColumn(name = "product_id", referencedColumnName = "id")
 	Set<ProductParameters> productParameters = new HashSet<>();
 	
 	//List<String> parameters = new ArrayList<String>();
-
-	public Product(String name,Brands brand,String photo, double price, String description, Categories categories) {
+	//Product constructors
+	public Product() {
+	}
+	public Product(String name,Brands brand,String photo, double price, String description, Category categories) {
 		this.name = name;
 		this.brand = brand;
 		this.photo = photo;
@@ -64,8 +76,37 @@ public class Product {
 
 	}
 
+	public Product(Long id, String name, Brands brand, String photo, double price, String description,
+			Category category, Set<ProductParameters> productParameters, Coupon discount) {
+		this.id = id;
+		this.name = name;
+		this.discount = discount;
+		this.brand = brand;
+		this.photo = photo;
+		this.price = price;
+		this.description = description;
+		this.category = category;
+		this.productParameters = productParameters;
+	}
+
+	public Product(String name) {
+		super();
+		this.name = name;
+	}
 	public Product(String name, Brands brand, String photo, double price, String description,
-			Categories category, Set<ProductParameters> productParameters) {
+			Category category, Set<ProductParameters> productParameters, Coupon discount) {
+		super();
+		this.name = name;
+		this.discount = discount;
+		this.brand = brand;
+		this.photo = photo;
+		this.price = price;
+		this.description = description;
+		this.category = category;
+		this.productParameters = productParameters;
+	}
+	public Product(String name, Brands brand, String photo, double price, String description,
+			Category category, Set<ProductParameters> productParameters) {
 		super();
 		this.name = name;
 		this.brand = brand;
@@ -75,7 +116,7 @@ public class Product {
 		this.category = category;
 		this.productParameters = productParameters;
 	}
-
+	//Product getters/setters
 	public Product(Set<ProductParameters> productParameters) {
 		this.productParameters = productParameters;
 	}
@@ -88,8 +129,7 @@ public class Product {
 		this.productParameters = productParameters;
 	}
 
-	public Product() {
-	}
+	
 
 	public Long getId() {
 		return id;
@@ -133,11 +173,11 @@ public class Product {
 		this.description = description;
 	}
 	
-	public Categories getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 
-	public void setCategory(Categories category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
 
@@ -158,7 +198,7 @@ public class Product {
 		this.discount = discount;
 	}
 
-
+	//Returns product values in String
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", photo=" + photo + ", price=" + price + ", description="

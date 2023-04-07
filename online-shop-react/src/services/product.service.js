@@ -1,13 +1,12 @@
 import axios from "axios";
-import AuthService from "./auth.service";
+import authHeader from './auth-header';
 
 const API_URL = "http://localhost:8080/products";
 
 const authInterceptor = config => {
-  const user = AuthService.getCurrentUser();
-  if (user && user.accessToken) {
-    const token = "Bearer " + user.accessToken;
-    config.headers.Authorization = token;
+  const headers = authHeader();
+  if (headers.Authorization) {
+    config.headers = headers;
   }
   return config;
 };
@@ -20,21 +19,24 @@ class ProductService {
   }
 
   getProductById(id) {
-    return axios.get(API_URL + "/" + id);
+    return axios.get(API_URL + "/" + id, { headers: authHeader() });
   }
 
   createProduct(product) {
-    return axios.post(API_URL + "/create", product);
+    return axios.post(API_URL + "/create", product, { headers: authHeader() });
+  }
+  // get product categories
+  getCategories() {
+    return axios.get(API_URL + "/categories", { headers: authHeader() });
   }
 
   updateProduct(id, product) {
-    return axios.put(API_URL + "/" + id, product);
+    return axios.put(API_URL + "/" + id, product, { headers: authHeader() });
   }
 
   deleteProduct(id) {
-    return axios.delete(API_URL + "/" + id);
+    return axios.delete(API_URL + "/delete/" + id, { headers: authHeader() });
   }
 }
 
-const productService = new ProductService();
-export default productService;
+export default new ProductService();

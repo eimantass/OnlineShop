@@ -1,8 +1,9 @@
-import { Component } from "react";
+import React, {Component} from "react";
+
 import UserService from "../services/user.service";
 
-export default class BoardAdmin extends Component {
-    constructor(props) {
+export default class AdminBoard extends Component{
+    constructor(props){
         super(props);
 
         this.state = {
@@ -11,23 +12,23 @@ export default class BoardAdmin extends Component {
     }
 
     componentDidMount(){
-        UserService.getAdminBoard.then(
+        UserService.getAdminBoardMethod().then(
             response => {
                 this.setState({
                     content: response.data
                 });
             },
-            error => {
+            error =>{
                 this.setState({
                     content:
                     (error.response &&
                         error.response.data &&
                         error.response.data.message) ||
-                        error.message || 
+                        error.message ||
                         error.toString()
                 });
             }
-        )
+        );
     }
     render() {
         return (

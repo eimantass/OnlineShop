@@ -1,17 +1,13 @@
-import TopMenu from "../layout/TopMenu";
-import SeachAndLogo from "../layout/searchandlogo";
-import FooterMenu from "../layout/FooterMenu";
+import Categories from "../components/categories-menu";
 
-import '../css/App.css'
-
-export function Atsiliepimai() {
+export default function Atsiliepimai() {
     return (
-      <div className="FooterPlacer">
-        <TopMenu/>
-        <SeachAndLogo/>
+      <div>
+        <Categories/>
+        
         <h1 style={{textAlign: "center"}}>Atsileipimai page</h1>
         {/* rest of your contact page content */}
-        <FooterMenu/>
+      
       </div>
     );
     

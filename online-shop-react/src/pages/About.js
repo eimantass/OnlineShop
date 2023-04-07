@@ -1,17 +1,13 @@
-import TopMenu from "../layout/TopMenu";
-import SeachAndLogo from "../layout/searchandlogo";
-import FooterMenu from "../layout/FooterMenu";
+import Categories from "../components/categories-menu";
 
-import '../css/App.css'
-
-export function About() {
+export default function About() {
     return (
-      <div className="FooterPlacer">
-         <TopMenu/>
-         <SeachAndLogo/>
+      <div>
+         <Categories/>
+      
         <h1 style={{textAlign: "center"}}>Apie Mus</h1>
         {/* rest of your contact page content */}
-        <FooterMenu/>
+        
       </div>
     );
     
