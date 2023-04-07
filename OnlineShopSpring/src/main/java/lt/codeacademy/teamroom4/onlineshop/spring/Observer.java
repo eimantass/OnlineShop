@@ -170,40 +170,4 @@ public class Observer {
 	WishList  blank = new WishList();	
 	wishListRepository.save(blank);
 	}
-	/*
-	 * private void seedAdmin() { List<Admin> admin = List .of(new
-	 * Admin("ViliusAdmin", "viliusAdmin@gmail.com", "svbsdvisbv", "svbsdvisbv",
-	 * ADMIN));
-	 * 
-	 * adminRepository.saveAll(admin);
-	 * 
-	 * }
-	 * 
-	 * private void seedCustomer() { List<Customer> customer = List.of( new
-	 * Customer(null, "ViliusCustomer", 0, "viliusCustomer@gmail.com", "svbsdvisbv",
-	 * "svbsdvisbv" ), new Customer(null, "ViliusCustomer2", 0,
-	 * "viliusCustomer2@gmail.com", "svbsdvisbv", "svbsdvisbv"), new Customer(null,
-	 * "ViliusCustomer3", 0, "viliusCustomer3@gmail.com", "svbsdvisbv",
-	 * "svbsdvisbv")
-	 * 
-	 * );
-	 * 
-	 * customerRepository.saveAll(customer); }
-	 * 
-	 * private void seedServiceManager() { List<ServiceManager> serviceManager =
-	 * List.of(new ServiceManager("ViliusServiceManager", 0,
-	 * "viliusServiceManager@gmail.com", "svbsdvisbv", "svbsdvisbv",
-	 * SERVICEMANAGER));
-	 * 
-	 * serviceRepsitory.saveAll(serviceManager);
-	 * 
-	 * }
-	 * 
-	 * private void seedManager() { List<Manager> manager = List.of( new
-	 * Manager("ViliusManager", 0, "viliusManager@gmail.com", "svbsdvisbv",
-	 * "svbsdvisbv", SERVICEMANAGER));
-	 * 
-	 * managerRepository.saveAll(manager); }
-	 * 
-	 */
 }
