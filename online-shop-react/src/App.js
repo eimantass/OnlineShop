@@ -13,7 +13,9 @@ import CustomersListBoard from "./components/board-customerslist.component";
 import CustomerBoard from "./components/board-customer.component";
 import ManagerBoard from "./components/board-manager.component";
 import AdminBoard from "./components/board-admin.component";
+// Import function pages
 import EditCustomer from "./components/EditCustomer";
+import AddProductForm from "./components/add-product"
 // Import CategoriesMenu pages
 import StaliniaiKompiuteriai from "./pages/categoriesMenuPages/staliniai-kompiuteriai";
 import NesiojamiejiKompiuteriai from "./pages/categoriesMenuPages/nesiojamieji-kompiuteriai";
@@ -164,6 +166,8 @@ class App extends Component {
     <Route path="/manager" element={<ManagerBoard/>} />
     <Route path="/admin" element={<AdminBoard/>} />
     <Route path="/edit-customer/:id" element={<EditCustomer/>} />
+    {/* Routes to function pages */}
+    <Route path="/add-product" element={<AddProductForm/>} />
     {/* Routes to CategoriesMenu pages */}
     <Route path="/staliniai-kompiuteriai" element={<StaliniaiKompiuteriai/>} />
     <Route path="/nesiojamieji-kompiuteriai" element={<NesiojamiejiKompiuteriai/>} />

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ProductService from "../services/product.service";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
-
+  const navigate = useNavigate();
+  
   useEffect(() => {
     async function fetchData() {
       try {
@@ -16,14 +18,8 @@ function ProductList() {
     fetchData();
   }, []);
 
-  const handleAddProduct = async () => {
-    try {
-      const newProduct = { name: "New Product", price: 0 };
-      const response = await ProductService.createProduct(newProduct);
-      setProducts([...products, response.data]);
-    } catch (error) {
-      console.log(error);
-    }
+  const handleAddProduct = () => {
+    navigate('/add-product');
   };
 
   const handleRemoveProduct = async (id) => {
@@ -69,7 +65,3 @@ function ProductList() {
 }
 
 export default ProductList;
-
-
-
-
