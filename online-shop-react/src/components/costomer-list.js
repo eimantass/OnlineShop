@@ -20,7 +20,7 @@ const CustomersListBoard2 = ({ history }) => {
   }, []);
 
   const handleEditClick = (id) => {
-    history.push("/edit-customer/" + id);
+    navigate("/edit-customer/" + id);
   };
 
   const handleDeleteClick = (id) => {

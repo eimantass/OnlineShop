@@ -6,6 +6,7 @@ function ProductList() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   
+  // Fetch the all products data from repository
   useEffect(() => {
     async function fetchData() {
       try {
@@ -18,10 +19,17 @@ function ProductList() {
     fetchData();
   }, []);
 
+  // Add product function
   const handleAddProduct = () => {
     navigate('/add-product');
   };
 
+  // Edit Product function
+  const handleEditProduct = async (id) => {
+    navigate(`/update-product/${id}`);
+  };
+
+  // Remove Product function 
   const handleRemoveProduct = async (id) => {
     try {
       await ProductService.deleteProduct(id);
@@ -34,7 +42,10 @@ function ProductList() {
   return (
     <main>
       <h2 className="center">Products List:</h2>
+
+      {/* The add product button   */}
       <button onClick={handleAddProduct}>Add Product</button>
+      {/* Products List from Repository */}
       <ul>
         {products.map((product) => (
           <li key={product.id}>
@@ -54,8 +65,13 @@ function ProductList() {
                 ))}
               </ul>
             )}
+            {/* Below each product a remove button that removes the product */}
             <button onClick={() => handleRemoveProduct(product.id)}>
               Remove
+            </button>
+            {/* Below each product an edit button that navigates to the edit product page */}
+            <button onClick={() => handleEditProduct(product.id)}>
+              Edit
             </button>
           </li>
         ))}

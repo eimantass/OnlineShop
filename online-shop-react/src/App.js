@@ -16,6 +16,7 @@ import AdminBoard from "./components/board-admin.component";
 // Import function pages
 import EditCustomer from "./components/EditCustomer";
 import AddProductForm from "./components/add-product"
+import UpdateProduct from "./components/update-product"
 // Import CategoriesMenu pages
 import StaliniaiKompiuteriai from "./pages/categoriesMenuPages/staliniai-kompiuteriai";
 import NesiojamiejiKompiuteriai from "./pages/categoriesMenuPages/nesiojamieji-kompiuteriai";
@@ -36,7 +37,6 @@ import Warranty from "./pages/Warranty";
 import Privacy from "./pages/Privacy";
 import Feedback from "./pages/Feedback";
 import Help from "./pages/Help";
-import { Switch } from "react-router";
 
 class App extends Component {
   constructor(props) {
@@ -165,9 +165,10 @@ class App extends Component {
     <Route path="/customer" element={<CustomerBoard/>} />
     <Route path="/manager" element={<ManagerBoard/>} />
     <Route path="/admin" element={<AdminBoard/>} />
-    <Route path="/edit-customer/:id" element={<EditCustomer/>} />
     {/* Routes to function pages */}
+    <Route path="/edit-customer/:id" element={<EditCustomer/>} />
     <Route path="/add-product" element={<AddProductForm/>} />
+    <Route path="/update-product/:id" element={<UpdateProduct/>} />
     {/* Routes to CategoriesMenu pages */}
     <Route path="/staliniai-kompiuteriai" element={<StaliniaiKompiuteriai/>} />
     <Route path="/nesiojamieji-kompiuteriai" element={<NesiojamiejiKompiuteriai/>} />
