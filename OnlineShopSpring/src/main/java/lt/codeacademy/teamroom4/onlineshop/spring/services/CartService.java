@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.dto.RecordDto;
-import lt.codeacademy.teamroom4.onlineshop.spring.dto.CartDto;
-
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ShoppingCart;
