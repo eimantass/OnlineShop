@@ -30,6 +30,8 @@ public class WishListItem {
 	updatable = false)
 	private Product product;
 
+	public WishListItem() {}
+
 	public Long getId() {
 		return id;
 	}
