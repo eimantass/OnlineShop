@@ -48,7 +48,7 @@ public class Product {
 	@Column
 	private String description;
 	
-	@OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH}, fetch = FetchType.EAGER)
+	@OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "category", referencedColumnName = "id")
 	@Enumerated(EnumType.STRING)
 	private Category category;
@@ -89,6 +89,10 @@ public class Product {
 		this.productParameters = productParameters;
 	}
 
+	public Product(String name) {
+		super();
+		this.name = name;
+	}
 	public Product(String name, Brands brand, String photo, double price, String description,
 			Category category, Set<ProductParameters> productParameters, Coupon discount) {
 		super();
