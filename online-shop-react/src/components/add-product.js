@@ -6,9 +6,12 @@ function AddProductForm() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [brand, setBrand] = useState(""); // Added brand state
+  const [brands, setBrands] = useState([]); // Added brands state
   const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState("");
-  const [categories, setCategories] = useState([]);
+  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,6 +22,15 @@ function AddProductForm() {
     fetchCategories();
   }, []);
 
+  useEffect(() => {
+    const fetchBrands = async () => {
+      const response = await ProductService.getBrands(); // Fetch brands from API
+      setBrands(response.data);
+    };
+    fetchBrands();
+  }, []);
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -26,6 +38,7 @@ function AddProductForm() {
         name,
         price,
         category: { id: category },
+        brand: brand, // Update product object with brand name
         description,
         photo,
       };
@@ -72,6 +85,22 @@ function AddProductForm() {
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="brand">Brand:</label> {/* Added brand select input */}
+          <select
+            id="brand"
+            name="brand"
+            value={brand}
+            onChange={(event) => setBrand(event.target.value)}
+          >
+            <option value="">Select a brand</option>
+            {brands.map((brand) => (
+              <option key={brand} value={brand}>
+                {brand}
               </option>
             ))}
           </select>
