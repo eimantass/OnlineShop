@@ -52,7 +52,7 @@ function ProductList() {
             <h3>{product.name}</h3>
             <img src={product.photo} alt={product.name} />
             <p>{product.description}</p>
-            <p>Category: {product.category.name}</p>
+            <p>Category: {product.category}</p>
             {/* Display brands */}
             <p>Brand: {product.brand}</p>
             <p>Price: ${product.price}</p>
