@@ -6,10 +6,16 @@ function AdminControllMenu() {
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/user-access/users')
+    axios.get('http://localhost:8080/api/user-access/customers')
       .then(useR => setCustomers(useR.data))
       .catch(err => console.log(err));
   }, []);
+
+ function handleDelete(id) {
+    axios.delete(`http://localhost:8080/api/user-acces/customers/${id}`)
+      .then(() => setCustomers(customers.filter(c => c.id !== id)))
+      .catch(err => console.log(err));
+ }
 
   return (
 <div className="table-container">
@@ -22,7 +28,9 @@ function AdminControllMenu() {
         <th>Phone</th>
         <th>Money</th>
         <th>Role</th>
-        <th>Actions</th>
+        <th>Edit User</th>
+        <th>   </th>
+        <th>Delete User</th>
       </tr>
     </thead>
     <tbody>
@@ -34,6 +42,17 @@ function AdminControllMenu() {
           <td>{c.number}</td>
           <td>{c.money}</td>
           <td>{c.role}</td>
+          <td>
+            <a href={'http://localhost:8081/Controll-panel/edit/'+c.id} target="_blank"  rel="noopener noreferrer">
+              <button>edit</button>
+            </a>
+          </td>
+          <td>
+
+          </td>
+          <td>
+          <button className="btn-delete" onClick={() => handleDelete(c.id)}>Delete</button>
+          </td>
         </tr>
       )}
     </tbody>
@@ -41,5 +60,5 @@ function AdminControllMenu() {
 </div>
   );
 }
-
+//
 export default AdminControllMenu;
