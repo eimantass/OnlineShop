@@ -2,38 +2,76 @@ package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.junit.jupiter.api.Test;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles;
+
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.*;
+
 class RoleTest {
+	
+	List<Role> roles = List.of(new Role(ADMIN), new Role(CUSTOMER), new Role(MANAGER), new Role(SERVICEMANAGER));
+	Role role = new Role(1, ADMIN);
+	Set<ERoles> eroles = new HashSet<>();
 
 	@Test
 	void testRole() {
-		fail("Not yet implemented");
+		if(role == null) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testRoleERoles() {
-		fail("Not yet implemented");
+		if(eroles == null) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetId() {
-		fail("Not yet implemented");
+		if(role.getId().equals(1)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetId() {
-		fail("Not yet implemented");
+		role.setId(4);
+		if(role.getId()==4) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetName() {
-		fail("Not yet implemented");
+		if(role.getName().equals(MANAGER)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetName() {
-		fail("Not yet implemented");
+		role.setName(ADMIN);
+		if(role.getName()== ADMIN) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 }

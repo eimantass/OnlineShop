@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class WishListItem {
+class WishListItemTest {
 
 	@Test
 	void testWishListItem() {
@@ -25,12 +25,12 @@ class WishListItem {
 	void testGetDate() {
 		fail("Not yet implemented");
 	}
-
+	
 	@Test
 	void testSetDate() {
 		fail("Not yet implemented");
 	}
-
+	
 	@Test
 	void testGetProduct() {
 		fail("Not yet implemented");

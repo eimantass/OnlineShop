@@ -37,6 +37,23 @@ public class CartItem {
 	@Cascade(CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "product_id" , referencedColumnName = "id")
 	Product product;
+	
+	public CartItem() {}
+	
+	public CartItem(int quantity, Date date, Product product) {
+		this.quantity = quantity;
+		this.date = date;
+		this.product = product;
+	}
+	
+
+	public CartItem(Long id, int quantity, Date date, Product product) {
+		this.id = id;
+		this.quantity = quantity;
+		this.date = date;
+		this.product = product;
+	}
+
 	// Getters/Setters
 	public Long getId() {
 		return id;

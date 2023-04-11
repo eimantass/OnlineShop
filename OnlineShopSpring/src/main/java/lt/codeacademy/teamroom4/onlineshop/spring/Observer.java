@@ -162,10 +162,6 @@ public class Observer {
 		new Category(PRINTERS),
 		new Category(GAMECONSOLES),
 		new Category(GAMES));
-
-
-
-		;
 		
 		categoryRepository.saveAll(categoryList);
 	}
@@ -174,6 +170,7 @@ public class Observer {
 	WishListItem blank = new WishListItem();
 	wishListItemRepository.save(blank);
 	}
+	
 	private void seedWishList() {
 	WishList  blank = new WishList();	
 	wishListRepository.save(blank);
