@@ -16,10 +16,11 @@ class ProductTest {
 	Set<ProductParameters> cpuParameterList = new HashSet<>();
 	ProductParameters firstCPU = new ProductParameters("I3", "Intel");
 	Coupon coupon1 = new Coupon(10);
-	Product product = new Product((long) 5, "IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList,coupon1);
+	Product product = new Product((long) 5, "IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList,
+			coupon1);
 
 	void addProductParameters() {
-	cpuParameterList.add(firstCPU);
+		cpuParameterList.add(firstCPU);
 	}
 
 	@Test
@@ -42,74 +43,71 @@ class ProductTest {
 		Product testProduct = new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU);
 		// emptyProduct.setName("RTX");
 
-		if (
-				testProduct.getName().equals("IntelI7") &&
-				testProduct.getBrand().equals(INTEL) &&
-				testProduct.getPhoto().equals("foto.png") &&
-				testProduct.getPrice() ==250 &&
-				testProduct.getCategory().equals(CPU) && 
-				testProduct.getDescription().equals("16 core cpu") ) 
-		{
+		if (testProduct.getName().equals("IntelI7") && testProduct.getBrand().equals(INTEL)
+				&& testProduct.getPhoto().equals("foto.png") && testProduct.getPrice() == 250
+				&& testProduct.getCategory().equals(CPU) && testProduct.getDescription().equals("16 core cpu")) {
 			assertTrue(true);
 		} else {
 			assertTrue(false);
 
 		}
 	}
+
 	@Test
 	void testProductParametersAllExceptIdAndCoupon() {
-		Product product = new Product( "IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList);
+		Product product = new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList);
 
 		addProductParameters();
-		
-		if(
-		product.getName().equals("IntelI7") &&
-		product.getBrand().equals(INTEL) &&
-		product.getPhoto().equals("foto.png") &&
-		product.getPrice() ==250 &&
-		product.getCategory().equals(CPU) && 
-		product.getProductParameters().equals(cpuParameterList) && 
-		product.getDescription().equals("16 core cpu") ) {
-		
+
+		if (product.getName().equals("IntelI7") && product.getBrand().equals(INTEL)
+				&& product.getPhoto().equals("foto.png") && product.getPrice() == 250
+				&& product.getCategory().equals(CPU) && product.getProductParameters().equals(cpuParameterList)
+				&& product.getDescription().equals("16 core cpu")) {
+
+			assertTrue(true);
+		} else {
+			assertTrue(false);
+
 		}
 	}
+
 	@Test
 	void testProductParametersAllExceptId() {
-		Product product = new Product( "IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList,coupon1);
+		Product product = new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList, coupon1);
 
 		addProductParameters();
-		
-		if(
-		product.getName().equals("IntelI7") &&
-		product.getDiscount().equals(coupon1) &&
-		product.getBrand().equals(INTEL) &&
-		product.getPhoto().equals("foto.png") &&
-		product.getPrice() ==250 &&
-		product.getCategory().equals(CPU) && 
-		product.getProductParameters().equals(cpuParameterList) && 
-		product.getDescription().equals("16 core cpu") ) {
-		
+
+		if (product.getName().equals("IntelI7") && product.getDiscount().equals(coupon1)
+				&& product.getBrand().equals(INTEL) && product.getPhoto().equals("foto.png")
+				&& product.getPrice() == 250 && product.getCategory().equals(CPU)
+				&& product.getProductParameters().equals(cpuParameterList)
+				&& product.getDescription().equals("16 core cpu")) {
+
+			assertTrue(true);
+		} else {
+			assertTrue(false);
+
 		}
 	}
 
 	@Test
 	void testProductParametersAll() {
-		Product product = new Product((long) 5, "IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList,coupon1);
+		Product product = new Product((long) 5, "IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList,
+				coupon1);
 
 		addProductParameters();
-		
-		if(
-		product.getId().equals((long)5) &&
-		product.getName().equals("IntelI7") &&
-		product.getDiscount().equals(coupon1) &&
-		product.getBrand().equals(INTEL) &&
-		product.getPhoto().equals("foto.png") &&
-		product.getPrice() ==250 &&
-		product.getCategory().equals(CPU) && 
-		product.getProductParameters().equals(cpuParameterList) && 
-		product.getDescription().equals("16 core cpu") ) {
-		
-		}
+
+		if (product.getId().equals((long) 5) && product.getName().equals("IntelI7")
+				&& product.getDiscount().equals(coupon1) && product.getBrand().equals(INTEL)
+				&& product.getPhoto().equals("foto.png") && product.getPrice() == 250
+				&& product.getCategory().equals(CPU) && product.getProductParameters().equals(cpuParameterList)
+				&& product.getDescription().equals("16 core cpu")) {
+
+			assertTrue(true);
+		} else {
+			assertTrue(false);
+
+		}		
 	}
 
 	@Test
@@ -138,10 +136,9 @@ class ProductTest {
 
 	@Test
 	void testGetName() {
-		if(product.getName()=="IntelI7"){
+		if (product.getName() == "IntelI7") {
 			assertTrue(true);
-		}
-		else {
+		} else {
 			assertTrue(false);
 
 		}
@@ -150,10 +147,9 @@ class ProductTest {
 	@Test
 	void testSetName() {
 		product.setName("Desktop Celeron G5905");
-		if(product.getName()=="Desktop Celeron G5905"){
+		if (product.getName() == "Desktop Celeron G5905") {
 			assertTrue(true);
-		}
-		else {
+		} else {
 			assertTrue(false);
 
 		}
@@ -161,10 +157,9 @@ class ProductTest {
 
 	@Test
 	void testGetDescription() {
-		if(product.getDescription()=="16 core cpu"){
+		if (product.getDescription() == "16 core cpu") {
 			assertTrue(true);
-		}
-		else {
+		} else {
 			assertTrue(false);
 
 		}
@@ -173,21 +168,21 @@ class ProductTest {
 	@Test
 	void testSetDescription() {
 		product.setDescription("6 core cpu");
-		if(product.getDescription()=="6 core cpu"){
+		if (product.getDescription() == "6 core cpu") {
 			assertTrue(true);
-		}
-		else {
+		} else {
 			assertTrue(false);
 
 		}
 
 	}
+
 	@Test
 	void toStringTest() {
-		if(product.toString().equals("Product [id=5, name=IntelI7, photo=foto.png, price=250.0, description=16 core cpu, category=CPU, parameters=]")) {
+		if (product.toString().equals(
+				"Product [id=5, name=IntelI7, photo=foto.png, price=250.0, description=16 core cpu, category=CPU, parameters=]")) {
 			assertTrue(true);
-		}
-		else {
+		} else {
 			assertTrue(false);
 
 		}
