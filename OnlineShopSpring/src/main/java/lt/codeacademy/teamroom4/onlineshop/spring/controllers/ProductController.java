@@ -25,6 +25,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
 //This controller handles product mappings
 @RestController
 @CrossOrigin(origins = "http://localhost:8081", allowCredentials = "true")
@@ -56,10 +57,15 @@ public class ProductController {
 		Product savedProduct = productRepository.save(product);
 		return savedProduct;
 	}
-	//Finding all categories
+	// Finding all categories
 	@GetMapping("/categories")
-	public List<Category> getCategories() {
-	    return productService.getAllCategories();
+	public List<String> getCategories() {
+	    Categories[] categories = Categories.values(); // Get all values of the Categories enum
+	    List<String> categoryList = new ArrayList<>(); // Create a list to hold the categories
+	    for (Categories category : categories) {
+	        categoryList.add(category.toString()); // Add the string representation of the enum value to the list
+	    }
+	    return categoryList; // Return the list of categories
 	}
 	//Finding all brands (Taking from ENUM)
 	@GetMapping("/brands")

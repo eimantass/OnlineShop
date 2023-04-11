@@ -16,7 +16,7 @@ function AddProductForm() {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const response = await ProductService.getCategories();
+      const response = await ProductService.getCategories(); // Fetch categories from API
       setCategories(response.data);
     };
     fetchCategories();
@@ -37,8 +37,8 @@ function AddProductForm() {
       const product = {
         name,
         price,
-        category: { id: category },
-        brand: brand, // Update product object with brand name
+        category: category, //  Product object category 
+        brand: brand, //  Product object brand
         description,
         photo,
       };
@@ -83,8 +83,8 @@ function AddProductForm() {
           >
             <option value="">Select a category</option>
             {categories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
+              <option key={category} value={category}>
+                {category}
               </option>
             ))}
           </select>

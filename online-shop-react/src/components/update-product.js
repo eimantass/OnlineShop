@@ -41,13 +41,13 @@ function UpdateProduct() {
   
     try {
       const { id, category, ...productData } = product;
-      const existingCategory = await ProductService.getCategories(category.id);
+      const existingCategory = await ProductService.getCategories(category);
       const updatedProduct = { ...productData, category: existingCategory };
       await ProductService.updateProduct(id, updatedProduct);
       setMessage("The product was updated successfully!");
       navigate("/home");
     } catch (error) {
-      setMessage("Could not update the products category. Please try again later.");
+      setMessage("Could not update the product's category. Please try again later.");
       console.log(error);
     }
   };
@@ -127,13 +127,13 @@ function UpdateProduct() {
           <select
   id="category"
   name="category"
-  value={product.category ? product.category.id : ''}
+  value={product.category || ''}
   onChange={handleInputChange}
 >
   <option value="">Select a category</option>
   {categories.map((category) => (
-    <option key={category.id} value={category.id}>
-      {category.name}
+    <option key={category} value={category}>
+      {category}
     </option>
   ))}
 </select>
