@@ -13,13 +13,9 @@ class UserService {
     return axios.get(API_URL + 'customers/' + id, { headers: authHeader() });
   }
 
-  updateCustomerMethod(id, username, email, number, money) {
-    return axios.put(API_URL + 'customer/' + id, {
-      username,
-      email,
-      number,
-      money,
-    }, { headers: authHeader() });
+  updateCustomerMethod(id, user) {
+    return axios.put(API_URL + 'customer/' + id, user, 
+   { headers: authHeader() });
   }
 
   deleteCustomerMethod(id) {

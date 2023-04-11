@@ -48,7 +48,8 @@ public class UserAccessController {
 	// Update an existing user
 	@PutMapping("/customer/{id}")
 	public User updateUser(@PathVariable Long id, @RequestBody User UpdatedUser) {
-	    return userRepository.findById(id)
+	    log.info(UpdatedUser.toString());
+		return userRepository.findById(id)
 	    	.map(user -> {
 		        user.setUsername(UpdatedUser.getUsername());
 		        user.setEmail(UpdatedUser.getEmail());
