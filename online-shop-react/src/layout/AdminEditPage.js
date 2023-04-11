@@ -15,7 +15,7 @@ const ControlPanel = () => {
       .catch(error => console.log(error));
   }, []);
 
-  const [newUsername, setUsername] = useState('');
+  const [newUsername, setUsername] = useState('Admin');
   const [newEmail, setEmail] = useState('');
   const [newNumber, setNumber] = useState('');
   const [newPassword, setPassword] = useState('');

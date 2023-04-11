@@ -52,10 +52,10 @@ public class UserAccessController {
 	    	.map(user -> {
 		        user.setUsername(UpdatedUser.getUsername());
 		        user.setEmail(UpdatedUser.getEmail());
-		       // user.setPassword(UpdatedUser.getPassword());
+		        user.setPassword(UpdatedUser.getPassword());
 		        user.setNumber(UpdatedUser.getNumber());
 		        user.setMoney(UpdatedUser.getMoney());
-		       // user.setRoles(UpdatedUser.getRoles());
+		        user.setRoles(UpdatedUser.getRoles());
 		        User savedUser = userRepository.save(user);
 		        log.info(null);
                 log.info("User with id {} updated successfully: {}", id, savedUser);
