@@ -93,14 +93,8 @@ public class Product {
 		this.category = category;
 		this.productParameters = productParameters;
 	}
-
-	public Product(String name) {
-		super();
-		this.name = name;
-	}
 	public Product(String name, Brands brand, String photo, double price, String description,
 			Categories category, Set<ProductParameters> productParameters, Coupon discount) {
-		super();
 		this.name = name;
 		this.discount = discount;
 		this.brand = brand;
@@ -112,7 +106,6 @@ public class Product {
 	}
 	public Product(String name, Brands brand, String photo, double price, String description,
 			Categories category, Set<ProductParameters> productParameters) {
-		super();
 		this.name = name;
 		this.brand = brand;
 		this.photo = photo;

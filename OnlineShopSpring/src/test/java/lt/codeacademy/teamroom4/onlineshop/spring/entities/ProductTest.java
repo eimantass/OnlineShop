@@ -36,23 +36,80 @@ class ProductTest {
 	}
 
 	@Test
-	void testProductParametersStringBrandPhotoDoubleStringDescription() {
+	void testProductParametersStringBrandPhotoDoubleStringDescriptionCategories() {
 		// String name, Brands brand, String photo, double price, String description,
 		// Categories categories
 		Product testProduct = new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU);
 		// emptyProduct.setName("RTX");
 
-		if (testProduct.getName().equals("IntelI7") && testProduct.getCategory().equals(CPU) ) {
+		if (
+				testProduct.getName().equals("IntelI7") &&
+				testProduct.getBrand().equals(INTEL) &&
+				testProduct.getPhoto().equals("foto.png") &&
+				testProduct.getPrice() ==250 &&
+				testProduct.getCategory().equals(CPU) && 
+				testProduct.getDescription().equals("16 core cpu") ) 
+		{
 			assertTrue(true);
 		} else {
 			assertTrue(false);
 
 		}
 	}
+	@Test
+	void testProductParametersAllExceptIdAndCoupon() {
+		Product product = new Product( "IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList);
+
+		addProductParameters();
+		
+		if(
+		product.getName().equals("IntelI7") &&
+		product.getBrand().equals(INTEL) &&
+		product.getPhoto().equals("foto.png") &&
+		product.getPrice() ==250 &&
+		product.getCategory().equals(CPU) && 
+		product.getProductParameters().equals(cpuParameterList) && 
+		product.getDescription().equals("16 core cpu") ) {
+		
+		}
+	}
+	@Test
+	void testProductParametersAllExceptId() {
+		Product product = new Product( "IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList,coupon1);
+
+		addProductParameters();
+		
+		if(
+		product.getName().equals("IntelI7") &&
+		product.getDiscount().equals(coupon1) &&
+		product.getBrand().equals(INTEL) &&
+		product.getPhoto().equals("foto.png") &&
+		product.getPrice() ==250 &&
+		product.getCategory().equals(CPU) && 
+		product.getProductParameters().equals(cpuParameterList) && 
+		product.getDescription().equals("16 core cpu") ) {
+		
+		}
+	}
 
 	@Test
-	void testProductParametersStringString() {
-		fail("Not yet implemented");
+	void testProductParametersAll() {
+		Product product = new Product((long) 5, "IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList,coupon1);
+
+		addProductParameters();
+		
+		if(
+		product.getId().equals((long)5) &&
+		product.getName().equals("IntelI7") &&
+		product.getDiscount().equals(coupon1) &&
+		product.getBrand().equals(INTEL) &&
+		product.getPhoto().equals("foto.png") &&
+		product.getPrice() ==250 &&
+		product.getCategory().equals(CPU) && 
+		product.getProductParameters().equals(cpuParameterList) && 
+		product.getDescription().equals("16 core cpu") ) {
+		
+		}
 	}
 
 	@Test
@@ -124,6 +181,16 @@ class ProductTest {
 
 		}
 
+	}
+	@Test
+	void toStringTest() {
+		if(product.toString().equals("Product [id=5, name=IntelI7, photo=foto.png, price=250.0, description=16 core cpu, category=CPU, parameters=]")) {
+			assertTrue(true);
+		}
+		else {
+			assertTrue(false);
+
+		}
 	}
 
 }
