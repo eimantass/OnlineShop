@@ -1,6 +1,7 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
 
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -60,17 +61,22 @@ public class ProductController {
 	public List<Category> getCategories() {
 	    return productService.getAllCategories();
 	}
-	//Finding all brands
+	//Finding all brands (Taking from ENUM)
 	@GetMapping("/brands")
-	public List<Brands> getBrands() {
-	    return productService.getAllBrands();
-	}
+	public static List<String> getBrandsList() {
+	    List<String> brandsList = new ArrayList<>();
+	    for (Brands brand : Brands.values()) {
+	        brandsList.add(brand.name());
+	    }
+	    return brandsList;
+		}
 //Updating products
 	@PutMapping("/{id}")
     public Product updateProduct(@PathVariable Long id, @RequestBody Product updatedProduct) {
         return productRepository.findById(id)
                 .map(product -> {
                     product.setName(updatedProduct.getName());
+                    product.setBrand(updatedProduct.getBrand());
                     product.setCategory(updatedProduct.getCategory());
                     product.setPrice(updatedProduct.getPrice());
                     product.setDescription(updatedProduct.getDescription());

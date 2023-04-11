@@ -6,18 +6,21 @@ function UpdateProduct() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [categories, setCategories] = useState([]);
+  const [brands, setBrands] = useState([]);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [productResponse, categoriesResponse] = await Promise.all([
+        const [productResponse, categoriesResponse, brandsResponse] = await Promise.all([
           ProductService.getProductById(id),
           ProductService.getCategories(),
+          ProductService.getBrands(),
         ]);
         setProduct(productResponse.data);
         setCategories(categoriesResponse.data);
+        setBrands(brandsResponse.data);
       } catch (error) {
         console.log(error);
       }
@@ -29,7 +32,7 @@ function UpdateProduct() {
     const { name, value } = event.target;
     setProduct((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: name === 'brand' ? String(value) : value,
     }));
   };
 
@@ -44,7 +47,7 @@ function UpdateProduct() {
       setMessage("The product was updated successfully!");
       navigate("/home");
     } catch (error) {
-      setMessage("Something went wrong. Please try again later.");
+      setMessage("Could not update the products category. Please try again later.");
       console.log(error);
     }
   };
@@ -64,6 +67,22 @@ function UpdateProduct() {
             onChange={handleInputChange}
           />
         </div>
+        <div>
+  <label htmlFor="brand">Brand:</label>
+  <select
+    id="brand"
+    name="brand"
+    value={product.brand || ''}
+    onChange={handleInputChange}
+  >
+    <option value="">Select a brand</option>
+    {brands.map((brand) => (
+      <option key={brand} value={brand}>
+        {brand}
+      </option>
+    ))}
+  </select>
+</div>
         <div>
           <label htmlFor="price">Price:</label>
           <input
