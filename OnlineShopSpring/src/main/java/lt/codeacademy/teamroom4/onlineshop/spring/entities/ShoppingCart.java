@@ -41,6 +41,17 @@ public class ShoppingCart {
 	public ShoppingCart() {
 		cartItems = new ArrayList<CartItem>();
 	}
+	
+	public ShoppingCart(Long id, Date date, Double totalPrice, int itemsNumber, Collection<CartItem> cartItems,
+			String sessionToken) {
+		this.id = id;
+		this.date = date;
+		this.totalPrice = totalPrice;
+		this.itemsNumber = itemsNumber;
+		this.cartItems = cartItems;
+		this.sessionToken = sessionToken;
+	}
+
 	// Getters/Setters
 	public Long getId() {
 		return id;
