@@ -15,20 +15,25 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.Logger;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Category;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Coupon;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ProductParameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
-
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
 @ExtendWith(MockitoExtension.class)
 class ProductServiceTest {
-	@Mock
+	@MockBean
 	ProductRepository productRepository;
 	@InjectMocks
 	ProductService productService = new ProductService();
@@ -52,7 +57,7 @@ Logger logger ;
 //
 		productRepository.saveAll(product);
 		//logger(productRepository.findAll());
-		//System.out.println(product.toString());
+		//System.out.println(productRepository.toString());
 
 	}
 
