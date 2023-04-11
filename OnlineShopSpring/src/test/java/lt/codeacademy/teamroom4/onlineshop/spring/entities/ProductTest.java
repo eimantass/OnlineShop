@@ -1,19 +1,53 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.INTEL;
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.CPU;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-class ProductTest {
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
 
-	@Test
-	void testProductParameters() {
-		fail("Not yet implemented");
+class ProductTest {
+	Set<ProductParameters> cpuParameterList = new HashSet<>();
+	ProductParameters firstCPU = new ProductParameters("I3", "Intel");
+	Coupon coupon1 = new Coupon(10);
+	Product product = new Product((long) 5, "IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList,coupon1);
+
+	void addProductParameters() {
+	cpuParameterList.add(firstCPU);
 	}
 
 	@Test
-	void testProductParametersLongStringString() {
-		fail("Not yet implemented");
+	void testProductParameters() {
+		Product emptyProduct = new Product();
+		// emptyProduct.setName("RTX");
+
+		if (emptyProduct.getName() == null) {
+			assertTrue(true);
+		} else {
+			assertTrue(false);
+
+		}
+	}
+
+	@Test
+	void testProductParametersStringBrandPhotoDoubleStringDescription() {
+		// String name, Brands brand, String photo, double price, String description,
+		// Categories categories
+		Product testProduct = new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU);
+		// emptyProduct.setName("RTX");
+
+		if (testProduct.getName().equals("IntelI7") && testProduct.getCategory().equals(CPU) ) {
+			assertTrue(true);
+		} else {
+			assertTrue(false);
+
+		}
 	}
 
 	@Test
@@ -23,32 +57,73 @@ class ProductTest {
 
 	@Test
 	void testGetId() {
-		fail("Not yet implemented");
+		if (product.getId().equals((long) 5)) {
+			assertTrue(true);
+
+		} else {
+			assertTrue(false);
+
+		}
 	}
 
 	@Test
 	void testSetId() {
-		fail("Not yet implemented");
+		product.setId((long) 4);
+		if (product.getId() == 4) {
+			assertTrue(true);
+
+		} else {
+			assertTrue(false);
+
+		}
+
 	}
 
 	@Test
 	void testGetName() {
-		fail("Not yet implemented");
+		if(product.getName()=="IntelI7"){
+			assertTrue(true);
+		}
+		else {
+			assertTrue(false);
+
+		}
 	}
 
 	@Test
 	void testSetName() {
-		fail("Not yet implemented");
+		product.setName("Desktop Celeron G5905");
+		if(product.getName()=="Desktop Celeron G5905"){
+			assertTrue(true);
+		}
+		else {
+			assertTrue(false);
+
+		}
 	}
 
 	@Test
 	void testGetDescription() {
-		fail("Not yet implemented");
+		if(product.getDescription()=="16 core cpu"){
+			assertTrue(true);
+		}
+		else {
+			assertTrue(false);
+
+		}
 	}
 
 	@Test
 	void testSetDescription() {
-		fail("Not yet implemented");
+		product.setDescription("6 core cpu");
+		if(product.getDescription()=="6 core cpu"){
+			assertTrue(true);
+		}
+		else {
+			assertTrue(false);
+
+		}
+
 	}
 
 }

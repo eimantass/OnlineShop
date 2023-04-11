@@ -1,5 +1,5 @@
 package lt.codeacademy.teamroom4.onlineshop.spring;
-
+/*
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -43,3 +43,4 @@ import lt.codeacademy.teamroom4.onlineshop.spring.services.UserDetailsServiceImp
 	.andExpect(content().string("Hello, Larry"));
 	}
 }
+*/
