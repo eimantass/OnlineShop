@@ -65,6 +65,11 @@ public class Product {
 	//Product constructors
 	public Product() {
 	}
+	
+	public Product(Long id) {
+		this.id = id;
+	}
+
 	public Product(String name,Brands brand,String photo, double price, String description, Categories categories) {
 		this.name = name;
 		this.brand = brand;
