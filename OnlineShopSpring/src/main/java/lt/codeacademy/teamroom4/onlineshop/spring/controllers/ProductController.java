@@ -23,6 +23,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.Category;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 //This controller handles product mappings
 @RestController
 @CrossOrigin(origins = "http://localhost:8081", allowCredentials = "true")
@@ -58,6 +59,11 @@ public class ProductController {
 	@GetMapping("/categories")
 	public List<Category> getCategories() {
 	    return productService.getAllCategories();
+	}
+	//Finding all brands
+	@GetMapping("/brands")
+	public List<Brands> getBrands() {
+	    return productService.getAllBrands();
 	}
 //Updating products
 	@PutMapping("/{id}")

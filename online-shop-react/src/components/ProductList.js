@@ -5,7 +5,7 @@ import ProductService from "../services/product.service";
 function ProductList() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
-  
+
   // Fetch the all products data from repository
   useEffect(() => {
     async function fetchData() {
@@ -53,6 +53,8 @@ function ProductList() {
             <img src={product.photo} alt={product.name} />
             <p>{product.description}</p>
             <p>Category: {product.category.name}</p>
+            {/* Display brands */}
+            <p>Brand: {product.brand}</p>
             <p>Price: ${product.price}</p>
             {product.productParameters.length > 0 && (
               <ul>
