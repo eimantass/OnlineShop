@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import UserService from "../services/user.service";
 
 export default class CustomersListBoard extends Component {
@@ -10,20 +11,35 @@ export default class CustomersListBoard extends Component {
     };
   }
 
-  componentDidMount() {
-    UserService.getAllCustomersMethod()
-      .then((response) => {
-        this.setState({ customers: response.data });
-      })
-      .catch((error) => {
-        this.setState({
-          error:
-            (error.response && error.response.data && error.response.data.message) ||
-            error.message ||
-            error.toString(),
-        });
+  async componentDidMount() {
+    try {
+      const response = await UserService.getAllCustomersMethod();
+      this.setState({ customers: response.data });
+    } catch (error) {
+      this.setState({
+        error:
+          (error.response && error.response.data && error.response.data.message) ||
+          error.message ||
+          error.toString(),
       });
+    }
   }
+
+  handleDeleteClick = async (id) => {
+    try {
+      await UserService.deleteCustomerMethod(id);
+      this.setState({
+        customers: this.state.customers.filter((c) => c.id !== id),
+      });
+    } catch (error) {
+      this.setState({
+        error:
+          (error.response && error.response.data && error.response.data.message) ||
+          error.message ||
+          error.toString(),
+      });
+    }
+  };
 
   render() {
     const { customers, error } = this.state;
@@ -55,24 +71,16 @@ export default class CustomersListBoard extends Component {
                 <td>{customer.number}</td>
                 <td>{customer.money}</td>
                 <td>
-                  <button
+                  <Link
+                    to={`/Controll-panel/edit/${customer.id}`} // Use Link to handle routing
                     className="btn btn-primary mr-2"
-                    onClick={() => {
-                      this.props.history.push("/edit-customer/" + customer.id);
-                    }}
                   >
                     Edit
-                  </button>
+                  </Link>
                   <button
                     className="btn btn-danger"
                     onClick={() => {
-                      UserService.deleteCustomerMethod(customer.id).then(() => {
-                        this.setState({
-                          customers: this.state.customers.filter(
-                            (c) => c.id !== customer.id
-                          ),
-                        });
-                      });
+                      this.handleDeleteClick(customer.id);
                     }}
                   >
                     Delete

@@ -1,21 +1,18 @@
 import './css/AdminEditPage.css';
 import {Link, useParams} from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import userService from '../services/user.service';
 import './css/Customers.css';
 
-
-
-const TestPage = () => {
+const ControlPanel = () => {
   console.log(useParams());
   const {id} = useParams();
   const [customers, setCustomers] = useState([]);
 
-
   useEffect(() => {
-    axios.get('http://localhost:8080/api/user-access/customers/'+id)
-      .then(useR => setCustomers(useR.data))
-      .catch(err => console.log(err));
+    userService.getCustomerByIdMethod(id)
+      .then(response => setCustomers(response.data))
+      .catch(error => console.log(error));
   }, []);
 
   const [newUsername, setUsername] = useState('');
@@ -25,71 +22,73 @@ const TestPage = () => {
   const [newMoney, setMoney] = useState('');
   const [newRole, setRole] = useState('');
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const newCustomerData = { newUsername, newEmail, newPassword, newNumber, newMoney, newRole};
+    const newCustomerData = {
+      username: newUsername,
+      email: newEmail,
+      //password: newPassword,
+      number: newNumber, // Parse as integer
+      money: newMoney, // Parse as float
+      //role: newRole // Assuming `newRole` is the correct property name for the role field
+    };
+  
+    console.log('newCustomerData:', newCustomerData); // Debugging statement
 
-    axios.post('http://localhost:8080/api/user-access/customers/'+id, newCustomerData)
-      .then((response) => {
-        console.log('Customer registered successfully:', response.data);
-      })
-      .catch((error) => {
-        console.log('Error registering customer:', error);
-        // Show error message to user
-      });
+    try {
+      const response = await userService.updateCustomerMethod(id, newCustomerData);
+      console.log('Customer updated successfully:', response.data);
+    } catch (error) {
+      console.log('Error updating customer:', error);
+      // Show error message to user
+    }
   };
 
   return (
-<div className="table-container">
-  <ul>
-    <li>
-       {id}
-    </li>
-    <li>
-  <Link to='/controll-panel'>back to list</Link>
-    </li>
-    <li>
-      hello
-    </li>
-    <li>{customers.id}</li>
-    <li>{customers.username}</li>
-    <li>{customers.email}</li>
-    <li>{customers.number}</li>
-    <li>{customers.money}</li>
-    <li>{customers.role}</li>
+    <div className="table-container">
+      <ul>
+        <li>
+          <Link to='/controll-panel'>Back to customerlist</Link> 
+        </li>
+        
+        <li><b>ID:</b>        {customers.id}</li>
+        <li><b>Username:</b>  {customers.username}</li>
+        <li><b>E-mail</b>     {customers.email}</li>
+        <li><b>Number:</b>    {customers.number}</li>
+        <li><b>Money:</b>     {customers.money}</li>
+        {/* <li>{customers.role}</li> // Wont work, because there is no role in user table*/} 
 
-
-    <h1>change value to</h1>
-  <form onSubmit={handleFormSubmit}>
-    <label>
-      Username:
-      <input type="text" value={newUsername} onChange={(e) =>setUsername(e.target.value)}/>
-    </label>
-    <label>
-      Email:
-      <input type="email" value={newEmail} onChange={(e) =>setEmail(e.target.value)}/>
-    </label>
-    <label>
-      Tel.number:
-      <input type="text" value={newNumber} onChange={(e) =>setNumber(e.target.value)}/>
-    </label>
-    <label>
-      Password:
-      <input type="text" value={newPassword} onChange={(e) =>setPassword(e.target.value)}/>
-    </label>
-    <label>
-      Money:
-      <input type="text" value={newMoney} onChange={(e) =>setMoney(e.target.value)}/>
-    </label>
-    <label>
-      Role:
-      <input type="text" value={newRole} onChange={(e) =>setRole(e.target.value)}/>
-    </label>
-    <button type="submit">Update</button>
-  </form>
-  </ul>
-</div>
+        <h2>Update User:</h2>
+        <form onSubmit={handleFormSubmit}>
+          <label>
+            Username:
+            <input type="text" value={newUsername} onChange={(e) =>setUsername(e.target.value)}/>
+          </label>
+          <label>
+            Email:
+            <input type="email" value={newEmail} onChange={(e) =>setEmail(e.target.value)}/>
+          </label>
+          <label>
+            Tel.number:
+            <input type="number" value={newNumber} onChange={(e) =>setNumber(e.target.value)}/>
+          </label>
+          {/* <label>
+            Password:
+            <input type="text" value={newPassword} onChange={(e) =>setPassword(e.target.value)}/>
+          </label> */}
+          <label>
+            Money:
+            <input type="number" value={newMoney} onChange={(e) =>setMoney(e.target.value)}/>
+          </label>
+          {/* <label>
+            Role:
+            <input type="text" value={newRole} onChange={(e) =>setRole(e.target.value)}/>
+          </label> */}
+          <button type="submit">Update</button>
+        </form>
+      </ul>
+    </div>
   );
 }
 
-export default TestPage;
+export default ControlPanel;

@@ -13,14 +13,12 @@ class UserService {
     return axios.get(API_URL + 'customers/' + id, { headers: authHeader() });
   }
 
-  updateCustomerMethod(id, username, email, password, number, money, roles) {
-    return axios.put(API_URL + 'customers/' + id, {
+  updateCustomerMethod(id, username, email, number, money) {
+    return axios.put(API_URL + 'customer/' + id, {
       username,
       email,
-      password,
       number,
       money,
-      roles
     }, { headers: authHeader() });
   }
 

@@ -1,5 +1,7 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -28,6 +30,8 @@ import java.util.List;
 @RequestMapping("/api/user-access")
 public class UserAccessController {
 	
+	private static final Logger log = LoggerFactory.getLogger(ProductController.class);
+	
 	@Autowired
 	UserRepository userRepository;
 	
@@ -42,18 +46,25 @@ public class UserAccessController {
 	    return userRepository.findById(id).orElseThrow();
 	}
 	// Update an existing user
-	@PutMapping("/customers/{id}")
-	public User updateUser(@PathVariable Long id, @RequestBody User userRequest) {
-	    return userRepository.findById(id).map(user -> {
-	        user.setUsername(userRequest.getUsername());
-	        user.setEmail(userRequest.getEmail());
-	        user.setPassword(userRequest.getPassword());
-	        user.setNumber(userRequest.getNumber());
-	        user.setMoney(userRequest.getMoney());
-	        user.setRoles(userRequest.getRoles());
-	        return userRepository.save(user);
-	    }).orElseThrow();
-	}
+	@PutMapping("/customer/{id}")
+	public User updateUser(@PathVariable Long id, @RequestBody User UpdatedUser) {
+	    return userRepository.findById(id)
+	    	.map(user -> {
+		        user.setUsername(UpdatedUser.getUsername());
+		        user.setEmail(UpdatedUser.getEmail());
+		       // user.setPassword(UpdatedUser.getPassword());
+		        user.setNumber(UpdatedUser.getNumber());
+		        user.setMoney(UpdatedUser.getMoney());
+		       // user.setRoles(UpdatedUser.getRoles());
+		        User savedUser = userRepository.save(user);
+		        log.info(null);
+                log.info("User with id {} updated successfully: {}", id, savedUser);
+                return savedUser;
+		    }).orElseThrow(() -> {
+                log.error("User with id {} not found for update", id);
+                return new RuntimeException("User with id " + id + " not found for update");
+            });
+		}
 	//Delete a user by ID
 	@DeleteMapping("/customers/{id}")
 	public ResponseEntity<?> deleteUser(@PathVariable Long id) {
