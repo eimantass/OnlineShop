@@ -31,6 +31,14 @@ public class WishListItem {
 	private Product product;
 
 	public WishListItem() {}
+	
+	public WishListItem(Long id, Date date, Product product) {
+		this.id = id;
+		this.date = date;
+		this.product = product;
+	}
+
+
 
 	public Long getId() {
 		return id;

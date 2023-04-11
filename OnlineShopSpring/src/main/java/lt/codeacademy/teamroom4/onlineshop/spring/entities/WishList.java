@@ -31,6 +31,13 @@ public class WishList {
 	private Set<WishListItem> items = new HashSet<WishListItem>();
 	
 	public WishList() {}
+	
+	public WishList(Long id, Date date, String sessionToken, Set<WishListItem> items) {
+		this.id = id;
+		this.date = date;
+		this.sessionToken = sessionToken;
+		this.items = items;
+	}
 
 	public Long getId() {
 		return id;

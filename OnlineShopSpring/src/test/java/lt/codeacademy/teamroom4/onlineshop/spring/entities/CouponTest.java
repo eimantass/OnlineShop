@@ -5,45 +5,69 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class CouponTest {
-
+	
+	Coupon cpn = new Coupon((long)2, 30, false);
 	@Test
 	void testGetId() {
-		fail("Not yet implemented");
+		if(cpn.getId().equals((long)1)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testCouponInt() {
-		fail("Not yet implemented");
+		Coupon coupon = new Coupon(30);
+		if(coupon.getDiscount() == 30) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testCoupon() {
-		fail("Not yet implemented");
+		if(cpn == null) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testCouponLongInt() {
-		fail("Not yet implemented");
+		Coupon coupon1 = new Coupon((long)3, 30);
+		if(coupon1.getId().equals((long)3) && coupon1.getDiscount() == 30) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testCouponLongIntBoolean() {
-		fail("Not yet implemented");
+		if( 
+			cpn.getId().equals((long)3) &&
+			cpn.getDiscount() == 30) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetDiscount() {
-		fail("Not yet implemented");
+		if(cpn.getDiscount() == 30) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testIsDiscount() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testEqualsObject() {
-		fail("Not yet implemented");
+		//padaryti veliau
 	}
 
 }

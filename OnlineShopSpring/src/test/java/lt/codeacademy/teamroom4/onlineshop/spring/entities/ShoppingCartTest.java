@@ -2,63 +2,117 @@ package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Collection;
+import java.util.Date;
+
 import org.junit.jupiter.api.Test;
 
 class ShoppingCartTest {
+	
+	Collection<CartItem> cartItems;
+	Date time = new Date();
+	ShoppingCart cart = new ShoppingCart((long)2, time, 45.45, 5, cartItems, "sessionToken");
 
 	@Test
 	void testShoppingCart() {
-		fail("Not yet implemented");
+		if(cart == null) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetId() {
-		fail("Not yet implemented");
-	}
+		if(cart.getId().equals((long)2)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}	}
 
 	@Test
 	void testSetId() {
-		fail("Not yet implemented");
+		cart.setId((long)4);
+		if(cart.getId()==4) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetDate() {
-		fail("Not yet implemented");
+		if(cart.getDate() == time) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetDate() {
-		fail("Not yet implemented");
+		cart.setDate(time);
+		if(cart.getDate() == time) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetTotalPrice() {
-		fail("Not yet implemented");
+		if(cart.getTotalPrice() == 45.45) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetItemsNumber() {
-		fail("Not yet implemented");
+		if(cart.getItemsNumber() == 5) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetCartItems() {
-		fail("Not yet implemented");
+		if(cart.getCartItems() == cartItems) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetCartItems() {
-		fail("Not yet implemented");
+		cart.setCartItems(cartItems);
+		if(cart.getCartItems() == cartItems) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetSessionToken() {
-		fail("Not yet implemented");
+		if(cart.getSessionToken().equals("sessionToken")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetSessionToken() {
-		fail("Not yet implemented");
+		cart.setSessionToken("session");
+		if(cart.getSessionToken() == "session") {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 }

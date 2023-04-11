@@ -25,6 +25,11 @@ public class Category {
 	public Category(Categories name) {
 		this.name = name;
 	}
+	
+	public Category(Long id, Categories name) {
+		this.id = id;
+		this.name = name;
+	}
 
 	public Category() {
 	}

@@ -5,60 +5,103 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class WalletTest {
-
-	@Test
-	void testSetBalance() {
-		fail("Not yet implemented");
-	}
+	
+	Wallet wallet = new Wallet((long)2, "Name", "4545445", "Pervedimas", 2, 452.364);
+	
 
 	@Test
 	void testGetId() {
-		fail("Not yet implemented");
+		if(wallet.getId().equals((long)2)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetId() {
-		fail("Not yet implemented");
+		wallet.setId((long)4);
+		if(wallet.getId()==4) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetName() {
-		fail("Not yet implemented");
+		if(wallet.getName().equals("Name")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetName() {
-		fail("Not yet implemented");
+		wallet.setName("Name1");
+		if(wallet.getName().equals("Name1")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetAccountNumber() {
-		fail("Not yet implemented");
+		if(wallet.getAccountNumber().equals("454545")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetAccountNumber() {
-		fail("Not yet implemented");
+		wallet.setAccountNumber("565656");
+		if(wallet.getAccountNumber().equals("565656")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetDescription() {
-		fail("Not yet implemented");
+		if(wallet.getDescription().equals("Pervedimas")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetDescription() {
-		fail("Not yet implemented");
+		wallet.setDescription("Skola");
+		if(wallet.getDescription().equals("Skola")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetPriority() {
-		fail("Not yet implemented");
+		if(wallet.getPriority().equals(3)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetPriority() {
-		fail("Not yet implemented");
+		wallet.setPriority(2);
+		if(wallet.getPriority().equals(2)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 }
