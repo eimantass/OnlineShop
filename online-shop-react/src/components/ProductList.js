@@ -51,7 +51,7 @@ function ProductList() {
           <li key={product.id}>
             <h3>{product.name}</h3>
             <img src={product.photo} alt={product.name} />
-            <p>{product.description}</p>
+            <p>Description: {product.description}</p>
             <p>Category: {product.category}</p>
             {/* Display brands */}
             <p>Brand: {product.brand}</p>

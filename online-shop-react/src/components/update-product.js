@@ -6,19 +6,22 @@ function UpdateProduct() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [brands, setBrands] = useState([]); // Added state for brands
+  const [categories, setCategories] = useState([]); // Added state for categories
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [productResponse, brandsResponse] = await Promise.all([
+        const [productResponse, brandsResponse, categoriesResponse] = await Promise.all([
           ProductService.getProductById(id), // Fetching name, price, description, photo from API
           ProductService.getBrands(), // Fetching brands from API
+          ProductService.getCategories(), // Fetching categories from API
       
         ]);
         setProduct(productResponse.data);
-        setBrands(brandsResponse.data); // Setting the fetched brands to state
+        setBrands(brandsResponse.data); // Setting the fetched brand to state
+        setCategories(categoriesResponse.data); // Setting the fetched category to state
       
       } catch (error) {
         console.log(error);
@@ -81,6 +84,22 @@ function UpdateProduct() {
     ))}
   </select>
 </div>
+<div>
+  <label htmlFor="category">Category:</label>
+    <select
+        id="category"
+        name="category"
+        value={product.category || ''}
+        onChange={handleInputChange} >
+    <option value="">Select a category</option> 
+       {categories.map((category) => (
+     <option key={category} value={category}>
+        {category}
+  </option>
+  ))}
+               </select>
+        </div>
+
         <div>
           <label htmlFor="price">Price:</label>
           <input
@@ -111,21 +130,7 @@ function UpdateProduct() {
             onChange={handleInputChange}
           />
         </div>
-        {/* <div>
-          <label htmlFor="category">Category:</label>
-          <select
-                id="category"
-                name="category"
-                value={product.category || ''}
-                onChange={handleInputChange} >
-                <option value="">Select a category</option> 
-                 {categories.map((category) => (
-                <option key={category} value={category}>
-                 {category}
-               </option>
-  ))}
-</select>
-        </div> */}
+            
         <button type="submit">Update Product</button>
       </form>
     </main>
