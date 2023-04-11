@@ -5,17 +5,20 @@ import ProductService from "../services/product.service";
 function UpdateProduct() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
+  const [brands, setBrands] = useState([]); // Added state for brands
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [productResponse] = await Promise.all([
-          ProductService.getProductById(id),
+        const [productResponse, brandsResponse] = await Promise.all([
+          ProductService.getProductById(id), // Fetching name, price, description, photo from API
+          ProductService.getBrands(), // Fetching brands from API
       
         ]);
         setProduct(productResponse.data);
+        setBrands(brandsResponse.data); // Setting the fetched brands to state
       
       } catch (error) {
         console.log(error);
@@ -62,22 +65,22 @@ function UpdateProduct() {
             onChange={handleInputChange}
           />
         </div>
-        {/* <div>
-  <label htmlFor="brand">Brand:</label>
-  <select
-    id="brand"
-    name="brand"
-    value={product.brand || ''}
-    onChange={handleInputChange}
-  >
-    <option value="">Select a brand</option>
-    {brands.map((brand) => (
-      <option key={brand} value={brand}>
-        {brand}
-      </option>
+        <div>
+      <label htmlFor="brand">Brand:</label>
+        <select
+           id="brand"
+           name="brand"
+           value={product.brand || ''}
+           onChange={handleInputChange}
+           >
+       <option value="">Select a brand</option>
+           {brands.map((brand) => (
+           <option key={brand} value={brand}>
+           {brand}
+       </option>
     ))}
   </select>
-</div> */}
+</div>
         <div>
           <label htmlFor="price">Price:</label>
           <input
