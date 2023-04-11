@@ -64,7 +64,7 @@ public class Observer {
 	
 
 	// Used to activate seed function
-	@EventListener
+	 // @EventListener
 	public void seed(ContextRefreshedEvent event) {
 		// seedRole();
 		seedUserAdmin();
