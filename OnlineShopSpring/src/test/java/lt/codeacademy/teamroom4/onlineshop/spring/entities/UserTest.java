@@ -1,109 +1,239 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.MANAGER;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+import lt.codeacademy.teamroom4.onlineshop.spring.config.SecurityConfig;
 
+class UserTest {
+	Set<Role> roles = new HashSet<>();
+	Role role = new Role(MANAGER);
+	User user = new User((long)5,"manager", "manager@gmail.com", SecurityConfig.passwordEncoder().encode("manager"), 6465456, 454.4545, roles);
+	
 	@Test
 	void testUser() {
-		fail("Not yet implemented");
+		if(user == null) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
+	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	void testUserLongStringStringStringSetOfRole() {
-		fail("Not yet implemented");
+		User us = new User((long)5, "user", "user@gmail.com", "user123", roles);
+		if(
+			us.getId().equals((long)5) && 
+			us.getUsername().equals("user") &&
+			us.getEmail().equals("user@gmail.com") &&
+			us.getPassword().equals("user123") &&
+			us.getRoles().equals(MANAGER)){
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testUserStringStringStringSetOfRole() {
-		fail("Not yet implemented");
+		User us = new User( "user", "user@gmail.com", "user123", roles);
+		if(
+			us.getUsername().equals("user") &&
+			us.getEmail().equals("user@gmail.com") &&
+			us.getPassword().equals("user123") &&
+			us.getRoles().equals(MANAGER)){
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testUserStringStringString() {
-		fail("Not yet implemented");
+		User us = new User( "user", "user@gmail.com", "user123");
+		if(
+			us.getUsername().equals("user") &&
+			us.getEmail().equals("user@gmail.com") &&
+			us.getPassword().equals("user123")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
+	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	void testUserStringStringStringLongDoubleSetOfRole() {
-		fail("Not yet implemented");
+		User us = new User( "user", "user@gmail.com", "user123", 46464, 456.35, roles);
+		if(
+			us.getUsername().equals("user") &&
+			us.getEmail().equals("user@gmail.com") &&
+			us.getPassword().equals("user123") &&
+			us.getNumber() == 46464 &&
+			us.getMoney() == 456.35 &&
+			us.getRoles().equals(MANAGER)){
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
+	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	void testUserLongStringStringStringLongDoubleSetOfRole() {
-		fail("Not yet implemented");
+		User us = new User((long)5, "user", "user@gmail.com", "user123", 46464, 456.35, roles);
+		if(
+			us.getId().equals((long)5) && 
+			us.getUsername().equals("user") &&
+			us.getEmail().equals("user@gmail.com") &&
+			us.getPassword().equals("user123") &&
+			us.getNumber() == 46464 &&
+			us.getMoney() == 456.35 &&
+			us.getRoles().equals(MANAGER)){
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetId() {
-		fail("Not yet implemented");
+		if(user.getId().equals((long)5)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetId() {
-		fail("Not yet implemented");
+		user.setId((long)4);
+		if(user.getId()==4) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetUsername() {
-		fail("Not yet implemented");
+		if(user.getUsername().equals("manager")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetUsername() {
-		fail("Not yet implemented");
+		user.setUsername("user");
+		if(user.getUsername()=="user") {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetEmail() {
-		fail("Not yet implemented");
+		if(user.getEmail().equals("manager@gmail.com")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetEmail() {
-		fail("Not yet implemented");
+		user.setEmail("manager1@gmail.com");
+		if(user.getUsername()=="manager1@gmail.com") {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetPassword() {
-		fail("Not yet implemented");
+		if(user.getPassword().equals("manager")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetPassword() {
-		fail("Not yet implemented");
+		user.setPassword("manager");
+		if(user.getPassword()=="manager") {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
+	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	void testGetRoles() {
-		fail("Not yet implemented");
+		if(user.getRoles().equals(MANAGER)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetRoles() {
-		fail("Not yet implemented");
+		user.setRoles(roles);
+		if(user.getRoles() == roles ) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetNumber() {
-		fail("Not yet implemented");
+		if(user.getNumber() == 6465456) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}	
 	}
 
 	@Test
 	void testSetNumber() {
-		fail("Not yet implemented");
+		user.setNumber(45445);
+		if(user.getNumber() ==  45445) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetMoney() {
-		fail("Not yet implemented");
+		if(user.getMoney() == 454.4545) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}	
 	}
 
 	@Test
 	void testSetMoney() {
-		fail("Not yet implemented");
+		user.setMoney(45.32);
+		if(user.getMoney() ==  45.32) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 }

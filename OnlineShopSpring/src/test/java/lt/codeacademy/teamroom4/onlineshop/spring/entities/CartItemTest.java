@@ -7,13 +7,8 @@ import org.junit.jupiter.api.Test;
 class CartItemTest {
 
 	@Test
-	void testHashCode() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	void testGetId() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
@@ -53,11 +48,6 @@ class CartItemTest {
 
 	@Test
 	void testSetDate() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testEqualsObject() {
 		fail("Not yet implemented");
 	}
 

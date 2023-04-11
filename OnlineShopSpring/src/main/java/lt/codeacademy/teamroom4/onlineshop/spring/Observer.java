@@ -170,6 +170,7 @@ public class Observer {
 	WishListItem blank = new WishListItem();
 	wishListItemRepository.save(blank);
 	}
+	
 	private void seedWishList() {
 	WishList  blank = new WishList();	
 	wishListRepository.save(blank);
