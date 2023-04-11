@@ -8,7 +8,12 @@ class MoneyGeneratorTest {
 
 	@Test
 	void testVirtualMoney() {
-		fail("Not yet implemented");
+		if(MoneyGenerator.virtualMoney()>0) {
+			assertTrue(true);
+		}
+		else {
+			assertTrue(false);;
 	}
 
+	}
 }

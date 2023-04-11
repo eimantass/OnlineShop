@@ -5,19 +5,21 @@ import ProductService from "../services/product.service";
 function UpdateProduct() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
-  const [categories, setCategories] = useState([]);
+  const [brands, setBrands] = useState([]); // Added state for brands
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [productResponse, categoriesResponse] = await Promise.all([
-          ProductService.getProductById(id),
-          ProductService.getCategories(),
+        const [productResponse, brandsResponse] = await Promise.all([
+          ProductService.getProductById(id), // Fetching name, price, description, photo from API
+          ProductService.getBrands(), // Fetching brands from API
+      
         ]);
         setProduct(productResponse.data);
-        setCategories(categoriesResponse.data);
+        setBrands(brandsResponse.data); // Setting the fetched brands to state
+      
       } catch (error) {
         console.log(error);
       }
@@ -29,7 +31,7 @@ function UpdateProduct() {
     const { name, value } = event.target;
     setProduct((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: name === 'brand' ? String(value) : value,
     }));
   };
 
@@ -37,14 +39,13 @@ function UpdateProduct() {
     event.preventDefault();
   
     try {
-      const { id, category, ...productData } = product;
-      const existingCategory = await ProductService.getCategories(category.id);
-      const updatedProduct = { ...productData, category: existingCategory };
+      const { id, ...productData } = product;
+      const updatedProduct = { ...productData };
       await ProductService.updateProduct(id, updatedProduct);
       setMessage("The product was updated successfully!");
       navigate("/home");
     } catch (error) {
-      setMessage("Something went wrong. Please try again later.");
+      setMessage("Could not update the product. Please try again.");
       console.log(error);
     }
   };
@@ -65,6 +66,22 @@ function UpdateProduct() {
           />
         </div>
         <div>
+      <label htmlFor="brand">Brand:</label>
+        <select
+           id="brand"
+           name="brand"
+           value={product.brand || ''}
+           onChange={handleInputChange}
+           >
+       <option value="">Select a brand</option>
+           {brands.map((brand) => (
+           <option key={brand} value={brand}>
+           {brand}
+       </option>
+    ))}
+  </select>
+</div>
+        <div>
           <label htmlFor="price">Price:</label>
           <input
             id="price"
@@ -83,16 +100,7 @@ function UpdateProduct() {
             onChange={handleInputChange}
           ></textarea>
         </div>
-        <div>
-          <label htmlFor="discount">Discount:</label>
-          <input
-            id="discount"
-            type="number"
-            name="discount"
-            value={product.discount || ''}
-            onChange={handleInputChange}
-          />
-        </div>
+
         <div>
           <label htmlFor="photo">Photo:</label>
           <input
@@ -103,23 +111,22 @@ function UpdateProduct() {
             onChange={handleInputChange}
           />
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="category">Category:</label>
           <select
-  id="category"
-  name="category"
-  value={product.category ? product.category.id : ''}
-  onChange={handleInputChange}
->
-  <option value="">Select a category</option>
-  {categories.map((category) => (
-    <option key={category.id} value={category.id}>
-      {category.name}
-    </option>
+                id="category"
+                name="category"
+                value={product.category || ''}
+                onChange={handleInputChange} >
+                <option value="">Select a category</option> 
+                 {categories.map((category) => (
+                <option key={category} value={category}>
+                 {category}
+               </option>
   ))}
 </select>
-        </div>
-        <button type="submit">Save Changes</button>
+        </div> */}
+        <button type="submit">Update Product</button>
       </form>
     </main>
   );

@@ -6,18 +6,30 @@ function AddProductForm() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [brand, setBrand] = useState(""); // Added brand state
+  const [brands, setBrands] = useState([]); // Added brands state
   const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState("");
-  const [categories, setCategories] = useState([]);
+  
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const response = await ProductService.getCategories();
+      const response = await ProductService.getCategories(); // Fetch categories from API
       setCategories(response.data);
     };
     fetchCategories();
   }, []);
+
+  useEffect(() => {
+    const fetchBrands = async () => {
+      const response = await ProductService.getBrands(); // Fetch brands from API
+      setBrands(response.data);
+    };
+    fetchBrands();
+  }, []);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,7 +37,8 @@ function AddProductForm() {
       const product = {
         name,
         price,
-        category: { id: category },
+        category: category, //  Product object category 
+        brand: brand, //  Product object brand
         description,
         photo,
       };
@@ -70,8 +83,24 @@ function AddProductForm() {
           >
             <option value="">Select a category</option>
             {categories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="brand">Brand:</label> {/* Added brand select input */}
+          <select
+            id="brand"
+            name="brand"
+            value={brand}
+            onChange={(event) => setBrand(event.target.value)}
+          >
+            <option value="">Select a brand</option>
+            {brands.map((brand) => (
+              <option key={brand} value={brand}>
+                {brand}
               </option>
             ))}
           </select>

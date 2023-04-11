@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class ProductServiceTest {
-
+ProductService productService = new ProductService();
 	@Test
 	void testSortByDiscountAll() {
 		fail("Not yet implemented");

@@ -64,7 +64,7 @@ public class Observer {
 	
 
 	// Used to activate seed function
-	//@EventListener
+	 // @EventListener
 	public void seed(ContextRefreshedEvent event) {
 		// seedRole();
 		seedUserAdmin();
@@ -133,14 +133,14 @@ public class Observer {
 		List<Coupon> coupons= couponRepository.findAll();
 		Category category =categoryRepository.getById((long) 1);
 	List<Product> product = List.of(
-				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", categoryList.get(1),cpuParameterList),
-				new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu",categoryList.get(1), gpuParameterList),
-				new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu",categoryList.get(1),gpuParameterList),
-			//	new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", cpu,gpuParameterList, coupons.get(0)),
-				//new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", cpu),
-			new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", categoryList.get(0), cpuParameterList),
-				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu",categoryList.get(1), cpuParameterList));
-
+//				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", categoryList.get(1),cpuParameterList),
+			new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu",GPU, gpuParameterList),
+			new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu",GPU,gpuParameterList),
+	new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM,gpuParameterList, coupons.get(0)),
+				new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", CPU),
+		new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList),
+				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu",CPU, cpuParameterList));
+//
 		productRepository.saveAll(product);
 	}
 	private void seedCategory() {

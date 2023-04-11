@@ -25,9 +25,14 @@ class ProductService {
   createProduct(product) {
     return axios.post(API_URL + "/create", product, { headers: authHeader() });
   }
-  // get product categories
+  // get product categories (From ENUM - in controler List <Categories>)
   getCategories() {
     return axios.get(API_URL + "/categories", { headers: authHeader() });
+  }
+
+  // get product brands (From ENUM - in controler List <Brands>)
+  getBrands() {
+   return axios.get(API_URL + "/brands", { headers: authHeader() });
   }
 
   updateProduct(id, product) {

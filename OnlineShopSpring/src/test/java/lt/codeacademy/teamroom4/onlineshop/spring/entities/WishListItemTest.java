@@ -25,12 +25,12 @@ class WishListItemTest {
 	void testGetDate() {
 		fail("Not yet implemented");
 	}
-	
+
 	@Test
 	void testSetDate() {
 		fail("Not yet implemented");
 	}
-	
+
 	@Test
 	void testGetProduct() {
 		fail("Not yet implemented");

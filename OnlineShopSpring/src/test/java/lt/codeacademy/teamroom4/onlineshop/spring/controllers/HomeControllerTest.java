@@ -5,10 +5,25 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class HomeControllerTest {
-
+HomeController homeController = new HomeController();
 	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
+	void startPagetest() {
+		if(homeController.startPage() == "index") {
+			assertTrue(true);
+		}
+		else {
+			assertTrue(false);
 
+		}
+	}
+	void getAllProductstest() {
+		
+		if(homeController.getAllProduct() != null ) {
+			assertTrue(true);
+		}
+		else {
+			assertTrue(false);
+
+		}
+	}
 }
