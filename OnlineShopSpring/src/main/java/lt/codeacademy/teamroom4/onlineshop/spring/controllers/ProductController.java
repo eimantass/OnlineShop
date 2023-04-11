@@ -76,6 +76,7 @@ public class ProductController {
                     product.setDescription(updatedProduct.getDescription());
                     product.setDiscount(updatedProduct.getDiscount());
                     Product savedProduct = productRepository.save(product);
+                    log.info(null);
                     log.info("Product with id {} updated successfully: {}", id, savedProduct);
                     return savedProduct;
                 })

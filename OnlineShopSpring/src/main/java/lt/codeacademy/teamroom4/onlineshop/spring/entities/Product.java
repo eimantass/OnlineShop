@@ -48,10 +48,10 @@ public class Product {
 	@Column
 	private String description;
 	
-	@OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.EAGER)
-	@JoinColumn(name = "category", referencedColumnName = "id")
+	//@OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	//@JoinColumn(name = "category", referencedColumnName = "id")
 	@Enumerated(EnumType.STRING)
-	private Category category;
+	private Categories category;
 	
 	//@JsonManagedReference
 	//@Transient
@@ -65,7 +65,7 @@ public class Product {
 	//Product constructors
 	public Product() {
 	}
-	public Product(String name,Brands brand,String photo, double price, String description, Category categories) {
+	public Product(String name,Brands brand,String photo, double price, String description, Categories categories) {
 		this.name = name;
 		this.brand = brand;
 		this.photo = photo;
@@ -77,7 +77,7 @@ public class Product {
 	}
 
 	public Product(Long id, String name, Brands brand, String photo, double price, String description,
-			Category category, Set<ProductParameters> productParameters, Coupon discount) {
+			Categories category, Set<ProductParameters> productParameters, Coupon discount) {
 		this.id = id;
 		this.name = name;
 		this.discount = discount;
@@ -94,7 +94,7 @@ public class Product {
 		this.name = name;
 	}
 	public Product(String name, Brands brand, String photo, double price, String description,
-			Category category, Set<ProductParameters> productParameters, Coupon discount) {
+			Categories category, Set<ProductParameters> productParameters, Coupon discount) {
 		super();
 		this.name = name;
 		this.discount = discount;
@@ -106,7 +106,7 @@ public class Product {
 		this.productParameters = productParameters;
 	}
 	public Product(String name, Brands brand, String photo, double price, String description,
-			Category category, Set<ProductParameters> productParameters) {
+			Categories category, Set<ProductParameters> productParameters) {
 		super();
 		this.name = name;
 		this.brand = brand;
@@ -131,6 +131,9 @@ public class Product {
 
 	
 
+	public Product(Categories category) {
+		this.category = category;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -173,11 +176,11 @@ public class Product {
 		this.description = description;
 	}
 	
-	public Category getCategory() {
+	public Categories getCategory() {
 		return category;
 	}
 
-	public void setCategory(Category category) {
+	public void setCategory(Categories category) {
 		this.category = category;
 	}
 
@@ -202,7 +205,7 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", photo=" + photo + ", price=" + price + ", description="
-				+ description + ", category=" + category + ", parameters=" +  "]";
+				+ description + ", category=" + category.toString() + ", parameters=" +  "]";
 	}
 
 }
