@@ -6,7 +6,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
  //Here mapping for crud operations is configured
 //	
-@Configuration public class WebConfig implements WebMvcConfigurer {
+@Configuration 
+public class WebConfig implements WebMvcConfigurer {
 	  
 @Override 
 public void addCorsMappings(CorsRegistry registry) {
@@ -17,5 +18,5 @@ public void addCorsMappings(CorsRegistry registry) {
 		.allowedHeaders("*") // Add this line to allow all headers
 		.exposedHeaders("*"); // Add this line to expose all headers} 
 
-}
+	}
 }

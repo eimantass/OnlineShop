@@ -14,7 +14,6 @@ import CustomerBoard from "./components/board-customer.component";
 import ManagerBoard from "./components/board-manager.component";
 import AdminBoard from "./components/board-admin.component";
 // Import function pages
-import EditCustomer from "./components/EditCustomer";
 import AddProductForm from "./components/add-product"
 import UpdateProduct from "./components/update-product"
 // Import CategoriesMenu pages
@@ -39,6 +38,7 @@ import Feedback from "./pages/Feedback";
 import Help from "./pages/Help";
 import TestPage from "./layout/AdminEditPage";
 import AdminControllMenuAAM from "./components/AdminControllMenuP";
+import ControlPanel from "./layout/AdminEditPage";
 
 class App extends Component {
   constructor(props) {
@@ -168,7 +168,7 @@ class App extends Component {
     <Route path="/manager" element={<ManagerBoard/>} />
     <Route path="/admin" element={<AdminBoard/>} />
     {/* Routes to function pages */}
-    <Route path="/edit-customer/:id" element={<EditCustomer/>} />
+   
     <Route path="/add-product" element={<AddProductForm/>} />
     <Route path="/update-product/:id" element={<UpdateProduct/>} />
     {/* Routes to CategoriesMenu pages */}
@@ -192,7 +192,7 @@ class App extends Component {
     <Route path="/feedback" element={<Feedback/>} />
     <Route path="/help" element={<Help/>} />
     <Route path="/Controll-panel" element={<AdminControllMenuAAM/>}/>
-    <Route path="/Controll-panel/edit/:id" element={<TestPage/>}/>
+    <Route path="/Controll-panel/edit/:id" element={<ControlPanel/>}/> 
     </Routes>
         </div>
       </div>
