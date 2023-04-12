@@ -55,7 +55,7 @@ const ControlPanel = () => {
     <div className="table-container">
       <ul>
         <li>
-          <Link to='/controll-panel'>Back to customerlist</Link> 
+          <Link to='/customers'>Back to customerlist</Link> 
         </li>
         
         <li><b>ID:</b>        {customers.id}</li>
