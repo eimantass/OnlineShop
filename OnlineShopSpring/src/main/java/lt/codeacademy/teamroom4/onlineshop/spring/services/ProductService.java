@@ -88,6 +88,7 @@ public class ProductService {
 	public Product getProductById(Long id) {
 		return productRepository.getById(id);
 	}
+	
 
 	// gauname visus produktus
 	public List<Product> getAllProducts() {
