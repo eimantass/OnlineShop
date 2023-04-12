@@ -11,7 +11,11 @@ public class CartDto {
 	//Constructing empty CartDto
 	public CartDto() {}
 	
-	
+	public CartDto(Long id, List<RecordDto> records) {
+		this.id = id;
+		this.records = records;
+	}
+
 	//Getters and Setters
 	public Long getId() {
 		return id;
