@@ -5,70 +5,112 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class RecordDtoTest {
-
+	
+	RecordDto dto = new RecordDto((long)2, "name", 5, 250.445, 45.32);
+	
 	@Test
 	void testRecordDto() {
-		fail("Not yet implemented");
+		if(dto == null) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
-	@Test
-	void testRecordDtoCartItem() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	void testGetId() {
-		fail("Not yet implemented");
+		if(dto.getId().equals((long)2)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetId() {
-		fail("Not yet implemented");
+		dto.setId((long)4);
+		if(dto.getId()==4) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetName() {
-		fail("Not yet implemented");
+		if(dto.getName().equals("name")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetName() {
-		fail("Not yet implemented");
+		dto.setName("name1");
+		if(dto.getName().equals("name1")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetAmount() {
-		fail("Not yet implemented");
+		if(dto.getAmount() == 5) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetAmount() {
-		fail("Not yet implemented");
+		dto.setAmount(10);
+		if(dto.getAmount() == 10) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetSuma() {
-		fail("Not yet implemented");
+		if(dto.getSuma() == 250.445) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetTotalPrice() {
-		fail("Not yet implemented");
+		dto.setTotalPrice(500.41);;
+		if(dto.getSuma() == 500.41) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetPrice() {
-		fail("Not yet implemented");
+		if(dto.getPrice() == 45.32) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetPrice() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testToString() {
-		fail("Not yet implemented");
+		dto.setPrice(20.20);
+		if(dto.getPrice() == 20.20) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 }

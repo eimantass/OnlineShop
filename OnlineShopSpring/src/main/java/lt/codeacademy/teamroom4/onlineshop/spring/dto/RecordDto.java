@@ -19,6 +19,14 @@ public class RecordDto {
 		this.amount = line.getQuantity();
 		this.totalPrice = line.getSum();
 	}
+	
+	public RecordDto(Long id, String name, int amount, double totalPrice, double price) {
+		this.id = id;
+		this.name = name;
+		this.amount = amount;
+		this.totalPrice = totalPrice;
+		this.price = price;
+	}
 	// Getters/Setters
 	public Long getId() {
 		return id;
