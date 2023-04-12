@@ -14,6 +14,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.transaction.Transactional;
+
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -35,50 +37,49 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.Category;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Coupon;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ProductParameters;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CouponRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 @RunWith(SpringRunner.class)
-//@SpringBootTest
-@DataJpaTest
+@SpringBootTest
+//@DataJpaTest
 //@EnableWebMvc
 //@ExtendWith(MockitoExtension.class)
 class ProductServiceTest {
-
 	@Autowired
-private ProductRepository productRepository = spy(ProductRepository.class);
+private ProductRepository productRepository;
+	@Autowired
+	private CouponRepository couponRepository;
 	//@InjectMocks
 	@Autowired
-	private ProductService productService;
+	private ProductService productService = new ProductService();
 Logger logger ;
 
 	private void seedProduct() {
-		Set<ProductParameters> cpuParameterList = new HashSet<>();
-		Set<ProductParameters> gpuParameterList = new HashSet<>();
-		ProductParameters firstCPU = new ProductParameters("I3", "Intel");
-		ProductParameters firstGpu = new ProductParameters("RX 6400XT", "2321 Mhz");
-		gpuParameterList.add(firstGpu);
-		cpuParameterList.add(firstCPU);
-		List<Product> product = List.of(
-//				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", categoryList.get(1),cpuParameterList),
-				new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu", GPU, gpuParameterList),
-				new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu", GPU,
-						gpuParameterList),
-				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM, gpuParameterList),
-				new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", CPU),
-				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList),
-				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList));
+		List<Coupon> couponList=List.of( new Coupon(10),
+		 new Coupon(30), new Coupon(50));
 
+		couponRepository.saveAll(couponList);
+		Set<ProductParameters> gpuParameterList = null;
+		//productRepository.deleteAll();
+		List<Product> productList = List.of(new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM,gpuParameterList, couponList.get(0)),
+				
+		new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM,gpuParameterList, couponList.get(1)),
+		new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM,gpuParameterList, couponList.get(2)));
+
+		productRepository.saveAll(productList);
+	
+		//System.out.println("----------------------------------------------"+productRepository.count());
 		//productRepository.saveAll(product);
 		//logger.info(productRepository.toString());
-		System.out.println(productRepository.count());
-
 	}
 
 	@Test
 	void testSortByDiscountAll() {
 		seedProduct();
 		//logger.info(null, productRepository.count());
+		//List<Product> sortedProduct = null;
 		List<Product> sortedProduct = productService.sortByDiscountAll(0);
-		if (sortedProduct.size() != 0) {
+		if (sortedProduct.get(0).getDiscount().getDiscount()<sortedProduct.get(1).getDiscount().getDiscount()&& sortedProduct.get(1).getDiscount().getDiscount()<sortedProduct.get(2).getDiscount().getDiscount()) {
 			assertTrue(true);
 		} else {
 			assertTrue(false);
