@@ -38,16 +38,18 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.ProductParameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 @RunWith(SpringRunner.class)
 //@SpringBootTest
-//@DataJpaTest
-@EnableWebMvc
-@ExtendWith(MockitoExtension.class)
+@DataJpaTest
+//@EnableWebMvc
+//@ExtendWith(MockitoExtension.class)
 class ProductServiceTest {
 
-	
+	@Autowired
 private ProductRepository productRepository = spy(ProductRepository.class);
-	@InjectMocks
+	//@InjectMocks
+	@Autowired
 	private ProductService productService;
 Logger logger ;
+
 	private void seedProduct() {
 		Set<ProductParameters> cpuParameterList = new HashSet<>();
 		Set<ProductParameters> gpuParameterList = new HashSet<>();
@@ -64,8 +66,8 @@ Logger logger ;
 				new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", CPU),
 				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList),
 				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList));
-//
-		productRepository.saveAll(product);
+
+		//productRepository.saveAll(product);
 		//logger.info(productRepository.toString());
 		System.out.println(productRepository.count());
 
