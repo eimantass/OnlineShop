@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.config.SecurityConfig;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
@@ -62,10 +63,7 @@ public class UserAccessController {
 	    	.map(user -> {
 		        user.setUsername(UpdatedUser.getUsername());
 		        user.setEmail(UpdatedUser.getEmail());
-		        String encodedPassword = UpdatedUser.getPassword(); // Get the password from the updated user
-	            if (!user.getPassword().equals(encodedPassword)) {
-	                // Encode the password only if it has changed
-	                encodedPassword = encoder.encode(UpdatedUser.getPassword());}
+		        user.setPassword(SecurityConfig.passwordEncoder().encode(UpdatedUser.getPassword()));
 		        user.setNumber(UpdatedUser.getNumber());
 		        user.setMoney(UpdatedUser.getMoney());
 		        user.setRoles(UpdatedUser.getRoles());
