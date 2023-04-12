@@ -36,9 +36,8 @@ import Warranty from "./pages/Warranty";
 import Privacy from "./pages/Privacy";
 import Feedback from "./pages/Feedback";
 import Help from "./pages/Help";
-import TestPage from "./layout/AdminEditPage";
-import AdminControllMenuAAM from "./components/AdminControllMenuP";
-import ControlPanel from "./layout/AdminEditPage";
+// Admin Control Panel
+import ControlPanel from "./layout/AdminControlPanel";
 
 class App extends Component {
   constructor(props) {
@@ -191,8 +190,7 @@ class App extends Component {
     <Route path="/privacy" element={<Privacy/>} />
     <Route path="/feedback" element={<Feedback/>} />
     <Route path="/help" element={<Help/>} />
-    <Route path="/Controll-panel" element={<AdminControllMenuAAM/>}/>
-    <Route path="/Controll-panel/edit/:id" element={<ControlPanel/>}/> 
+    <Route path="/Control-panel/edit/:id" element={<ControlPanel/>}/> 
     </Routes>
         </div>
       </div>
