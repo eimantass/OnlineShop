@@ -16,7 +16,7 @@ class ProductTest {
 	Set<ProductParameters> cpuParameterList = new HashSet<>();
 	ProductParameters firstCPU = new ProductParameters("I3", "Intel");
 	Coupon coupon1 = new Coupon(10);
-	Product product = new Product((long) 5, "IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList,
+	Product product = new Product((long) 5, "IntelI7", INTEL, "foto.png", 250, "16 core cpu", PROCESSORS, cpuParameterList,
 			coupon1);
 
 	void addProductParameters() {
@@ -40,7 +40,7 @@ class ProductTest {
 	void testProductParametersStringBrandPhotoDoubleStringDescriptionCategories() {
 		// String name, Brands brand, String photo, double price, String description,
 		// Categories categories
-		Product testProduct = new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU);
+		Product testProduct = new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", GRAPHICS_CARDS);
 		// emptyProduct.setName("RTX");
 
 		if (testProduct.getName().equals("IntelI7") && testProduct.getBrand().equals(INTEL)

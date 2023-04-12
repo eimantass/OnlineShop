@@ -55,8 +55,26 @@ private ProductRepository productRepository;
 Logger logger ;
 
 	private void seedProduct() {
-		List<Coupon> couponList=List.of( new Coupon(10),
-		 new Coupon(30), new Coupon(50));
+		Set<ProductParameters> cpuParameterList = new HashSet<>();
+		Set<ProductParameters> gpuParameterList = new HashSet<>();
+		ProductParameters firstCPU = new ProductParameters("I3", "Intel");
+		ProductParameters firstGpu = new ProductParameters("RX 6400XT", "2321 Mhz");
+		gpuParameterList.add(firstGpu);
+		cpuParameterList.add(firstCPU);
+		List<Product> product = List.of(
+//				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", categoryList.get(1),cpuParameterList),
+				new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS, gpuParameterList),
+				new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu", GRAPHICS_CARDS,
+						gpuParameterList),
+				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", MAINBOARDS, gpuParameterList),
+				new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", PROCESSORS),
+				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", PROCESSORS, cpuParameterList),
+				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", PROCESSORS, cpuParameterList));
+//
+		productRepository.saveAll(product);
+		//logger(productRepository.findAll());
+		//System.out.println(productRepository.toString());
+
 
 		couponRepository.saveAll(couponList);
 		Set<ProductParameters> gpuParameterList = null;
