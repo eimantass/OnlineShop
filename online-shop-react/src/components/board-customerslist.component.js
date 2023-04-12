@@ -72,7 +72,7 @@ export default class CustomersListBoard extends Component {
                 <td>{customer.money}</td>
                 <td>
                   <Link
-                    to={`/Controll-panel/edit/${customer.id}`} // Use Link to handle routing
+                    to={`/Control-panel/edit/${customer.id}`} // Use Link to handle routing
                     className="btn btn-primary mr-2"
                   >
                     Edit

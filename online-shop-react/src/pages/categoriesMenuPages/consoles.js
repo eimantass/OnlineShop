@@ -1,10 +1,10 @@
 import Categories from "../../components/categories-menu";
 
-export default function Plansetiniai() {
+export default function Consoles() {
     return (
       <div>
         <Categories/>
-        <h1> Plansetiniai </h1>
+        <h1> Consoles: </h1>
       </div>
         
       );

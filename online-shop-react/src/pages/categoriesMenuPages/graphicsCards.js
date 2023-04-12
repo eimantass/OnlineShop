@@ -1,10 +1,10 @@
 import Categories from "../../components/categories-menu";
 
-export default function Konsoles() {
+export default function GraphicsCards() {
     return (
       <div>
         <Categories/>
-        <h1> Konsoles </h1>
+        <h1> Graphics cards: </h1>
       </div>
         
       );
