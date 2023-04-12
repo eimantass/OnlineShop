@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Category;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
 //This repository stores products
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
@@ -23,5 +24,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	List<Product> search(Sort sort, @Param("min") double min, @Param("max") double max);
 	//Does not work yet
 	@Query("from Product where category = :category")
-	List<Product> findAllWithCategory(@Param("category") Category category);
+	List<Product> findAllWithCategory(@Param("category") Categories category);
 }
