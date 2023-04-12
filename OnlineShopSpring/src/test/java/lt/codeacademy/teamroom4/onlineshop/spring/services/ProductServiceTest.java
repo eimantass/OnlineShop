@@ -8,35 +8,45 @@ import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Catego
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.GPU;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.RAM;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.spy;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Category;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Coupon;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ProductParameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
-//@RunWith(SpringRunner.class)
+@RunWith(SpringRunner.class)
 //@SpringBootTest
+//@DataJpaTest
+@EnableWebMvc
 @ExtendWith(MockitoExtension.class)
 class ProductServiceTest {
-	@MockBean
-	ProductRepository productRepository;
+
+	
+private ProductRepository productRepository = spy(ProductRepository.class);
 	@InjectMocks
-	ProductService productService = new ProductService();
+	private ProductService productService;
 Logger logger ;
 	private void seedProduct() {
 		Set<ProductParameters> cpuParameterList = new HashSet<>();
@@ -56,16 +66,17 @@ Logger logger ;
 				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList));
 //
 		productRepository.saveAll(product);
-		//logger(productRepository.findAll());
-		//System.out.println(productRepository.toString());
+		//logger.info(productRepository.toString());
+		System.out.println(productRepository.count());
 
 	}
 
 	@Test
 	void testSortByDiscountAll() {
 		seedProduct();
+		//logger.info(null, productRepository.count());
 		List<Product> sortedProduct = productService.sortByDiscountAll(0);
-		if (sortedProduct != null) {
+		if (sortedProduct.size() != 0) {
 			assertTrue(true);
 		} else {
 			assertTrue(false);
