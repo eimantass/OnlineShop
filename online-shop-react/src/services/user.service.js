@@ -22,7 +22,6 @@ class UserService {
      return axios.get(API_URL + `roles/user/${userId}`, { headers: authHeader() });
   }
   
-
   getCustomerByIdMethod(id) {
     return axios.get(API_URL + 'customers/' + id, { headers: authHeader() });
   }

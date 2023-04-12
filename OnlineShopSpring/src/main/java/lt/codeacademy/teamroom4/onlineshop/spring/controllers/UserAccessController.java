@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,6 +41,9 @@ public class UserAccessController {
 	@Autowired
     private RoleRepository roleRepository;
 	
+	@Autowired
+	PasswordEncoder encoder;
+	
 	// Return all usersList
 	@GetMapping("/customers")
 	public List<User> getAllUsers() {
@@ -58,7 +62,10 @@ public class UserAccessController {
 	    	.map(user -> {
 		        user.setUsername(UpdatedUser.getUsername());
 		        user.setEmail(UpdatedUser.getEmail());
-		        user.setPassword(UpdatedUser.getPassword());
+		        String encodedPassword = UpdatedUser.getPassword(); // Get the password from the updated user
+	            if (!user.getPassword().equals(encodedPassword)) {
+	                // Encode the password only if it has changed
+	                encodedPassword = encoder.encode(UpdatedUser.getPassword());}
 		        user.setNumber(UpdatedUser.getNumber());
 		        user.setMoney(UpdatedUser.getMoney());
 		        user.setRoles(UpdatedUser.getRoles());
