@@ -14,7 +14,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
 
 class CategoryTest {
 	
-	List<Category> categoryList = List.of(new Category(GPU),new Category(CPU));
+	List<Category> categoryList = List.of(new Category(GRAPHICS_CARDS),new Category(CPU));
 	Category cat = new Category((long)2, GPU);
 	Set<Categories> cato = new HashSet<>();
 	
