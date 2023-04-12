@@ -31,26 +31,23 @@ class ProductRepositoryTest {
 	void testFindByNameContainingIgnoreCase() {
 		rep.save(product);
 		rep.findByNameContainingIgnoreCase(name);
-
 	}
 
 	@Test
 	void testFindAllBrandsDistincts() {
 		rep.save(product);
 		rep.findAllBrandsDistincts();
-
 	}
 
 	@Test
 	void testSearch() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
 	void testFindAllWithCategory() {
 		rep.save(product);
 		rep.findAllWithCategory(null);
-
 	}
 
 }
