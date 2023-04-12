@@ -88,6 +88,7 @@ public class ProductService {
 	public Product getProductById(Long id) {
 		return productRepository.getById(id);
 	}
+	
 
 	// gauname visus produktus
 	public List<Product> getAllProducts() {
@@ -151,7 +152,7 @@ public class ProductService {
 	public List<Product> searchProductByNameLike(String searchName) {
 		return productRepository.findByNameContainingIgnoreCase(searchName);
 	}
-	public List<Product> searchProductByCategory(Category category){
+	public List<Product> searchProductByCategory(Categories category){
 		return productRepository.findAllWithCategory(category);
 	}
 	// galima atsifiltruoti pagal branda
