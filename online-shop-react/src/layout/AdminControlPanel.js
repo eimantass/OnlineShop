@@ -2,43 +2,65 @@ import './css/AdminEditPage.css';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import userService from '../services/user.service';
-import './css/Customers.css';
 
 const ControlPanel = () => {
   console.log(useParams());
   const { id } = useParams();
-  const [customers, setCustomers] = useState([]);
-  const navigate = useNavigate();
+  const [customers, setCustomers] = useState([]); // Added state for customers
   const [successMessage, setSuccessMessage] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
-    userService
-      .getCustomerByIdMethod(id)
-      .then(response => setCustomers(response.data))
-      .catch(error => console.log(error));
-  }, []);
+    const fetchData = async () => {
+      try {
+        const [customersResponse] = await Promise.all([
+          userService.getCustomerByIdMethod(id), // Fetching customer data from API
+        ]);
+        setCustomers(customersResponse.data); // Setting the fetched customers data to state
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [id]);
+
+  // Define separate functions for each input field
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+  const handleNumberChange = (e) => {
+    setNumber(e.target.value);
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleMoneyChange = (e) => {
+    setMoney(e.target.value);
+  };
 
   const [newUsername, setUsername] = useState('');
   const [newEmail, setEmail] = useState('');
   const [newNumber, setNumber] = useState('');
   const [newPassword, setPassword] = useState('');
   const [newMoney, setMoney] = useState('');
-  const [newRole, setRole] = useState('');
 
-  const handleFormSubmit = async e => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     const newCustomerData = {
       username: newUsername,
       email: newEmail,
       password: newPassword,
       number: newNumber,
-      money: newMoney
+      money: newMoney,
     };
 
     console.log('newCustomerData:', newCustomerData); // Debugging statement
 
     try {
-      const response = await userService.updateCustomerMethod(id, newCustomerData);
+      const response = await userService.updateCustomerMethod(id, newCustomerData); // Updating customer data
       console.log('Customer updated successfully:', response.data);
       setSuccessMessage('User updated successfully.'); // Set success message
       setTimeout(() => {
@@ -53,47 +75,89 @@ const ControlPanel = () => {
 
   return (
     <div className="table-container">
-      <ul>
-        <li>
-          <Link to='/customers'>Back to customerlist</Link> 
-        </li>
-        
-        <li><b>ID:</b>        {customers.id}</li>
-        <li><b>Username:</b>  {customers.username}</li>
-        <li><b>E-mail</b>     {customers.email}</li>
-        <li><b>Number:</b>    {customers.number}</li>
-        <li><b>Money:</b>     {customers.money}</li>
-        {/* <li>{customers.role}</li> // Wont work, because there is no role in user table*/} 
+      <Link to="/customers" className="btn btn-primary">
+        Back to List
+      </Link>
 
-        <h2>Update User:</h2>
+      <br></br>
+
+      {/* Render customer data */}
+      <li>
+        <b>ID:</b> {customers.id}
+      </li>
+      <li>
+        <b>Username:</b> {customers.username}
+      </li>
+      <li>
+        <b>E-mail</b> {customers.email}
+      </li>
+      <li>
+        <b>Number:</b> {customers.number}
+      </li>
+      <li>
+        <b>Money:</b> {customers.money}
+      </li>
+
+      <br></br>
+
+        <h2>Update User Form:</h2>
         <form onSubmit={handleFormSubmit}>
-          <label>
+          <label className="form-label">
             Username:
-            <input type="text" value={newUsername} onChange={(e) =>setUsername(e.target.value)}/>
-          </label>
-          <label>
+            <input className="form-control" 
+                    type="text" 
+                    value={newUsername}
+                    onChange={handleUsernameChange}
+                    style={{ width: '500px' }} />
+            </label>
+          <label className="form-label">
             Email:
-            <input type="email" value={newEmail} onChange={(e) =>setEmail(e.target.value)}/>
+            <input className="form-control" 
+                  type="email" 
+                  value={newEmail} 
+                  onChange={handleEmailChange}
+                  style={{ width: '500px' }} />
           </label>
-          <label>
+          <label className="form-label">
             Tel.number:
-            <input type="number" value={newNumber} onChange={(e) =>setNumber(e.target.value)}/>
+            <input className="form-control" 
+                   type="number" 
+                   value={newNumber} 
+                   onChange={handleNumberChange}
+                   style={{ width: '500px' }} />
           </label>
-          <label>
+          <label className="form-label">
             Password:
-            <input type="password" value={newPassword} onChange={(e) =>setPassword(e.target.value)}/>
+            <input className="form-control" 
+                   type="password" 
+                   value={newPassword} 
+                   onChange={handlePasswordChange}
+                   style={{ width: '500px' }} />
           </label>
-          <label>
+          <label className="form-label">
             Money:
-            <input type="number" value={newMoney} onChange={(e) =>setMoney(e.target.value)}/>
+            <input className="form-control" 
+                   type="number" 
+                   value={newMoney} 
+                   onChange={handleMoneyChange}
+                   style={{ width: '500px' }} />
           </label>
-          <label>
+          {/* <label className="form-label">
             Role:
-            <input type="text" value={newRole} onChange={(e) =>setRole(e.target.value)}/>
-          </label>
-          <button type="submit">Update</button>
+            <input className="form-control" 
+                   type="text" 
+                   value={newRole} 
+                   onChange={(e) =>setRole(e.target.value)}
+                   style={{ width: '500px' }} />
+          </label> */}
+          <button className="btn btn-primary" type="submit">Update</button>
         </form>
-      </ul>
+
+        {successMessage && (
+          <p className="success-message">{successMessage}</p>
+        )}
+        {/* Render error message */}
+     
     </div>
   );
 }
