@@ -1,16 +1,19 @@
 import './css/AdminEditPage.css';
-import {Link, useParams} from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import userService from '../services/user.service';
 import './css/Customers.css';
 
 const ControlPanel = () => {
   console.log(useParams());
-  const {id} = useParams();
+  const { id } = useParams();
   const [customers, setCustomers] = useState([]);
+  const navigate = useNavigate();
+  const [successMessage, setSuccessMessage] = useState('');
 
   useEffect(() => {
-    userService.getCustomerByIdMethod(id)
+    userService
+      .getCustomerByIdMethod(id)
       .then(response => setCustomers(response.data))
       .catch(error => console.log(error));
   }, []);
@@ -22,22 +25,26 @@ const ControlPanel = () => {
   const [newMoney, setMoney] = useState('');
   const [newRole, setRole] = useState('');
 
-  const handleFormSubmit = async (e) => {
+  const handleFormSubmit = async e => {
     e.preventDefault();
     const newCustomerData = {
       username: newUsername,
       email: newEmail,
-      //password: newPassword,
-      number: newNumber, // Parse as integer
-      money: newMoney, // Parse as float
-      //role: newRole // Assuming `newRole` is the correct property name for the role field
+      password: newPassword,
+      number: newNumber,
+      money: newMoney
     };
-  
+
     console.log('newCustomerData:', newCustomerData); // Debugging statement
 
     try {
       const response = await userService.updateCustomerMethod(id, newCustomerData);
       console.log('Customer updated successfully:', response.data);
+      setSuccessMessage('User updated successfully.'); // Set success message
+      setTimeout(() => {
+        setSuccessMessage(''); // Clear success message after 2 seconds
+        navigate('/customers'); // Redirect to /customers page
+      }, 2000);
     } catch (error) {
       console.log('Error updating customer:', error);
       // Show error message to user
@@ -72,18 +79,18 @@ const ControlPanel = () => {
             Tel.number:
             <input type="number" value={newNumber} onChange={(e) =>setNumber(e.target.value)}/>
           </label>
-          {/* <label>
+          <label>
             Password:
-            <input type="text" value={newPassword} onChange={(e) =>setPassword(e.target.value)}/>
-          </label> */}
+            <input type="password" value={newPassword} onChange={(e) =>setPassword(e.target.value)}/>
+          </label>
           <label>
             Money:
             <input type="number" value={newMoney} onChange={(e) =>setMoney(e.target.value)}/>
           </label>
-          {/* <label>
+          <label>
             Role:
             <input type="text" value={newRole} onChange={(e) =>setRole(e.target.value)}/>
-          </label> */}
+          </label>
           <button type="submit">Update</button>
         </form>
       </ul>

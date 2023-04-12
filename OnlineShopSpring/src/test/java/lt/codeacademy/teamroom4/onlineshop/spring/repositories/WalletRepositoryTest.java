@@ -16,6 +16,7 @@ class WalletRepositoryTest {
 		Wallet wallet = new Wallet((long)2, "Name", "4545445", "Pervedimas", priority, 452.364);
 		rep.save(wallet);
 		rep.findAllByOrderByPriority();
+
 	}
 
 }

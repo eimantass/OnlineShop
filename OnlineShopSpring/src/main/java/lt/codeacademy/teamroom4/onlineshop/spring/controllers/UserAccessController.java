@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,14 +17,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.config.SecurityConfig;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.*;
 
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Set;
 //This controller handles user access accordingly to roles
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -35,6 +40,12 @@ public class UserAccessController {
 	@Autowired
 	UserRepository userRepository;
 	
+	@Autowired
+    private RoleRepository roleRepository;
+	
+	@Autowired
+	PasswordEncoder encoder;
+	
 	// Return all usersList
 	@GetMapping("/customers")
 	public List<User> getAllUsers() {
@@ -45,6 +56,11 @@ public class UserAccessController {
 	public User getUserById(@PathVariable Long id) {
 	    return userRepository.findById(id).orElseThrow();
 	}
+	@GetMapping("/customers/role/{id}")
+	public Set<Role> getCustomerRoleById(@PathVariable Long id) {
+	    return userRepository.findById(id).orElseThrow().getRoles();
+	}
+	
 	// Update an existing user
 	@PutMapping("/customer/{id}")
 	public User updateUser(@PathVariable Long id, @RequestBody User UpdatedUser) {
@@ -53,7 +69,7 @@ public class UserAccessController {
 	    	.map(user -> {
 		        user.setUsername(UpdatedUser.getUsername());
 		        user.setEmail(UpdatedUser.getEmail());
-		        user.setPassword(UpdatedUser.getPassword());
+		        user.setPassword(SecurityConfig.passwordEncoder().encode(UpdatedUser.getPassword()));
 		        user.setNumber(UpdatedUser.getNumber());
 		        user.setMoney(UpdatedUser.getMoney());
 		        user.setRoles(UpdatedUser.getRoles());
@@ -66,6 +82,12 @@ public class UserAccessController {
                 return new RuntimeException("User with id " + id + " not found for update");
             });
 		}
+	// Get all roles
+    @GetMapping("/roles")
+    public List<Role> getRoles() {
+        List<Role> roles = roleRepository.findAll();
+        return roles;
+    }
 	//Delete a user by ID
 	@DeleteMapping("/customers/{id}")
 	public ResponseEntity<?> deleteUser(@PathVariable Long id) {

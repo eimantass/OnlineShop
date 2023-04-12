@@ -21,6 +21,16 @@ class UserRepositoryTest {
 		User user = new User(username, "email@gmail.com", "password");
 		underTest.save(user);
 		Optional<User> find = underTest.findByUsername(username);	
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class UserRepositoryTest {
+
+	@Test
+	void testFindByUsername() {
+		fail("Not yet implemented");
 	}
 
 	@Test
@@ -30,15 +40,18 @@ class UserRepositoryTest {
 		underTest.save(user);
 		boolean exist = underTest.existsByEmail(username);
 		assertTrue(exist);
+
 	}
 
 	@Test
 	void testExistsByEmail() {
+
 		String email = "email@gmail.com";
 		User user = new User("username", email, "password");
 		underTest.save(user);
 		boolean exist = underTest.existsByEmail(email);
 		assertTrue(exist);
+
 	}
 
 }
