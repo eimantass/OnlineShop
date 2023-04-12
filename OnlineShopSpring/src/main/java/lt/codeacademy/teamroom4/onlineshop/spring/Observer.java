@@ -60,11 +60,9 @@ public class Observer {
 	private WishListItemRepository wishListItemRepository;
 	@Autowired
 	private WishListRepository wishListRepository;
-	
-	
 
 	// Used to activate seed function
-	 @EventListener
+	// @EventListener
 	public void seed(ContextRefreshedEvent event) {
 		// seedRole();
 		seedUserAdmin();
@@ -112,17 +110,16 @@ public class Observer {
 				SecurityConfig.passwordEncoder().encode("serviceManager"), roles));
 		userRepository.saveAll(serviceManager);
 	}
+
 	private void seedCoupons() {
-		List<Coupon> discountCoupons = List.of(
-				new Coupon(0),
-				new Coupon(10),
-				new Coupon(20));	
-		
+		List<Coupon> discountCoupons = List.of(new Coupon(0), new Coupon(10), new Coupon(20));
+
 		couponRepository.saveAll(discountCoupons);
-		
 
 	}
+
 	private void seedProduct() {
+
 		Set<ProductParameters> cpuParameterList = new HashSet<>();
 		Set<ProductParameters> gpuParameterList = new HashSet<>();
 		ProductParameters firstCPU = new ProductParameters("I3", "Intel");
@@ -130,49 +127,46 @@ public class Observer {
 		gpuParameterList.add(firstGpu);
 		cpuParameterList.add(firstCPU);
 		List<Category> categoryList = categoryRepository.findAll();
-		List<Coupon> coupons= couponRepository.findAll();
-		Category category =categoryRepository.getById((long) 1);
-	List<Product> product = List.of(
+		List<Coupon> coupons = couponRepository.findAll();
+		Category category = categoryRepository.getById((long) 1);
+		List<Product> product = List.of(
 //				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", categoryList.get(1),cpuParameterList),
-			new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu",GPU, gpuParameterList),
-			new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu",GPU,gpuParameterList),
-	new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM,gpuParameterList, coupons.get(0)),
+				new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu", GPU, gpuParameterList),
+				new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu", GPU,
+						gpuParameterList),
+				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM, gpuParameterList, coupons.get(0)),
 				new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", CPU),
-		new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList),
-				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu",CPU, cpuParameterList));
+				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList),
+				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList));
 //
-		productRepository.saveAll(product);
+		List<Product> productList = List.of(new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM,gpuParameterList),
+				new Product("Gt710", NVIDIA, "foto.png", 40, "RTX", GPU,gpuParameterList),
+				new Product("Gt730", NVIDIA, "foto.png", 90, "RTX", GPU,gpuParameterList),
+				new Product("Gt1030", NVIDIA, "foto.png", 100, "RTX", GPU,gpuParameterList),
+				new Product("Gt610", NVIDIA, "foto.png", 90, "RTX", GPU,gpuParameterList),
+				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM,gpuParameterList),
+				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM,gpuParameterList),
+				new Product("RTX", NVIDIA, "foto.png", 80, "RTX", GPU,gpuParameterList));
+		productRepository.saveAll(productList);
 	}
+
 	private void seedCategory() {
-		List<Category> categoryList = List.of(
-		new Category(GPU),
-		new Category(CPU),
-		new Category(RAM),
-		new Category(HDD),
-		new Category(MAINBOARD),
-		new Category(PSU),
-		new Category(THERMALPASTE),
-		new Category(FANS),
-		new Category(DESKTOPCOMPUTER),
-		new Category(LAPTOPCOMPUTER),
-		new Category(ALLINONECOMPUTER),
-		new Category(MONITORS),
-		new Category(PHONES),
-		new Category(TABLETS),
-		new Category(PRINTERS),
-		new Category(GAMECONSOLES),
-		new Category(GAMES));
-		
+		List<Category> categoryList = List.of(new Category(GPU), new Category(CPU), new Category(RAM),
+				new Category(HDD), new Category(MAINBOARD), new Category(PSU), new Category(THERMALPASTE),
+				new Category(FANS), new Category(DESKTOPCOMPUTER), new Category(LAPTOPCOMPUTER),
+				new Category(ALLINONECOMPUTER), new Category(MONITORS), new Category(PHONES), new Category(TABLETS),
+				new Category(PRINTERS), new Category(GAMECONSOLES), new Category(GAMES));
+
 		categoryRepository.saveAll(categoryList);
 	}
 
 	private void seedWishListItemRepository() {
-	WishListItem blank = new WishListItem();
-	wishListItemRepository.save(blank);
+		WishListItem blank = new WishListItem();
+		wishListItemRepository.save(blank);
 	}
-	
+
 	private void seedWishList() {
-	WishList  blank = new WishList();	
-	wishListRepository.save(blank);
+		WishList blank = new WishList();
+		wishListRepository.save(blank);
 	}
 }
