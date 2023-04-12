@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.config.SecurityConfig;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.*;
@@ -37,6 +39,12 @@ public class UserAccessController {
 	
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+    private RoleRepository roleRepository;
+	
+	@Autowired
+	PasswordEncoder encoder;
 	
 	// Return all usersList
 	@GetMapping("/customers")
@@ -74,6 +82,12 @@ public class UserAccessController {
                 return new RuntimeException("User with id " + id + " not found for update");
             });
 		}
+	// Get all roles
+    @GetMapping("/roles")
+    public List<Role> getRoles() {
+        List<Role> roles = roleRepository.findAll();
+        return roles;
+    }
 	//Delete a user by ID
 	@DeleteMapping("/customers/{id}")
 	public ResponseEntity<?> deleteUser(@PathVariable Long id) {
