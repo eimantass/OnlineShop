@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class WishListTest {
 	
 	Date time = new Date();
-	 Set<WishListItem> items;
+	Set<WishListItem> items;
 	WishList list = new WishList((long)2, time, "sessionToken", items);
 	
 	@Test
