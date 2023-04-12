@@ -1,10 +1,10 @@
 import Categories from "../../components/categories-menu";
 
-export default function Mobilieji() {
+export default function Printers() {
     return (
       <div>
         <Categories/>
-        <h1> Mobilieji</h1>
+        <h1> Printers: </h1>
       </div>
         
       );

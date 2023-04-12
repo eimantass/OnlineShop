@@ -8,15 +8,15 @@ function Categories() {
     <div>
       <div className="categories">
         <ul>
-          <li><Link to="/staliniai-kompiuteriai">Staliniai kompiuteriai</Link></li>
-          <li><Link to="/nesiojamieji-kompiuteriai">Nesiojamieji kompiuteriai</Link></li>
-          <li><Link to="/kompiuteriu-komponentai">Kompiuteriu komponentai</Link></li>
-          <li><Link to="/monitoriai">Monitoriai</Link></li>
-          <li><Link to="/mobilieji-telefonai">Mobilieji telefonai</Link></li>
-          <li><Link to="/plansetiniai-kompiuteriai">Plansetiniai kompiuteriai</Link></li>
-          <li><Link to="/spausdintuvai">Spausdintuvai</Link></li>
-          <li><Link to="/zaidimu-konsoles">Žaidimu konsoles</Link></li>
-          <li><Link to="/zaidimai">Žaidimai</Link></li>
+          <li><Link to="/processors">Processors(CPU)</Link></li>
+          <li><Link to="/laptops">Laptops</Link></li>
+          <li><Link to="/graphics-cards">Grpahics Cards</Link></li>
+          <li><Link to="/mainboards">Mainboards</Link></li>
+          <li><Link to="/mobile-phones">Mobile Phones</Link></li>
+          <li><Link to="/monitors">Monitors</Link></li>
+          <li><Link to="/printers">Printers</Link></li>
+          <li><Link to="/consoles">Consoles</Link></li>
+          <li><Link to="/games">Games</Link></li>
         </ul>
       </div>
     </div>
