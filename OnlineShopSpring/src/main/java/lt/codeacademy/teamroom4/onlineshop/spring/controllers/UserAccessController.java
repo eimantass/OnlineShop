@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.*;
@@ -34,6 +36,9 @@ public class UserAccessController {
 	
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+    private RoleRepository roleRepository;
 	
 	// Return all usersList
 	@GetMapping("/customers")
@@ -66,6 +71,12 @@ public class UserAccessController {
                 return new RuntimeException("User with id " + id + " not found for update");
             });
 		}
+	// Get all roles
+    @GetMapping("/roles")
+    public List<Role> getRoles() {
+        List<Role> roles = roleRepository.findAll();
+        return roles;
+    }
 	//Delete a user by ID
 	@DeleteMapping("/customers/{id}")
 	public ResponseEntity<?> deleteUser(@PathVariable Long id) {

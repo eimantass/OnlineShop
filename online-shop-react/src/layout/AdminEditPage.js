@@ -27,9 +27,9 @@ const ControlPanel = () => {
     const newCustomerData = {
       username: newUsername,
       email: newEmail,
-      //password: newPassword,
-      number: newNumber, // Parse as integer
-      money: newMoney, // Parse as float
+      password: newPassword,
+      number: newNumber, 
+      money: newMoney, 
       //role: newRole // Assuming `newRole` is the correct property name for the role field
     };
   
@@ -72,18 +72,18 @@ const ControlPanel = () => {
             Tel.number:
             <input type="number" value={newNumber} onChange={(e) =>setNumber(e.target.value)}/>
           </label>
-          {/* <label>
+          <label>
             Password:
             <input type="text" value={newPassword} onChange={(e) =>setPassword(e.target.value)}/>
-          </label> */}
+          </label>
           <label>
             Money:
             <input type="number" value={newMoney} onChange={(e) =>setMoney(e.target.value)}/>
           </label>
-          {/* <label>
+          <label>
             Role:
             <input type="text" value={newRole} onChange={(e) =>setRole(e.target.value)}/>
-          </label> */}
+          </label>
           <button type="submit">Update</button>
         </form>
       </ul>
