@@ -76,21 +76,25 @@ Logger logger ;
 	@Test
 	void testSortByDiscountAll() {
 		seedProduct();
+		boolean ifTestpassed =true;
 		//logger.info(null, productRepository.count());
 		//List<Product> sortedProduct = null;
 		List<Product> sortedProduct = productService.sortByDiscountAll(0);
-		if (sortedProduct.get(0).getDiscount().getDiscount()<sortedProduct.get(1).getDiscount().getDiscount()&& sortedProduct.get(1).getDiscount().getDiscount()<sortedProduct.get(2).getDiscount().getDiscount()) {
-			assertTrue(true);
-		} else {
-			assertTrue(false);
+		for(int i =1;i<sortedProduct.size();i++) {
+			if(sortedProduct.get(i-1).getDiscount().getDiscount()<sortedProduct.get(i).getDiscount().getDiscount()) {
+				ifTestpassed = false;
+			}
 
 		}
+		assertTrue(ifTestpassed);
 	}
 
-//	@Test
-//	void testSortByNameAll() {
-//		fail("Not yet implemented");
-//	}
+	@Test
+	void testSortByNameAll() {
+		seedProduct();
+
+		fail("Not yet implemented");
+	}
 //
 //	@Test
 //	void testSortByPriceAll() {
