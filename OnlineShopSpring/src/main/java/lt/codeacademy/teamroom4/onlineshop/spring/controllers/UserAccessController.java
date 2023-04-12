@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.config.SecurityConfig;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
 
@@ -25,6 +26,7 @@ import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.*;
 
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Set;
 //This controller handles user access accordingly to roles
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -46,6 +48,11 @@ public class UserAccessController {
 	public User getUserById(@PathVariable Long id) {
 	    return userRepository.findById(id).orElseThrow();
 	}
+	@GetMapping("/customers/role/{id}")
+	public Set<Role> getCustomerRoleById(@PathVariable Long id) {
+	    return userRepository.findById(id).orElseThrow().getRoles();
+	}
+	
 	// Update an existing user
 	@PutMapping("/customer/{id}")
 	public User updateUser(@PathVariable Long id, @RequestBody User UpdatedUser) {
