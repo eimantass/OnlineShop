@@ -1,10 +1,11 @@
 import Categories from "../../components/categories-menu";
+import MobilePhonesProductList from "../../components/mobilePhones-productlist";
 
 export default function MobilePhones() {
     return (
       <div>
         <Categories/>
-        <h1> Mobile Phones: </h1>
+        <MobilePhonesProductList/>
       </div>
         
       );

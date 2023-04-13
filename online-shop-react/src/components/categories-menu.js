@@ -10,7 +10,7 @@ function Categories() {
         <ul>
           <li><Link to="/processors">Processors(CPU)</Link></li>
           <li><Link to="/laptops">Laptops</Link></li>
-          <li><Link to="/graphics-cards">Grpahics Cards</Link></li>
+          <li><Link to="/graphics-cards">Graphics Cards</Link></li>
           <li><Link to="/mainboards">Mainboards</Link></li>
           <li><Link to="/mobile-phones">Mobile Phones</Link></li>
           <li><Link to="/monitors">Monitors</Link></li>

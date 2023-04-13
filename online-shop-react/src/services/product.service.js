@@ -42,6 +42,8 @@ class ProductService {
   deleteProduct(id) {
     return axios.delete(API_URL + "/delete/" + id, { headers: authHeader() });
   }
+
+  
 }
 
 export default new ProductService();
