@@ -1,7 +1,6 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.INTEL;
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.CPU;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashSet;
@@ -11,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.*;
 
 class ProductTest {
 	Set<ProductParameters> cpuParameterList = new HashSet<>();
@@ -45,7 +45,7 @@ class ProductTest {
 
 		if (testProduct.getName().equals("IntelI7") && testProduct.getBrand().equals(INTEL)
 				&& testProduct.getPhoto().equals("foto.png") && testProduct.getPrice() == 250
-				&& testProduct.getCategory().equals(CPU) && testProduct.getDescription().equals("16 core cpu")) {
+				&& testProduct.getCategory().equals(PROCESSORS) && testProduct.getDescription().equals("16 core cpu")) {
 			assertTrue(true);
 		} else {
 			assertTrue(false);
@@ -55,13 +55,13 @@ class ProductTest {
 
 	@Test
 	void testProductParametersAllExceptIdAndCoupon() {
-		Product product = new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList);
+		Product product = new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", PROCESSORS, cpuParameterList);
 
 		addProductParameters();
 
 		if (product.getName().equals("IntelI7") && product.getBrand().equals(INTEL)
 				&& product.getPhoto().equals("foto.png") && product.getPrice() == 250
-				&& product.getCategory().equals(CPU) && product.getProductParameters().equals(cpuParameterList)
+				&& product.getCategory().equals(PROCESSORS) && product.getProductParameters().equals(cpuParameterList)
 				&& product.getDescription().equals("16 core cpu")) {
 
 			assertTrue(true);
@@ -73,13 +73,13 @@ class ProductTest {
 
 	@Test
 	void testProductParametersAllExceptId() {
-		Product product = new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList, coupon1);
+		Product product = new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", PROCESSORS, cpuParameterList, coupon1);
 
 		addProductParameters();
 
 		if (product.getName().equals("IntelI7") && product.getDiscount().equals(coupon1)
 				&& product.getBrand().equals(INTEL) && product.getPhoto().equals("foto.png")
-				&& product.getPrice() == 250 && product.getCategory().equals(CPU)
+				&& product.getPrice() == 250 && product.getCategory().equals(PROCESSORS)
 				&& product.getProductParameters().equals(cpuParameterList)
 				&& product.getDescription().equals("16 core cpu")) {
 
@@ -92,7 +92,7 @@ class ProductTest {
 
 	@Test
 	void testProductParametersAll() {
-		Product product = new Product((long) 5, "IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList,
+		Product product = new Product((long) 5, "IntelI7", INTEL, "foto.png", 250, "16 core cpu", PROCESSORS, cpuParameterList,
 				coupon1);
 
 		addProductParameters();
@@ -100,7 +100,7 @@ class ProductTest {
 		if (product.getId().equals((long) 5) && product.getName().equals("IntelI7")
 				&& product.getDiscount().equals(coupon1) && product.getBrand().equals(INTEL)
 				&& product.getPhoto().equals("foto.png") && product.getPrice() == 250
-				&& product.getCategory().equals(CPU) && product.getProductParameters().equals(cpuParameterList)
+				&& product.getCategory().equals(PROCESSORS) && product.getProductParameters().equals(cpuParameterList)
 				&& product.getDescription().equals("16 core cpu")) {
 
 			assertTrue(true);
