@@ -4,9 +4,6 @@ import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.GOODRAM;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.INTEL;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.NVIDIA;
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.CPU;
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.GPU;
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.RAM;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.spy;
 
