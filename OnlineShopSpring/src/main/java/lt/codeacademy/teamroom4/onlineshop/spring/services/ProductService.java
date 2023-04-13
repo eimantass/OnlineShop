@@ -57,7 +57,7 @@ public class ProductService {
 	}
 
 	public List<Product> sortByPriceAll(int direction) {
-		if (direction == 2) {
+		if (direction == 1) {
 			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "price"));
 
 		} else {
