@@ -29,6 +29,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.*;
 
 //This class handles functions, which do not require authentication to use
+@CrossOrigin(origins = "http://localhost:8081", allowCredentials = "true")
 @RestController
 public class HomeController {
 	// Autowiring services and repositories

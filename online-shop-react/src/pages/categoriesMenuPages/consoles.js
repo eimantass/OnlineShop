@@ -1,10 +1,11 @@
 import Categories from "../../components/categories-menu";
+import ConsolesProductList from "../../components/consoles-productlist";
 
 export default function Consoles() {
     return (
       <div>
         <Categories/>
-        <h1> Consoles: </h1>
+        <ConsolesProductList/>
       </div>
         
       );

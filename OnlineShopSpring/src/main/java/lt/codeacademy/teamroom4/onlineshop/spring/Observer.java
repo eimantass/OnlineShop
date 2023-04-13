@@ -132,9 +132,10 @@ public class Observer {
 		List<Product> product = List.of(
 //				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", categoryList.get(1),cpuParameterList),
 
-			new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS, gpuParameterList),
-			new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu", GRAPHICS_CARDS, gpuParameterList),
-	new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", MAINBOARDS,gpuParameterList, coupons.get(0)),
+			new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu",GRAPHICS_CARDS, gpuParameterList),
+			new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu",GRAPHICS_CARDS,gpuParameterList),
+	new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", LAPTOPS,gpuParameterList, coupons.get(0)),
+
 				new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", PROCESSORS),
 		new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", PROCESSORS, cpuParameterList),
 				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu",PROCESSORS, cpuParameterList));
