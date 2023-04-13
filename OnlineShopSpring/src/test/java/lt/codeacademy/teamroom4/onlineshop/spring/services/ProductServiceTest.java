@@ -286,9 +286,15 @@ class ProductServiceTest {
 		}
 	}
 //
-//	@Test
-//	void testGetProductWithBigestDiscount() {
-//		fail("Not yet implemented");
-//	}
+	@Test
+	void testGetProductWithBigestDiscount() {
+		seedProduct();
+		Product featuredProduct = testProductService.getProductWithBigestDiscount();
+		List<Product> allProducts = testProductService.getAllProducts();
+//		for(int i =0; i <allProducts.size();i++ ) {
+//		if(featuredProduct.getDiscount())
+//
+//		}
+	}
 //
 }
