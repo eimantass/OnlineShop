@@ -104,6 +104,20 @@ public class Product {
 		this.category = category;
 		this.productParameters = productParameters;
 	}
+	
+	public Product(String name, double price, String description) {
+		this.name = name;
+		this.price = price;
+		this.description = description;
+	}
+	
+	public Product(Long id, String name, double price) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.price = price;
+	}
+
 	public Product(String name, Brands brand, String photo, double price, String description,
 			Categories category, Set<ProductParameters> productParameters) {
 		this.name = name;

@@ -39,7 +39,7 @@ public class CartController {
 	
 	//Here products are added to shopping cart
 	@PostMapping("/addToCart")
-	public String addToCart(HttpServletRequest request, Model model, @RequestParam("id") Long id,
+	public String addToCart(HttpServletRequest request, @RequestParam("id") Long id,
 			@RequestParam("quantity") int quantity) {
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
 		if(sessionToken == null) {
