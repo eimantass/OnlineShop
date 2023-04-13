@@ -64,7 +64,7 @@ public class Observer {
 	
 
 	// Used to activate seed function
-	 @EventListener
+	// @EventListener
 	public void seed(ContextRefreshedEvent event) {
 		// seedRole();
 		seedUserAdmin();
@@ -139,7 +139,7 @@ public class Observer {
 	new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", LAPTOPS,gpuParameterList, coupons.get(0)),
 				new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", PROCESSORS),
 		new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", PROCESSORS, cpuParameterList),
-				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu",PROCESSORS, cpuParameterList));
+				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu",PROCESSORS, cpuParameterList,coupons.get(1)));
 //
 		productRepository.saveAll(product);
 	}
