@@ -41,6 +41,9 @@ public class Wallet {
 	
 	
 	
+	public Wallet() {
+	}
+
 	public Wallet(Long id, @NotBlank(message = "Name cann't be blank") @Size(min = 2, max = 30) String name,
 			@Size(min = 2, max = 30) String accountNumber) {
 		this.id = id;
