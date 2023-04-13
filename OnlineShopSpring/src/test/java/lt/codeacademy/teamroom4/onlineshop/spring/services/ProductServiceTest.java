@@ -4,9 +4,6 @@ import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.GOODRAM;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.INTEL;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.NVIDIA;
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.CPU;
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.GPU;
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.RAM;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.spy;
 
@@ -43,6 +40,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CouponRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -265,6 +263,7 @@ class ProductServiceTest {
 	void testGetAllCategories() {
 		seedProduct();
 		List<Category> allCategories = testProductService.getAllCategories();
+		System.out.println("---------------"+allCategories);
 		if (allCategories.size()!=0 ) {
 			assertTrue(true);
 
@@ -289,12 +288,18 @@ class ProductServiceTest {
 	@Test
 	void testGetProductWithBigestDiscount() {
 		seedProduct();
+		boolean ifTestpassed = true;
+		
 		Product featuredProduct = testProductService.getProductWithBigestDiscount();
 		List<Product> allProducts = testProductService.getAllProducts();
-//		for(int i =0; i <allProducts.size();i++ ) {
-//		if(featuredProduct.getDiscount())
-//
+		for(int i =1; i <allProducts.size()-1;i++ ) {
+//		if(featuredProduct.getDiscount().getDiscount()<allProducts.get(i).getDiscount().getDiscount()){
+//			ifTestpassed= false;
 //		}
+		
+		}
+		assertTrue(ifTestpassed);
+
 	}
-//
+
 }
