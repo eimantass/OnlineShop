@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ProductService from "../services/product.service";
+import CartService from "../services/cart.service"; // Import CartService
 
 function ProductList() {
   const [products, setProducts] = useState([]);
+  const [selectedQuantity, setSelectedQuantity] = useState(1); // Add state for selected quantity
   const navigate = useNavigate();
 
   // Fetch the all products data from repository
@@ -39,6 +41,15 @@ function ProductList() {
     }
   };
 
+  // Add to Cart function
+  const handleAddToCart = async (id) => {
+    try {
+      await CartService.addProductToCart(id, selectedQuantity); // Pass the selected quantity along with the product ID
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <main>
       <h2 className="center">Products List:</h2>
@@ -67,6 +78,7 @@ function ProductList() {
                 ))}
               </ul>
             )}
+            
             {/* Below each product a remove button that removes the product */}
             <button onClick={() => handleRemoveProduct(product.id)}>
               Remove
@@ -74,6 +86,34 @@ function ProductList() {
             {/* Below each product an edit button that navigates to the edit product page */}
             <button onClick={() => handleEditProduct(product.id)}>
               Edit
+            </button>
+            {/* Select quantity */}
+            {/* Input for quantity */}
+{/* Label for quantity */}
+<label>
+  Quantity:
+  <input
+    type="number"
+    value={product.quantity}
+    onChange={(e) => {
+      const newQuantity = parseInt(e.target.value);
+      setProducts((prevProducts) =>
+        prevProducts.map((prevProduct) =>
+          prevProduct.id === product.id
+            ? { ...prevProduct, quantity: newQuantity }
+            : prevProduct
+        )
+      );
+    }}
+    min={0}
+    max={10}
+  />
+</label>
+            {/* Below each product an add to cart button */}
+            <button
+              onClick={() => handleAddToCart(product.id, product.quantity)}
+            >
+              Add to Cart
             </button>
           </li>
         ))}
