@@ -1,7 +1,7 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.CPU;
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.GPU;
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashSet;
@@ -14,8 +14,8 @@ import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
 
 class CategoryTest {
 	
-	List<Category> categoryList = List.of(new Category(GRAPHICS_CARDS),new Category(CPU));
-	Category cat = new Category((long)2, GPU);
+	List<Category> categoryList = List.of(new Category(GRAPHICS_CARDS),new Category(PROCESSORS));
+	Category cat = new Category((long)2, GRAPHICS_CARDS);
 	Set<Categories> cato = new HashSet<>();
 	
 	@Test
@@ -57,7 +57,7 @@ class CategoryTest {
 
 	@Test
 	void testGetName() {
-		if(cat.getName().equals(CPU)) {
+		if(cat.getName().equals(PROCESSORS)) {
 			assertTrue(true);
 		}else {
 			assertTrue(false);
@@ -66,8 +66,8 @@ class CategoryTest {
 
 	@Test
 	void testSetName() {
-		cat.setName(CPU);
-		if(cat.getName().equals(CPU)) {
+		cat.setName(PROCESSORS);
+		if(cat.getName().equals(PROCESSORS)) {
 			assertTrue(true);
 		}else {
 			assertTrue(false);

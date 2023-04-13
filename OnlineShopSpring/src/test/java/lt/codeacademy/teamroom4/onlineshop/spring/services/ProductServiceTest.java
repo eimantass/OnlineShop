@@ -66,17 +66,17 @@ class ProductServiceTest {
 		gpuParameterList.add(new ProductParameters("Voltage", "1.15"));
 		// productRepository.deleteAll();
 		List<Product> productList = List.of(
-				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM, gpuParameterList,
+				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", LAPTOPS, gpuParameterList,
 						couponList.get(0)),
-				new Product("Gt710", NVIDIA, "foto.png", 40, "RTX", GPU, gpuParameterList, couponList.get(1)),
-				new Product("Gt730", NVIDIA, "foto.png", 90, "RTX", GPU, gpuParameterList, couponList.get(2)),
-				new Product("Gt1030", NVIDIA, "foto.png", 100, "RTX", GPU, gpuParameterList, couponList.get(3)),
-				new Product("Gt610", NVIDIA, "foto.png", 90, "RTX", GPU, gpuParameterList, couponList.get(4)),
-				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM, gpuParameterList,
+				new Product("Gt710", NVIDIA, "foto.png", 40, "RTX", GRAPHICS_CARDS, gpuParameterList, couponList.get(1)),
+				new Product("Gt730", NVIDIA, "foto.png", 90, "RTX", GRAPHICS_CARDS, gpuParameterList, couponList.get(2)),
+				new Product("Gt1030", NVIDIA, "foto.png", 100, "RTX", GRAPHICS_CARDS, gpuParameterList, couponList.get(3)),
+				new Product("Gt610", NVIDIA, "foto.png", 90, "RTX", GRAPHICS_CARDS, gpuParameterList, couponList.get(4)),
+				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", LAPTOPS, gpuParameterList,
 						couponList.get(5)),
-				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM, gpuParameterList,
+				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", LAPTOPS, gpuParameterList,
 						couponList.get(6)),
-				new Product("RTX", NVIDIA, "foto.png", 80, "RTX", GPU, gpuParameterList, couponList.get(7)));
+				new Product("RTX", NVIDIA, "foto.png", 80, "RTX", GRAPHICS_CARDS, gpuParameterList, couponList.get(7)));
 
 		productTestRepository.saveAll(productList);
 
@@ -232,10 +232,10 @@ class ProductServiceTest {
 	void testSearchProductByCategory() {
 		seedProduct();
 		boolean ifTestpassed = true;
-		Categories testCategory = GPU;
-		List<Product> allProducts = testProductService.searchProductByCategory(Categories.GPU);
+		Categories testCategory = GRAPHICS_CARDS;
+		List<Product> allProducts = testProductService.searchProductByCategory(Categories.GRAPHICS_CARDS);
 		for(int i=0; i<allProducts.size();i++) {
-			if (allProducts.get(i).getCategory()!=Categories.GPU) {
+			if (allProducts.get(i).getCategory()!=Categories.GRAPHICS_CARDS) {
 				ifTestpassed = false;
 		}
 		
