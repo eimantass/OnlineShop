@@ -8,7 +8,9 @@ class WalletExceptionResponseTest {
 
 	@Test
 	void testWalletExceptionResponse() {
-		fail("Not yet implemented");
+        String errorMessage = "Wallet not found";
+        WalletExceptionResponse response = new WalletExceptionResponse(errorMessage);
+        assertEquals(errorMessage, response.getErrorMessage());
 	}
 
 }

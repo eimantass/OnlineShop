@@ -5,12 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class UserDetailsImplTest {
+	
 
-	@Test
-	void testHashCode() {
-		fail("Not yet implemented");
-	}
-
+	private UserDetailsImpl underTest;
+	
 	@Test
 	void testUserDetailsImpl() {
 		fail("Not yet implemented");
@@ -63,11 +61,6 @@ class UserDetailsImplTest {
 
 	@Test
 	void testIsEnabled() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testEqualsObject() {
 		fail("Not yet implemented");
 	}
 
