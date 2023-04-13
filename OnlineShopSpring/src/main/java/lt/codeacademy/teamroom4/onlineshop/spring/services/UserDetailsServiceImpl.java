@@ -1,5 +1,7 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.services;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		User user = userRepository.findByUsername(username)
 				.orElseThrow( () -> new UsernameNotFoundException("User Not found with username" + username));
 		return UserDetailsImpl.build(user);
+	}
+
+	public Optional<User> getById(long id) {
+		return userRepository.findById(id);
 	}
 
 }

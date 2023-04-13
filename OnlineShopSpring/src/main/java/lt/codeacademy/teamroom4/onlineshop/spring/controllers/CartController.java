@@ -1,6 +1,7 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -44,10 +45,16 @@ public class CartController {
 	
 	//Here products are added to shopping cart
 	@PostMapping("/addToCart")
-	public String addToCart(HttpServletRequest request, Model model, @RequestParam("id") Long id,
+	public String addToCart(HttpServletRequest request, @RequestParam("id") Long id,
 			@RequestParam("quantity") int quantity) {
+
 		// Log the incoming request
         logger.info("Received addToCart request. id: {}, quantity: {}", id, quantity);
+
+		addingItemsToCart(request, id, quantity);
+		return "redirect:/";
+	}
+	public CartItem addingItemsToCart(HttpServletRequest request, Long id, int quantity) {
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
 		if(sessionToken == null) {
 			sessionToken = UUID.randomUUID().toString();
@@ -59,6 +66,7 @@ public class CartController {
 		// Log any relevant information about the response or error
         logger.info("addToCart request processed successfully");
 		return "redirect:/";
+
 	}
 	//Here shopping cart is shown
 	@GetMapping("/shoppingCart")

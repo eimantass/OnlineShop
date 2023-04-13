@@ -8,7 +8,11 @@ class WalletExceptionTest {
 
 	@Test
 	void testWalletException() {
-		fail("Not yet implemented");
+		try {
+	        throw new WalletException("Insufficient funds");
+	    }catch (WalletException e) {
+	        assertEquals("Insufficient funds", e.getMessage());
+	    }
 	}
 
 }
