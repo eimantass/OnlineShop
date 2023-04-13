@@ -38,6 +38,7 @@ import Feedback from "./pages/Feedback";
 import Help from "./pages/Help";
 // Admin Control Panel
 import ControlPanel from "./layout/AdminControlPanel";
+import ProductCart from "./pages/shoppingCart";
 
 class App extends Component {
   constructor(props) {
@@ -121,7 +122,13 @@ class App extends Component {
                 CUSTOMERS LIST
                 </Link>
               </li>
-
+            )}
+            {currentUser && (
+              <li className="nav-item">
+                <Link to={"/cart"} className="nav-link">
+                Product Cart
+                </Link>
+              </li>
             )}
           </div>
 
@@ -166,8 +173,9 @@ class App extends Component {
     <Route path="/customer" element={<CustomerBoard/>} />
     <Route path="/manager" element={<ManagerBoard/>} />
     <Route path="/admin" element={<AdminBoard/>} />
-    {/* Routes to function pages */}
-   
+    {/* Cart */}
+    <Route path="/cart" element={<ProductCart/>} />
+    {/* Products */}
     <Route path="/add-product" element={<AddProductForm/>} />
     <Route path="/update-product/:id" element={<UpdateProduct/>} />
     {/* Routes to CategoriesMenu pages */}
