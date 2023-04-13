@@ -52,6 +52,7 @@ public class CartService {
 					productDoesExistInTheCart = true;
 					item.setQuantity(item.getQuantity()+quantity);
 					shoppingCart.setCartItems(items);
+					
 					return shoppingCartRepository.saveAndFlush(shoppingCart);
 				}
 			}
