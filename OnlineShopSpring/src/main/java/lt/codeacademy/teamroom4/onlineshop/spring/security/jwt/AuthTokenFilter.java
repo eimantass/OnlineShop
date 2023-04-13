@@ -19,17 +19,17 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.services.UserDetailsServiceImpl;
 
-
+//This class handles Authentication token filter
 public class AuthTokenFilter extends OncePerRequestFilter {
 
-
+	//Autowiring services
 	@Autowired
 	private JwtUtils jwtUtils;
 
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
 	private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
-
+	//Performing Authentication token filtering
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 	throws ServletException, IOException{
@@ -47,7 +47,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 		logger.error("Cannot set user authentication: {}", e);
 	}filterChain.doFilter(request,response);
 	}
-
+//Parsing jwt
 private String parseJwt(HttpServletRequest request) {
 	String headerAuth = request.getHeader("Authorization");
 	if(StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {

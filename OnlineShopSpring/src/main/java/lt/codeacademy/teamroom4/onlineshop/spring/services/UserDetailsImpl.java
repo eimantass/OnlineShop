@@ -18,7 +18,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
 public class UserDetailsImpl implements UserDetails {
 
 	private static final long serialVersionUID = -4135725549552217795L;
-	
+	//UserDetailsImpl Variables
 	private Long id;
 	private String username;
 	private String email;
@@ -28,7 +28,7 @@ public class UserDetailsImpl implements UserDetails {
 	
 	private Collection<? extends GrantedAuthority> authorities;
 	
-	
+	//Constructor
 	public UserDetailsImpl(Long id, String username, String email, String password,
 			Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
@@ -37,7 +37,7 @@ public class UserDetailsImpl implements UserDetails {
 		this.password = password;
 		this.authorities = authorities;
 	}
-	
+	//Build function
 	public static UserDetailsImpl build(User user) {
 		List<GrantedAuthority> authorities = user.getRoles().stream()
 				.map(role -> new SimpleGrantedAuthority(role.getName().name()))
@@ -50,7 +50,7 @@ public class UserDetailsImpl implements UserDetails {
 				user.getPassword(),
 				authorities);	
 	}
-
+// Getters/Setters
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
@@ -73,7 +73,7 @@ public class UserDetailsImpl implements UserDetails {
 	public String getUsername() {
 		return username;
 	}
-
+	//Account and credentials checks
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
@@ -93,12 +93,12 @@ public class UserDetailsImpl implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-
+	//Generate hashcode
 	@Override
 	public int hashCode() {
 		return Objects.hash(authorities, email, id, password, username);
 	}
-
+	//Comparing objects
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

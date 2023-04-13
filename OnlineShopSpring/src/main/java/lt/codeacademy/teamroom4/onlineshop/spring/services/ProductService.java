@@ -27,7 +27,7 @@ import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands
 
 @Service
 public class ProductService {
-
+//Autowiring repositories
 	@Autowired
 	ProductRepository productRepository;
 
@@ -39,7 +39,7 @@ public class ProductService {
 
 	@Autowired
 	ProductParameterRepository productParameterRepository;
-
+//Sorting by discount
 	public List<Product> sortByDiscountAll(int direction) {
 		if (direction == 1) {
 			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "discount"));
@@ -47,7 +47,7 @@ public class ProductService {
 			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "discount"));
 		}
 	}
-
+//Sorting by name
 	public List<Product> sortByNameAll(int direction) {
 		if (direction == 1) {
 			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
@@ -55,7 +55,7 @@ public class ProductService {
 			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
 		}
 	}
-
+//Sorting by price
 	public List<Product> sortByPriceAll(int direction) {
 		if (direction == 1) {
 			return productRepository.findAll(Sort.by(Sort.Direction.DESC, "price"));
@@ -64,7 +64,7 @@ public class ProductService {
 			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "price"));
 		}
 	}
-
+//Sorting by category
 	public List<Product> sortByCategoryAll(int direction) {
 
 		if (direction == 1) {
@@ -74,7 +74,7 @@ public class ProductService {
 			return productRepository.findAll(Sort.by(Sort.Direction.ASC, "category"));
 		}
 	}
-
+//Sorting by brand
 	public List<Product> sortByBrandAll(int direction) {
 
 		if (direction == 1) {
@@ -90,19 +90,19 @@ public class ProductService {
 	}
 	
 
-	// gauname visus produktus
+	// Getting all products
 	public List<Product> getAllProducts() {
 		return productRepository.findAll();
 	}
 
-	// slidebar pagal kaina
+	// slidebar accordingly to price
 	public List<Product> searchByPrice(double min, double max, int direction, int sortingMethod) {
 		if(max <= 0) {
 		max = Integer.MAX_VALUE;
 		}
 		return sortingPlusPriceFiltering(min, max, direction, sortingMethod);
 	}
-
+	//Sorting plus price filtering
 	private List<Product> sortingPlusPriceFiltering(double min, double max, int direction, int sortingMethod) {
 		switch (sortingMethod) {
 		case 1:
@@ -155,22 +155,22 @@ public class ProductService {
 	public List<Product> searchProductByCategory(Categories category){
 		return productRepository.findAllWithCategory(category);
 	}
-	// galima atsifiltruoti pagal branda
+	// Filtering accordingly to brand
 	public List<Brands> getAllBrands() {
 		return productRepository.findAllBrandsDistincts();
 	}
 
-	// galima atsifiltruoti pagal kategorija
+	// Filtering accordingly to category
 	public List<Category> getAllCategories() {
 		return categoryRepository.findAll();
 	}
 
-	// galima atsifiltruoti pagal parametrus
+	// Filtering accordingly to parameters
 	public List<ProductParameters> getAllParameters() {
 		return productParameterRepository.findAll();
 	}
 
-	// galima atsifiltruoti pagal didziausia nuolaida
+	// Getting product with biggest discount
 	public Product getProductWithBigestDiscount() {
 		Coupon discount = couponRepository.findMax();
 		List<Product> products = productRepository.findAll();
