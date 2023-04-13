@@ -52,73 +52,78 @@ function ProductList() {
 
   return (
     <main>
-      <h2 className="center">Products List:</h2>
+    <h2 className="text-center">Products List:</h2>
 
-      {/* The add product button   */}
-      <button onClick={handleAddProduct}>Add Product</button>
-      {/* Products List from Repository */}
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            <h3>{product.name}</h3>
-            <img src={product.photo} alt={product.name} />
-            <p>Description: {product.description}</p>
-            <p>Category: {product.category}</p>
-            {/* Display brands */}
-            <p>Brand: {product.brand}</p>
-            <p>Price: ${product.price}</p>
-            {product.productParameters.length > 0 && (
-              <ul>
-                {product.productParameters.map((parameter) => (
-                  <li key={parameter.id}>
-                    <p>
-                      {parameter.name}: {parameter.description}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            )}
-            
-            {/* Below each product a remove button that removes the product */}
-            <button onClick={() => handleRemoveProduct(product.id)}>
-              Remove
-            </button>
-            {/* Below each product an edit button that navigates to the edit product page */}
-            <button onClick={() => handleEditProduct(product.id)}>
-              Edit
-            </button>
-            {/* Select quantity */}
-            {/* Input for quantity */}
-{/* Label for quantity */}
-<label>
-  Quantity:
-  <input
-    type="number"
-    value={product.quantity}
-    onChange={(e) => {
-      const newQuantity = parseInt(e.target.value);
-      setProducts((prevProducts) =>
-        prevProducts.map((prevProduct) =>
-          prevProduct.id === product.id
-            ? { ...prevProduct, quantity: newQuantity }
-            : prevProduct
-        )
-      );
-    }}
-    min={0}
-    max={10}
-  />
-</label>
-            {/* Below each product an add to cart button */}
-            <button
-              onClick={() => handleAddToCart(product.id, product.quantity)}
-            >
-              Add to Cart
-            </button>
-          </li>
-        ))}
-      </ul>
-    </main>
+    {/* <button className="btn btn-primary" onClick={handleAddProduct}>
+      Add Product
+    </button> */}
+    {/* Products List from Repository */}
+    <ul className="list-unstyled row">
+      {products.map((product) => (
+        <li key={product.id} className="product-item col-md-6 col-lg-4 col-xl-3 mb-4">
+          <div className="product-image-container">
+            <img src={product.photo} alt={product.name} className="product-image img-fluid" />
+          </div>
+          <h3 className="product-name">{product.name}</h3>
+          <p>Description: {product.description}</p>
+          <p>Category: {product.category}</p>
+          {/* Display brands */}
+          <p>Brand: {product.brand}</p>
+          <p>Price: ${product.price}</p>
+          {product.productParameters.length > 0 && (
+            <ul>
+              {product.productParameters.map((parameter) => (
+                <li key={parameter.id}>
+                  <p>
+                    {parameter.name}: {parameter.description}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          )}
+  
+          {/* Below each product a remove button that removes the product */}
+          <button className="btn btn-danger" onClick={() => handleRemoveProduct(product.id)}>
+            Remove
+          </button>
+          {/* Below each product an edit button that navigates to the edit product page */}
+          <button className="btn btn-secondary" onClick={() => handleEditProduct(product.id)}>
+            Edit
+          </button>
+          {/* Select quantity */}
+          {/* Input for quantity */}
+          {/* Label for quantity */}
+          <label>
+            Quantity:
+            <input
+              type="number"
+              value={product.quantity}
+              onChange={(e) => {
+                const newQuantity = parseInt(e.target.value);
+                setProducts((prevProducts) =>
+                  prevProducts.map((prevProduct) =>
+                    prevProduct.id === product.id
+                      ? { ...prevProduct, quantity: newQuantity }
+                      : prevProduct
+                  )
+                );
+              }}
+              min={0}
+              max={10}
+              className="form-control"
+            />
+          </label>
+          {/* Below each product an add to cart button */}
+          <button
+            className="btn btn-success"
+            onClick={() => handleAddToCart(product.id, product.quantity)}
+          >
+            Add to Cart
+          </button>
+        </li>
+      ))}
+    </ul>
+  </main>
   );
 }
 

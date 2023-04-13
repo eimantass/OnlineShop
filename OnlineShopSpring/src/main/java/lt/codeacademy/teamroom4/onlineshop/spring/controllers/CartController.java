@@ -9,6 +9,8 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,10 +40,17 @@ public class CartController {
 	@Autowired
 	private CartService cartService;
 	
+	private static final Logger logger = LogManager.getLogger(CartController.class);
+
+	
 	//Here products are added to shopping cart
 	@PostMapping("/addToCart")
 	public String addToCart(HttpServletRequest request, @RequestParam("id") Long id,
 			@RequestParam("quantity") int quantity) {
+
+		// Log the incoming request
+        logger.info("Received addToCart request. id: {}, quantity: {}", id, quantity);
+
 		addingItemsToCart(request, id, quantity);
 		return "redirect:/";
 	}
@@ -54,7 +63,10 @@ public class CartController {
 		}else {
 			cartService.addToExistingShoppingCart(id, sessionToken, quantity);
 		}
-		return null;
+		// Log any relevant information about the response or error
+        logger.info("addToCart request processed successfully");
+		return "redirect:/";
+
 	}
 	//Here shopping cart is shown
 	@GetMapping("/shoppingCart")
