@@ -1,42 +1,23 @@
-import React, {Component} from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-import UserService from "../services/user.service";
+const AdminBoard = () => {
+  const navigate = useNavigate();
 
-export default class AdminBoard extends Component{
-    constructor(props){
-        super(props);
+  return (
+    <div className="container">
+        <h2>Admin Controls</h2>
+      <header className="jumbotron">
+        {/* Render "Add New Product" button */}
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/add-product")}
+        >
+          Add New Product
+        </button>
+      </header>
+    </div>
+  );
+};
 
-        this.state = {
-            content: ""
-        };
-    }
-
-    componentDidMount(){
-        UserService.getAdminBoardMethod().then(
-            response => {
-                this.setState({
-                    content: response.data
-                });
-            },
-            error =>{
-                this.setState({
-                    content:
-                    (error.response &&
-                        error.response.data &&
-                        error.response.data.message) ||
-                        error.message ||
-                        error.toString()
-                });
-            }
-        );
-    }
-    render() {
-        return (
-          <div className="container">
-            <header className="jumbotron">
-              <h3>{this.state.content}</h3>
-            </header>
-          </div>
-        );
-    }
-}
+export default AdminBoard;

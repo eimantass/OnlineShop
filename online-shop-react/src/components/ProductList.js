@@ -53,11 +53,10 @@ function ProductList() {
   return (
     <main>
     <h2 className="text-center">Products List:</h2>
-  
-    {/* The add product button   */}
-    <button className="btn btn-primary" onClick={handleAddProduct}>
+
+    {/* <button className="btn btn-primary" onClick={handleAddProduct}>
       Add Product
-    </button>
+    </button> */}
     {/* Products List from Repository */}
     <ul className="list-unstyled row">
       {products.map((product) => (
