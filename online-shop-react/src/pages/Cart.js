@@ -1,10 +1,11 @@
+import ProductCart from "../components/product-cart";
 
-export default function Cart() {
+export default function ShoppingCart() {
     return (
-      <div className="FooterPlacer">
+      <div>
+        <ProductCart/>
         
-        <h1>Krepselis page</h1>
-        
+       
       </div>
     );
     
