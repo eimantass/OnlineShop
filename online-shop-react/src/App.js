@@ -14,8 +14,10 @@ import ManagerBoard from "./components/board-manager.component";
 import AdminBoard from "./components/board-admin.component";
 // Import function pages
 import AdminProductControls from "./components/AdminProductControls";
+import ManagerProductControls from "./components/ManagerProductControls";
 import AddProductForm from "./components/add-product"
 import UpdateProduct from "./components/update-product"
+import UpdateProductPrice from "./components/UpdateProductPrice";
 // Import CategoriesMenu pages
 import Processors from "./pages/categoriesMenuPages/processors";
 import Laptops from "./pages/categoriesMenuPages/laptops";
@@ -171,8 +173,10 @@ class App extends Component {
     <Route path="/cart" element={<ShoppingCart/>} />
     {/* Products */}
     <Route path="/products" element={<AdminProductControls/>} />
+    <Route path="/manager-products" element={<ManagerProductControls/>} />
     <Route path="/add-product" element={<AddProductForm/>} />
     <Route path="/update-product/:id" element={<UpdateProduct/>} />
+    <Route path="/update-product-price/:id" element={<UpdateProductPrice/>} />
     {/* Routes to CategoriesMenu pages */}
     <Route path="/processors" element={<Processors/>} />
     <Route path="/laptops" element={<Laptops/>} />
