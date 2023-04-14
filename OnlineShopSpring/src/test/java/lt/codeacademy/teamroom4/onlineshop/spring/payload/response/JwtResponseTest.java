@@ -79,7 +79,7 @@ class JwtResponseTest {
 	void testSetGetEmail() {
 		boolean ifTestpassed = true;
 		jwtResponse.setEmail("larryK@hotmail.com");
-		if(jwtResponse.getEmail().equals("larryK@hotmail.com")) {
+		if(jwtResponse.getEmail()!="larryK@hotmail.com") {
 			ifTestpassed = false;
 
 		}
@@ -91,7 +91,7 @@ class JwtResponseTest {
 	void testSetGetRoles() {
 		boolean ifTestpassed = true;
 		jwtResponse.setRoles(roles);
-		if(jwtResponse.getRoles().equals(roles)) {
+		if(!jwtResponse.getRoles().equals(roles)) {
 			ifTestpassed = false;
 
 		}
