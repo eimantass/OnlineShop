@@ -13,7 +13,7 @@ const ManagerBoard = () => {
 
         <button
           className="btn btn-info"
-          onClick={() => navigate("/products")}
+          onClick={() => navigate("/manager-products")}
         >
           View All Products
         </button>

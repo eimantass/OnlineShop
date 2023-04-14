@@ -41,10 +41,4 @@ class LoginRequestTest {
 		}
 		assertTrue(ifTestpassed);
 	}
-
-//	@Test
-//	void testSetPassword() {
-//		fail("Not yet implemented");
-//	}
-
 }
