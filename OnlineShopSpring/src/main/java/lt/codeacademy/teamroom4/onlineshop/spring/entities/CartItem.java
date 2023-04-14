@@ -22,7 +22,6 @@ import org.hibernate.annotations.CascadeType;
 
 //This is an cartItem entity
 @Entity
-@Table(name = "cartitem")
 public class CartItem {
 	//CartItem variables
 	@Id
