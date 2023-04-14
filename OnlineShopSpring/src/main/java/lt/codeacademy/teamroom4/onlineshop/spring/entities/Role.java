@@ -43,15 +43,18 @@ public class Role {
 	}
 
 	public void setId(Integer id) {
+		if(id !=0) {
 		this.id = id;
 	}
-
+	}
 	public ERoles getName() {
 		return name;
 	}
 
 	public void setName(ERoles name) {
+		if(name !=null) {
 		this.name = name;
 	}
+		}
 	
 }

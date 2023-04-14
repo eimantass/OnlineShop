@@ -167,8 +167,9 @@ public class User {
 	}
 
 	public void setRoles(Set<Role> roles) {
+		if(roles !=null) {
 		this.roles = roles;
-	}
+	}}
 
 	public long getNumber() {
 		return number;
