@@ -66,6 +66,14 @@ public class User {
 		this.roles = roles;
 		this.money = MoneyGenerator.virtualMoney();
 	}
+	
+	public User(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password) {
+		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+	}
 
 	public User(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
 			@NotBlank @Size(max = 120) String password, Set<Role> roles) {
