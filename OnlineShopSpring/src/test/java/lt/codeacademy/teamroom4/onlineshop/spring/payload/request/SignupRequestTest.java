@@ -4,46 +4,67 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import payload.request.SignupRequest;
+
 class SignupRequestTest {
+	
+	SignupRequest signup = new SignupRequest("name", "name@gmail.com", "password");
 
 	@Test
 	void testGetUsername() {
-		fail("Not yet implemented");
+		if(signup.getUsername().equals("name")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetUsername() {
-		fail("Not yet implemented");
+		signup.setUsername("username");
+		if(signup.getUsername().equals("username")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetEmail() {
-		fail("Not yet implemented");
+		if(signup.getEmail().equals("name@gmail.com")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetEmail() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetRole() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testSetRole() {
-		fail("Not yet implemented");
+		signup.setEmail("username@gmail.com");
+		if(signup.getEmail().equals("username@gmail.com")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetPassword() {
-		fail("Not yet implemented");
+		if(signup.getPassword().equals("password")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetPassword() {
-		fail("Not yet implemented");
+		signup.setPassword("pass");
+		if(signup.getPassword().equals("pass")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 }
