@@ -12,7 +12,6 @@ import lt.codeacademy.teamroom4.onlineshop.spring.dto.RecordDto;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.ShoppingCart;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartItemRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepository;
