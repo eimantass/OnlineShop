@@ -8,10 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-
+//This class validates error service
 @Service
 public class ValidationErrorService {
-	
 	public ResponseEntity<?> validate(BindingResult result){
 		if(result.hasErrors()) {
 			Map<String, String> errorsMap = new HashMap<String, String>();
