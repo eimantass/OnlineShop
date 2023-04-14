@@ -6,6 +6,7 @@ import AuthService from "../services/auth.service";
 const CustomerBoard = () => {
   const [content, setContent] = useState("");
   const [customerData, setCustomerData] = useState(null);
+  const currentUser = AuthService.getCurrentUser();
 
   useEffect(() => {
     const currentUser = AuthService.getCurrentUser();
@@ -43,6 +44,7 @@ const CustomerBoard = () => {
                 <th>Email</th>
                 <th>Number</th>
                 <th>Money</th>
+                <th>Role</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -52,6 +54,8 @@ const CustomerBoard = () => {
                 <td>{customerData.email}</td>
                 <td>{customerData.number}</td>
                 <td>{customerData.money}</td>
+                <td> {currentUser.roles &&
+            currentUser.roles.map((role, index) => <span key={index}>{role}</span>)}</td>
                 <td>
                 <Link to={`/user-control/edit/${customerData.id}`} className="btn btn-primary mr-2">
                   Edit User Information

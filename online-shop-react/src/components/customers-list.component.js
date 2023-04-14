@@ -5,6 +5,7 @@ import UserService from "../services/user.service";
 const CustomersList = () => {
   const [customers, setCustomers] = useState([]);
   const [error, setError] = useState("");
+  const [userRoles, setUserRoles] = useState([]);
 
   useEffect(() => {
     const fetchCustomers = async () => {
@@ -21,6 +22,27 @@ const CustomersList = () => {
     };
     fetchCustomers();
   }, []);
+
+  useEffect(() => {
+    const fetchUserRoles = async () => {
+      try {
+        // Fetch user roles for each customer
+        const rolesPromises = customers.map(async (customer) => {
+          const response = await UserService.getRolesByUserIdMethod(customer.id);
+          return response.data;
+        });
+        const rolesData = await Promise.all(rolesPromises);
+        setUserRoles(rolesData);
+      } catch (error) {
+        setError(
+          (error.response && error.response.data && error.response.data.message) ||
+            error.message ||
+            error.toString()
+        );
+      }
+    };
+    fetchUserRoles();
+  }, [customers]);
 
   const handleDeleteClick = async (id) => {
     try {
@@ -51,16 +73,23 @@ const CustomersList = () => {
             <th>Username</th>
             <th>Number</th>
             <th>Money</th>
+            <th>Roles</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {customers.map((customer) => (
+          {customers.map((customer, index) => (
             <tr key={customer.id}>
               <td>{customer.email}</td>
               <td>{customer.username}</td>
               <td>{customer.number}</td>
               <td>{customer.money}</td>
+              <td>
+                {userRoles[index] &&
+                  userRoles[index].map((role) => (
+                    <div key={role.id}>{role.name}</div>
+                  ))}
+              </td>
               <td>
                 <Link to={`/admin-user-control/edit/${customer.id}`} className="btn btn-primary mr-2">
                   Edit

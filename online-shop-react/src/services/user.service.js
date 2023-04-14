@@ -12,14 +12,13 @@ class UserService {
   }
 
   // Get all roles from repository
-
   getAllRolesMethod() {
     return axios.get(API_URL + 'roles', { headers: authHeader() });
   }
 
   // Get role by user ID
-  getRolesByUserIdMethod(userId) {
-     return axios.get(API_URL + `roles/user/${userId}`, { headers: authHeader() });
+  getRolesByUserIdMethod(id) {
+     return axios.get(API_URL + `role/` + id, { headers: authHeader() });
   }
   
   getCustomerByIdMethod(id) {

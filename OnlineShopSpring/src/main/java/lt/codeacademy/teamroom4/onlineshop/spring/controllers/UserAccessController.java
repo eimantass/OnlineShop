@@ -56,10 +56,6 @@ public class UserAccessController {
 	public User getUserById(@PathVariable Long id) {
 	    return userRepository.findById(id).orElseThrow();
 	}
-	@GetMapping("/customers/role/{id}")
-	public Set<Role> getCustomerRoleById(@PathVariable Long id) {
-	    return userRepository.findById(id).orElseThrow().getRoles();
-	}
 	
 	// Update an existing user
 	@PutMapping("/customer/{id}")
@@ -90,6 +86,13 @@ public class UserAccessController {
         List<Role> roles = roleRepository.findAll();
         return roles;
     }
+    
+	// Get role by userID
+	@GetMapping("/role/{id}")
+	public Set<Role> getCustomerRoleById(@PathVariable Long id) {
+	    return userRepository.findById(id).orElseThrow().getRoles();
+	}
+	
 	//Delete a user by ID
 	@DeleteMapping("/customers/{id}")
 	public ResponseEntity<?> deleteUser(@PathVariable Long id) {
