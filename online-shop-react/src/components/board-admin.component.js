@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import CustomersList from "./customers-list.component";
 
 const AdminBoard = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const AdminBoard = () => {
           Add New Product
         </button>
       </header>
+      <CustomersList/>
     </div>
   );
 };

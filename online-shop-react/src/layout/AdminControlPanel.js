@@ -75,7 +75,7 @@ const ControlPanel = () => {
 
   return (
     <div className="table-container">
-      <Link to="/customers" className="btn btn-primary">
+      <Link to="/admin" className="btn btn-primary">
         Back to List
       </Link>
 

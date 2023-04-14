@@ -38,7 +38,7 @@ import Feedback from "./pages/Feedback";
 import Help from "./pages/Help";
 // Admin Control Panel
 import ControlPanel from "./layout/AdminControlPanel";
-import ShoppingCart from "./pages/Cart";
+import ShoppingCart from "./pages/shoppingCart";
 
 class App extends Component {
   constructor(props) {
@@ -115,14 +115,14 @@ class App extends Component {
               </li>
               
             )}
-           
-            {currentUser && (
+           {/* Unneeded Top Menu function */}
+            {/* {currentUser && (
               <li className="nav-item">
                 <Link to={"/customers"} className="nav-link">
                 CUSTOMERS LIST
                 </Link>
               </li>
-            )}
+            )} */}
             {currentUser && (
               <li className="nav-item">
                 <Link to={"/cart"} className="nav-link">
