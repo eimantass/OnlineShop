@@ -29,7 +29,7 @@ public class CartServiceImpl implements CartService {
 		Cart cart = repository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Cart not found"));
 		//item.setCart(cart);
-		cart.getItems().addAll((Collection<? extends Product>) item);
+		cart.getItems().add(item);
 		return repository.save(cart);
 	}
 

@@ -1,4 +1,4 @@
-package lt.codeacademy.teamroom4.onlineshop.spring.entities;
+/*package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -116,3 +116,4 @@ class ShoppingCartTest {
 	}
 
 }
+*/

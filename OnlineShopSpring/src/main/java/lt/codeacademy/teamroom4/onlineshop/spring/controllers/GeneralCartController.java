@@ -1,3 +1,4 @@
+/*
 package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,3 +46,4 @@ public class GeneralCartController {
 		model.addAttribute("featured", productService.getProductWithBigestDiscount());
 	}
 }
+*/
