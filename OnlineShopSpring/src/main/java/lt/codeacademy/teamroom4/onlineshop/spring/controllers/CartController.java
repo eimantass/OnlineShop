@@ -4,6 +4,8 @@ package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,6 +39,7 @@ public class CartController {
 	public ResponseEntity<Cart> addItem(@PathVariable Long id, @RequestBody CartItem item){
 		Cart cart = cartService.addItem(id, item);
 		return ResponseEntity.ok(cart);
+
 	}
 	
 	@PostMapping("/update")

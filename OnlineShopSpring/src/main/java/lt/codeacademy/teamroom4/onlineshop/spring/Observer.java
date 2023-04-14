@@ -62,7 +62,7 @@ public class Observer {
 	private WishListRepository wishListRepository;
 
 	// Used to activate seed function
-	// @EventListener
+	 @EventListener
 	public void seed(ContextRefreshedEvent event) {
 		// seedRole();
 		seedUserAdmin();
