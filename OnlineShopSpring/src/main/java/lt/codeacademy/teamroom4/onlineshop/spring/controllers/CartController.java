@@ -62,6 +62,9 @@ public class CartController {
 	public List<Cart> allCarts(){
 		return cartService.getAllCarts();
 	}
-
+	@GetMapping("/allItems")
+	public List<Cart> allItems(){
+		return cartService.getAllCarts();
+	}
 
 }
