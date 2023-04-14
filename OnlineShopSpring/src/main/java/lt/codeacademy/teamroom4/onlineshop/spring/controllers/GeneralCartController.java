@@ -30,7 +30,7 @@ public class GeneralCartController {
 		if(sessionToken == null) {
 			model.addAttribute("shoppingCart", new ShoppingCart());
 		}else {
-			model.addAttribute("shoppingCart",cartService.getShoppingCartBySessionToken(sessionToken));
+			//model.addAttribute("shoppingCart",cartService.getShoppingCartBySessionToken(sessionToken));
 		}
 		
 		if(sessionTokenWishList == null) {
