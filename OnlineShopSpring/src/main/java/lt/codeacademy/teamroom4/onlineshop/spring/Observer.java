@@ -175,6 +175,7 @@ public class Observer {
 		List<CartItem> items = List.of(
 				new CartItem(5, time, new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", PROCESSORS))
 				);
+		
 		Cart cart = new Cart(4515.545, items);
 		shoppingCartRepository.save(cart);
 	}

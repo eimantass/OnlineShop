@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
@@ -20,7 +21,8 @@ public class Cart {
 	@Transient
 	Double totalPrice;
 	
-	@OneToMany( cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany( cascade = {CascadeType.ALL}, orphanRemoval = true)
+	@JoinColumn(name = "Cart")
 	private List<CartItem> items = new ArrayList<>();
 	
 	public Cart() {}
