@@ -149,17 +149,19 @@ public class User {
 	}
 
 	public void setEmail(String email) {
+		if(email !=null &&email !="") {
 		this.email = email;
 	}
-
+	}
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
+		if(password !=null) {
 		this.password = password;
 	}
-
+	}
 	public Set<Role> getRoles() {
 		return roles;
 	}
