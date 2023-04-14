@@ -3,7 +3,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import userService from '../services/user.service';
 
-const ControlPanel = () => {
+const AdminControlPanel = () => {
   console.log(useParams());
   const { id } = useParams();
   const [customers, setCustomers] = useState([]); // Added state for customers
@@ -75,7 +75,7 @@ const ControlPanel = () => {
 
   return (
     <div className="table-container">
-      <Link to="/customers" className="btn btn-primary">
+      <Link to="/admin" className="btn btn-primary">
         Back to List
       </Link>
 
@@ -162,4 +162,4 @@ const ControlPanel = () => {
   );
 }
 
-export default ControlPanel;
+export default AdminControlPanel;

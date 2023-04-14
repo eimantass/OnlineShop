@@ -14,6 +14,13 @@ function AddProductForm() {
   
   const navigate = useNavigate();
 
+  // Function to validate URL
+const isValidUrl = (url) => {
+  // Regular expression to validate URL
+  const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+  return urlRegex.test(url);
+};
+
   useEffect(() => {
     const fetchCategories = async () => {
       const response = await ProductService.getCategories(); // Fetch categories from API
@@ -115,15 +122,22 @@ function AddProductForm() {
           ></textarea>
         </div>
         <div>
-          <label htmlFor="photo">Photo:</label>
-          <input
-            type="text"
-            id="photo"
-            name="photo"
-            value={photo}
-            onChange={(event) => setPhoto(event.target.value)}
-          />
-        </div>
+  <label htmlFor="photo">Image: (Only links to images: jpg,jpeg,png,gif)</label>
+  <input
+    id="photo"
+    name="photo"
+    value={photo}
+    type="url" /* Change input type to "url" to enforce URL validation */
+    pattern=".*\.(jpg|jpeg|png|gif)" /* Use "pattern" attribute with a regex to validate image file extensions */
+    onChange={(event) => {
+      const inputValue = event.target.value;
+      const isValidLink = isValidUrl(inputValue); // Add a function to validate URL
+      if (isValidLink || inputValue === "") {
+        setPhoto(inputValue);
+      }
+    }}
+  />
+</div>
         <button type="submit">Save Product</button>
       </form>
     </main>

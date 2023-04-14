@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ProductService from "../services/product.service";
 import CartService from "../services/cart.service"; // Import CartService
+import './css/product-list.css';
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -21,26 +22,6 @@ function ProductList() {
     fetchData();
   }, []);
 
-  // Add product function
-  const handleAddProduct = () => {
-    navigate('/add-product');
-  };
-
-  // Edit Product function
-  const handleEditProduct = async (id) => {
-    navigate(`/update-product/${id}`);
-  };
-
-  // Remove Product function 
-  const handleRemoveProduct = async (id) => {
-    try {
-      await ProductService.deleteProduct(id);
-      setProducts(products.filter((product) => product.id !== id));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   // Add to Cart function
   const handleAddToCart = async (id) => {
     try {
@@ -53,10 +34,6 @@ function ProductList() {
   return (
     <main>
     <h2 className="text-center">Products List:</h2>
-
-    {/* <button className="btn btn-primary" onClick={handleAddProduct}>
-      Add Product
-    </button> */}
     {/* Products List from Repository */}
     <ul className="list-unstyled row">
       {products.map((product) => (
@@ -81,15 +58,6 @@ function ProductList() {
               ))}
             </ul>
           )}
-  
-          {/* Below each product a remove button that removes the product */}
-          <button className="btn btn-danger" onClick={() => handleRemoveProduct(product.id)}>
-            Remove
-          </button>
-          {/* Below each product an edit button that navigates to the edit product page */}
-          <button className="btn btn-secondary" onClick={() => handleEditProduct(product.id)}>
-            Edit
-          </button>
           {/* Select quantity */}
           {/* Input for quantity */}
           {/* Label for quantity */}

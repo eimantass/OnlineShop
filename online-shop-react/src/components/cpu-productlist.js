@@ -17,6 +17,7 @@ const CPUProductList = () => {
 
   return (
 <div className="container">
+<ul className="list-unstyled row">
       <h1>Processors List</h1>
       <table className="table table-striped">
         <thead>
@@ -48,7 +49,9 @@ const CPUProductList = () => {
           ))}
         </tbody>
       </table>
+      </ul>
     </div>
+    
   );
 };
 
