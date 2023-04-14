@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import SortService from "../services/sort.service";
-;
+import ProductService from "../services/product.service";
+import CartService from "../services/cart.service"; // Import CartService
 
 const LaptopProductList = () => {
   const [products, setProducts] = useState([]);
+  const [selectedQuantity, setSelectedQuantity] = useState(1); // Add state for selected quantity
+ 
 
   useEffect(() => {
     SortService.sortByLaptop("LAPTOPS") // Call the sort service to retrieve products by category
@@ -15,40 +18,49 @@ const LaptopProductList = () => {
       });
   }, []);
 
+  // Add to Cart function
+  const handleAddToCart = async (id) => {
+    try {
+      await CartService.addProductToCart(id, selectedQuantity); // Pass the selected quantity along with the product ID
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
 <div className="container">
-      <h1>Laptops List</h1>
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Brand</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Parameters</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product) => (
-            <tr key={product.id}>
-              <td>{product.id}</td>
-              <td>{product.name}</td>
-              <td>{product.brand}</td>
-              <td>{product.price}</td>
-              <td>{product.description}</td>
-              <td>
-                {product.productParameters.map((parameter) => (
-                  <p key={parameter.id}>
-                    {parameter.name}: {parameter.description}
-                  </p>
-                ))}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+  <h1 className="text-center">Laptop List</h1>
+  <ul className="list-unstyled row">
+    {products.map((product) => (
+      <li key={product.id} className="product-item col-md-6 col-lg-4 col-xl-3 mb-4">
+        <div className="product-image-container">
+          <img src={product.photo} alt={product.name} className="product-image img-fluid" />
+        </div>
+        <h3 className="product-name">{product.name}</h3>
+        <p>Description: {product.description}</p>
+        <p>Brand: {product.brand}</p>
+        <p>Price: ${product.price}</p>
+        {product.productParameters.length > 0 && (
+          <ul>
+            {product.productParameters.map((parameter) => (
+              <li key={parameter.id}>
+                <p>
+                  {parameter.name}: {parameter.description}
+                </p>
+              </li>
+            ))}
+          </ul>
+        )}
+        <button
+          className="btn btn-success"
+          onClick={() => handleAddToCart(product.id, product.quantity)}
+        >
+          Add to Cart
+        </button>
+      </li>
+    ))}
+  </ul>
+</div>
   );
 };
 
