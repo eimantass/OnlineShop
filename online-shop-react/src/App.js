@@ -174,6 +174,7 @@ class App extends Component {
     <Route path="/customer" element={<CustomerBoard/>} />
     <Route path="/manager" element={<ManagerBoard/>} />
     <Route path="/admin" element={<AdminBoard/>} />
+    <Route path="/admin-user-control/edit/:id" element={<AdminControlPanel/>}/> 
     {/* Cart */}
     <Route path="/cart" element={<ShoppingCart/>} />
     {/* Products */}
@@ -200,7 +201,6 @@ class App extends Component {
     <Route path="/privacy" element={<Privacy/>} />
     <Route path="/feedback" element={<Feedback/>} />
     <Route path="/help" element={<Help/>} />
-    <Route path="/Control-panel/edit/:id" element={<AdminControlPanel/>}/> 
     </Routes>
         </div>
       </div>

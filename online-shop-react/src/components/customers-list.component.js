@@ -62,7 +62,7 @@ const CustomersList = () => {
               <td>{customer.number}</td>
               <td>{customer.money}</td>
               <td>
-                <Link to={`/Control-panel/edit/${customer.id}`} className="btn btn-primary mr-2">
+                <Link to={`/admin-user-control/edit/${customer.id}`} className="btn btn-primary mr-2">
                   Edit
                 </Link>
                 <button
