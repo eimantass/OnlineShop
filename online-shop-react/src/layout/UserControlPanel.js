@@ -57,7 +57,7 @@ const UserControlPanel = () => {
       setSuccessMessage('User updated successfully.'); // Set success message
       setTimeout(() => {
         setSuccessMessage(''); // Clear success message after 2 seconds
-        navigate('/customers'); // Redirect to /customers page
+        navigate('/customer'); // Redirect to /customers page
       }, 2000);
     } catch (error) {
       console.log('Error updating customer:', error);

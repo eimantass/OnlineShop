@@ -9,7 +9,6 @@ import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
 import Profile from "./components/profile.component";
-import CustomersListBoard from "./components/board-customerslist.component";
 import CustomerBoard from "./components/board-customer.component";
 import ManagerBoard from "./components/board-manager.component";
 import AdminBoard from "./components/board-admin.component";
@@ -80,12 +79,11 @@ class App extends Component {
 
     return (
       <>
-      
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/"} className="navbar-brand">
-            WebPage
-          </Link>
+        <Link to={"/"} className="navbar-brand">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM5GgYJWQI9E0nPyj1XpO3VfQdkBEyCia-2g&usqp=CAU" alt="WebPage" style={{ width: "60px", height: "60px" }}/>
+  </Link>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link to={"/home"} className="nav-link">
@@ -117,14 +115,7 @@ class App extends Component {
               </li>
               
             )}
-           {/* Unneeded Top Menu function */}
-            {/* {currentUser && (
-              <li className="nav-item">
-                <Link to={"/customers"} className="nav-link">
-                CUSTOMERS LIST
-                </Link>
-              </li>
-            )} */}
+        
             {currentUser && (
               <li className="nav-item">
                 <Link to={"/cart"} className="nav-link">
@@ -171,7 +162,6 @@ class App extends Component {
     <Route path="/login" element={<Login/>} />
     <Route path="/register" element={<Register/>} />
     <Route path="/profile" element={<Profile/>} />
-    <Route path="/customers" element={<CustomersListBoard/>} />
     <Route path="/customer" element={<CustomerBoard/>} />
     <Route path="/manager" element={<ManagerBoard/>} />
     <Route path="/admin" element={<AdminBoard/>} />

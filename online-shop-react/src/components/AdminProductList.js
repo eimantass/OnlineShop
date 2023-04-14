@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ProductService from "../services/product.service";
-import CartService from "../services/cart.service"; // Import CartService
 import './css/product-list.css';
 
 function AdminProductList() {

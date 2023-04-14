@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import ProductList from "./ProductList";
 import AdminProductList from "./AdminProductList";
 
 const AdminProductControls = () => {

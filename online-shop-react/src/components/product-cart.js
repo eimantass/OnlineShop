@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './css/product-list.css';
 
 function ProductCart() {
   const [cartItems, setCartItems] = useState([]);
@@ -19,26 +20,9 @@ function ProductCart() {
 
   return (
     <main>
-      <h2>Product Cart</h2>
-      {cartItems.length === 0 ? (
-        <p>No items in the cart.</p>
-      ) : (
-        <ul>
-          {cartItems.map((item, index) => (
-            <li key={index}>
-              <h3>{item.name}</h3>
-              <p>Quantity: {item.quantity}</p>
-              <p>Price: ${item.price}</p>
-              <p>Subtotal: ${item.price * item.quantity}</p>
-            </li>
-          ))}
-          <li>
-            <h3>Total:</h3>
-            <p>${calculateTotalPrice()}</p>
-          </li>
-        </ul>
-      )}
-      <button onClick={handleClearCart}>Clear Cart</button>
+      <body>
+       <h2>Test</h2> 
+      </body>
     </main>
   );
 }
