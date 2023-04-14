@@ -1,6 +1,7 @@
 package lt.codeacademy.teamroom4.onlineshop.spring;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +17,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.config.SecurityConfig;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Category;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Coupon;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
@@ -28,6 +31,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CategoryRepositor
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CouponRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListItemRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListRepository;
@@ -60,6 +64,8 @@ public class Observer {
 	private WishListItemRepository wishListItemRepository;
 	@Autowired
 	private WishListRepository wishListRepository;
+	@Autowired
+	ShoppingCartRepository shoppingCartRepository;
 
 	// Used to activate seed function
 	 @EventListener
@@ -74,7 +80,9 @@ public class Observer {
 		seedProduct();
 		seedWishListItemRepository();
 		seedWishList();
+		seedCart();
 	}
+
 
 	// Seeding users and products
 
@@ -160,5 +168,14 @@ public class Observer {
 	private void seedWishList() {
 		WishList blank = new WishList();
 		wishListRepository.save(blank);
+	}
+	
+	private void seedCart() {
+		Date time = new Date();
+		List<CartItem> items = List.of(
+				new CartItem(5, time, new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", PROCESSORS))
+				);
+		Cart cart = new Cart(4515.545, items);
+		shoppingCartRepository.save(cart);
 	}
 }
