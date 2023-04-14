@@ -3,49 +3,42 @@ package lt.codeacademy.teamroom4.onlineshop.spring.payload.request;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import payload.request.LoginRequest;
-
+@RunWith(SpringRunner.class)
+@SpringBootTest
 class LoginRequestTest {
 	
-	LoginRequest loging = new LoginRequest("username", "password");
+	LoginRequest loginRequest = new LoginRequest();
 
 	@Test
-	void testGetUsername() {
-		if(loging.getUsername().equals("username")) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
+	void testGetSetUsername() {
+		loginRequest.setUsername("Test");
+		boolean ifTestpassed = true;
+
+		if(!loginRequest.getUsername().equals("Test")) {
+			ifTestpassed = false;
 		}
+		assertTrue(ifTestpassed);
 	}
+
+//	@Test
+//	void testSetUsername() {
+//		fail("Not yet implemented");
+//	}
 
 	@Test
-	void testSetUsername() {
-		loging.setUsername("name");
-		if(loging.getUsername().equals("name")) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
-		}
-	}
+	void testGetSetPassword() {
+		loginRequest.setPassword("Test");
+		boolean ifTestpassed = true;
 
-	@Test
-	void testGetPassword() {
-		if(loging.getPassword().equals("password")) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
+		if(!loginRequest.getPassword().equals("Test")) {
+			ifTestpassed = false;
 		}
+		assertTrue(ifTestpassed);
 	}
-
-	@Test
-	void testSetPassword() {
-		loging.setPassword("pass");
-		if(loging.getPassword().equals("pass")) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
-		}
-	}
-
 }
