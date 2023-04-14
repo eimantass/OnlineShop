@@ -2,73 +2,111 @@ package lt.codeacademy.teamroom4.onlineshop.spring.payload.response;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
+import payload.response.JwtResponse;
+
 class JwtResponseTest {
+	
+	private List<String> roles;
+	JwtResponse jwt = new JwtResponse("token", (long)2, "username", "email@gmail.com", roles);
 
 	@Test
 	void testJwtResponse() {
-		fail("Not yet implemented");
+		if(jwt == null) {
+			assertTrue(true);
+		}
+		else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetAccessToken() {
-		fail("Not yet implemented");
+		if(jwt.getAccessToken().equals("token")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetAccessToken() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetTokenType() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testSetTokenType() {
-		fail("Not yet implemented");
+		jwt.setAccessToken("accessToken");
+		if(jwt.getAccessToken().equals("accessToken")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetId() {
-		fail("Not yet implemented");
+		if(jwt.getId().equals((long)2)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetId() {
-		fail("Not yet implemented");
+		jwt.setId((long)3);
+		if(jwt.getId().equals((long)3)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetUsername() {
-		fail("Not yet implemented");
+		if(jwt.getUsername().equals("username")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetUsername() {
-		fail("Not yet implemented");
+		jwt.setUsername("name");
+		if(jwt.getUsername().equals("name")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetEmail() {
-		fail("Not yet implemented");
+		if(jwt.getEmail().equals("email@gmail.com")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetEmail() {
-		fail("Not yet implemented");
+		jwt.setEmail("name@gmail.com");
+		if(jwt.getEmail().equals("name@gmail.com")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetRoles() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testSetRoles() {
-		fail("Not yet implemented");
+		if(jwt.getRoles() == null) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 }
