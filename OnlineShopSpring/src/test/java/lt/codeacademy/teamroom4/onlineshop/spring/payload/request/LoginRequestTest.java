@@ -4,26 +4,48 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import payload.request.LoginRequest;
+
 class LoginRequestTest {
+	
+	LoginRequest loging = new LoginRequest("username", "password");
 
 	@Test
 	void testGetUsername() {
-		fail("Not yet implemented");
+		if(loging.getUsername().equals("username")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetUsername() {
-		fail("Not yet implemented");
+		loging.setUsername("name");
+		if(loging.getUsername().equals("name")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetPassword() {
-		fail("Not yet implemented");
+		if(loging.getPassword().equals("password")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetPassword() {
-		fail("Not yet implemented");
+		loging.setPassword("pass");
+		if(loging.getPassword().equals("pass")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 }
