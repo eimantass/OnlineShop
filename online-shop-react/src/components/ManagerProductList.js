@@ -25,16 +25,6 @@ function ManagerProductList() {
     navigate(`/update-product-price/${id}`);
   };
 
-  // Remove Product function 
-  const handleRemoveProduct = async (id) => {
-    try {
-      await ProductService.deleteProduct(id);
-      setProducts(products.filter((product) => product.id !== id));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <main>
         <div className="container">

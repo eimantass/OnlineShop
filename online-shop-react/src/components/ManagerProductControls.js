@@ -19,8 +19,6 @@ const ManagerProductControls = () => {
         </button>
       </header>
       <ManagerProductList/>
-      
-      
     </div>
   );
 };
