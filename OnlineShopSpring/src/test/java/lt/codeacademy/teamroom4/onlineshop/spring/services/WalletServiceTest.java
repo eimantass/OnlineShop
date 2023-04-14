@@ -2,6 +2,7 @@ package lt.codeacademy.teamroom4.onlineshop.spring.services;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +15,18 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WalletRepository;
 @SpringBootTest
 class WalletServiceTest {
 	@Autowired
-	WalletService walletService;
+	WalletService walletTestService;
 	@Autowired
-	WalletRepository walletRepository;
+	WalletRepository walletTestRepository;
+	@AfterEach
+	void tearDown() {
+		walletTestRepository.deleteAll();
+	}
 	@Test
 	void testGetAll() {
 		boolean ifTestpassed = true;
 
-		if (walletService.getAll().size()!=walletRepository.findAll().size()) {
+		if (walletTestService.getAll().size()!=walletTestRepository.findAll().size()) {
 			ifTestpassed = false;
 
 		}
@@ -33,8 +38,8 @@ class WalletServiceTest {
 	void testGetById() {
 		boolean ifTestpassed = true;
 		Wallet wallet = new Wallet((long)1,"Larry", "LT513456321");
-		walletRepository.save(wallet);
-		if (walletService.getById((long) 1)==null) {
+		walletTestRepository.save(wallet);
+		if (walletTestService.getById((long) 1)==null) {
 			ifTestpassed = false;
 
 		}
@@ -43,13 +48,32 @@ class WalletServiceTest {
 
 	@Test
 	void testCreateOrUpdate() {
-		Wallet testWallet = walletService.createOrUpdate(null);
-		fail("Not yet implemented");
+		boolean ifTestpassed = true;
+		Wallet wallet = new Wallet((long)1,"Larry", "LT513456321");
+		Wallet walletBlank = new Wallet();
+		Wallet testWalletBlank = walletTestService.createOrUpdate(walletBlank);
+
+		Wallet testWallet = walletTestService.createOrUpdate(wallet);
+		if (walletTestRepository.count()!=2) {
+			ifTestpassed = false;
+
+		}
+		assertTrue(ifTestpassed);
 	}
+
+	
 
 	@Test
 	void testDelete() {
-		fail("Not yet implemented");
-	}
+		Wallet wallet = new Wallet((long)1,"Larry", "LT513456321");
+		walletTestRepository.save(wallet);
+		boolean ifTestpassed = true;
+		//walletTestRepository.delete(wallet);
+	//System.out.println(walletTestRepository.count());
+		if (walletTestService.delete((long)1)==false) {
+			ifTestpassed = false;
 
+		}
+		assertTrue(ifTestpassed);
+	}
 }

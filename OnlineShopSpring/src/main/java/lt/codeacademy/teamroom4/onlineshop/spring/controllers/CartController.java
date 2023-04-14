@@ -54,7 +54,7 @@ public class CartController {
 		addingItemsToCart(request, id, quantity);
 		return "redirect:/";
 	}
-	public CartItem addingItemsToCart(HttpServletRequest request, Long id, int quantity) {
+	public String addingItemsToCart(HttpServletRequest request, Long id, int quantity) {
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
 		if(sessionToken == null) {
 			sessionToken = UUID.randomUUID().toString();
