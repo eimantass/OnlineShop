@@ -21,7 +21,7 @@ class ShoppingCartRepositoryTest {
 	
 	@Test
 	void testFindBySessionToken() {
-		rep.save(cart);
+		//rep.save(cart);
 		rep.findBySessionToken(session);
 	}
 

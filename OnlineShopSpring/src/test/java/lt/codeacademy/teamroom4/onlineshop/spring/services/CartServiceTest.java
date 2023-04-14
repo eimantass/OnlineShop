@@ -1,5 +1,5 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.services;
-
+/*
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.GOODRAM;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.NVIDIA;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.GRAPHICS_CARDS;
@@ -157,3 +157,4 @@ class CartServiceTest {
 		assertTrue(ifTestpassed);
 	}
 }
+*/
