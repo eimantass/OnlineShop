@@ -130,7 +130,9 @@ public class User {
 	}
 
 	public void setId(Long id) {
+		if(id !=null) {
 		this.id = id;
+		}
 	}
 
 	public String getUsername() {
@@ -138,9 +140,10 @@ public class User {
 	}
 
 	public void setUsername(String username) {
+		if(username!=null) {
 		this.username = username;
 	}
-
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -170,15 +173,23 @@ public class User {
 	}
 
 	public void setNumber(long number) {
+		if(number !=0) {
 		this.number = number;
 	}
+		}
 
 	public double getMoney() {
 		return money;
 	}
 
 	public void setMoney(double money) {
+		if(money !=0) {
 		this.money = money;
+		}
 	}
-
+		public void clearMoney(double money) {
+			if(money !=0) {
+			this.money = money;
+		}	
+	}
 }
