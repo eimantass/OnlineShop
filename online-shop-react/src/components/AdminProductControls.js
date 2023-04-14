@@ -1,8 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import CustomersList from "./customers-list.component";
+import ProductList from "./ProductList";
+import AdminProductList from "./AdminProductList";
 
-const AdminBoard = () => {
+const AdminProductControls = () => {
   const navigate = useNavigate();
 
   return (
@@ -22,10 +23,18 @@ const AdminBoard = () => {
         >
           View All Products
         </button>
+        <button
+          className="btn btn-warning"
+          onClick={() => navigate("/admin")}
+        >
+          Back
+        </button>
       </header>
-      <CustomersList/>
+      <AdminProductList/>
+      
+      
     </div>
   );
 };
 
-export default AdminBoard;
+export default AdminProductControls;

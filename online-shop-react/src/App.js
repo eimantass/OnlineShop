@@ -14,6 +14,7 @@ import CustomerBoard from "./components/board-customer.component";
 import ManagerBoard from "./components/board-manager.component";
 import AdminBoard from "./components/board-admin.component";
 // Import function pages
+import AdminProductControls from "./components/AdminProductControls";
 import AddProductForm from "./components/add-product"
 import UpdateProduct from "./components/update-product"
 // Import CategoriesMenu pages
@@ -37,7 +38,7 @@ import Privacy from "./pages/Privacy";
 import Feedback from "./pages/Feedback";
 import Help from "./pages/Help";
 // Admin Control Panel
-import ControlPanel from "./layout/AdminControlPanel";
+import AdminControlPanel from "./layout/AdminControlPanel";
 import ShoppingCart from "./pages/shoppingCart";
 
 class App extends Component {
@@ -176,6 +177,7 @@ class App extends Component {
     {/* Cart */}
     <Route path="/cart" element={<ShoppingCart/>} />
     {/* Products */}
+    <Route path="/products" element={<AdminProductControls/>} />
     <Route path="/add-product" element={<AddProductForm/>} />
     <Route path="/update-product/:id" element={<UpdateProduct/>} />
     {/* Routes to CategoriesMenu pages */}
@@ -198,7 +200,7 @@ class App extends Component {
     <Route path="/privacy" element={<Privacy/>} />
     <Route path="/feedback" element={<Feedback/>} />
     <Route path="/help" element={<Help/>} />
-    <Route path="/Control-panel/edit/:id" element={<ControlPanel/>}/> 
+    <Route path="/Control-panel/edit/:id" element={<AdminControlPanel/>}/> 
     </Routes>
         </div>
       </div>

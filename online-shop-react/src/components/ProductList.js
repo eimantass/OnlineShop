@@ -22,21 +22,6 @@ function ProductList() {
     fetchData();
   }, []);
 
-  // Edit Product function
-  const handleEditProduct = async (id) => {
-    navigate(`/update-product/${id}`);
-  };
-
-  // Remove Product function 
-  const handleRemoveProduct = async (id) => {
-    try {
-      await ProductService.deleteProduct(id);
-      setProducts(products.filter((product) => product.id !== id));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   // Add to Cart function
   const handleAddToCart = async (id) => {
     try {
@@ -73,15 +58,6 @@ function ProductList() {
               ))}
             </ul>
           )}
-  
-          {/* Below each product a remove button that removes the product */}
-          <button className="btn btn-danger" onClick={() => handleRemoveProduct(product.id)}>
-            Remove
-          </button>
-          {/* Below each product an edit button that navigates to the edit product page */}
-          <button className="btn btn-secondary" onClick={() => handleEditProduct(product.id)}>
-            Edit
-          </button>
           {/* Select quantity */}
           {/* Input for quantity */}
           {/* Label for quantity */}

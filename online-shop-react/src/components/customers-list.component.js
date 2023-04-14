@@ -42,7 +42,7 @@ const CustomersList = () => {
   return (
     <div className="container">
       <header className="jumbotron">
-        <h2>Users List and Controls</h2>
+        <h2>User Controls</h2>
       </header>
       <table className="table">
         <thead>
