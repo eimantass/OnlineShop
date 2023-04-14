@@ -22,6 +22,19 @@ public class Cart {
 	
 	@OneToMany( cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CartItem> items = new ArrayList<>();
+	
+	public Cart() {}
+	
+	public Cart(Double totalPrice, List<CartItem> items) {
+		this.totalPrice = totalPrice;
+		this.items = items;
+	}
+	
+	public Cart(Long id, Double totalPrice, List<CartItem> items) {
+		this.id = id;
+		this.totalPrice = totalPrice;
+		this.items = items;
+	}
 
 	public Long getId() {
 		return id;
