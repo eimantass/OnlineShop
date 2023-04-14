@@ -39,6 +39,7 @@ import Feedback from "./pages/Feedback";
 import Help from "./pages/Help";
 // Admin Control Panel
 import AdminControlPanel from "./layout/AdminControlPanel";
+import UserControlPanel from "./layout/UserControlPanel";
 import ShoppingCart from "./pages/shoppingCart";
 
 class App extends Component {
@@ -174,6 +175,7 @@ class App extends Component {
     <Route path="/customer" element={<CustomerBoard/>} />
     <Route path="/manager" element={<ManagerBoard/>} />
     <Route path="/admin" element={<AdminBoard/>} />
+    <Route path="/user-control/edit/:id" element={<UserControlPanel/>}/> 
     <Route path="/admin-user-control/edit/:id" element={<AdminControlPanel/>}/> 
     {/* Cart */}
     <Route path="/cart" element={<ShoppingCart/>} />

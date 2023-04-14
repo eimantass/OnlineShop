@@ -53,7 +53,7 @@ const CustomerBoard = () => {
                 <td>{customerData.number}</td>
                 <td>{customerData.money}</td>
                 <td>
-                <Link to={`/Control-panel/edit/${customerData.id}`} className="btn btn-primary mr-2">
+                <Link to={`/user-control/edit/${customerData.id}`} className="btn btn-primary mr-2">
                   Edit User Information
                 </Link>
               </td>
