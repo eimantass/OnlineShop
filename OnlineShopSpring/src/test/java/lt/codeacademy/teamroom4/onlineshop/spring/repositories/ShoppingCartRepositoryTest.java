@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,12 @@ class ShoppingCartRepositoryTest {
 	@Autowired
 	ShoppingCartRepository rep;
 	
-	Collection<CartItem> cartItems;
+	List<CartItem> items;
 	Date time = new Date();
 	String session =  "sessionToken";
 	Cart cart = new Cart();
 	*/
+
 	
 //	@Test
 //	void testFindBySessionToken() {
