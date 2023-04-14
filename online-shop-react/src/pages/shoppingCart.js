@@ -4,8 +4,6 @@ export default function ShoppingCart() {
     return (
       <div>
         <ProductCart/>
-        
-       
       </div>
     );
     
