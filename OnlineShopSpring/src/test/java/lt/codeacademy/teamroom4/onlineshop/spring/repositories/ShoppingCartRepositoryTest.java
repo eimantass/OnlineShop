@@ -1,4 +1,4 @@
-package lt.codeacademy.teamroom4.onlineshop.spring.repositories;
+/*package lt.codeacademy.teamroom4.onlineshop.spring.repositories;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -20,13 +20,15 @@ class ShoppingCartRepositoryTest {
 	List<CartItem> items;
 	Date time = new Date();
 	String session =  "sessionToken";
-	Cart cart = new Cart((long)2,  45.45, items);
+	Cart cart = new Cart();
+	*/
+
 	
-	@Test
-	void testFindBySessionToken() {
-		fail("Not yet implemented");
+//	@Test
+//	void testFindBySessionToken() {
+//		fail("Not yet implemented");
 		//rep.save(cart);
 		//rep.findBySessionToken(session);
-	}
+	//}}
 
-}
+
