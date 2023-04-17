@@ -33,13 +33,14 @@ public class CartController {
 	private CartService cartService;
 	@Autowired
 	UserDetailsServiceImpl userService;
-	@PostMapping("")
-	public ResponseEntity<Cart> createCart(){
-		Cart cart = cartService.createCart();
-		return ResponseEntity.ok(cart);
-	}
 	
-	@PostMapping("")
+//	@PostMapping("")
+//	public ResponseEntity<Cart> createCart(){
+//		Cart cart = cartService.createCart();
+//		return ResponseEntity.ok(cart);
+//	}
+	
+	@PostMapping("/create")
 	public ResponseEntity<Cart> createCart(@RequestParam("userId") Long userId) {
 	    // Retrieve the User entity from the database using the userId
 	    User user = userService.getById(userId);
@@ -47,10 +48,8 @@ public class CartController {
 	    Cart cart = new Cart();
 	    // Set the User entity associated with the Cart
 	    cart.setUser(user);
-	    
 	    // Save the Cart to the database
 	    Cart createdCart = cartService.createCart(cart);
-	    
 	    return ResponseEntity.ok(createdCart);
 	}
 	

@@ -19,7 +19,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepos
 
 public interface CartService {
 	
-	Cart createCart();
+	Cart createCart(Cart id);
 	
 	Cart addItem(Long id, CartItem item);
 	
