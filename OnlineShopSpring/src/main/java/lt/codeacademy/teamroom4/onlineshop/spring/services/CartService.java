@@ -30,4 +30,6 @@ public interface CartService {
 	void deleteCart(Long id);
 	
 	List<Cart> getAllCarts();
+
+	List<Cart> findByUserId(Long id);
 }

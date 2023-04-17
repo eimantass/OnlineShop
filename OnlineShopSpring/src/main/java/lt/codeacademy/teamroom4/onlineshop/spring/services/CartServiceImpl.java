@@ -59,5 +59,11 @@ public class CartServiceImpl implements CartService {
 		return repository.findAll();
 	}
 
+	@Override
+	public List<Cart> findByUserId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
 

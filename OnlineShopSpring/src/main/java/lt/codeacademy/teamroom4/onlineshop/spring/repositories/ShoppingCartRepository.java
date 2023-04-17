@@ -8,4 +8,5 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
 @Repository
 public interface ShoppingCartRepository extends JpaRepository<Cart, Long>{
 	//ShoppingCart findBySessionToken(String sessionToken);
+	Cart findByUserId(Long userId);
 }
