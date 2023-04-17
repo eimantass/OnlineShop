@@ -28,8 +28,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return UserDetailsImpl.build(user);
 	}
 	//Finding user by id
-	public Optional<User> getById(long id) {
-		return userRepository.findById(id);
+	public User getById(long id) {
+		return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
 	}
 
 }
