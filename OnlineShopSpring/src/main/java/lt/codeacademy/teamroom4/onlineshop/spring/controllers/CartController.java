@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.CartService;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.UserDetailsServiceImpl;
 //In this class the shopping cart mappings are handled
@@ -32,6 +33,8 @@ public class CartController {
 	
 	@Autowired
 	private CartService cartService;
+	@Autowired
+	private ShoppingCartRepository cartRepository;
 	@Autowired
 	UserDetailsServiceImpl userService;
 	
@@ -47,12 +50,13 @@ public class CartController {
 	    // Retrieve the User entity from the database using the userId
 	    User user = userService.getById(userId);
 	    // Create a new Cart
-	    Cart cart = new Cart();
+	   // Cart cart = new Cart();
 	    // Set the User entity associated with the Cart
 	
 	    // Save the Cart to the database
 	    Cart createdCart = cartService.createCart(userId);
 	    createdCart.setUser(user);
+	    cartRepository.save(createdCart);
 
 	    return ResponseEntity.ok(createdCart);
 	}
@@ -86,6 +90,10 @@ public class CartController {
 	@GetMapping("/allItems")
 	public List<Cart> allItems(){
 		return cartService.getAllCarts();
+	}
+	@GetMapping("/cartByUserId")
+	public List<Cart> cartByUserId(){
+		return cartService.findByUserId(null);
 	}
 
 }
