@@ -40,8 +40,8 @@ import Feedback from "./pages/Feedback";
 import Help from "./pages/Help";
 //import TestPage from "./layout/AdminEditPage";
 //import AdminControllMenuAAM from "./components/AdminControllMenuP";
+import TSearchPage from "./pages/SearchPage";
 import SeachAndLogo from "./layout/searchandlogo";
-import SearchpageT from "./layout/searchpage";
 
 import AdminControlPanel from "./layout/AdminControlPanel";
 import UserControlPanel from "./layout/UserControlPanel";
@@ -163,7 +163,7 @@ class App extends Component {
         </nav>
 
         <div className="container mt-3">
-        
+        <SeachAndLogo/>
         <Routes>
     <Route exact path="/" element={<Home />} />
     <Route path="/home" element={<Home />} />
@@ -205,7 +205,7 @@ class App extends Component {
     <Route path="/help" element={<Help/>} />
     {/*  <Route path="/Controll-panel" element={<AdminControllMenuAAM/>}/> */}
     {/* <Route path="/Controll-panel/edit/:id" element={<TestPage/>}/>*/}
-    <Route path="/search/:val" element={<SearchpageT/>}/>
+    <Route path="/search/:val" element={<TSearchPage/>}/>
 
     </Routes>
         </div>

@@ -45,26 +45,21 @@ const SearchpageT = () => {
     }
   };
 
-  //function Thingy() {
-    //useEffect(() => {
-    //  filterItem();
-    //}, []);
-    
+
   const FilterItem = () => {
     const query = val;
-    console.log(query, "= Variable");
+    //console.log(query, "= Variable");
 
     const updatedList = products.filter(products => products.name.includes(query)
     || products.description.includes(query)
     || products.category.includes(query)
     || products.brand.includes(query));
 
-    console.log("updateList worked");         
+    //console.log("updateList worked");         
 
     setProductsNEW(updatedList);
-  console.log("set new product")
+  //console.log("set new product")
   };
-  //}
 
   return (
 <main>
