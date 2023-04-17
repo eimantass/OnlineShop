@@ -9,7 +9,6 @@ import ProductService from "../services/product.service";
 
 const SearchpageT = () => {
 
-  //console.log(useParams());
   const {val} = useParams();
   const [products, setProducts] = useState([]);
   const [productsNEW, setProductsNEW] = useState([]);
@@ -25,7 +24,6 @@ const SearchpageT = () => {
       }
     }
     fetchData();
-    //FilterItem();
   }, []);
 
   const handleAddProduct = () => {
@@ -44,7 +42,9 @@ const SearchpageT = () => {
       console.log(error);
     }
   };
-
+  useEffect(() => {
+    FilterItem();
+  })
 
   const FilterItem = () => {
     const query = val;
@@ -68,7 +68,7 @@ const SearchpageT = () => {
       {/* The add product button   */}
       <button onClick={handleAddProduct}>Add Product</button>
       {/* Products List from Repository */}
-      <FilterItem/>
+      {/*<FilterItem/>*/}
 
       <ul>
         {productsNEW.map((product) => (
