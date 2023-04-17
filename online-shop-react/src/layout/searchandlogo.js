@@ -1,6 +1,16 @@
 import './css/searchandlogo.css'; // Import your CSS file
+import {useState} from 'react'
 
 function SeachAndLogo() {
+  const [val, setVal] = useState('')
+  const click = () => {
+    //alert(val)
+  }
+  const change = event => {
+    const newvalue = event.target.value
+    setVal(newvalue)
+  }
+
     return (
 <div className="logo-container">
         <a href="http://localhost:3000/">
@@ -10,10 +20,12 @@ function SeachAndLogo() {
           />
         </a>
 
-        <form action="/search" method="get" className="search-form">
-          <input type="text" placeholder="Search..." name="q" />
-          <button type="submit">Ieškoti</button>
-        </form>
+        <div className="search-form">
+              <input value={val} onChange={change}/>
+              <a href={'http://localhost:8081/search/'+val}  rel="noopener noreferrer">
+              <button onClick={click}>Search</button>
+              </a>
+        </div>
       </div>
     );
 }
