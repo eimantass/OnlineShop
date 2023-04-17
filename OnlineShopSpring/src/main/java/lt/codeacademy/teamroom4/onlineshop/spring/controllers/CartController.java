@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -40,16 +41,19 @@ public class CartController {
 //		return ResponseEntity.ok(cart);
 //	}
 	
-	@PostMapping("/create")
-	public ResponseEntity<Cart> createCart(@RequestParam("userId") Long userId) {
+	@PostMapping("/create/{userId}")
+	@ResponseBody
+	public ResponseEntity<Cart> createCart(@PathVariable("userId") Long userId) {
 	    // Retrieve the User entity from the database using the userId
 	    User user = userService.getById(userId);
 	    // Create a new Cart
 	    Cart cart = new Cart();
 	    // Set the User entity associated with the Cart
-	    cart.setUser(user);
+	
 	    // Save the Cart to the database
-	    Cart createdCart = cartService.createCart(cart);
+	    Cart createdCart = cartService.createCart(userId);
+	    createdCart.setUser(user);
+
 	    return ResponseEntity.ok(createdCart);
 	}
 	
