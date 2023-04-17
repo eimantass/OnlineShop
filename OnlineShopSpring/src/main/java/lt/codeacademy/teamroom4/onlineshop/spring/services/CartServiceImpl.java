@@ -62,7 +62,7 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public List<Cart> findByUserId(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.findByUserId(id);
 	}
 
 }

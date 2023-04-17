@@ -91,9 +91,10 @@ public class CartController {
 	public List<Cart> allItems(){
 		return cartService.getAllCarts();
 	}
-	@GetMapping("/cartByUserId")
-	public List<Cart> cartByUserId(){
-		return cartService.findByUserId(null);
+	@GetMapping("/cartByUserId/{userId}")
+	public List<Cart> cartByUserId(@PathVariable Long userId ){
+		
+		return cartService.findByUserId(userId);
 	}
 
 }
