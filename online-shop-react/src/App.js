@@ -38,8 +38,8 @@ import Warranty from "./pages/Warranty";
 import Privacy from "./pages/Privacy";
 import Feedback from "./pages/Feedback";
 import Help from "./pages/Help";
-import TestPage from "./layout/AdminEditPage";
-import AdminControllMenuAAM from "./components/AdminControllMenuP";
+//import TestPage from "./layout/AdminEditPage";
+//import AdminControllMenuAAM from "./components/AdminControllMenuP";
 import SeachAndLogo from "./layout/searchandlogo";
 import SearchpageT from "./layout/searchpage";
 
@@ -203,8 +203,8 @@ class App extends Component {
     <Route path="/privacy" element={<Privacy/>} />
     <Route path="/feedback" element={<Feedback/>} />
     <Route path="/help" element={<Help/>} />
-    <Route path="/Controll-panel" element={<AdminControllMenuAAM/>}/>
-    <Route path="/Controll-panel/edit/:id" element={<TestPage/>}/>
+    {/*  <Route path="/Controll-panel" element={<AdminControllMenuAAM/>}/> */}
+    {/* <Route path="/Controll-panel/edit/:id" element={<TestPage/>}/>*/}
     <Route path="/search/:val" element={<SearchpageT/>}/>
 
     </Routes>
