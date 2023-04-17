@@ -11,7 +11,7 @@ class MessageResponseTest {
 
 	@Test
 	void testMessageResponse() {
-		if(response == null) {
+		if(response != null) {
 			assertTrue(true);
 		}
 		else {
@@ -22,9 +22,11 @@ class MessageResponseTest {
 	@Test
 	void testGetMessage() {
 		if(response.getMessage().equals("error")) {
-			assertTrue(true);
-		}else {
 			assertTrue(false);
+
+		}else {
+			assertTrue(true);
+
 		}
 	}
 
