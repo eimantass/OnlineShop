@@ -24,10 +24,12 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.ProductParameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartItemRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.*;
 
 //This class handles functions, which do not require authentication to use
+@CrossOrigin(origins = "http://localhost:8081", allowCredentials = "true")
 @RestController
 public class HomeController {
 	// Autowiring services and repositories
@@ -139,7 +141,7 @@ public class HomeController {
 		return productService.sortByNameAll(direction);
 	}
 	@GetMapping("/products/filter-by-category/{category}")
-	public List<Product> SortProductsByNameAsc(@PathVariable Category category) {
+	public List<Product> SortProductsByCategory(@PathVariable Categories category) {
 		return productService.searchProductByCategory(category);
 	}
 	

@@ -11,10 +11,10 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.WishList;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.WishListItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListItemRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListRepository;
-
+//This class handles wish list service
 @Service
 public class WishListService {
-	
+	//Autowiring services and repositories
 	@Autowired
 	private WishListRepository wishListRepository;
 	
@@ -23,7 +23,7 @@ public class WishListService {
 	
 	@Autowired
 	private ProductService productService;
-	
+	//Adding first item to the wish list
 	public WishList addToWishFirstTime(Long id, String sessionToken) {
 		WishList wishList = new WishList();
 		WishListItem item = new WishListItem();
@@ -35,7 +35,7 @@ public class WishListService {
 		return wishListRepository.save(wishList);
 		
 	}
-
+	//Adding wishlisted item to shopping cart
 	public WishList addToExistingShoppingCart(Long id, String sessionToken) {
 		WishList wishList = wishListRepository.findBySessionToken(sessionToken);
 		Product p = productService.getProductById(id);
@@ -58,12 +58,12 @@ public class WishListService {
 		}
 		return null;
 	}
-
+	//Getting wish list accordingly to session token
 	public WishList getWishListBySessionToken(String sessionToken) {
 		return wishListRepository.findBySessionToken(sessionToken);
 	}
 
-
+	//Removing item from the wish lsit
 	public WishList removeItemFromWishList(Long id, String sessionToken) {
 		WishList wishList = wishListRepository.findBySessionToken(sessionToken);
 		Set<WishListItem> items = wishList.getItems() ;
@@ -78,7 +78,7 @@ public class WishListService {
 		wishList.setItems(items);
 		return wishListRepository.save(wishList);
 	}
-
+	//Clearing wish list
 	public void clearWishList(String sessionToken) {
 		WishList sh = wishListRepository.findBySessionToken(sessionToken);
 		wishListRepository.delete(sh);

@@ -11,4 +11,8 @@ public class WalletExceptionResponse {
 	public WalletExceptionResponse(String id) {
 		this.id = id;
 	}
+
+	public String getErrorMessage() {
+		return id;
+	}
 }

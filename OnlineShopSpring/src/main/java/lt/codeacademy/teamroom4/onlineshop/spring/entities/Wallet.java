@@ -38,6 +38,30 @@ public class Wallet {
 	@Max(3)
 	private Integer priority;
 	private Double currentBalance;
+	
+	
+	
+	public Wallet() {
+	}
+
+	public Wallet(Long id, @NotBlank(message = "Name cann't be blank") @Size(min = 2, max = 30) String name,
+			@Size(min = 2, max = 30) String accountNumber) {
+		this.id = id;
+		this.name = name;
+		this.accountNumber = accountNumber;
+	}
+
+	public Wallet(Long id, @NotBlank(message = "Name cann't be blank") @Size(min = 2, max = 30) String name,
+			@Size(min = 2, max = 30) String accountNumber, @Size(max = 100) String description,
+			@Min(1) @Max(3) Integer priority, Double currentBalance) {
+		this.id = id;
+		this.name = name;
+		this.accountNumber = accountNumber;
+		this.description = description;
+		this.priority = priority;
+		this.currentBalance = currentBalance;
+	}
+
 	// Setters/Getters
 	@PrePersist
 	public void setBalance() {
@@ -83,6 +107,5 @@ public class Wallet {
 	public void setPriority(Integer priority) {
 		this.priority = priority;
 	}
-	
 	
 }

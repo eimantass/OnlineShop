@@ -5,23 +5,29 @@ const API_URL = 'http://localhost:8080/api/user-access/';
 
 class UserService {
 
+  // Get all customers from repository
+
   getAllCustomersMethod() {
     return axios.get(API_URL + 'customers', { headers: authHeader() });
   }
 
+  // Get all roles from repository
+  getAllRolesMethod() {
+    return axios.get(API_URL + 'roles', { headers: authHeader() });
+  }
+
+  // Get role by user ID
+  getRolesByUserIdMethod(id) {
+     return axios.get(API_URL + `role/` + id, { headers: authHeader() });
+  }
+  
   getCustomerByIdMethod(id) {
     return axios.get(API_URL + 'customers/' + id, { headers: authHeader() });
   }
 
-  updateCustomerMethod(id, username, email, password, number, money, roles) {
-    return axios.put(API_URL + 'customers/' + id, {
-      username,
-      email,
-      password,
-      number,
-      money,
-      roles
-    }, { headers: authHeader() });
+  updateCustomerMethod(id, user) {
+    return axios.put(API_URL + 'customer/' + id, user, 
+   { headers: authHeader() });
   }
 
   deleteCustomerMethod(id) {

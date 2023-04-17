@@ -66,6 +66,14 @@ public class User {
 		this.roles = roles;
 		this.money = MoneyGenerator.virtualMoney();
 	}
+	
+	public User(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password) {
+		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+	}
 
 	public User(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
 			@NotBlank @Size(max = 120) String password, Set<Role> roles) {
@@ -106,13 +114,25 @@ public class User {
 		this.money = MoneyGenerator.virtualMoney();
 		this.roles = roles;
 	}
+	
+	public User(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password, @NotBlank @Size(max = 11) long number) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.number = number;
+	}
+
 	// Setters/Getters
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
+		if(id !=null) {
 		this.id = id;
+		}
 	}
 
 	public String getUsername() {
@@ -120,47 +140,59 @@ public class User {
 	}
 
 	public void setUsername(String username) {
+		if(username!=null) {
 		this.username = username;
 	}
-
+	}
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
+		if(email !=null &&email !="") {
 		this.email = email;
 	}
-
+	}
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
+		if(password !=null) {
 		this.password = password;
 	}
-
+	}
 	public Set<Role> getRoles() {
 		return roles;
 	}
 
 	public void setRoles(Set<Role> roles) {
+		if(roles !=null) {
 		this.roles = roles;
-	}
+	}}
 
 	public long getNumber() {
 		return number;
 	}
 
 	public void setNumber(long number) {
+		if(number !=0) {
 		this.number = number;
 	}
+		}
 
 	public double getMoney() {
 		return money;
 	}
 
 	public void setMoney(double money) {
+		if(money !=0) {
 		this.money = money;
+		}
 	}
-
+		public void clearMoney(double money) {
+			if(money !=0) {
+			this.money = money;
+		}	
+	}
 }

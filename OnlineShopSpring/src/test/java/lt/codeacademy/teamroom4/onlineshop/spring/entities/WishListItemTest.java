@@ -2,43 +2,80 @@ package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Date;
+
 import org.junit.jupiter.api.Test;
 
 class WishListItemTest {
-
+	
+	Date time = new Date();
+	WishListItem item = new WishListItem((long)2, time, new Product());
+	
 	@Test
 	void testWishListItem() {
-		fail("Not yet implemented");
+		if(item == null) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetId() {
-		fail("Not yet implemented");
+		if(item.getId().equals((long)2)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetId() {
-		fail("Not yet implemented");
+		item.setId((long)4);
+		if(item.getId()==4) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetDate() {
-		fail("Not yet implemented");
+		if(item.getDate().equals(time)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
+
 	}
 
 	@Test
 	void testSetDate() {
-		fail("Not yet implemented");
+		item.setDate(new Date());
+		if(item.getDate().equals(time)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetProduct() {
-		fail("Not yet implemented");
+		if(item.getProduct() == null) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetProduct() {
-		fail("Not yet implemented");
+		item.setProduct(new Product());
+		if(item.getProduct() == new Product()) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}	
 	}
 
 }

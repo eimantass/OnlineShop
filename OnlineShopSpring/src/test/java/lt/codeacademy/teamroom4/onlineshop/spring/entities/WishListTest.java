@@ -2,53 +2,103 @@ package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Date;
+import java.util.Set;
+
 import org.junit.jupiter.api.Test;
 
 class WishListTest {
-
+	
+	Date time = new Date();
+	Set<WishListItem> items;
+	WishList list = new WishList((long)2, time, "sessionToken", items);
+	
 	@Test
 	void testWishList() {
-		fail("Not yet implemented");
+		if(list == null) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetId() {
-		fail("Not yet implemented");
+		if(list.getId().equals((long)2)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetId() {
-		fail("Not yet implemented");
+		list.setId((long)4);
+		if(list.getId()==4) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetDate() {
-		fail("Not yet implemented");
+		if(list.getDate().equals(time)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetDate() {
-		fail("Not yet implemented");
+		list.setDate(new Date());
+		if(list.getDate()== time) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
+
 	}
 
 	@Test
 	void testGetSessionToken() {
-		fail("Not yet implemented");
+		if(list.getSessionToken().equals("sessionToken")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetSessionToken() {
-		fail("Not yet implemented");
+		list.setSessionToken("session");
+		if(list.getSessionToken().equals("session")) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
+
 	}
 
 	@Test
 	void testGetItems() {
-		fail("Not yet implemented");
+		if(list.getItems().equals(items)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetItems() {
-		fail("Not yet implemented");
+		list.setItems(items);
+		if(list.getItems().equals(items)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
+
 	}
 
 }

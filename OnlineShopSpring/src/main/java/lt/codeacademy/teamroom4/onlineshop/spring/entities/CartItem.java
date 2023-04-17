@@ -22,7 +22,6 @@ import org.hibernate.annotations.CascadeType;
 
 //This is an cartItem entity
 @Entity
-@Table(name = "cartitem")
 public class CartItem {
 	//CartItem variables
 	@Id
@@ -34,7 +33,7 @@ public class CartItem {
 	Date date;
 	
 	@ManyToOne
-	@Cascade(CascadeType.SAVE_UPDATE)
+	@Cascade({CascadeType.SAVE_UPDATE,CascadeType.PERSIST,CascadeType.DELETE})
 	@JoinColumn(name = "product_id" , referencedColumnName = "id")
 	Product product;
 	

@@ -1,9 +1,12 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,22 +17,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.config.SecurityConfig;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.*;
 
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Set;
 //This controller handles user access accordingly to roles
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/user-access")
 public class UserAccessController {
 	
+	private static final Logger log = LoggerFactory.getLogger(ProductController.class);
+	
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+    private RoleRepository roleRepository;
+	
+	@Autowired
+	PasswordEncoder encoder;
 	
 	// Return all usersList
 	@GetMapping("/customers")
@@ -41,19 +56,43 @@ public class UserAccessController {
 	public User getUserById(@PathVariable Long id) {
 	    return userRepository.findById(id).orElseThrow();
 	}
+	
 	// Update an existing user
-	@PutMapping("/customers/{id}")
-	public User updateUser(@PathVariable Long id, @RequestBody User userRequest) {
-	    return userRepository.findById(id).map(user -> {
-	        user.setUsername(userRequest.getUsername());
-	        user.setEmail(userRequest.getEmail());
-	        user.setPassword(userRequest.getPassword());
-	        user.setNumber(userRequest.getNumber());
-	        user.setMoney(userRequest.getMoney());
-	        user.setRoles(userRequest.getRoles());
-	        return userRepository.save(user);
-	    }).orElseThrow();
+	@PutMapping("/customer/{id}")
+	public User updateUser(@PathVariable Long id, @RequestBody User UpdatedUser) {
+	    log.info(UpdatedUser.toString());
+		return userRepository.findById(id)
+	    	.map(user -> {
+		        user.setUsername(UpdatedUser.getUsername());
+		        user.setEmail(UpdatedUser.getEmail());
+		        if(UpdatedUser.getPassword()!="") {
+		        user.setPassword(SecurityConfig.passwordEncoder().encode(UpdatedUser.getPassword()));}
+		        
+		        user.setNumber(UpdatedUser.getNumber());
+		        user.setMoney(UpdatedUser.getMoney());
+		       // user.setRoles(UpdatedUser.getRoles());
+		        User savedUser = userRepository.save(user);
+		        log.info(null);
+                log.info("User with id {} updated successfully: {}", id, savedUser);
+                return savedUser;
+		    }).orElseThrow(() -> {
+                log.error("User with id {} not found for update", id);
+                return new RuntimeException("User with id " + id + " not found for update");
+            });
+		}
+	// Get all roles
+    @GetMapping("/roles")
+    public List<Role> getRoles() {
+        List<Role> roles = roleRepository.findAll();
+        return roles;
+    }
+    
+	// Get role by userID
+	@GetMapping("/role/{id}")
+	public Set<Role> getCustomerRoleById(@PathVariable Long id) {
+	    return userRepository.findById(id).orElseThrow().getRoles();
 	}
+	
 	//Delete a user by ID
 	@DeleteMapping("/customers/{id}")
 	public ResponseEntity<?> deleteUser(@PathVariable Long id) {

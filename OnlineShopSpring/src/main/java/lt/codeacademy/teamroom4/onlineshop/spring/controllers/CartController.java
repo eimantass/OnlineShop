@@ -1,83 +1,70 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
 
-import java.util.ArrayList;
-import java.util.Date;
+
+
 import java.util.List;
-import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.Gson;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
-
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.ShoppingCart;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.CartService;
-import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
 //In this class the shopping cart mappings are handled
-@Controller
+@RestController
 @RequestMapping("/cart")
 public class CartController {
-	//Autowiring services
-	@Autowired
-	private ProductService productService;
 	
 	@Autowired
 	private CartService cartService;
 	
-	//Here products are added to shopping cart
-	@PostMapping("/addToCart")
-	public String addToCart(HttpServletRequest request, Model model, @RequestParam("id") Long id,
-			@RequestParam("quantity") int quantity) {
-		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
-		if(sessionToken == null) {
-			sessionToken = UUID.randomUUID().toString();
-			request.getSession().setAttribute("sessionToken", sessionToken);
-			cartService.addShoppingCartFirstTime(id,sessionToken, quantity);
-		}else {
-			cartService.addToExistingShoppingCart(id, sessionToken, quantity);
-		}
-		return "redirect:/";
+	@PostMapping("")
+	public ResponseEntity<Cart> createCart(){
+		Cart cart = cartService.createCart();
+		return ResponseEntity.ok(cart);
 	}
-	//Here shopping cart is shown
-	@GetMapping("/shoppingCart")
-	public String showShoppingCartView(HttpServletRequest request, Model model) {
-		return "shoppingCart";
+	
+	@PostMapping("/items/{id}")
+	public ResponseEntity<Cart> addItem(@PathVariable Long id, @RequestBody CartItem item){
+		Cart cart = cartService.addItem(id, item);
+		return ResponseEntity.ok(cart);
+
 	}
-	//Updating shopping cart
-	@PostMapping("/updateShoppingCart")
-	public String updateCartItem(@RequestParam("item_id") Long id,
-								 @RequestParam("quantity") int quantity) {
-		
-		cartService.updateShoppingCartItem(id, quantity);
-		return "redirect:/shoppingCart";
+	
+	@PutMapping("/update/{id}")
+	public Cart updateCart(@PathVariable Long id, @RequestBody CartItem item, @RequestParam int quantity) {
+		return cartService.updateItemQuantity(id, item, quantity);
 	}
-	//Item removal from shopping cart
-	@GetMapping("/removeItem/{id}")
-	public String removeItem(@PathVariable("id") Long id, HttpServletRequest request) {
-		String sessionToken = (String) request.getSession(false).getAttribute("sessionToken");
-		cartService.removeCartItemFromShoppingCart(id, sessionToken);
-		return "redirect:/shoppingCart";
+	
+	@DeleteMapping("/remove/{id}")
+	public void removeItem(@PathVariable Long id, @RequestBody CartItem item){
+		cartService.removeItem(id, item);
 	}
-	//Here shopping cart is cleared
-	@GetMapping("/clearShoppingCart")
-	public String clearShoppingString( HttpServletRequest request) {
-		String sessionToken = (String) request.getSession(false).getAttribute("sessionToken");
-		request.getSession(false).removeAttribute("sessionToken");
-		cartService.clearShoppingCart(sessionToken);
-		return "redirect:/shoppingCart";
+	
+	@DeleteMapping("/delete/{id}")
+	public void deleteCart(@PathVariable Long id) {
+		cartService.deleteCart(id);
+	}
+	
+	@GetMapping("/allCarts")
+	public List<Cart> allCarts(){
+		return cartService.getAllCarts();
+	}
+	@GetMapping("/allItems")
+	public List<Cart> allItems(){
+		return cartService.getAllCarts();
 	}
 
 }

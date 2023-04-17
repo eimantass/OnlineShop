@@ -1,7 +1,7 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.utils;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
-
+//This class handles payments
 public class Bank {
 	
 	void pay(User cust, double pay) {

@@ -1,3 +1,4 @@
+/*
 package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +31,7 @@ public class GeneralCartController {
 		if(sessionToken == null) {
 			model.addAttribute("shoppingCart", new ShoppingCart());
 		}else {
-			model.addAttribute("shoppingCart",cartService.getShoppingCartBySessionToken(sessionToken));
+			//model.addAttribute("shoppingCart",cartService.getShoppingCartBySessionToken(sessionToken));
 		}
 		
 		if(sessionTokenWishList == null) {
@@ -45,3 +46,4 @@ public class GeneralCartController {
 		model.addAttribute("featured", productService.getProductWithBigestDiscount());
 	}
 }
+*/

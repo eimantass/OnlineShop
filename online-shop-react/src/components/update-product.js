@@ -121,15 +121,17 @@ function UpdateProduct() {
         </div>
 
         <div>
-          <label htmlFor="photo">Photo:</label>
-          <input
-            id="photo"
-            type="text"
-            name="photo"
-            value={product.photo || ''}
-            onChange={handleInputChange}
-          />
-        </div>
+  <label htmlFor="photo">Image: (Only links to images: jpg,jpeg,png,gif) </label>
+  <input
+    id="photo"
+    type="url" /* Change input type to "url" to enforce URL validation */
+    name="photo"
+    value={product.photo || ''}
+    pattern=".*\.(jpg|jpeg|png|gif)" /* Use "pattern" attribute with a regex to validate image file extensions */
+    onChange={handleInputChange}
+    required /* Add "required" attribute to make the input mandatory */
+  />
+</div>
             
         <button type="submit">Update Product</button>
       </form>

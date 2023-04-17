@@ -1,6 +1,7 @@
 package lt.codeacademy.teamroom4.onlineshop.spring;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +17,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.config.SecurityConfig;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Category;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Coupon;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
@@ -28,6 +31,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CategoryRepositor
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CouponRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListItemRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListRepository;
@@ -60,11 +64,11 @@ public class Observer {
 	private WishListItemRepository wishListItemRepository;
 	@Autowired
 	private WishListRepository wishListRepository;
-	
-	
+	@Autowired
+	ShoppingCartRepository shoppingCartRepository;
 
 	// Used to activate seed function
-	 @EventListener
+	// @EventListener
 	public void seed(ContextRefreshedEvent event) {
 		// seedRole();
 		seedUserAdmin();
@@ -76,7 +80,9 @@ public class Observer {
 		seedProduct();
 		seedWishListItemRepository();
 		seedWishList();
+		seedCart();
 	}
+
 
 	// Seeding users and products
 
@@ -112,16 +118,14 @@ public class Observer {
 				SecurityConfig.passwordEncoder().encode("serviceManager"), roles));
 		userRepository.saveAll(serviceManager);
 	}
+
 	private void seedCoupons() {
-		List<Coupon> discountCoupons = List.of(
-				new Coupon(0),
-				new Coupon(10),
-				new Coupon(20));	
-		
+		List<Coupon> discountCoupons = List.of(new Coupon(0), new Coupon(10), new Coupon(20));
+
 		couponRepository.saveAll(discountCoupons);
-		
 
 	}
+
 	private void seedProduct() {
 		Set<ProductParameters> cpuParameterList = new HashSet<>();
 		Set<ProductParameters> gpuParameterList = new HashSet<>();
@@ -130,49 +134,49 @@ public class Observer {
 		gpuParameterList.add(firstGpu);
 		cpuParameterList.add(firstCPU);
 		List<Category> categoryList = categoryRepository.findAll();
-		List<Coupon> coupons= couponRepository.findAll();
-		Category category =categoryRepository.getById((long) 1);
-	List<Product> product = List.of(
+		List<Coupon> coupons = couponRepository.findAll();
+		Category category = categoryRepository.getById((long) 1);
+		List<Product> product = List.of(
 //				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", categoryList.get(1),cpuParameterList),
-			new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu",GPU, gpuParameterList),
-			new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu",GPU,gpuParameterList),
-	new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", RAM,gpuParameterList, coupons.get(0)),
-				new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", CPU),
-		new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", CPU, cpuParameterList),
-				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu",CPU, cpuParameterList));
+				new Product("RX 6400XT", AMD, "foto.png", 160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS,
+						gpuParameterList),
+				new Product("GTX 1650 Super", NVIDIA, "foto.png", 220, "4 gb gddr6 GTX 1650 Super gpu", GRAPHICS_CARDS,
+						gpuParameterList),
+				new Product("4gb RAM", GOODRAM, "foto.png", 30, "4 gb ddr3 ram", LAPTOPS, gpuParameterList,
+						coupons.get(0)),
+				new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", PROCESSORS),
+				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", PROCESSORS, cpuParameterList),
+				new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", PROCESSORS, cpuParameterList,
+						coupons.get(1)));
 //
 		productRepository.saveAll(product);
 	}
+
 	private void seedCategory() {
-		List<Category> categoryList = List.of(
-		new Category(GPU),
-		new Category(CPU),
-		new Category(RAM),
-		new Category(HDD),
-		new Category(MAINBOARD),
-		new Category(PSU),
-		new Category(THERMALPASTE),
-		new Category(FANS),
-		new Category(DESKTOPCOMPUTER),
-		new Category(LAPTOPCOMPUTER),
-		new Category(ALLINONECOMPUTER),
-		new Category(MONITORS),
-		new Category(PHONES),
-		new Category(TABLETS),
-		new Category(PRINTERS),
-		new Category(GAMECONSOLES),
-		new Category(GAMES));
-		
+		List<Category> categoryList = List.of(new Category(PROCESSORS), new Category(LAPTOPS),
+				new Category(GRAPHICS_CARDS), new Category(MAINBOARDS), new Category(MOBILE_PHONES),
+				new Category(MONITORS), new Category(PRINTERS), new Category(GAMECONSOLES), new Category(GAMES));
+
 		categoryRepository.saveAll(categoryList);
 	}
 
 	private void seedWishListItemRepository() {
-	WishListItem blank = new WishListItem();
-	wishListItemRepository.save(blank);
+		WishListItem blank = new WishListItem();
+		wishListItemRepository.save(blank);
+	}
+
+	private void seedWishList() {
+		WishList blank = new WishList();
+		wishListRepository.save(blank);
 	}
 	
-	private void seedWishList() {
-	WishList  blank = new WishList();	
-	wishListRepository.save(blank);
+	private void seedCart() {
+		Date time = new Date();
+		List<CartItem> items = List.of(
+				new CartItem(5, time, new Product("IntelI5", INTEL, "foto.png", 200, "12 core cpu", PROCESSORS))
+				);
+		
+		Cart cart = new Cart(4515.545, items);
+		shoppingCartRepository.save(cart);
 	}
 }

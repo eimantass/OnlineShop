@@ -9,24 +9,25 @@ import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
 import Profile from "./components/profile.component";
-import CustomersListBoard from "./components/board-customerslist.component";
 import CustomerBoard from "./components/board-customer.component";
 import ManagerBoard from "./components/board-manager.component";
 import AdminBoard from "./components/board-admin.component";
 // Import function pages
-import EditCustomer from "./components/EditCustomer";
+import AdminProductControls from "./components/AdminProductControls";
+import ManagerProductControls from "./components/ManagerProductControls";
 import AddProductForm from "./components/add-product"
 import UpdateProduct from "./components/update-product"
+import UpdateProductPrice from "./components/UpdateProductPrice";
 // Import CategoriesMenu pages
-import StaliniaiKompiuteriai from "./pages/categoriesMenuPages/staliniai-kompiuteriai";
-import NesiojamiejiKompiuteriai from "./pages/categoriesMenuPages/nesiojamieji-kompiuteriai";
-import KompiuteriuKomponentai from "./pages/categoriesMenuPages/kompiuteriu-komponentai";
-import Monitoriai from "./pages/categoriesMenuPages/monitoriai";
-import Mobilieji from "./pages/categoriesMenuPages/mobilieji";
-import Plansetiniai from "./pages/categoriesMenuPages/plansetiniai";
-import Spausdintuvai from "./pages/categoriesMenuPages/spausdintuvai";
-import Konsoles from "./pages/categoriesMenuPages/konsoles";
-import Zaidimai from "./pages/categoriesMenuPages/zaidimai";
+import Processors from "./pages/categoriesMenuPages/processors";
+import Laptops from "./pages/categoriesMenuPages/laptops";
+import GraphicsCards from "./pages/categoriesMenuPages/graphicsCards";
+import Mainboards from "./pages/categoriesMenuPages/mainboards";
+import MobilePhones from "./pages/categoriesMenuPages/mobile-phones";
+import Monitors from "./pages/categoriesMenuPages/monitors";
+import Printers from "./pages/categoriesMenuPages/printers";
+import Consoles from "./pages/categoriesMenuPages/consoles";
+import Games from "./pages/categoriesMenuPages/games";
 // Import FooterMenu pages
 import About from "./pages/About";
 import Contacts from "./pages/Contacts";
@@ -41,6 +42,11 @@ import TestPage from "./layout/AdminEditPage";
 import AdminControllMenuAAM from "./components/AdminControllMenuP";
 import SeachAndLogo from "./layout/searchandlogo";
 import SearchpageT from "./layout/searchpage";
+
+import AdminControlPanel from "./layout/AdminControlPanel";
+import UserControlPanel from "./layout/UserControlPanel";
+import ShoppingCart from "./pages/shoppingCart";
+
 
 class App extends Component {
   constructor(props) {
@@ -80,12 +86,11 @@ class App extends Component {
 
     return (
       <>
-      
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/"} className="navbar-brand">
-            WebPage
-          </Link>
+        <Link to={"/"} className="navbar-brand">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM5GgYJWQI9E0nPyj1XpO3VfQdkBEyCia-2g&usqp=CAU" alt="WebPage" style={{ width: "60px", height: "60px" }}/>
+  </Link>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link to={"/home"} className="nav-link">
@@ -117,14 +122,13 @@ class App extends Component {
               </li>
               
             )}
-           
+        
             {currentUser && (
               <li className="nav-item">
-                <Link to={"/customers"} className="nav-link">
-                CUSTOMERS LIST
+                <Link to={"/cart"} className="nav-link">
+                Product Cart
                 </Link>
               </li>
-
             )}
           </div>
 
@@ -166,24 +170,29 @@ class App extends Component {
     <Route path="/login" element={<Login/>} />
     <Route path="/register" element={<Register/>} />
     <Route path="/profile" element={<Profile/>} />
-    <Route path="/customers" element={<CustomersListBoard/>} />
     <Route path="/customer" element={<CustomerBoard/>} />
     <Route path="/manager" element={<ManagerBoard/>} />
     <Route path="/admin" element={<AdminBoard/>} />
-    {/* Routes to function pages */}
-    <Route path="/edit-customer/:id" element={<EditCustomer/>} />
+    <Route path="/user-control/edit/:id" element={<UserControlPanel/>}/> 
+    <Route path="/admin-user-control/edit/:id" element={<AdminControlPanel/>}/> 
+    {/* Cart */}
+    <Route path="/cart" element={<ShoppingCart/>} />
+    {/* Products */}
+    <Route path="/products" element={<AdminProductControls/>} />
+    <Route path="/manager-products" element={<ManagerProductControls/>} />
     <Route path="/add-product" element={<AddProductForm/>} />
     <Route path="/update-product/:id" element={<UpdateProduct/>} />
+    <Route path="/update-product-price/:id" element={<UpdateProductPrice/>} />
     {/* Routes to CategoriesMenu pages */}
-    <Route path="/staliniai-kompiuteriai" element={<StaliniaiKompiuteriai/>} />
-    <Route path="/nesiojamieji-kompiuteriai" element={<NesiojamiejiKompiuteriai/>} />
-    <Route path="/kompiuteriu-komponentai" element={<KompiuteriuKomponentai/>} />
-    <Route path="/monitoriai" element={<Monitoriai/>} />
-    <Route path="/mobilieji-telefonai" element={<Mobilieji/>} />
-    <Route path="/plansetiniai-kompiuteriai" element={<Plansetiniai/>} />
-    <Route path="/spausdintuvai" element={<Spausdintuvai/>} />
-    <Route path="/zaidimu-konsoles" element={<Konsoles/>} />
-    <Route path="/zaidimai" element={<Zaidimai/>} />
+    <Route path="/processors" element={<Processors/>} />
+    <Route path="/laptops" element={<Laptops/>} />
+    <Route path="/graphics-cards" element={<GraphicsCards/>} />
+    <Route path="/mainboards" element={<Mainboards/>} />
+    <Route path="/mobile-phones" element={<MobilePhones/>} />
+    <Route path="/monitors" element={<Monitors/>} />
+    <Route path="/printers" element={<Printers/>} />
+    <Route path="/consoles" element={<Consoles/>} />
+    <Route path="/games" element={<Games/>} />
     {/* Routes to footerMenu pages */}
     <Route path="/about" element={<About/>} />
     <Route path="/contacts" element={<Contacts/>} />
@@ -197,6 +206,7 @@ class App extends Component {
     <Route path="/Controll-panel" element={<AdminControllMenuAAM/>}/>
     <Route path="/Controll-panel/edit/:id" element={<TestPage/>}/>
     <Route path="/search/:val" element={<SearchpageT/>}/>
+
     </Routes>
         </div>
       </div>

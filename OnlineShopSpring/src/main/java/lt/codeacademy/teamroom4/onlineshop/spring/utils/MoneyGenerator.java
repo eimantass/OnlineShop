@@ -1,5 +1,5 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.utils;
-
+//This class generates random amounts of money to newly created users
 public class MoneyGenerator {
 	
 	static double min = 1000;

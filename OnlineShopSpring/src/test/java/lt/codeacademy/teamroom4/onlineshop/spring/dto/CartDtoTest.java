@@ -2,43 +2,69 @@ package lt.codeacademy.teamroom4.onlineshop.spring.dto;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 class CartDtoTest {
-
+	
+	List<RecordDto> records;
+	CartDto dto = new CartDto((long)2, records);
+	
 	@Test
 	void testCartDto() {
-		fail("Not yet implemented");
+		if(dto == null) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetId() {
-		fail("Not yet implemented");
+		if(dto.getId().equals((long)2)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetId() {
-		fail("Not yet implemented");
+		dto.setId((long)4);
+		if(dto.getId()==4) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetRecords() {
-		fail("Not yet implemented");
+		if(dto.getRecords() == null) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testSetIrasai() {
-		fail("Not yet implemented");
+		dto.setIrasai(records);
+		if(dto.getRecords().equals(records)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 	@Test
 	void testGetTotalPrice() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testToString() {
-		fail("Not yet implemented");
+		if(dto.getTotalPrice() == 0) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
+		}
 	}
 
 }

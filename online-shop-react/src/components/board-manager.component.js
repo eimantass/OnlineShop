@@ -1,42 +1,26 @@
-import React, {Component} from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-import UserService from "../services/user.service";
+const ManagerBoard = () => {
+    const navigate = useNavigate();
+  
 
-export default class ManagerBoard extends Component{
-    constructor(props){
-        super(props);
+  return (
+    <div className="container">
+      <header className="jumbotron">
+        {/* Render "Add New Product" button */}
+        <h2>Product Controls</h2>
 
-        this.state = {
-            content: ""
-        };
-    }
+        <button
+          className="btn btn-info"
+          onClick={() => navigate("/manager-products")}
+        >
+          View All Products
+        </button>
+      </header>
+    
+    </div>
+  );
+};
 
-    componentDidMount(){
-        UserService.getManagerBoardMethod().then(
-            response => {
-                this.setState({
-                    content: response.data
-                });
-            },
-            error =>{
-                this.setState({
-                    content:
-                    (error.response &&
-                        error.response.data &&
-                        error.response.data.message) ||
-                        error.message ||
-                        error.toString()
-                });
-            }
-        );
-    }
-    render() {
-        return (
-          <div className="container">
-            <header className="jumbotron">
-              <h3>{this.state.content}</h3>
-            </header>
-          </div>
-        );
-    }
-}
+export default ManagerBoard;
