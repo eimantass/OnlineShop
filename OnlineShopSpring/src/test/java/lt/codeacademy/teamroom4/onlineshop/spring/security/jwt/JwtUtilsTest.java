@@ -8,6 +8,7 @@ import java.security.SignatureException;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 
@@ -22,7 +23,7 @@ class JwtUtilsTest {
     @Value("${jwt.expirationMs}")
     private int jwtExpirationMs;
 
-    @Mock
+    @Autowired
     private JwtUtils jwtUtils;
 
     @InjectMocks

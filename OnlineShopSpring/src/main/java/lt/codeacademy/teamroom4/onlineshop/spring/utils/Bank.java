@@ -11,6 +11,7 @@ public class Bank {
 			System.out.println(name + " pay " + pay);
 			
 			balance = balance - pay;
+			cust.setMoney(balance);
 			System.out.println("Your balance after pay: " + balance);
 		}else {
 			System.out.println(name + " you can not pay " + pay);
