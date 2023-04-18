@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -27,6 +29,10 @@ public class WishList {
 	private Date date;
 	private String sessionToken;
 	
+	@ManyToOne(cascade = {CascadeType.MERGE},fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_id")
+	private User user;
+	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<WishListItem> items = new HashSet<WishListItem>();
 	
@@ -36,6 +42,20 @@ public class WishList {
 		this.id = id;
 		this.date = date;
 		this.sessionToken = sessionToken;
+		this.items = items;
+	}
+	
+	public WishList(Long id, Date date, String sessionToken, User user, Set<WishListItem> items) {
+		this.id = id;
+		this.date = date;
+		this.sessionToken = sessionToken;
+		this.user = user;
+		this.items = items;
+	}
+	
+	public WishList(Date date, User user, Set<WishListItem> items) {
+		this.date = date;
+		this.user = user;
 		this.items = items;
 	}
 
@@ -70,5 +90,12 @@ public class WishList {
 	public void setItems(Set<WishListItem> items) {
 		this.items = items;
 	}
-	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 }
