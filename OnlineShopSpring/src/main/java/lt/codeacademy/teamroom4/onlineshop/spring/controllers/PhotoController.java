@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -67,5 +68,11 @@ public class PhotoController {
 	public List<Photo> allPhotos(){
 		return photoService.getAllPhotos();
 	}
+	
+	 @DeleteMapping("/{id}")
+	 public ResponseEntity<?> deletePhotoById(@PathVariable Long id) {
+		 photoService.deletePhotoById(id);
+	     return ResponseEntity.noContent().build();
+	 }
 
 }

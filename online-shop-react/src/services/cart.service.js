@@ -64,6 +64,16 @@ static async addItemToCart(cartId, itemId, quantity) {
     }
   }
 
+  // Update item quantity in the cart
+  static async UpdateItemQuantityInCart(cartId, itemId, quantity) {
+    try {
+      const response = await axios.put(`${CART_API_URL}/update/${cartId}/${itemId}/${quantity}`);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Failed to Update item in cart");
+    }
+  }
 }
 
 export default CartService;
