@@ -1,6 +1,7 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.services;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +63,9 @@ public class WishListService {
 	public WishList getWishListBySessionToken(String sessionToken) {
 		return wishListRepository.findBySessionToken(sessionToken);
 	}
-
+	public List<WishList> getAllWishLists() {
+		return wishListRepository.findAll();
+	}
 	//Removing item from the wish lsit
 	public WishList removeItemFromWishList(Long id, String sessionToken) {
 		WishList wishList = wishListRepository.findBySessionToken(sessionToken);
