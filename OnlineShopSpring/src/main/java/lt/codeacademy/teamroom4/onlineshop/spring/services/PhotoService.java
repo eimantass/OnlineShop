@@ -1,5 +1,7 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +19,8 @@ public class PhotoService {
 		photo.setData(data); 
 		photo.setName(name); 
 		photoRepository.save(photo); 
+	}
+	public List<Photo> getAllPhotos() {
+		return photoRepository.findAll();
 	}
 }
