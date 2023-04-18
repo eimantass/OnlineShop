@@ -61,21 +61,23 @@ public class CartController {
 	    return ResponseEntity.ok(createdCart);
 	}
 	
-	@PostMapping("/items/{id}")
-	public ResponseEntity<Cart> addItem(@PathVariable Long id, @RequestBody CartItem item){
-		Cart cart = cartService.addItem(id, item);
+	@PostMapping("/items/{cartId}/{itemId}/{quantity}")
+	@ResponseBody
+	public ResponseEntity<Cart> addItem(@PathVariable Long cartId, @PathVariable Long itemId, @PathVariable int quantity){
+		
+		Cart cart = cartService.addItem(cartId, itemId,quantity);
 		return ResponseEntity.ok(cart);
 
 	}
 	
-	@PutMapping("/update/{id}")
-	public Cart updateCart(@PathVariable Long id, @RequestBody CartItem item, @RequestParam int quantity) {
-		return cartService.updateItemQuantity(id, item, quantity);
+	@PutMapping("/update/{cartId}/{itemId}/{quantity}")
+	public Cart updateCart(@PathVariable Long cartId, @PathVariable Long itemId, @PathVariable int quantity) {
+		return cartService.updateItemQuantity(cartId,itemId, quantity);
 	}
 	
-	@DeleteMapping("/remove/{id}")
-	public void removeItem(@PathVariable Long id, @RequestBody CartItem item){
-		cartService.removeItem(id, item);
+	@DeleteMapping("/remove/{cartId}/{itemId}")
+	public void removeItem(@PathVariable Long cartId, @PathVariable Long itemId){
+		cartService.removeItem(cartId, item);
 	}
 	
 	@DeleteMapping("/delete/{id}")

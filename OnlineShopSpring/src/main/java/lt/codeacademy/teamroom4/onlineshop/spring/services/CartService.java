@@ -21,11 +21,11 @@ public interface CartService {
 	
 	Cart createCart(Long id);
 	
-	Cart addItem(Long id, CartItem item);
+	Cart addItem(Long id, Long cartItemId, int quantity);
 	
-	Cart removeItem(Long id, CartItem item);
+	Cart removeItem(Long id, Long cartItem);
 	
-	Cart updateItemQuantity(Long id, CartItem item, int quantity);
+	Cart updateItemQuantity(Long id, Long itemId, int quantity);
 	
 	void deleteCart(Long id);
 	
