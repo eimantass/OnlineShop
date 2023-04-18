@@ -65,6 +65,7 @@ public class Cart {
 	public void changeQuantity(int itemId,int quantity) {
 	this.items.get(itemId).setQuantity(quantity);
 	}
+
 	public Double getTotalPrice() {
 		Double sum = 0.0;
 		for(CartItem item : items) {
