@@ -31,23 +31,23 @@ import javax.servlet.Filter;
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
-	
+	//Autowiring services
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
 	
 	@Autowired
 	private AuthEntryPointJwt unauthorizedHandler;
-	
+	//Returns authentication token filter
 	@Bean
 	public AuthTokenFilter authenticationJwtTokenFilter() {
 		return new AuthTokenFilter();
 	}
-	
+	//Builds authentication manager
 	@Override
 	public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
 		authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
-
+	//This function returns AuthenticationManager
 	@Bean
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception{

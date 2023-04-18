@@ -1,14 +1,16 @@
 package payload.response;
 
 import java.util.List;
-
+//This class handles JwtResponse
 public class JwtResponse {
+	//JwtResponse variables
 private String token;
 private String type = "Bearer";
 private Long id;
 private String username;
 private String email;
 private List<String> roles;
+//Constructor
 public JwtResponse(String token, Long id, String username, String email, List<String> roles) {
 	super();
 	this.token = token;
@@ -17,6 +19,7 @@ public JwtResponse(String token, Long id, String username, String email, List<St
 	this.email = email;
 	this.roles = roles;
 }
+//Getters/Setters
 public String getAccessToken() {
 	return token;
 }

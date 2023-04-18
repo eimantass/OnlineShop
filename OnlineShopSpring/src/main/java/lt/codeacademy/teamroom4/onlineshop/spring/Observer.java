@@ -86,7 +86,8 @@ public class Observer {
 		seedCoupons();
 		seedCategory();
 		seedProduct();
-		seedWishListItemRepository();
+	seedWishListItemRepository();
+		seedProductWithPhoto();
 		//seedWishList();
 		//seedCart();
 	}
@@ -145,15 +146,15 @@ public class Observer {
 		List<Coupon> coupons = couponRepository.findAll();
 		Category category = categoryRepository.getById((long) 1);
 		Photo photo = new Photo();
-		//Photo photo = photoService.findPhotoById((long)1);
+		// photo = photoService.findPhotoById((long)1);
 		photoRepository.save(photo);
 		List<Product> product = List.of(
 //				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", categoryList.get(1),cpuParameterList),
-				new Product("RX 6400XT", AMD,  160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS,
+				new Product("RX 6400XT", AMD,photo,  160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS,
 						gpuParameterList, null),
-				new Product("GTX 1650 Super", NVIDIA,  220, "4 gb gddr6 GTX 1650 Super gpu", GRAPHICS_CARDS,
-						gpuParameterList),
-				new Product("4gb RAM", GOODRAM,  30, "4 gb ddr3 ram", LAPTOPS, gpuParameterList,
+				new Product("GTX 1650 Super", NVIDIA,photo,  220, "4 gb gddr6 GTX 1650 Super gpu", GRAPHICS_CARDS,
+						gpuParameterList, null),
+				new Product("4gb RAM", GOODRAM,photo,  30, "4 gb ddr3 ram", LAPTOPS, gpuParameterList,
 						coupons.get(0)),
 				new Product("IntelI5", INTEL,  200, "12 core cpu", PROCESSORS),
 				new Product("IntelI7", INTEL,  250, "16 core cpu", PROCESSORS, cpuParameterList),
@@ -162,7 +163,12 @@ public class Observer {
 //
 		productRepository.saveAll(product);
 	}
-
+	private void seedProductWithPhoto() {
+		Photo photo = photoService.findPhotoById((long)1);
+		Product product = new Product("RX 6400XT With Photo", AMD,photo,  160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS,
+				null, null);
+		productRepository.save(product);
+	}
 	private void seedCategory() {
 		List<Category> categoryList = List.of(new Category(PROCESSORS), new Category(LAPTOPS),
 				new Category(GRAPHICS_CARDS), new Category(MAINBOARDS), new Category(MOBILE_PHONES),
@@ -189,5 +195,8 @@ public class Observer {
 		
 		Cart cart = new Cart(4515.545, items);
 		shoppingCartRepository.save(cart);
+	}
+	private void seedPhotos() {
+	//Photo photo = new Photo();	
 	}
 }
