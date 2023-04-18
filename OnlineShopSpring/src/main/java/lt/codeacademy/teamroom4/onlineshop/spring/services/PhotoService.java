@@ -23,4 +23,8 @@ public class PhotoService {
 	public List<Photo> getAllPhotos() {
 		return photoRepository.findAll();
 	}
+	
+	 public void deletePhotoById(Long id) {
+		 photoRepository.deleteById(id);
+	 }
 }
