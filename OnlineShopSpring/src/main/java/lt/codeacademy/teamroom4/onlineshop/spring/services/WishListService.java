@@ -7,6 +7,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.WishList;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.WishListItem;
@@ -21,6 +22,11 @@ public class WishListService {
 	
 	@Autowired
 	private WishListItemRepository wishListItemRepository;
+	
+	public WishList createWish(Long id) {
+		WishList list = new WishList();
+		return wishListRepository.save(list);
+	}
 	
 	@Autowired
 	private ProductService productService;
