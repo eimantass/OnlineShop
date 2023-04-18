@@ -1,21 +1,14 @@
 package lt.codeacademy.teamroom4.onlineshop.spring;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
 import lt.codeacademy.teamroom4.onlineshop.spring.config.SecurityConfig;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
@@ -32,19 +25,15 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CategoryRepositor
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CouponRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.PhotoRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
-import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListItemRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.PhotoService;
-import lt.codeacademy.teamroom4.onlineshop.spring.services.UserDetailsServiceImpl;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.*;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.*;
-//This class is used to generate dummy data;
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.CPUParameters.*;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.*;
 
 @Configuration
@@ -75,10 +64,9 @@ public class Observer {
 
 	// Used to activate seed function
 
-	 @EventListener
+	// @EventListener
 
 	public void seed(ContextRefreshedEvent event) {
-		// seedRole();
 		seedUserAdmin();
 		seedUserCustomer();
 		seedUserManager();
@@ -88,8 +76,8 @@ public class Observer {
 		seedProduct();
 	seedWishListItemRepository();
 		seedProductWithPhoto();
-		//seedWishList();
-		//seedCart();
+		seedWishList();
+		seedCart();
 	}
 
 
@@ -142,9 +130,7 @@ public class Observer {
 		ProductParameters firstGpu = new ProductParameters("RX 6400XT", "2321 Mhz");
 		gpuParameterList.add(firstGpu);
 		cpuParameterList.add(firstCPU);
-		List<Category> categoryList = categoryRepository.findAll();
 		List<Coupon> coupons = couponRepository.findAll();
-		Category category = categoryRepository.getById((long) 1);
 		Photo photo = new Photo();
 		// photo = photoService.findPhotoById((long)1);
 		photoRepository.save(photo);

@@ -16,7 +16,6 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.UserDetailsImpl;
-import io.jsonwebtoken.*;
 
 @Component
 public class JwtUtils {

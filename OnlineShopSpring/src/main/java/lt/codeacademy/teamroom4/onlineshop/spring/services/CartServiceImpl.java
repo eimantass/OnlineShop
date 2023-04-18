@@ -1,6 +1,5 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.services;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartItemRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepository;
@@ -29,7 +27,6 @@ public class CartServiceImpl implements CartService {
 		return repository.save(cart);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public Cart addItem(Long cartId, Long cartItemId, int quanitity) {
 		Cart cart = repository.findById(cartId)

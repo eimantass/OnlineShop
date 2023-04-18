@@ -15,7 +15,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,8 +27,6 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.security.jwt.JwtUtils;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.UserDetailsImpl;
-import lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles;
-import lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles;
 import payload.request.LoginRequest;
 import payload.request.SignupRequest;
 import payload.response.JwtResponse;

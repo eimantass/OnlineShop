@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +23,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.PhotoRepository;
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Photo;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.PhotoService;
 @RequestMapping("/photo")

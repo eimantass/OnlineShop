@@ -1,12 +1,6 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.services;
 
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.*;
-
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-
-import javax.persistence.Enumerated;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -22,8 +16,6 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductParameterR
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
-
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.*;
 
 @Service
 public class ProductService {
