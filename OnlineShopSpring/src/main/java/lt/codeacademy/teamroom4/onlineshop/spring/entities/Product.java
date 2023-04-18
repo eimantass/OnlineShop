@@ -41,9 +41,9 @@ public class Product {
 	@Enumerated(EnumType.STRING)
 	@Column
 	private Brands brand;
-	@Column
-	private String photo;
-	@Column
+
+	@OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, orphanRemoval = true)
+	@JoinColumn(name = "photo")
 	private Photo foto;
 	@Column
 	private double price;
@@ -72,24 +72,22 @@ public class Product {
 		this.id = id;
 	}
 
-	public Product(String name,Brands brand,String photo, double price, String description, Categories categories) {
+	public Product(String name,Brands brand, double price, String description, Categories categories) {
 		this.name = name;
 		this.brand = brand;
-		this.photo = photo;
 		this.price = price;
 		this.description = description;
 		this.category = categories;
 	}
 	
 
-	public Product(Long id, String name, Coupon discount, Brands brand, String photo, Photo foto, double price,
+	public Product(Long id, String name, Coupon discount, Brands brand, Photo foto, double price,
 			String description, Categories category, Set<ProductParameters> productParameters) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.discount = discount;
 		this.brand = brand;
-		this.photo = photo;
 		this.foto = foto;
 		this.price = price;
 		this.description = description;
@@ -97,12 +95,11 @@ public class Product {
 		this.productParameters = productParameters;
 	}
 	
-	public Product(String name, Coupon discount, Brands brand, String photo, Photo foto, double price,
+	public Product(String name, Coupon discount, Brands brand, Photo foto, double price,
 			String description, Categories category, Set<ProductParameters> productParameters) {
 		this.name = name;
 		this.discount = discount;
 		this.brand = brand;
-		this.photo = photo;
 		this.foto = foto;
 		this.price = price;
 		this.description = description;
@@ -110,24 +107,22 @@ public class Product {
 		this.productParameters = productParameters;
 	}
 
-	public Product(Long id, String name, Brands brand, String photo, double price, String description,
+	public Product(Long id, String name, Brands brand, double price, String description,
 			Categories category, Set<ProductParameters> productParameters, Coupon discount) {
 		this.id = id;
 		this.name = name;
 		this.discount = discount;
 		this.brand = brand;
-		this.photo = photo;
 		this.price = price;
 		this.description = description;
 		this.category = category;
 		this.productParameters = productParameters;
 	}
-	public Product(String name, Brands brand, String photo, double price, String description,
+	public Product(String name, Brands brand, double price, String description,
 			Categories category, Set<ProductParameters> productParameters, Coupon discount) {
 		this.name = name;
 		this.discount = discount;
 		this.brand = brand;
-		this.photo = photo;
 		this.price = price;
 		this.description = description;
 		this.category = category;
@@ -147,11 +142,10 @@ public class Product {
 		this.price = price;
 	}
 
-	public Product(String name, Brands brand, String photo, double price, String description,
+	public Product(String name, Brands brand, double price, String description,
 			Categories category, Set<ProductParameters> productParameters) {
 		this.name = name;
 		this.brand = brand;
-		this.photo = photo;
 		this.price = price;
 		this.description = description;
 		this.category = category;
@@ -191,16 +185,6 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-
-	
 	public double getPrice() {
 		return price;
 	}
@@ -253,7 +237,7 @@ public class Product {
 	//Returns product values in String
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", photo=" + photo + ", price=" + price + ", description="
+		return "Product [id=" + id + ", name=" + name + ", photo=" + ", price=" + price + ", description="
 				+ description + ", category=" + category.toString() + ", parameters=" +  "]";
 	}
 
