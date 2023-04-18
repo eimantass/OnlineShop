@@ -42,7 +42,7 @@ public class Product {
 	@Column
 	private Brands brand;
 
-	@OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH}, fetch = FetchType.EAGER, orphanRemoval = true)
 	@JoinColumn(name = "photo")
 	private Photo foto;
 	@Column
