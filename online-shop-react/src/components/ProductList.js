@@ -7,6 +7,7 @@ import './css/product-list.css';
 function ProductList() {
   const [products, setProducts] = useState([]);
   const [selectedQuantity, setSelectedQuantity] = useState(1); // Add state for selected quantity
+  const [cartMessage, setCartMessage] = useState(""); // Add state for cart message
   const navigate = useNavigate();
 
   // Fetch the all products data from repository
@@ -22,15 +23,29 @@ function ProductList() {
     fetchData();
   }, []);
 
-  // Add to Cart function
-  const handleAddToCart = async (id) => {
+  const handleAddToCart = async (id, quantity) => {
     try {
-      await CartService.addProductToCart(id, selectedQuantity); // Pass the selected quantity along with the product ID
+      // Get the current user
+      const currentUser = JSON.parse(localStorage.getItem('user'));
+      
+      // Check if the user has an active cart
+      let cart = await CartService.getAllCartsByUserId(currentUser.id);
+      
+      // If the user does not have an active cart, create one
+      if (!cart) {
+        cart = await CartService.createCartByUserId(currentUser.id);
+        setCartMessage("Cart created successfully!");
+      } else {
+        setCartMessage("You already have an active cart!");
+      }
+      
+      // Add the product to the cart
+      await CartService.addProductToCart(cart.id, id, quantity);
     } catch (error) {
       console.log(error);
     }
   };
-
+  
   return (
     <main>
     <h2 className="text-center">Products List:</h2>

@@ -26,7 +26,7 @@ function ProductCart() {
       carts.map((cart) => (
         <div key={cart.id}>
           <h2>Cart Id: {cart.id}</h2>
-          <p>User Id: {cart.userId}</p>
+          <p>User Id: {cart.user.id}</p> {/* extract the userId from the user object */}
         </div>
       ))
     ) : (
