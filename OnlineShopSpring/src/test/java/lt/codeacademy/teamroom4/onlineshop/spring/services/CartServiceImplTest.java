@@ -44,7 +44,7 @@ class CartServiceImplTest {
 
 		CartItem item = new CartItem();
 		itemRepository.save(item);
-		service.addItem(cart.getId(), item);
+		service.addItem(cart.getId(), item.getId(), 5);
 
 		Optional<Cart> updatedCart = repository.findById(cart.getId());
 		assertTrue(updatedCart.isPresent());
@@ -60,9 +60,9 @@ class CartServiceImplTest {
 		 CartItem item = new CartItem();
 		 itemRepository.save(item);
 
-		 service.addItem(cart.getId(), item);
+		 service.addItem(cart.getId(), item.getId(), 5);
 
-		 service.removeItem(cart.getId(), item);
+		 service.removeItem(cart.getId(), item.getId());
 
 		 Optional<Cart> updatedCart = repository.findById(cart.getId());
 		 assertTrue(updatedCart.isPresent());

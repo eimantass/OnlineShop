@@ -44,6 +44,8 @@ public class Product {
 	@Column
 	private String photo;
 	@Column
+	private Photo foto;
+	@Column
 	private double price;
 	@Column
 	private String description;
@@ -77,8 +79,35 @@ public class Product {
 		this.price = price;
 		this.description = description;
 		this.category = categories;
-		
+	}
+	
 
+	public Product(Long id, String name, Coupon discount, Brands brand, String photo, Photo foto, double price,
+			String description, Categories category, Set<ProductParameters> productParameters) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.discount = discount;
+		this.brand = brand;
+		this.photo = photo;
+		this.foto = foto;
+		this.price = price;
+		this.description = description;
+		this.category = category;
+		this.productParameters = productParameters;
+	}
+	
+	public Product(String name, Coupon discount, Brands brand, String photo, Photo foto, double price,
+			String description, Categories category, Set<ProductParameters> productParameters) {
+		this.name = name;
+		this.discount = discount;
+		this.brand = brand;
+		this.photo = photo;
+		this.foto = foto;
+		this.price = price;
+		this.description = description;
+		this.category = category;
+		this.productParameters = productParameters;
 	}
 
 	public Product(Long id, String name, Brands brand, String photo, double price, String description,
@@ -182,6 +211,14 @@ public class Product {
 
 	public String getDescription() {
 		return description;
+	}
+	
+	public Photo getFoto() {
+		return foto;
+	}
+
+	public void setFoto(Photo foto) {
+		this.foto = foto;
 	}
 
 	public void setDescription(String description) {
