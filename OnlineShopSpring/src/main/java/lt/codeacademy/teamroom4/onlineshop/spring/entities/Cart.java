@@ -27,7 +27,7 @@ public class Cart {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany( cascade = {CascadeType.MERGE}, orphanRemoval = true)
+	@OneToMany( cascade = {CascadeType.MERGE,CascadeType.REMOVE,CascadeType.PERSIST},fetch = FetchType.EAGER, orphanRemoval = true)
 	@JoinColumn(name = "Cart")
 	private List<CartItem> items = new ArrayList<>();
 	
