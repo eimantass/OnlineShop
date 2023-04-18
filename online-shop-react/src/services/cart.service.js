@@ -74,6 +74,18 @@ static async addItemToCart(cartId, itemId, quantity) {
       throw new Error("Failed to Update item in cart");
     }
   }
+
+// Get all carts from the repository
+static async GetAllCarts() {
+  try {
+    const response = await axios.get(`${CART_API_URL}/allCarts`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to load all carts");
+  }
+}
+
 }
 
 export default CartService;
