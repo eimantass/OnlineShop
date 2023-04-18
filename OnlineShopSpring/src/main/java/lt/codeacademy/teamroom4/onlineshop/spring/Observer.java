@@ -68,7 +68,9 @@ public class Observer {
 	ShoppingCartRepository shoppingCartRepository;
 
 	// Used to activate seed function
-	//@EventListener
+
+	// @EventListener
+
 	public void seed(ContextRefreshedEvent event) {
 		// seedRole();
 		seedUserAdmin();

@@ -16,7 +16,7 @@ class ProductTest {
 	Set<ProductParameters> cpuParameterList = new HashSet<>();
 	ProductParameters firstCPU = new ProductParameters("I3", "Intel");
 	Coupon coupon1 = new Coupon(10);
-	Product product = new Product((long) 5, "IntelI7", INTEL, "foto.png", 250, "16 core cpu", PROCESSORS, cpuParameterList,
+	Product product = new Product((long) 5, "IntelI7", INTEL, 250, "16 core cpu", PROCESSORS, cpuParameterList,
 			coupon1);
 
 	void addProductParameters() {
@@ -40,11 +40,11 @@ class ProductTest {
 	void testProductParametersStringBrandPhotoDoubleStringDescriptionCategories() {
 		// String name, Brands brand, String photo, double price, String description,
 		// Categories categories
-		Product testProduct = new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", GRAPHICS_CARDS);
+		Product testProduct = new Product("IntelI7", INTEL, 250, "16 core cpu", GRAPHICS_CARDS);
 		// emptyProduct.setName("RTX");
 
 		if (testProduct.getName().equals("IntelI7") && testProduct.getBrand().equals(INTEL)
-				&& testProduct.getPhoto().equals("foto.png") && testProduct.getPrice() == 250
+				&& testProduct.getPrice() == 250
 				&& testProduct.getCategory().equals(PROCESSORS) && testProduct.getDescription().equals("16 core cpu")) {
 			assertTrue(true);
 		} else {
@@ -55,12 +55,12 @@ class ProductTest {
 
 	@Test
 	void testProductParametersAllExceptIdAndCoupon() {
-		Product product = new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", PROCESSORS, cpuParameterList);
+		Product product = new Product("IntelI7", INTEL, 250, "16 core cpu", PROCESSORS, cpuParameterList);
 
 		addProductParameters();
 
 		if (product.getName().equals("IntelI7") && product.getBrand().equals(INTEL)
-				&& product.getPhoto().equals("foto.png") && product.getPrice() == 250
+				&& product.getPrice() == 250
 				&& product.getCategory().equals(PROCESSORS) && product.getProductParameters().equals(cpuParameterList)
 				&& product.getDescription().equals("16 core cpu")) {
 
@@ -73,12 +73,12 @@ class ProductTest {
 
 	@Test
 	void testProductParametersAllExceptId() {
-		Product product = new Product("IntelI7", INTEL, "foto.png", 250, "16 core cpu", PROCESSORS, cpuParameterList, coupon1);
+		Product product = new Product("IntelI7", INTEL, 250, "16 core cpu", PROCESSORS, cpuParameterList, coupon1);
 
 		addProductParameters();
 
 		if (product.getName().equals("IntelI7") && product.getDiscount().equals(coupon1)
-				&& product.getBrand().equals(INTEL) && product.getPhoto().equals("foto.png")
+				&& product.getBrand().equals(INTEL)
 				&& product.getPrice() == 250 && product.getCategory().equals(PROCESSORS)
 				&& product.getProductParameters().equals(cpuParameterList)
 				&& product.getDescription().equals("16 core cpu")) {
@@ -92,14 +92,14 @@ class ProductTest {
 
 	@Test
 	void testProductParametersAll() {
-		Product product = new Product((long) 5, "IntelI7", INTEL, "foto.png", 250, "16 core cpu", PROCESSORS, cpuParameterList,
+		Product product = new Product((long) 5, "IntelI7", INTEL, 250, "16 core cpu", PROCESSORS, cpuParameterList,
 				coupon1);
 
 		addProductParameters();
 
 		if (product.getId().equals((long) 5) && product.getName().equals("IntelI7")
 				&& product.getDiscount().equals(coupon1) && product.getBrand().equals(INTEL)
-				&& product.getPhoto().equals("foto.png") && product.getPrice() == 250
+				&& product.getPrice() == 250
 				&& product.getCategory().equals(PROCESSORS) && product.getProductParameters().equals(cpuParameterList)
 				&& product.getDescription().equals("16 core cpu")) {
 
