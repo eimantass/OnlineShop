@@ -22,15 +22,26 @@ function ProductList() {
     fetchData();
   }, []);
 
-  // Add to Cart function
-  const handleAddToCart = async (id) => {
+  const handleAddToCart = async (id, quantity) => {
     try {
-      await CartService.addProductToCart(id, selectedQuantity); // Pass the selected quantity along with the product ID
+      // Get the current user
+      const currentUser = JSON.parse(localStorage.getItem('user'));
+      
+      // Check if the user has an active cart
+      let cart = await CartService.getAllCartsByUserId(currentUser.id);
+      
+      // If the user does not have an active cart, create one
+      if (!cart || cart.status !== 'active') {
+        cart = await CartService.createCartByUserId(currentUser.id);
+      }
+      
+      // Add the product to the cart
+      await CartService.addProductToCart(cart.id, id, quantity);
     } catch (error) {
       console.log(error);
     }
   };
-
+  
   return (
     <main>
     <h2 className="text-center">Products List:</h2>
