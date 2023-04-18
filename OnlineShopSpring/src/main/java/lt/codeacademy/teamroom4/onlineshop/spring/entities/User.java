@@ -19,7 +19,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
-import lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles;
 //This is user entity
 @Entity
 @Table(name = "users", uniqueConstraints = {
