@@ -1,22 +1,51 @@
 import React, { useState, useEffect } from "react";
 import CartService from "../services/cart.service";
+import UserService from "../services/user.service";
+import AuthService from "../services/auth.service";
+import { Link } from "react-router-dom";
 import './css/product-list.css';
 
 function ProductCart() {
+  const [content, setContent] = useState("");
   const [carts, setCarts] = useState([]);
+  const [customerData, setCustomerData] = useState([]);
+  const currentUser = AuthService.getCurrentUser();
 
   useEffect(() => {
-    async function fetchCarts() {
+    async function fetchData() {
       try {
-        const currentUser = JSON.parse(localStorage.getItem('user'));
-        const carts = await CartService.getAllCartsByUserId(currentUser.id);
+        const user = JSON.parse(localStorage.getItem('user'));
+        const carts = await CartService.getAllCartsByUserId(user.id);
         setCarts(carts);
       } catch (error) {
         console.log(error);
       }
     }
 
-    fetchCarts();
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const currentUser = AuthService.getCurrentUser();
+    if (currentUser) {
+      // Fetch customer data using the current user ID
+      UserService.getCustomerByIdMethod(currentUser.id)
+        .then((response) => {
+          setCustomerData(response.data);
+        })
+        .catch((error) => {
+          setContent(
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+              error.message ||
+              error.toString()
+          );
+        });
+    } else {
+      // Handle case when no current user is available
+      setContent("No current user found.");
+    }
   }, []);
 
   async function handleRemoveCart(cartId) {
@@ -31,7 +60,7 @@ function ProductCart() {
 
   async function handleRemoveItem(cartId, itemId) {
     await CartService.removeItemFromCart(cartId, itemId);
-    const updatedCarts = await CartService.getAllCartsByUserId();
+    const updatedCarts = await CartService.getAllCartsByUserId(currentUser.id);
     setCarts(updatedCarts);
   }
 
@@ -41,7 +70,7 @@ function ProductCart() {
       console.log(updatedCart);
       console.debug("UPDT CART: ", updatedCart);
       
-      const updatedCarts = await CartService.getAllCartsByUserId();
+      const updatedCarts = await CartService.getAllCartsByUserId(currentUser.id);
       setCarts(updatedCarts);
     } catch (error) {
       console.log(error);
@@ -73,6 +102,7 @@ function ProductCart() {
               ))}
             </ul>
             <h3>Total Price: {cart.totalPrice}</h3>
+            {currentUser && <h3>Your Wallet: {customerData.money}</h3>}
           </div>
         ))
       ) : (
