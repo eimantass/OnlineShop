@@ -7,6 +7,7 @@ import './css/product-list.css';
 function ProductList() {
   const [products, setProducts] = useState([]);
   const [selectedQuantity, setSelectedQuantity] = useState(1); // Add state for selected quantity
+  const [cartMessage, setCartMessage] = useState(""); // Add state for cart message
   const navigate = useNavigate();
 
   // Fetch the all products data from repository
@@ -31,8 +32,11 @@ function ProductList() {
       let cart = await CartService.getAllCartsByUserId(currentUser.id);
       
       // If the user does not have an active cart, create one
-      if (!cart || cart.status !== 'active') {
+      if (!cart) {
         cart = await CartService.createCartByUserId(currentUser.id);
+        setCartMessage("Cart created successfully!");
+      } else {
+        setCartMessage("You already have an active cart!");
       }
       
       // Add the product to the cart
