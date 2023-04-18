@@ -17,7 +17,6 @@ class CartService {
 
   // Retrieve all carts of the user
   static async getAllCartsByUserId() {
-
     // Here we get the userID
     const getCurrentUser = () => {
       return JSON.parse(localStorage.getItem('user'));
@@ -40,6 +39,17 @@ static async deleteCartById(cartId) {
   } catch (error) {
     console.log(error);
     throw new Error("Failed to delete cart by id");
+  }
+}
+
+// Add an item to the cart
+static async addItemToCart(cartId, itemId, quantity) {
+  try {
+    const response = await axios.post(`${CART_API_URL}/items/${cartId}/${itemId}/${quantity}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to add item to cart");
   }
 }
 
