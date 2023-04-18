@@ -34,6 +34,19 @@ function ProductCart() {
     const updatedCarts = await CartService.getAllCartsByUserId();
     setCarts(updatedCarts);
   }
+
+  async function handleUpdateQuantity(cartId, itemId, itemQuantity) {
+    try {
+      const updatedCart = await CartService.UpdateItemQuantityInCart(cartId, itemId, itemQuantity);
+      console.log(updatedCart);
+      console.debug("UPDT CART: ", updatedCart);
+      
+      const updatedCarts = await CartService.getAllCartsByUserId();
+      setCarts(updatedCarts);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
   // render the list of carts
   return (
@@ -48,7 +61,11 @@ function ProductCart() {
               {cart.items.map((item) => (
                 <li key={item.id}>
                   <h3>{item.product.name}</h3>
-                  <p>Quantity: {item.quantity}</p>
+                  <label>
+                      Quantity:
+                      <input type="number" value={item.quantity} 
+                      onChange={(event) => handleUpdateQuantity(cart.id, item.id, event.target.value)} min="1" max="10" />
+                    </label>
                   <p>Price: {item.product.price}</p>
                   <p>Total: {item.sum}</p>
                   <button onClick={() => handleRemoveItem(cart.id, item.id)}>Remove Item</button>
