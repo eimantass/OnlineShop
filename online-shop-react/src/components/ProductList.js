@@ -6,6 +6,7 @@ import './css/product-list.css';
 
 function ProductList() {
   const [products, setProducts] = useState([]);
+  
   const [cartMessage, setCartMessage] = useState("");
   const navigate = useNavigate();
 
@@ -14,6 +15,9 @@ function ProductList() {
       try {
         const response = await ProductService.getAllProducts();
         setProducts(response.data);
+        // Set default selected quantity to 1
+        const productsWithQuantity = response.data.map(product => ({ ...product, selectedQuantity: 1 }));
+        setProducts(productsWithQuantity);
       } catch (error) {
         console.log(error);
       }
@@ -102,7 +106,7 @@ function ProductList() {
                 type="number"
                 value={product.selectedQuantity}
                 onChange={(e) => handleQuantityChange(product, parseInt(e.target.value))}
-                min={0}
+                min={1}
                 max={10}
                 className="form-control"
               />
