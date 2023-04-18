@@ -75,12 +75,12 @@ public class CartController {
 		return cartService.updateItemQuantity(cartId,itemId, quantity);
 	}
 	
-	@DeleteMapping("/remove/{cartId}/{itemId}")
+	@DeleteMapping("/removeItem/{cartId}/{itemId}")
 	public void removeItem(@PathVariable Long cartId, @PathVariable Long itemId){
-		cartService.removeItem(cartId, item);
+		cartService.removeItem(cartId, itemId);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/deleteCart/{id}")
 	public void deleteCart(@PathVariable Long id) {
 		cartService.deleteCart(id);
 	}

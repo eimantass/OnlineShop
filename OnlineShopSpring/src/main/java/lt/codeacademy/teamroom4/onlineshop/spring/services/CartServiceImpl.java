@@ -48,8 +48,8 @@ public class CartServiceImpl implements CartService {
 	public Cart removeItem(Long cartId, Long cartItem) {
 		Cart cart = repository.findById(cartId)
 				.orElseThrow(() -> new RuntimeException("Cart not found"));
-		
-		cart.getItems().remove(cartItem);
+		CartItem item = cartItemRepository.findById(cartItem).orElseThrow(() -> new RuntimeException("CartItem not found"));
+		cart.getItems().remove(item);
 		return repository.save(cart);
 	}
 
