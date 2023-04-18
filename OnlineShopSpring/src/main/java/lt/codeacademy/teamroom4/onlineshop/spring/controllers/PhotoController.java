@@ -28,7 +28,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.PhotoRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Photo;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.PhotoService;
-
+@RequestMapping("/photo")
 @RestController
 public class PhotoController {
 	

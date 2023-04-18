@@ -95,8 +95,8 @@ public class Product {
 		this.productParameters = productParameters;
 	}
 	
-	public Product(String name, Coupon discount, Brands brand, Photo foto, double price,
-			String description, Categories category, Set<ProductParameters> productParameters) {
+	public Product(String name,  Brands brand, Photo foto, double price,
+			String description, Categories category, Set<ProductParameters> productParameters,Coupon discount) {
 		this.name = name;
 		this.discount = discount;
 		this.brand = brand;

@@ -21,6 +21,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Category;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Coupon;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Photo;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.ProductParameters;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
@@ -35,6 +36,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepos
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListItemRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.services.PhotoService;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.UserDetailsServiceImpl;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.MoneyGenerator;
 
@@ -53,7 +55,8 @@ public class Observer {
 
 	@Autowired
 	private UserRepository userRepository;
-
+	@Autowired
+	private PhotoService photoService;
 	@Autowired
 	private ProductRepository productRepository;
 	@Autowired
@@ -81,8 +84,8 @@ public class Observer {
 		seedCategory();
 		seedProduct();
 		seedWishListItemRepository();
-		//seedWishList();
-		//seedCart();
+		seedWishList();
+		seedCart();
 	}
 
 
@@ -138,12 +141,14 @@ public class Observer {
 		List<Category> categoryList = categoryRepository.findAll();
 		List<Coupon> coupons = couponRepository.findAll();
 		Category category = categoryRepository.getById((long) 1);
+		Photo photo = new Photo();
+		//photo = photoService.findPhotoById((long)1);
 		List<Product> product = List.of(
 //				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", categoryList.get(1),cpuParameterList),
-				new Product("RX 6400XT", AMD,  160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS,
-						gpuParameterList),
-				new Product("GTX 1650 Super", NVIDIA,  220, "4 gb gddr6 GTX 1650 Super gpu", GRAPHICS_CARDS,
-						gpuParameterList),
+				new Product("RX 6400XT",  AMD,photo,  160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS,
+						gpuParameterList,null),
+				new Product("GTX 1650 Super", NVIDIA, photo, 220, "4 gb gddr6 GTX 1650 Super gpu", GRAPHICS_CARDS,
+						gpuParameterList,null),
 				new Product("4gb RAM", GOODRAM,  30, "4 gb ddr3 ram", LAPTOPS, gpuParameterList,
 						coupons.get(0)),
 				new Product("IntelI5", INTEL,  200, "12 core cpu", PROCESSORS),
