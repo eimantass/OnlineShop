@@ -28,8 +28,13 @@ function ProductCart() {
       console.log(error);
     }
   }
-  
 
+  async function handleRemoveItem(cartId, itemId) {
+    await CartService.removeItemFromCart(cartId, itemId);
+    const updatedCarts = await CartService.getAllCartsByUserId();
+    setCarts(updatedCarts);
+  }
+  
   // render the list of carts
   return (
     <div>
@@ -46,6 +51,7 @@ function ProductCart() {
                   <p>Quantity: {item.quantity}</p>
                   <p>Price: {item.product.price}</p>
                   <p>Total: {item.sum}</p>
+                  <button onClick={() => handleRemoveItem(cart.id, item.id)}>Remove Item</button>
                 </li>
               ))}
             </ul>

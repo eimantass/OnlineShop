@@ -1,6 +1,7 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import java.util.Optional;
 
@@ -10,15 +11,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Photo;
+
+
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.PhotoRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Photo;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.PhotoService;
 
 @RestController
@@ -42,6 +49,7 @@ public class PhotoController {
 				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); 
 			} 
 	}
+
 	
 	 @GetMapping("/{id}")
 	 public ResponseEntity<byte[]> getPhoto(@PathVariable Long id) {
@@ -54,4 +62,10 @@ public class PhotoController {
 	     }
 	     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	 }
+
+	@GetMapping("/allPhotos")
+	public List<Photo> allPhotos(){
+		return photoService.getAllPhotos();
+	}
+
 }

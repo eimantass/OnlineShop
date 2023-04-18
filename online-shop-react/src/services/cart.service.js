@@ -52,6 +52,17 @@ static async addItemToCart(cartId, itemId, quantity) {
     throw new Error("Failed to add item to cart");
   }
 }
+  
+  // Remove an item from the cart
+  static async removeItemFromCart(cartId, itemId) {
+    try {
+      const response = await axios.delete(`${CART_API_URL}/removeItem/${cartId}/${itemId}`);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Failed to remove item from cart");
+    }
+  }
 
 }
 
