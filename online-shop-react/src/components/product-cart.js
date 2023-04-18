@@ -76,7 +76,7 @@ function ProductCart() {
       console.log(error);
     }
   }
-  
+
   // render the list of carts
   return (
     <div>
@@ -101,8 +101,10 @@ function ProductCart() {
                 </li>
               ))}
             </ul>
-            <h3>Total Price: {cart.totalPrice}</h3>
+            <h3>Total Price of Cart Products: {cart.totalPrice}</h3>
             {currentUser && <h3>Your Wallet: {customerData.money}</h3>}
+            {/* <button onClick={handlePurchase}>Purchase</button> */}
+            <button className="btn btn-primary btn-lg" type="button">Purchase</button>
           </div>
         ))
       ) : (
