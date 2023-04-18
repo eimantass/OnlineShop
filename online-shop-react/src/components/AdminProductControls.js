@@ -17,12 +17,6 @@ const AdminProductControls = () => {
           Add New Product
         </button>
         <button
-          className="btn btn-info"
-          onClick={() => navigate("/products")}
-        >
-          View All Products
-        </button>
-        <button
           className="btn btn-warning"
           onClick={() => navigate("/admin")}
         >

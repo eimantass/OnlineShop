@@ -14,6 +14,8 @@ import ManagerBoard from "./components/board-manager.component";
 import AdminBoard from "./components/board-admin.component";
 // Import function pages
 import AdminProductControls from "./components/AdminProductControls";
+import AdminUsersControls from "./components/AdminUsersControls";
+import AdminCartsControls from "./components/AdminCartsControls";
 import ManagerProductControls from "./components/ManagerProductControls";
 import AddProductForm from "./components/add-product"
 import UpdateProduct from "./components/update-product"
@@ -177,6 +179,8 @@ class App extends Component {
     <Route path="/cart" element={<ShoppingCart/>} />
     {/* Products */}
     <Route path="/products" element={<AdminProductControls/>} />
+    <Route path="/users" element={<AdminUsersControls/>} />
+    <Route path="/carts" element={<AdminCartsControls/>} />
     <Route path="/manager-products" element={<ManagerProductControls/>} />
     <Route path="/add-product" element={<AddProductForm/>} />
     <Route path="/update-product/:id" element={<UpdateProduct/>} />
@@ -201,8 +205,6 @@ class App extends Component {
     <Route path="/privacy" element={<Privacy/>} />
     <Route path="/feedback" element={<Feedback/>} />
     <Route path="/help" element={<Help/>} />
-    {/*  <Route path="/Controll-panel" element={<AdminControllMenuAAM/>}/> */}
-    {/* <Route path="/Controll-panel/edit/:id" element={<TestPage/>}/>*/}
     <Route path="/search/:val" element={<TSearchPage/>}/>
 
     </Routes>
