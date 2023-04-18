@@ -19,6 +19,17 @@ function ProductCart() {
     fetchCarts();
   }, []);
 
+  async function handleRemoveCart(cartId) {
+    try {
+      await CartService.deleteCartById(cartId);
+      const newCarts = carts.filter((cart) => cart.id !== cartId);
+      setCarts(newCarts);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+
   // render the list of carts
   return (
     <div>
@@ -26,6 +37,7 @@ function ProductCart() {
         carts.map((cart) => (
           <div key={cart.id}>
             <h2>Cart Id: {cart.id}</h2>
+            <button onClick={() => handleRemoveCart(cart.id)}>Remove Cart</button>
             <p>User Id: {cart.user.id}</p>
             <ul>
               {cart.items.map((item) => (

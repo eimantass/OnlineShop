@@ -32,6 +32,16 @@ class CartService {
       throw new Error("Failed to get carts by userId");
     }
   }
+  // Delete a cart by its ID
+static async deleteCartById(cartId) {
+  try {
+    const response = await axios.delete(`${CART_API_URL}/deleteCart/${cartId}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to delete cart by id");
+  }
+}
 
 }
 
