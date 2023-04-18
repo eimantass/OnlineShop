@@ -52,8 +52,8 @@ class WishListServiceTest {
 		// productRepository.deleteAll();
 		List<Product> productList = List.of(
 
-				new Product("Gt710", NVIDIA, "foto.png", 40, "RTX", GRAPHICS_CARDS, gpuParameterList, couponList.get(1)),
-				new Product("RTX", NVIDIA, "foto.png", 80, "RTX", GRAPHICS_CARDS, gpuParameterList, couponList.get(7)));
+				new Product("Gt710", NVIDIA, 40, "RTX", GRAPHICS_CARDS, gpuParameterList, couponList.get(1)),
+				new Product("RTX", NVIDIA, 80, "RTX", GRAPHICS_CARDS, gpuParameterList, couponList.get(7)));
 
 		productTestRepository.saveAll(productList);
 
