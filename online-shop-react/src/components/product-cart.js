@@ -19,20 +19,43 @@ function ProductCart() {
     fetchCarts();
   }, []);
 
+  async function handleRemoveCart(cartId) {
+    try {
+      await CartService.deleteCartById(cartId);
+      const newCarts = carts.filter((cart) => cart.id !== cartId);
+      setCarts(newCarts);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+
   // render the list of carts
   return (
     <div>
-    {carts.length > 0 ? (
-      carts.map((cart) => (
-        <div key={cart.id}>
-          <h2>Cart Id: {cart.id}</h2>
-          <p>User Id: {cart.user.id}</p> {/* extract the userId from the user object */}
-        </div>
-      ))
-    ) : (
-      <h2>No active carts for current user!</h2>
-    )}
-  </div>
+      {carts.length > 0 ? (
+        carts.map((cart) => (
+          <div key={cart.id}>
+            <h2>Cart Id: {cart.id}</h2>
+            <button onClick={() => handleRemoveCart(cart.id)}>Remove Cart</button>
+            <p>User Id: {cart.user.id}</p>
+            <ul>
+              {cart.items.map((item) => (
+                <li key={item.id}>
+                  <h3>{item.product.name}</h3>
+                  <p>Quantity: {item.quantity}</p>
+                  <p>Price: {item.product.price}</p>
+                  <p>Total: {item.sum}</p>
+                </li>
+              ))}
+            </ul>
+            <h3>Total Price: {cart.totalPrice}</h3>
+          </div>
+        ))
+      ) : (
+        <h2>No active carts for current user!</h2>
+      )}
+    </div>
   );
 }
 
