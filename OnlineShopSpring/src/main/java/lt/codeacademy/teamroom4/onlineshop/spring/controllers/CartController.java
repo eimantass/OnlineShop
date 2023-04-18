@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.services.CartService;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.UserDetailsServiceImpl;
 //In this class the shopping cart mappings are handled
 @RestController
+@CrossOrigin(origins = "http://localhost:8081", allowCredentials = "true")
 @RequestMapping("/cart")
 public class CartController {
 	
