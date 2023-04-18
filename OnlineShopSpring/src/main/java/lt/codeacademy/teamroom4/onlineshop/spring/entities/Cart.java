@@ -23,7 +23,7 @@ public class Cart {
 	@Transient
 	Double totalPrice;
 	
-	@ManyToOne(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
+	@ManyToOne(cascade = {CascadeType.MERGE},fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	private User user;
 	
