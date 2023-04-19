@@ -10,7 +10,12 @@ const ManagerProductControls = () => {
       <header className="jumbotron">
         {/* Render "Add New Product" button */}
         <h2>Product Controls</h2>
-    
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/add-product")}
+        >
+          Add New Product
+        </button>
         <button
           className="btn btn-warning"
           onClick={() => navigate("/manager")}
