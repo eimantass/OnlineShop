@@ -18,14 +18,15 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepos
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListItemRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListRepository;
 //This class handles wish list service
-/*
+
 @Service
 public class WishListService {
 	
 	@Autowired 
 	WishListRepository repository;
 	@Autowired
-	CartItemRepository cartItemRepository;
+	WishListItemRepository itemRepository;
+
 	@Autowired
 	ProductRepository productRepository;
 	public WishList createWish(Long id) {
@@ -34,44 +35,33 @@ public class WishListService {
 	}
 
 
-	public WishList addItem(Long wishListId, Long wishListItemId, int quanitity) {
+	public WishList addItem(Long wishListId, Long wishListItemId) {
 		WishList wishList = repository.findById(wishListId)
-				.orElseThrow(() -> new RuntimeException("Cart not found"));
+				.orElseThrow(() -> new RuntimeException("WishList not found"));
 		Date time = new Date();
 		//item.setCart(cart);
 		//cart.setItems(null);
 		//CartItem item = cartItemRepository.findById(cartItemId).orElseThrow(() -> new RuntimeException("CartItem not found"));
-		CartItem item =new CartItem(quanitity, time, productRepository.findById(wishListItemId).orElseThrow(() -> new RuntimeException("CartItem not found")));
+		WishListItem item =new WishListItem(wishListId, time, productRepository.findById(wishListItemId).orElseThrow(() -> new RuntimeException("WishListItem not found")));
 		wishList.getItems().add(item);
 	
-		return repository.save(cart);
+		return repository.save(wishList);
 	}
 
-
-	public WishList removeItem(Long cartId, Long cartItem) {
-		Cart cart = repository.findById(cartId)
+	public WishList removeItem(Long wishListId, Long wishListItemId) {
+		WishList cart = repository.findById(wishListId)
 				.orElseThrow(() -> new RuntimeException("Cart not found"));
-		CartItem item = cartItemRepository.findById(cartItem).orElseThrow(() -> new RuntimeException("CartItem not found"));
+		WishListItem item =itemRepository.findById(wishListItemId).orElseThrow(() -> new RuntimeException("WishListItem not found"));
 		cart.getItems().remove(item);
 		return repository.save(cart);
 	}
-
-
-	public WishList updateItemQuantity(Long id, Long itemId, int quantity) {
-		Cart cart = repository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Cart not found"));
-		CartItem item = cartItemRepository.findById(itemId).orElseThrow(() -> new RuntimeException("CartItem not found"));;
-		item.setQuantity(quantity);
-		return repository.save(cart);
-	}
-
 	
-	public void deleteCart(Long id) {
+	public void deleteWishList(Long id) {
 		repository.deleteById(id);
 	}
 
 
-	public List<WishList> getAllCarts() {
+	public List<WishList> getAllWishLists() {
 		return repository.findAll();
 	}
 
@@ -79,4 +69,5 @@ public class WishListService {
 	public List<WishList> findByUserId(Long id) {
 		// TODO Auto-generated method stub
 		return repository.findByUserId(id);
-	}*/
+	}
+}
