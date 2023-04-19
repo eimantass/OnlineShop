@@ -9,7 +9,7 @@ const ServiceManagerCustomers = () => {
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const response = await UserService.getAllCustomersMethod();
+        const response = await UserService.getUsersByRoleMethod("CUSTOMER");
         setCustomers(response.data);
       } catch (error) {
         setError(
@@ -38,19 +38,6 @@ const ServiceManagerCustomers = () => {
   if (error) {
     return <div>{error}</div>;
   }
-
-  const fetchFilteredCustomers = async () => {
-    try {
-      const response = await UserService.getCustomersByRole("CUSTOMER");
-      setCustomers(response.data);
-    } catch (error) {
-      setError(
-        (error.response && error.response.data && error.response.data.message) ||
-          error.message ||
-          error.toString()
-      );
-    }
-  };
 
   return (
     <div className="container">

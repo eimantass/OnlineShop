@@ -45,6 +45,11 @@ class UserService {
   getAdminBoardMethod() {
     return axios.get(API_URL + 'admin', { headers: authHeader() });
   }
+
+  // Get all users with a specific role
+  getUsersByRoleMethod(roleName) {
+    return axios.get(API_URL + `customers-by-role/${roleName}`, { headers: authHeader() });
+  }
 }
 
 export default new UserService();
