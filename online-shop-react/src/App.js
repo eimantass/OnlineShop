@@ -47,6 +47,7 @@ import Help from "./pages/Help";
 import TSearchPage from "./pages/SearchPage";
 
 import AdminControlPanel from "./layout/AdminControlPanel";
+import ServiceManagerControlPanel from "./layout/ServiceManagerControlPanel";
 import UserControlPanel from "./layout/UserControlPanel";
 import ShoppingCart from "./pages/shoppingCart";
 
@@ -187,6 +188,7 @@ class App extends Component {
     <Route path="/manager" element={<ManagerBoard/>} />
     <Route path="/servicemanager" element={<ServiceManagerBoard/>} />
     <Route path="/servicemanager-customers" element={<ServiceManagerCustomers/>} />
+    <Route path="/manager-user-control/edit/:id" element={<ServiceManagerControlPanel/>} />
     <Route path="/admin" element={<AdminBoard/>} />
     <Route path="/user-control/edit/:id" element={<UserControlPanel/>}/> 
     <Route path="/admin-user-control/edit/:id" element={<AdminControlPanel/>}/> 
