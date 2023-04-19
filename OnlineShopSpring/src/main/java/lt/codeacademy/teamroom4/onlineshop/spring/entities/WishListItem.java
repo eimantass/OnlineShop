@@ -2,6 +2,7 @@ package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
 import java.util.Date;
 
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,22 +14,27 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Table(name = "wishlistitem")
 public class WishListItem {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	Long id;
 	
 	@Temporal(TemporalType.DATE)
-	private Date date;
+	Date date;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "product_id",
-	//nullable=false,
-	updatable = false)
+	@ManyToOne
+	@Cascade({CascadeType.SAVE_UPDATE,CascadeType.PERSIST})
+	@JoinColumn(name = "product_id" , referencedColumnName = "id")
 	private Product product;
+	
+
+	
 
 	public WishListItem() {}
 	

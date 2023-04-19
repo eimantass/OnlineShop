@@ -49,11 +49,11 @@ public class WishListService {
 	}
 
 	public WishList removeItem(Long wishListId, Long wishListItemId) {
-		WishList cart = repository.findById(wishListId)
+		WishList wishList = repository.findById(wishListId)
 				.orElseThrow(() -> new RuntimeException("Cart not found"));
 		WishListItem item =itemRepository.findById(wishListItemId).orElseThrow(() -> new RuntimeException("WishListItem not found"));
-		cart.getItems().remove(item);
-		return repository.save(cart);
+		wishList.getItems().remove(item);
+		return repository.save(wishList);
 	}
 	
 	public void deleteWishList(Long id) {
@@ -69,5 +69,11 @@ public class WishListService {
 	public List<WishList> findByUserId(Long id) {
 		// TODO Auto-generated method stub
 		return repository.findByUserId(id);
+	}
+
+
+	public List<Cart> getAllWishListItems() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

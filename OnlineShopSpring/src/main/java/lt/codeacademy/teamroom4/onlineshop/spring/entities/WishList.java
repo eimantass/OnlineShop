@@ -27,28 +27,25 @@ public class WishList {
 	
 	@Temporal(TemporalType.DATE)
 	private Date date;
-	private String sessionToken;
-	
 	@ManyToOne(cascade = {CascadeType.MERGE},fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany( cascade = {CascadeType.MERGE,CascadeType.REMOVE,CascadeType.PERSIST},fetch = FetchType.EAGER, orphanRemoval = true)
+	//@JoinColumn(name = "wishlist")
 	private Set<WishListItem> items = new HashSet<WishListItem>();
 	
 	public WishList() {}
 	
-	public WishList(Long id, Date date, String sessionToken, Set<WishListItem> items) {
+	public WishList(Long id, Date date, Set<WishListItem> items) {
 		this.id = id;
 		this.date = date;
-		this.sessionToken = sessionToken;
 		this.items = items;
 	}
 	
-	public WishList(Long id, Date date, String sessionToken, User user, Set<WishListItem> items) {
+	public WishList(Long id, Date date, User user, Set<WishListItem> items) {
 		this.id = id;
 		this.date = date;
-		this.sessionToken = sessionToken;
 		this.user = user;
 		this.items = items;
 	}
@@ -73,14 +70,6 @@ public class WishList {
 
 	public void setDate(Date date) {
 		this.date = date;
-	}
-
-	public String getSessionToken() {
-		return sessionToken;
-	}
-
-	public void setSessionToken(String sessionToken) {
-		this.sessionToken = sessionToken;
 	}
 
 	public Set<WishListItem> getItems() {
