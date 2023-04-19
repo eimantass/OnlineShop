@@ -182,7 +182,7 @@ public class User {
 	public Wallet getMoney() {
 		return money;
 	}
-	
+
 	public void setMoney(Wallet money) {
 		if(money.getCurrentBalance() !=0) {
 		this.money = money;
