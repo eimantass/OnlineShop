@@ -60,9 +60,10 @@ public class WishListController {
 
 	}
 
-	@DeleteMapping("/removeItem/{cartId}/{itemId}")
-	public void removeItem(@PathVariable Long wishListId, @PathVariable Long itemId) {
+	@DeleteMapping("/removeItem/{wishListId}/{itemId}")
+	public void removeWishListItem(@PathVariable Long wishListId, @PathVariable Long itemId) {
 		wishListService.removeItem(wishListId, itemId);
+		
 	}
 
 	@DeleteMapping("/deleteWishlist/{id}")

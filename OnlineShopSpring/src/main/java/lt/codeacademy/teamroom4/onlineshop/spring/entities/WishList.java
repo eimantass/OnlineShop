@@ -1,8 +1,7 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,46 +12,35 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
-@Table(name = "wishlist")
 public class WishList {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Transient
+	Double totalPrice;
 	
-	@Temporal(TemporalType.DATE)
-	private Date date;
 	@ManyToOne(cascade = {CascadeType.MERGE},fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany( cascade = {CascadeType.MERGE,CascadeType.REMOVE,CascadeType.PERSIST},fetch = FetchType.EAGER, orphanRemoval = true)
-	//@JoinColumn(name = "wishlist")
-	private Set<WishListItem> items = new HashSet<WishListItem>();
+	@OneToMany( cascade = {CascadeType.ALL},fetch = FetchType.EAGER, orphanRemoval = true)
+	@JoinColumn(name = "Cart")
+	private List<WishListItem> items = new ArrayList<>();
 	
 	public WishList() {}
 	
-	public WishList(Long id, Date date, Set<WishListItem> items) {
-		this.id = id;
-		this.date = date;
+	public WishList(Double totalPrice, List<WishListItem> items) {
+		this.totalPrice = totalPrice;
 		this.items = items;
 	}
 	
-	public WishList(Long id, Date date, User user, Set<WishListItem> items) {
+	public WishList(Long id, Double totalPrice, List<WishListItem> items) {
 		this.id = id;
-		this.date = date;
-		this.user = user;
-		this.items = items;
-	}
-	
-	public WishList(Date date, User user, Set<WishListItem> items) {
-		this.date = date;
-		this.user = user;
+		this.totalPrice = totalPrice;
 		this.items = items;
 	}
 
@@ -64,20 +52,27 @@ public class WishList {
 		this.id = id;
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public Set<WishListItem> getItems() {
+	public List<WishListItem> getItems() {
 		return items;
 	}
 
-	public void setItems(Set<WishListItem> items) {
+	public void setItems(List<WishListItem> items) {
 		this.items = items;
+	}
+	public void addItems(WishListItem item) {
+	this.items.add(item);
+	}
+
+
+	public WishList(Long id, User user) {
+		super();
+		this.id = id;
+		this.user = user;
+	}
+
+	public WishList(User user) {
+		super();
+		this.user = user;
 	}
 
 	public User getUser() {
@@ -87,4 +82,6 @@ public class WishList {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	
 }

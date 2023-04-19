@@ -42,18 +42,18 @@ public class WishListService {
 		//item.setCart(cart);
 		//cart.setItems(null);
 		//CartItem item = cartItemRepository.findById(cartItemId).orElseThrow(() -> new RuntimeException("CartItem not found"));
-		WishListItem item =new WishListItem(wishListId, time, productRepository.findById(wishListItemId).orElseThrow(() -> new RuntimeException("WishListItem not found")));
+		WishListItem item =new WishListItem( time, productRepository.findById(wishListItemId).orElseThrow(() -> new RuntimeException("WishListItem not found")));
 		wishList.getItems().add(item);
 	
 		return repository.save(wishList);
 	}
 
-	public WishList removeItem(Long wishListId, Long wishListItemId) {
-		WishList wishList = repository.findById(wishListId)
+	public WishList removeItem(Long cartId, Long cartItem) {
+		WishList cart = repository.findById(cartId)
 				.orElseThrow(() -> new RuntimeException("Cart not found"));
-		WishListItem item =itemRepository.findById(wishListItemId).orElseThrow(() -> new RuntimeException("WishListItem not found"));
-		wishList.getItems().remove(item);
-		return repository.save(wishList);
+		WishListItem item = itemRepository.findById(cartItem).orElseThrow(() -> new RuntimeException("CartItem not found"));
+		cart.getItems().remove(item);
+		return repository.save(cart);
 	}
 	
 	public void deleteWishList(Long id) {
