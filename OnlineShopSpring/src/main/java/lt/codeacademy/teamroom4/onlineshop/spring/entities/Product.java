@@ -43,7 +43,8 @@ public class Product {
 	private double price;
 	@Column
 	private String description;
-	
+	@Column
+	private Long quantity;
 	//@OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	//@JoinColumn(name = "category", referencedColumnName = "id")
 	@Enumerated(EnumType.STRING)
@@ -57,7 +58,7 @@ public class Product {
 	 @JoinColumn(name = "product_id", referencedColumnName = "id")
 	Set<ProductParameters> productParameters = new HashSet<>();
 	
-	//List<String> parameters = new ArrayList<String>();
+	
 	//Product constructors
 	public Product() {
 	}
@@ -66,7 +67,8 @@ public class Product {
 		this.id = id;
 	}
 
-	public Product(String name,Brands brand, double price, String description, Categories categories) {
+	public Product(Long quantity,String name,Brands brand, double price, String description, Categories categories) {
+		this.quantity=quantity; 
 		this.name = name;
 		this.brand = brand;
 		this.price = price;
@@ -75,10 +77,10 @@ public class Product {
 	}
 	
 
-	public Product(Long id, String name, Coupon discount, Brands brand, Photo foto, double price,
+	public Product(Long id,Long quantity, String name, Coupon discount, Brands brand, Photo foto, double price,
 			String description, Categories category, Set<ProductParameters> productParameters) {
-		super();
 		this.id = id;
+		this.quantity=quantity; 
 		this.name = name;
 		this.discount = discount;
 		this.brand = brand;
@@ -89,8 +91,9 @@ public class Product {
 		this.productParameters = productParameters;
 	}
 	
-	public Product(String name,  Brands brand, Photo foto, double price,
+	public Product(Long quantity,String name,  Brands brand, Photo foto, double price,
 			String description, Categories category, Set<ProductParameters> productParameters,Coupon discount) {
+		this.quantity=quantity; 
 		this.name = name;
 		this.discount = discount;
 		this.brand = brand;
@@ -101,9 +104,10 @@ public class Product {
 		this.productParameters = productParameters;
 	}
 
-	public Product(Long id, String name, Brands brand, double price, String description,
+	public Product(Long id, Long quantity, String name, Brands brand, double price, String description,
 			Categories category, Set<ProductParameters> productParameters, Coupon discount) {
 		this.id = id;
+		this.quantity=quantity;
 		this.name = name;
 		this.discount = discount;
 		this.brand = brand;
@@ -112,9 +116,10 @@ public class Product {
 		this.category = category;
 		this.productParameters = productParameters;
 	}
-	public Product(String name, Brands brand, double price, String description,
+	public Product(String name, Long quantity, Brands brand, double price, String description,
 			Categories category, Set<ProductParameters> productParameters, Coupon discount) {
 		this.name = name;
+		this.quantity=quantity;
 		this.discount = discount;
 		this.brand = brand;
 		this.price = price;
@@ -123,21 +128,23 @@ public class Product {
 		this.productParameters = productParameters;
 	}
 	
-	public Product(String name, double price, String description) {
+	public Product(Long quantity,String name, double price, String description) {
+		this.quantity=quantity;
 		this.name = name;
 		this.price = price;
 		this.description = description;
 	}
 	
-	public Product(Long id, String name, double price) {
-		super();
+	public Product(Long id, Long quantity, String name, double price) {
 		this.id = id;
+		this.quantity=quantity;
 		this.name = name;
 		this.price = price;
 	}
 
-	public Product(String name, Brands brand, double price, String description,
+	public Product(Long quantity,String name, Brands brand, double price, String description,
 			Categories category, Set<ProductParameters> productParameters) {
+		this.quantity=quantity;
 		this.name = name;
 		this.brand = brand;
 		this.price = price;
@@ -226,6 +233,14 @@ public class Product {
 
 	public void setDiscount(Coupon discount) {
 		this.discount = discount;
+	}
+
+	public Long getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Long quantity) {
+		this.quantity = quantity;
 	}
 
 	//Returns product values in String

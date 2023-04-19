@@ -64,7 +64,7 @@ public class Observer {
 
 	// Used to activate seed function
 
-	// @EventListener
+	 //@EventListener
 
 	public void seed(ContextRefreshedEvent event) {
 		seedUserAdmin();
@@ -75,7 +75,7 @@ public class Observer {
 		seedCategory();
 		seedProduct();
 	seedWishListItemRepository();
-		seedProductWithPhoto();
+		//seedProductWithPhoto();
 		seedWishList();
 		seedCart();
 	}
@@ -131,27 +131,27 @@ public class Observer {
 		gpuParameterList.add(firstGpu);
 		cpuParameterList.add(firstCPU);
 		List<Coupon> coupons = couponRepository.findAll();
-		Photo photo = new Photo();
+		//Photo photo = new Photo();
 		// photo = photoService.findPhotoById((long)1);
-		photoRepository.save(photo);
+		//photoRepository.save(photo);
 		List<Product> product = List.of(
 //				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", categoryList.get(1),cpuParameterList),
-				new Product("RX 6400XT", AMD,photo,  160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS,
+				new Product((long)10,"RX 6400XT", AMD,null,  160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS,
 						gpuParameterList, null),
-				new Product("GTX 1650 Super", NVIDIA,photo,  220, "4 gb gddr6 GTX 1650 Super gpu", GRAPHICS_CARDS,
+				new Product((long)10,"GTX 1650 Super", NVIDIA, null, 220, "4 gb gddr6 GTX 1650 Super gpu", GRAPHICS_CARDS,
 						gpuParameterList, null),
-				new Product("4gb RAM", GOODRAM,photo,  30, "4 gb ddr3 ram", LAPTOPS, gpuParameterList,
+				new Product((long)13,"4gb RAM", GOODRAM,null,  30, "4 gb ddr3 ram", LAPTOPS, gpuParameterList,
 						coupons.get(0)),
-				new Product("IntelI5", INTEL,  200, "12 core cpu", PROCESSORS),
-				new Product("IntelI7", INTEL,  250, "16 core cpu", PROCESSORS, cpuParameterList),
-				new Product("IntelI7", INTEL,  250, "16 core cpu", PROCESSORS, cpuParameterList,
+				new Product((long)14,"IntelI5", INTEL,  200, "12 core cpu", PROCESSORS),
+				new Product((long)15,"IntelI7", INTEL,  250, "16 core cpu", PROCESSORS, cpuParameterList),
+				new Product((long)20,"IntelI7", INTEL,  null, 250, "16 core cpu", PROCESSORS, cpuParameterList,
 						coupons.get(1)));
 //
 		productRepository.saveAll(product);
 	}
 	private void seedProductWithPhoto() {
 		Photo photo = photoService.findPhotoById((long)1);
-		Product product = new Product("RX 6400XT With Photo", AMD,photo,  160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS,
+		Product product = new Product((long)40,"RX 6400XT With Photo", AMD,photo,  160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS,
 				null, null);
 		productRepository.save(product);
 	}
@@ -176,13 +176,11 @@ public class Observer {
 	private void seedCart() {
 		Date time = new Date();
 		List<CartItem> items = List.of(
-				new CartItem(5, time, new Product("IntelI5", INTEL, 200, "12 core cpu", PROCESSORS))
+				new CartItem(5, time, new Product((long)14,"IntelI5", INTEL, 200, "12 core cpu", PROCESSORS))
 				);
 		
 		Cart cart = new Cart(4515.545, items);
 		shoppingCartRepository.save(cart);
 	}
-	private void seedPhotos() {
-	//Photo photo = new Photo();	
-	}
+
 }
