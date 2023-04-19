@@ -53,7 +53,8 @@ public class ProductController {
 		Product savedProduct = productRepository.save(product);
 		return savedProduct;
 	}
-
+	
+	
 	// Finding all categories
 	@GetMapping("/categories")
 	public List<String> getCategories() {
