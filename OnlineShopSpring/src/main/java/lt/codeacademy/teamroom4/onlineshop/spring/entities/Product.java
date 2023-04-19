@@ -103,6 +103,12 @@ public class Product {
 		this.category = category;
 		this.productParameters = productParameters;
 	}
+	
+	public Product(String name, double price, String description) {
+		this.name = name;
+		this.price = price;
+		this.description = description;
+	}
 
 	public Product(Long id, Long quantity, String name, Brands brand, double price, String description,
 			Categories category, Set<ProductParameters> productParameters, Coupon discount) {
@@ -141,6 +147,21 @@ public class Product {
 		this.name = name;
 		this.price = price;
 	}
+	
+	
+
+	public Product(Long id, String name, Brands brand, double price, String description,
+			Categories category, Set<ProductParameters> productParameters,Coupon discount) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.discount = discount;
+		this.brand = brand;
+		this.description = description;
+		this.price = price;
+		this.category = category;
+		this.productParameters = productParameters;
+	}
 
 	public Product(Long quantity,String name, Brands brand, double price, String description,
 			Categories category, Set<ProductParameters> productParameters) {
@@ -152,6 +173,19 @@ public class Product {
 		this.category = category;
 		this.productParameters = productParameters;
 	}
+	
+	public Product(String name, Brands brand, double price, String description, Categories category,
+			Set<ProductParameters> productParameters, Coupon discount) {
+		super();
+		this.name = name;
+		this.discount = discount;
+		this.brand = brand;
+		this.price = price;
+		this.description = description;
+		this.category = category;
+		this.productParameters = productParameters;
+	}
+
 	//Product getters/setters
 	public Product(Set<ProductParameters> productParameters) {
 		this.productParameters = productParameters;
