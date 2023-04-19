@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import UserService from "../services/user.service";
 
-const CustomersList = () => {
+const AdminManagersControls = () => {
+  const navigate = useNavigate();
   const [customers, setCustomers] = useState([]);
   const [error, setError] = useState("");
-  const [userRoles, setUserRoles] = useState([]);
 
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const response = await UserService.getAllCustomersMethod();
+        const response = await UserService.getUsersByRoleMethod("MANAGER");
         setCustomers(response.data);
       } catch (error) {
         setError(
@@ -22,27 +23,6 @@ const CustomersList = () => {
     };
     fetchCustomers();
   }, []);
-
-  useEffect(() => {
-    const fetchUserRoles = async () => {
-      try {
-        // Fetch user roles for each customer
-        const rolesPromises = customers.map(async (customer) => {
-          const response = await UserService.getRolesByUserIdMethod(customer.id);
-          return response.data;
-        });
-        const rolesData = await Promise.all(rolesPromises);
-        setUserRoles(rolesData);
-      } catch (error) {
-        setError(
-          (error.response && error.response.data && error.response.data.message) ||
-            error.message ||
-            error.toString()
-        );
-      }
-    };
-    fetchUserRoles();
-  }, [customers]);
 
   const handleDeleteClick = async (id) => {
     try {
@@ -61,10 +41,16 @@ const CustomersList = () => {
     return <div>{error}</div>;
   }
 
+
   return (
     <div className="container">
-      <header className="jumbotron">
-        <h2>User Controls</h2>
+        <button
+          className="btn btn-warning"
+          onClick={() => navigate("/admin")}
+          > Back </button>
+
+          <header className="jumbotron">
+        <h2>Managers Controls</h2>
       </header>
       <table className="table">
         <thead>
@@ -74,24 +60,17 @@ const CustomersList = () => {
             <th>Username</th>
             <th>Number</th>
             <th>Money</th>
-            <th>Roles</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {customers.map((customer, index) => (
+          {customers.map((customer) => (
             <tr key={customer.id}>
               <td>{customer.id}</td>
               <td>{customer.email}</td>
               <td>{customer.username}</td>
               <td>{customer.number}</td>
               <td>{customer.money}</td>
-              <td>
-                {userRoles[index] &&
-                  userRoles[index].map((role) => (
-                    <div key={role.id}>{role.name}</div>
-                  ))}
-              </td>
               <td>
                 <Link to={`/admin-user-control/edit/${customer.id}`} className="btn btn-primary mr-2">
                   Edit
@@ -113,4 +92,4 @@ const CustomersList = () => {
   );
 };
 
-export default CustomersList;
+export default AdminManagersControls;

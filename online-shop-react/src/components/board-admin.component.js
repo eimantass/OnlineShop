@@ -23,6 +23,30 @@ const AdminBoard = () => {
         >
           View All Users
         </button>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/admins")}
+        >
+          View All Admins
+        </button>
+        <button
+          className="btn btn-success"
+          onClick={() => navigate("/servicemanagers")}
+        >
+          View All Service Managers
+        </button>
+        <button
+          className="btn btn-info"
+          onClick={() => navigate("/managers")}
+        >
+          View All Managers
+        </button>
+        <button
+          className="btn btn-danger"
+          onClick={() => navigate("/customers")}
+        >
+          View All Customers
+        </button>
         <h2>Cart Controls</h2>
         <button
           className="btn btn-danger"
