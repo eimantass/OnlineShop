@@ -11,6 +11,7 @@ import Home from "./components/home.component";
 import Profile from "./components/profile.component";
 import CustomerBoard from "./components/board-customer.component";
 import ManagerBoard from "./components/board-manager.component";
+import ServiceManagerBoard from "./components/board-servicemanager.component";
 import AdminBoard from "./components/board-admin.component";
 // Import function pages
 import AdminProductControls from "./components/AdminProductControls";
@@ -56,6 +57,7 @@ class App extends Component {
 
     this.state = {
       showManagerBoard: false,
+      showServiceManagerBoard: false,
       showAdminBoard: false,
       currentUser: undefined,
     };
@@ -67,7 +69,8 @@ class App extends Component {
     if (user) {
       this.setState({
         currentUser: user,
-        showManagerBoard: user.roles.includes("MANAGER", "SERVICEMANAGER"),
+        showManagerBoard: user.roles.includes("MANAGER"),
+        showServiceManagerBoard:  user.roles.includes("SERVICEMANAGER"),
         showAdminBoard: user.roles.includes("ADMIN"),
       });
     }
@@ -77,13 +80,14 @@ class App extends Component {
     AuthService.logout();
     this.setState({
       showManagerBoard: false,
+      showServiceManagerBoard: false,
       showAdminBoard: false,
       currentUser: undefined,
     });
   }
 
   render() {
-    const { currentUser, showManagerBoard, showAdminBoard } = this.state;
+    const { currentUser, showManagerBoard, showServiceManagerBoard, showAdminBoard} = this.state;
 
     return (
       <>
@@ -103,6 +107,14 @@ class App extends Component {
               <li className="nav-item">
                 <Link to={"/manager"} className="nav-link">
                   Manager Board
+                </Link>
+              </li>
+            )}
+
+              {showServiceManagerBoard && (
+              <li className="nav-item">
+                <Link to={"/servicemanager"} className="nav-link">
+                  Service Manager Board
                 </Link>
               </li>
             )}
@@ -172,6 +184,7 @@ class App extends Component {
     <Route path="/profile" element={<Profile/>} />
     <Route path="/customer" element={<CustomerBoard/>} />
     <Route path="/manager" element={<ManagerBoard/>} />
+    <Route path="/servicemanager" element={<ServiceManagerBoard/>} />
     <Route path="/admin" element={<AdminBoard/>} />
     <Route path="/user-control/edit/:id" element={<UserControlPanel/>}/> 
     <Route path="/admin-user-control/edit/:id" element={<AdminControlPanel/>}/> 
