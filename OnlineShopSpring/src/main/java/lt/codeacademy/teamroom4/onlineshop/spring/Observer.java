@@ -64,7 +64,7 @@ public class Observer {
 
 	// Used to activate seed function
 
-	// @EventListener
+	 @EventListener
 
 	public void seed(ContextRefreshedEvent event) {
 		seedUserAdmin();
@@ -182,6 +182,5 @@ public class Observer {
 		Cart cart = new Cart(4515.545, items);
 		shoppingCartRepository.save(cart);
 	}
-//	private void seedWallet
 
 }
