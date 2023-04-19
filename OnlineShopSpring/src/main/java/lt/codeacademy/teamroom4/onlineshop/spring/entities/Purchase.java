@@ -18,34 +18,38 @@ public class Purchase {
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 @Column
 	 private Long id;
-	 @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH})
-	 @JoinColumn(name = "cartItem_id", referencedColumnName = "id")
-	 private CartItem item;
-	 @Column
-	 private int quantity;
-	 @Column
-	 private double price;
-	 @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH})
-	 @JoinColumn(name = "purchase_id", referencedColumnName = "id")
-	 private Wallet wallet;
 	 
-	 
+	 double price;
 	
+	 @JoinColumn()
+	 private Wallet wallet;
+	 @JoinColumn()
+	 Cart cart;
+	 
 	public Purchase() {}
-
-	public Purchase(Long id, CartItem item, int quantity, double price,Wallet wallet) {
+	
+	public Purchase(Wallet wallet, Cart cart) {
+		this.wallet = wallet;
+		this.cart = cart;
+	}
+	
+	public Purchase(Long id, double price, Wallet wallet, Cart cart) {
 		this.id = id;
-		this.item = item;
-		this.quantity = quantity;
 		this.price = price;
 		this.wallet = wallet;
-	 }
+		this.cart = cart;
+	}
+	
+	public Purchase(double price, Wallet wallet, Cart cart) {
+		this.price = price;
+		this.wallet = wallet;
+		this.cart = cart;
+	}
 
-	public Purchase(CartItem item, int quantity, double price,Wallet wallet) {
-		this.item = item;
-		this.quantity = quantity;
-		this.price = price;
+	public Purchase(Long id, Wallet wallet, Cart cart) {
+		this.id = id;
 		this.wallet = wallet;
+		this.cart = cart;
 	}
 
 	public Long getId() {
@@ -56,28 +60,13 @@ public class Purchase {
 		this.id = id;
 	}
 
-	public CartItem getItem() {
-		return item;
-	}
-
-	public void setItem(CartItem item) {
-		this.item = item;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
 
 	public double getPrice() {
-		return item.getSum();
+		return cart.getTotalPrice();
 	}
 
 	public void setPrice(double price) {
-		this.price = price;
+		this.price = cart.getTotalPrice();
 	}
 
 	public Wallet getWallet() {
@@ -87,7 +76,13 @@ public class Purchase {
 	public void setWallet(Wallet wallet) {
 		this.wallet = wallet;
 	}
-	
-	
-	
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
 }
