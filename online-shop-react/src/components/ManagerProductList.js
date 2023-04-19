@@ -22,7 +22,17 @@ function ManagerProductList() {
 
   // Edit Product function
   const handleEditProduct = async (id) => {
-    navigate(`/update-product-price/${id}`);
+    navigate(`/update-product/${id}`);
+  };
+
+  // Remove Product function 
+  const handleRemoveProduct = async (id) => {
+    try {
+      await ProductService.deleteProduct(id);
+      setProducts(products.filter((product) => product.id !== id));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -61,9 +71,14 @@ function ManagerProductList() {
                 className="btn btn-primary mr-2"
                 onClick={() => handleEditProduct(product.id)}
               >
-                Update Product Price
+                Edit
               </button>
-              
+              <button
+                className="btn btn-danger"
+                onClick={() => handleRemoveProduct(product.id)}
+              >
+                Remove
+              </button>
             </td>
           </tr>
         ))}
