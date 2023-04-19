@@ -9,13 +9,13 @@ const ServiceManagerBoard = () => {
     <div className="container">
       <header className="jumbotron">
         {/* Render "Add New Product" button */}
-        <h2>Product Controls</h2>
+        <h2>Customer Controls</h2>
 
         <button
           className="btn btn-info"
-          onClick={() => navigate("/manager-products")}
+          onClick={() => navigate("/servicemanager-customers")}
         >
-          View All Products
+          View All Customers
         </button>
       </header>
     
