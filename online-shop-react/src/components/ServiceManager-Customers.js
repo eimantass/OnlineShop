@@ -42,11 +42,12 @@ const ServiceManagerCustomers = () => {
   return (
     <div className="container">
       <header className="jumbotron">
-        <h2>User Controls</h2>
+        <h2>Customer Controls</h2>
       </header>
       <table className="table">
         <thead>
           <tr>
+            <th>UserID</th>
             <th>Email</th>
             <th>Username</th>
             <th>Number</th>
@@ -57,12 +58,13 @@ const ServiceManagerCustomers = () => {
         <tbody>
           {customers.map((customer) => (
             <tr key={customer.id}>
+              <td>{customer.id}</td>
               <td>{customer.email}</td>
               <td>{customer.username}</td>
               <td>{customer.number}</td>
               <td>{customer.money}</td>
               <td>
-                <Link to={`/admin-user-control/edit/${customer.id}`} className="btn btn-primary mr-2">
+                <Link to={`/manager-user-control/edit/${customer.id}`} className="btn btn-primary mr-2">
                   Edit
                 </Link>
                 <button
