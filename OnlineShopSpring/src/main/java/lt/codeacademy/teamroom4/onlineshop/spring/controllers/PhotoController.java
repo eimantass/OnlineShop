@@ -42,9 +42,10 @@ public class PhotoController {
 	@RequestMapping(  
 			method = RequestMethod.POST,
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ResponseEntity<?> addPhoto(@RequestParam("file") MultipartFile file) { 
+	public ResponseEntity<?> addPhoto(@RequestParam("file") MultipartFile file,@RequestParam("id") Long productId) { 
 		try { 
-			photoService.addPhoto(file.getBytes(), file.getName()); 
+			photoService.addPhoto(file.getBytes(), file.getName(),productId); 
+			
 			return ResponseEntity.ok().build(); 
 			} catch (IOException e) { 
 				e.printStackTrace(); 
@@ -55,8 +56,8 @@ public class PhotoController {
 	public void assignPhotoToUserById(@PathVariable Long photoId,@PathVariable Long productId) {
 		Photo photo = repository.findById(photoId).orElseThrow(() -> new RuntimeException("Photo not found"));
 		Product product = productRepository.findById(productId).orElseThrow(() -> new RuntimeException("Product not found"));
-		product.setFoto(photo);
-		productRepository.save(product);
+		photo.setProduct(product);
+		repository.save(photo);
 		
 	}
 	 @GetMapping("/{id}")
