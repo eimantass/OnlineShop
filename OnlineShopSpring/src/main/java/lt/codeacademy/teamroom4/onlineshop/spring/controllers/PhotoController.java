@@ -29,7 +29,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Photo;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.PhotoService;
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:8081", allowCredentials = "true")
 @RequestMapping("/photo")
 @RestController
 public class PhotoController {
@@ -44,9 +44,9 @@ public class PhotoController {
 	@RequestMapping(  
 			method = RequestMethod.POST,
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ResponseEntity<?> addPhoto(@RequestParam("file") MultipartFile file,@RequestParam("id") Long productId) { 
+	public ResponseEntity<?> addPhoto(@RequestParam("file") MultipartFile file) { 
 		try { 
-			photoService.addPhoto(file.getBytes(), file.getName(),productId); 
+			photoService.addPhoto(file.getBytes(), file.getName()); 
 			
 			return ResponseEntity.ok().build(); 
 			} catch (IOException e) { 

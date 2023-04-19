@@ -15,11 +15,10 @@ public class PhotoService {
 	private PhotoRepository photoRepository; 
 	@Autowired
 	private ProductService productService;
-	public void addPhoto(byte[] data, String name, Long productId) { 
+	public void addPhoto(byte[] data, String name) { 
 		Photo photo = new Photo();
 		photo.setData(data); 
-		photo.setName(name); 
-		photo.setProduct(productService.getProductById(productId));
+		photo.setName(name);
 		photoRepository.save(photo); 
 	}
 	public List<Photo> getAllPhotos() {

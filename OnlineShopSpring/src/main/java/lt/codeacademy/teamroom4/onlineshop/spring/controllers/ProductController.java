@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.PhotoRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.services.PhotoService;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
 
@@ -34,6 +36,12 @@ public class ProductController {
 	// Autowiring repositories and services
 	@Autowired
 	private ProductRepository productRepository;
+	
+	@Autowired
+	private PhotoRepository repository;
+	
+	@Autowired
+	private PhotoService photoService;
 
 	// Finding all products
 	@GetMapping("/all")
@@ -48,11 +56,18 @@ public class ProductController {
 	}
 
 //Creating new products
-	@PostMapping("/create")
-	public Product createProduct(@RequestBody Product product) throws URISyntaxException {
-		Product savedProduct = productRepository.save(product);
-		return savedProduct;
-	}
+//	@PostMapping("/create")
+//	public Product createProduct(@RequestBody Product product) throws URISyntaxException {
+//		Product savedProduct = productRepository.save(product);
+//		return savedProduct;
+//	}
+	
+	//Creating new products
+		@PostMapping("/create")
+		public Product createProduct(@RequestBody Product product) throws URISyntaxException {
+			Product savedProduct = productRepository.save(product);
+			return savedProduct;
+		}
 	
 	
 	// Finding all categories

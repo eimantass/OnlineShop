@@ -46,7 +46,7 @@ function AddProductForm() {
         category: category,
         brand: brand,
         description: description,
-        photo: lastPhoto.id, // Use the URL of the uploaded photo in the product data
+        // photo: lastPhoto.id, // Use the URL of the uploaded photo in the product data
       };
   
       await ProductService.createProduct(productData); // Use the product data to create the product
