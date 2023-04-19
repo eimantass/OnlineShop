@@ -28,7 +28,6 @@ public class PhotoService {
 		return photoRepository.findById(id).orElseThrow(() -> new RuntimeException("Photo not found"));
 	}
 
-	
 	 public void deletePhotoById(Long id) {
 		 photoRepository.deleteById(id);
 	 }
