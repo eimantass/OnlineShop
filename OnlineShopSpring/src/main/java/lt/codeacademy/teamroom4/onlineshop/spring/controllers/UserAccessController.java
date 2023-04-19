@@ -20,6 +20,8 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles;
 
 import java.net.URISyntaxException;
 import java.util.List;
@@ -51,7 +53,11 @@ public class UserAccessController {
 	public User getUserById(@PathVariable Long id) {
 	    return userRepository.findById(id).orElseThrow();
 	}
-	
+	@GetMapping("/customers-by-role/{roleName}")
+	public List<User> getUserByRole(@PathVariable ERoles roleName) {
+		//Set<Role> role =  userRepository.findById(id).orElseThrow().getRoles();
+	    return userRepository.findAllByRole(roleName);
+	}
 	// Update an existing user
 	@PutMapping("/customer/{id}")
 	public User updateUser(@PathVariable Long id, @RequestBody User UpdatedUser) {
