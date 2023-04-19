@@ -3,6 +3,7 @@ package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
@@ -10,8 +11,8 @@ import org.junit.jupiter.api.Test;
 class WishListTest {
 	
 	Date time = new Date();
-	Set<WishListItem> items;
-	WishList list = new WishList((long)2, time, "sessionToken", items);
+	List<WishListItem> items;
+	WishList list = new WishList((long)2, 212.15, items);
 	
 	@Test
 	void testWishList() {
@@ -41,45 +42,6 @@ class WishListTest {
 		}
 	}
 
-	@Test
-	void testGetDate() {
-		if(list.getDate().equals(time)) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
-		}
-	}
-
-	@Test
-	void testSetDate() {
-		list.setDate(new Date());
-		if(list.getDate()== time) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
-		}
-
-	}
-
-	@Test
-	void testGetSessionToken() {
-		if(list.getSessionToken().equals("sessionToken")) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
-		}
-	}
-
-	@Test
-	void testSetSessionToken() {
-		list.setSessionToken("session");
-		if(list.getSessionToken().equals("session")) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
-		}
-
-	}
 
 	@Test
 	void testGetItems() {
