@@ -29,7 +29,7 @@ public class CartItem {
 	Date date;
 	
 	@ManyToOne
-	@Cascade({CascadeType.SAVE_UPDATE})
+	@Cascade({CascadeType.SAVE_UPDATE,CascadeType.PERSIST})
 	@JoinColumn(name = "product_id" , referencedColumnName = "id")
 	Product product;
 	

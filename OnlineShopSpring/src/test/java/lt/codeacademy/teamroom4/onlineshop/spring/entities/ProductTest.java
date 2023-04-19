@@ -8,15 +8,13 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
-import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.*;
 
 class ProductTest {
 	Set<ProductParameters> cpuParameterList = new HashSet<>();
 	ProductParameters firstCPU = new ProductParameters("I3", "Intel");
 	Coupon coupon1 = new Coupon(10);
-	Product product = new Product((long) 5, "IntelI7", INTEL, 250, "16 core cpu", PROCESSORS, cpuParameterList,
+	Product product = new Product((long) 5, "IntelI7", INTEL, null, 250, "16 core cpu", PROCESSORS, cpuParameterList,
 			coupon1);
 
 	void addProductParameters() {
@@ -40,7 +38,7 @@ class ProductTest {
 	void testProductParametersStringBrandPhotoDoubleStringDescriptionCategories() {
 		// String name, Brands brand, String photo, double price, String description,
 		// Categories categories
-		Product testProduct = new Product("IntelI7", INTEL, 250, "16 core cpu", GRAPHICS_CARDS);
+		Product testProduct = new Product((long)20, "IntelI7", INTEL, 250, "16 core cpu", GRAPHICS_CARDS);
 		// emptyProduct.setName("RTX");
 
 		if (testProduct.getName().equals("IntelI7") && testProduct.getBrand().equals(INTEL)
@@ -55,7 +53,7 @@ class ProductTest {
 
 	@Test
 	void testProductParametersAllExceptIdAndCoupon() {
-		Product product = new Product("IntelI7", INTEL, 250, "16 core cpu", PROCESSORS, cpuParameterList);
+		Product product = new Product((long)20,"IntelI7", INTEL, 250, "16 core cpu", PROCESSORS, cpuParameterList);
 
 		addProductParameters();
 
@@ -73,7 +71,7 @@ class ProductTest {
 
 	@Test
 	void testProductParametersAllExceptId() {
-		Product product = new Product("IntelI7", INTEL, 250, "16 core cpu", PROCESSORS, cpuParameterList, coupon1);
+		Product product = new Product((long)20,null, "IntelI7", INTEL, 250, "16 core cpu", PROCESSORS, cpuParameterList, coupon1);
 
 		addProductParameters();
 
@@ -92,7 +90,7 @@ class ProductTest {
 
 	@Test
 	void testProductParametersAll() {
-		Product product = new Product((long) 5, "IntelI7", INTEL, 250, "16 core cpu", PROCESSORS, cpuParameterList,
+		Product product = new Product((long) 5, "IntelI7", INTEL, null, 250, "16 core cpu", PROCESSORS, cpuParameterList,
 				coupon1);
 
 		addProductParameters();
