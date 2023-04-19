@@ -182,5 +182,6 @@ public class Observer {
 		Cart cart = new Cart(4515.545, items);
 		shoppingCartRepository.save(cart);
 	}
+//	private void seedWallet
 
 }

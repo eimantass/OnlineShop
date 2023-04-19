@@ -44,9 +44,9 @@ public class PhotoController {
 	@RequestMapping(  
 			method = RequestMethod.POST,
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ResponseEntity<?> addPhoto(@RequestParam("file") MultipartFile file,@RequestParam("id") Long productId) { 
+	public ResponseEntity<?> addPhoto(@RequestParam("file") MultipartFile file) { 
 		try { 
-			photoService.addPhoto(file.getBytes(), file.getName(),productId); 
+			photoService.addPhoto(file.getBytes(), file.getName()); 
 			
 			return ResponseEntity.ok().build(); 
 			} catch (IOException e) { 
