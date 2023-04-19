@@ -76,7 +76,7 @@ public class Observer {
 		seedProduct();
 	seedWishListItemRepository();
 		//seedProductWithPhoto();
-		seedWishList();
+		//seedWishList();
 		seedCart();
 	}
 
