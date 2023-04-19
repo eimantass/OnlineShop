@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
@@ -47,7 +48,8 @@ public class User {
 	@Size(max=11)
 	private long number;
 	
-	private double money;
+	@OneToOne
+	private Wallet money;
 	
 	@ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH}, fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
@@ -63,7 +65,6 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.roles = roles;
-		this.money = MoneyGenerator.virtualMoney();
 	}
 	
 	public User(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
@@ -80,7 +81,6 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.roles = roles;
-		this.money = MoneyGenerator.virtualMoney();
 	}
 
 	public User(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
@@ -88,29 +88,28 @@ public class User {
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		this.money = MoneyGenerator.virtualMoney();
 	}
 
 	public User(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
-			@NotBlank @Size(max = 120) String password, @NotBlank @Size(max = 11) long number, double money,
+			@NotBlank @Size(max = 120) String password, @NotBlank @Size(max = 11) long number, Wallet money,
 			Set<Role> roles) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.number = number;
-		this.money = MoneyGenerator.virtualMoney();
+		this.money.setCurrentBalance(MoneyGenerator.virtualMoney());
 		this.roles = roles;
 	}
 
 	public User(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
-			@NotBlank @Size(max = 120) String password, @NotBlank @Size(max = 11) long number, double money,
+			@NotBlank @Size(max = 120) String password, @NotBlank @Size(max = 11) long number, Wallet money,
 			Set<Role> roles) {
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.number = number;
-		this.money = MoneyGenerator.virtualMoney();
+		this.money.setCurrentBalance(MoneyGenerator.virtualMoney());
 		this.roles = roles;
 	}
 	
@@ -180,17 +179,17 @@ public class User {
 	}
 		}
 
-	public double getMoney() {
+	public Wallet getMoney() {
 		return money;
 	}
 
-	public void setMoney(double money) {
-		if(money !=0) {
+	public void setMoney(Wallet money) {
+		if(money.getCurrentBalance() !=0) {
 		this.money = money;
 		}
 	}
-		public void clearMoney(double money) {
-			if(money !=0) {
+		public void clearMoney(Wallet money) {
+			if(money.getCurrentBalance() !=0) {
 			this.money = money;
 		}	
 	}

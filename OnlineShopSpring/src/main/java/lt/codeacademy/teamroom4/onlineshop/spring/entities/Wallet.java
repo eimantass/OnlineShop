@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -38,8 +39,7 @@ public class Wallet {
 	@Max(3)
 	private Integer priority;
 	private Double currentBalance;
-	
-	
+
 	
 	public Wallet() {
 	}
@@ -61,6 +61,8 @@ public class Wallet {
 		this.priority = priority;
 		this.currentBalance = currentBalance;
 	}
+	
+
 
 	// Setters/Getters
 	@PrePersist
@@ -107,5 +109,13 @@ public class Wallet {
 	public void setPriority(Integer priority) {
 		this.priority = priority;
 	}
-	
+
+	public Double getCurrentBalance() {
+		return currentBalance;
+	}
+
+	public void setCurrentBalance(Double currentBalance) {
+		this.currentBalance = currentBalance;
+	}
+
 }
