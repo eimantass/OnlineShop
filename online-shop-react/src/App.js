@@ -17,6 +17,10 @@ import AdminBoard from "./components/board-admin.component";
 // Import function pages
 import AdminProductControls from "./components/AdminProductControls";
 import AdminUsersControls from "./components/AdminUsersControls";
+import AdminAdminsControls from "./components/AdminAdminsControls";
+import AdminServiceManagersControls from "./components/AdminServiceManagersControls";
+import AdminManagersControls from "./components/AdminManagersControls";
+import AdminCustomersControls from "./components/AdminCustomersControls";
 import AdminCartsControls from "./components/AdminCartsControls";
 import ManagerProductControls from "./components/ManagerProductControls";
 import AddProductForm from "./components/add-product"
@@ -197,6 +201,10 @@ class App extends Component {
     {/* Products */}
     <Route path="/products" element={<AdminProductControls/>} />
     <Route path="/users" element={<AdminUsersControls/>} />
+    <Route path="/admins" element={<AdminAdminsControls/>} />
+    <Route path="/servicemanagers" element={<AdminServiceManagersControls/>} />
+    <Route path="/managers" element={<AdminManagersControls/>} />
+    <Route path="/customers" element={<AdminCustomersControls/>} />
     <Route path="/carts" element={<AdminCartsControls/>} />
     <Route path="/manager-products" element={<ManagerProductControls/>} />
     <Route path="/add-product" element={<AddProductForm/>} />
