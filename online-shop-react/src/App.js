@@ -12,6 +12,7 @@ import Profile from "./components/profile.component";
 import CustomerBoard from "./components/board-customer.component";
 import ManagerBoard from "./components/board-manager.component";
 import ServiceManagerBoard from "./components/board-servicemanager.component";
+import ServiceManagerCustomers from "./components/ServiceManager-Customers";
 import AdminBoard from "./components/board-admin.component";
 // Import function pages
 import AdminProductControls from "./components/AdminProductControls";
@@ -185,6 +186,7 @@ class App extends Component {
     <Route path="/customer" element={<CustomerBoard/>} />
     <Route path="/manager" element={<ManagerBoard/>} />
     <Route path="/servicemanager" element={<ServiceManagerBoard/>} />
+    <Route path="/servicemanager-customers" element={<ServiceManagerCustomers/>} />
     <Route path="/admin" element={<AdminBoard/>} />
     <Route path="/user-control/edit/:id" element={<UserControlPanel/>}/> 
     <Route path="/admin-user-control/edit/:id" element={<AdminControlPanel/>}/> 
