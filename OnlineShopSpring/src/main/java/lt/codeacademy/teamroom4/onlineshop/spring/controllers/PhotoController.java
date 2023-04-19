@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,19 +24,22 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.PhotoRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Photo;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.PhotoService;
 @RequestMapping("/photo")
 @RestController
 public class PhotoController {
 	
 	@Autowired
-	PhotoRepository repository;
+	private PhotoRepository repository;
 	
 	@Autowired
 	private PhotoService photoService;
-	
-	@RequestMapping(value= "/photos",   
+	@Autowired
+	private ProductRepository productRepository;
+	@RequestMapping(  
 			method = RequestMethod.POST,
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ResponseEntity<?> addPhoto(@RequestParam("file") MultipartFile file) { 
@@ -47,8 +51,14 @@ public class PhotoController {
 				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); 
 			} 
 	}
-
-	
+	@PostMapping("assign-photo/{photoId}/{productId}")
+	public void assignPhotoToUserById(@PathVariable Long photoId,@PathVariable Long productId) {
+		Photo photo = repository.findById(photoId).orElseThrow(() -> new RuntimeException("Photo not found"));
+		Product product = productRepository.findById(productId).orElseThrow(() -> new RuntimeException("Product not found"));
+		product.setFoto(photo);
+		productRepository.save(product);
+		
+	}
 	 @GetMapping("/{id}")
 	 public ResponseEntity<byte[]> getPhoto(@PathVariable Long id) {
 		 Optional<Photo> photo = repository.findById(id);
