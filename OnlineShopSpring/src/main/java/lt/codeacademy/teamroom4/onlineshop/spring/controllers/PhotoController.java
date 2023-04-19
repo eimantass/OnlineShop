@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -28,6 +29,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Photo;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.services.PhotoService;
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/photo")
 @RestController
 public class PhotoController {
