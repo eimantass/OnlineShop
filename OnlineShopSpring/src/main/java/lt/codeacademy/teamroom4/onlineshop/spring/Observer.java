@@ -64,7 +64,7 @@ public class Observer {
 
 	// Used to activate seed function
 
-	 @EventListener
+	// @EventListener
 
 	public void seed(ContextRefreshedEvent event) {
 		seedUserAdmin();
@@ -136,25 +136,25 @@ public class Observer {
 		//photoRepository.save(photo);
 		List<Product> product = List.of(
 //				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", categoryList.get(1),cpuParameterList),
-				new Product((long)10,"RX 6400XT", AMD,null,  160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS,
+				new Product((long)10,"RX 6400XT", AMD,  160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS,
 						gpuParameterList, null),
-				new Product((long)10,"GTX 1650 Super", NVIDIA, null, 220, "4 gb gddr6 GTX 1650 Super gpu", GRAPHICS_CARDS,
+				new Product((long)10,"GTX 1650 Super", NVIDIA, 220, "4 gb gddr6 GTX 1650 Super gpu", GRAPHICS_CARDS,
 						gpuParameterList, null),
-				new Product((long)13,"4gb RAM", GOODRAM,null,  30, "4 gb ddr3 ram", LAPTOPS, gpuParameterList,
+				new Product((long)13,"4gb RAM", GOODRAM,  30, "4 gb ddr3 ram", LAPTOPS, gpuParameterList,
 						coupons.get(0)),
 				new Product((long)14,"IntelI5", INTEL,  200, "12 core cpu", PROCESSORS),
 				new Product((long)15,"IntelI7", INTEL,  250, "16 core cpu", PROCESSORS, cpuParameterList),
-				new Product((long)20,"IntelI7", INTEL,  null, 250, "16 core cpu", PROCESSORS, cpuParameterList,
+				new Product((long)20,"IntelI7", INTEL, 250, "16 core cpu", PROCESSORS, cpuParameterList,
 						coupons.get(1)));
 //
 		productRepository.saveAll(product);
 	}
-	private void seedProductWithPhoto() {
-		Photo photo = photoService.findPhotoById((long)1);
-		Product product = new Product((long)40,"RX 6400XT With Photo", AMD,photo,  160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS,
-				null, null);
-		productRepository.save(product);
-	}
+//	private void seedProductWithPhoto() {
+//		Photo photo = photoService.findPhotoById((long)1);
+//		Product product = new Product((long)40,"RX 6400XT With Photo", AMD,  160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS,
+//				null, null);
+//		productRepository.save(product);
+//	}
 	private void seedCategory() {
 		List<Category> categoryList = List.of(new Category(PROCESSORS), new Category(LAPTOPS),
 				new Category(GRAPHICS_CARDS), new Category(MAINBOARDS), new Category(MOBILE_PHONES),

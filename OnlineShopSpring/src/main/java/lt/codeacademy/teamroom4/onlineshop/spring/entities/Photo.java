@@ -1,10 +1,14 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Table(name="Photo")
 @Entity
@@ -18,11 +22,22 @@ public class Photo {
 	@Lob 
 	private byte[] data;
 	
+	@OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, orphanRemoval = true)
+	@JoinColumn(name = "user")
+	private Product product;
+	
 	public Photo() {}
 
 	public Photo(String name, byte[] data) {
 		this.name = name;
 		this.data = data;
+	}
+
+	public Photo(Long id, String name, byte[] data, Product product) {
+		this.id = id;
+		this.name = name;
+		this.data = data;
+		this.product = product;
 	}
 
 	public Photo(Long id, String name, byte[] data) {
@@ -54,5 +69,15 @@ public class Photo {
 	public void setData(byte[] data) {
 		this.data = data;
 	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+
 	
 }
