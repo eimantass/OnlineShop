@@ -7,22 +7,30 @@ export default function Help() {
       <div>
         <ul>
         <h1 style={{textAlign: "center"}}>{t('help')}</h1>
-        <h1>Pagalba telefonu</h1>
+        <h1>{t('helpphone')}</h1>
         <b2> </b2>
-        <li>+370-472-84596 - pagalba prekių klausimais, lizingo sudarymo klausimais.</li>
+        <li>{t('helpnumber1')}</li>
         <b2> </b2>
-        <li>+370-472-84597 - pagalba el. parduotuves užsakymų klausimais.</li>
+        <li>{t('helpnumber2')}</li>
         <b2> </b2>
-        <li>+370-472-84598 - pagalba garantinio ir pogarantinio aptarnavimo klausimais. Stacionariu ir nešiojamų kompiuterių atnaujinimas, servisas.</li>
+        <li>{t('helpnumber3')}</li>
         <b2> </b2>
-        <li>+370-472-84599 - pagalba viešujų prikimų klausimais.</li>
+        <li>{t('helpnumber4')}</li>
         <b2> </b2>
-        <li>+370-472-84600 - "Vietos" parduotuves ir bendri klausimai</li>
+        <li>{t('helpnumber5')}</li>
         </ul>
         <ul>
-        <h1>Pagalba el.paštu</h1>
+        <h1>{t('helpemail')}</h1>
         <b2> </b2>
-        <li>email: "Email"</li>
+        <li> {t('helpemail1')}</li>
+        <b2> </b2>
+        <li>{t('helpemail2')}</li>
+        <b2> </b2>
+        <li>{t('helpemail3')} </li>
+        <b2> </b2>
+        <li>{t('helpemail4')}</li>
+        <b2> </b2>
+        <li>{t('helpemail5')}</li>
         </ul>
       </div>
     );
