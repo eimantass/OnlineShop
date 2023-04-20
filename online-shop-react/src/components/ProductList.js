@@ -80,6 +80,13 @@ function ProductList() {
   };
 
   const handleAddToCart = async (product) => {
+
+    if (!currentUser) {
+      // Redirect the user to the login page if not logged in
+      navigate("/login");
+      return;
+    }
+
     try {
       const currentUser = JSON.parse(localStorage.getItem('user'));
       // get all carts of the user
@@ -112,7 +119,9 @@ function ProductList() {
       cartId: cart.id
     };
     
-    console.debug("Sending JSON Cart: ", data);
+    await CartService.addItemToCart(cart.id, product.id, product.selectedQuantity);
+
+    console.debug("Sending JSON Cart: ", cart.id, product.id, product.selectedQuantity);
 
     } catch (error) {
       console.log(error);
