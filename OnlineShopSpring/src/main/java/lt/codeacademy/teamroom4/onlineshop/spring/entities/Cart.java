@@ -30,18 +30,21 @@ public class Cart {
 	@OneToMany( cascade = {CascadeType.MERGE,CascadeType.REMOVE,CascadeType.PERSIST},fetch = FetchType.EAGER, orphanRemoval = true)
 	@JoinColumn(name = "Cart")
 	private List<CartItem> items = new ArrayList<>();
+	Boolean ifActiveCart;
 	
 	public Cart() {}
 	
 	public Cart(Double totalPrice, List<CartItem> items) {
 		this.totalPrice = totalPrice;
 		this.items = items;
+		this.ifActiveCart=true;
 	}
 	
 	public Cart(Long id, Double totalPrice, List<CartItem> items) {
 		this.id = id;
 		this.totalPrice = totalPrice;
 		this.items = items;
+		this.ifActiveCart=true;
 	}
 
 	public Long getId() {
@@ -91,6 +94,14 @@ public class Cart {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Boolean getIfActiveCart() {
+		return ifActiveCart;
+	}
+
+	public void setIfActiveCart(Boolean ifActiveCart) {
+		this.ifActiveCart = ifActiveCart;
 	}
 
 	
