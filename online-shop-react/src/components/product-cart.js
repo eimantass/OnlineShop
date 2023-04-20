@@ -90,6 +90,7 @@ function ProductCart() {
               {cart.items.map((item) => (
                 <li key={item.id}>
                   <h3>{item.product.name}</h3>
+                  <img src={item.product.photo} alt={item.product.name} />
                   <label>
                       Quantity:
                       <input type="number" value={item.quantity} 
