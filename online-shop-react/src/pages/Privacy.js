@@ -1,11 +1,13 @@
 import Categories from "../components/categories-menu";
 import '../layout/css/Customers.css';
+import { useTranslation } from 'react-i18next';
 
 export default function Privacy() {
+  const { t } = useTranslation();
     return (
       <div>
         <Categories/>
-        <h1 style={{textAlign: "center"}}>Privacy page</h1>
+        <h1 style={{textAlign: "center"}}>{t('privacy')}</h1>
         <h1>Privacy statement ThisPageGroup</h1>
         <h3>In our servers only the data that is essential for purchases and customer services is collected.
           </h3>

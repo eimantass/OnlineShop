@@ -1,10 +1,12 @@
 import '../layout/css/Customers.css';
+import { useTranslation } from 'react-i18next';
 
 export default function Help() {
+  const { t } = useTranslation();
     return (
       <div>
         <ul>
-        <h1 style={{textAlign: "center"}}>Help page</h1>
+        <h1 style={{textAlign: "center"}}>{t('help')}</h1>
         <h1>Pagalba telefonu</h1>
         <b2> </b2>
         <li>+370-472-84596 - pagalba prekių klausimais, lizingo sudarymo klausimais.</li>

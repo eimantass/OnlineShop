@@ -1,5 +1,6 @@
 import './css/searchandlogo.css'; // Import your CSS file
 import {useState} from 'react'
+import { useTranslation } from 'react-i18next';
 
 function SeachAndLogo() {
   const [val, setVal] = useState('')
@@ -10,7 +11,7 @@ function SeachAndLogo() {
     const newvalue = event.target.value
     setVal(newvalue)
   }
-
+    const { t } = useTranslation();
     return (
 <div className="logo-container">
         <a href="http://localhost:3000/">
@@ -23,7 +24,7 @@ function SeachAndLogo() {
         <div className="search-form">
               <input value={val} onChange={change}/>
               <a href={'http://localhost:8081/search/'+val}  rel="noopener noreferrer">
-              <button onClick={click}>Search</button>
+              <button onClick={click}>{t('search')}</button>
               </a>
         </div>
       </div>

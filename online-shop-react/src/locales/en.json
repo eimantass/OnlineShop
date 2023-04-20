@@ -7,5 +7,32 @@
 "warranty": "Warranty",
 "privacy": "Privacy",
 "feedback": "Feedback",
-"help": "Help"
+"help": "Help",
+
+"processors": "Processors(CPU)",
+"laptops": "Laptops",
+"graphics": "Graphics Cards",
+"mainboards": "MainBoard",
+"phones": "Phones",
+"monitors": "Monitors",
+"printers": "Printers",
+"consoles": "Consoles",
+"games": "Games",
+
+"search": "Search",
+
+"home": "Home",
+"managerB": "Manager board",
+"servicemanagerB": " Service Manager Board",
+"adminb": "Admin Board",
+"customerB": "Customer Board",
+"productC": " Product Cart",
+"wish": "Wish-List",
+"logout": "LogOut",
+"login": "LogIn",
+"signup": "Sign Up",
+
+"username": "Username",
+"password": "Password",
+"email": "Email"
 }

@@ -1,13 +1,15 @@
 
 import '../layout/css/Customers.css';
+import { useTranslation } from 'react-i18next';
 
 
 export default function About() {
- 
+    const { t } = useTranslation();
     return (
       <div>
-        <h1 style={{textAlign: "center"}}>Apie Mus</h1>
+        <h1 style={{textAlign: "center"}}>{t('about')}</h1>
         <h3>
+        {t('abouttext1')}
         UAB „Pavadinimas" yra naujas kompiuterinės ir skaitmeninės technikos prekybos tinklas Lietuvoje.
         Šis puslapis sukurtas 4 žmonių: Eimantas Kiseliovas, Dmitrij Uzun, Viliaus Daugėla, Lauynas Davidavičius.
         Šio puslapio prasmė džiuginti pirkėjus bene mažiausiomis kainomis, didžiuliu prekių asortimentu.

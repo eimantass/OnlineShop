@@ -55,6 +55,8 @@ import UserControlPanel from "./layout/UserControlPanel";
 import ShoppingCart from "./pages/shoppingCart";
 import WishList from "./components/WishList";
 
+import { withTranslation } from 'react-i18next';
+
 
 class App extends Component {
   constructor(props) {
@@ -93,8 +95,8 @@ class App extends Component {
   }
 
   render() {
+    const { t } = this.props;
     const { currentUser, showManagerBoard, showServiceManagerBoard, showAdminBoard} = this.state;
-
     return (
       <>
       <div>
@@ -105,14 +107,14 @@ class App extends Component {
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link to={"/home"} className="nav-link">
-                Home
+              {t('home')}
               </Link>
             </li>
 
             {showManagerBoard && (
               <li className="nav-item">
                 <Link to={"/manager"} className="nav-link">
-                  Manager Board
+                {t('managerB')}
                 </Link>
               </li>
             )}
@@ -120,7 +122,7 @@ class App extends Component {
               {showServiceManagerBoard && (
               <li className="nav-item">
                 <Link to={"/servicemanager"} className="nav-link">
-                  Service Manager Board
+                {t('servicemanagerB')}
                 </Link>
               </li>
             )}
@@ -128,7 +130,7 @@ class App extends Component {
             {showAdminBoard && (
               <li className="nav-item">
                 <Link to={"/admin"} className="nav-link">
-                  Admin Board
+                {t('adminB')}
                 </Link>
               </li>
             )}
@@ -136,7 +138,7 @@ class App extends Component {
             {currentUser && (
               <li className="nav-item">
                 <Link to={"/customer"} className="nav-link">
-                CUSTOMER BOARD
+                {t('customerB')}
                 </Link>
               </li>
               
@@ -145,7 +147,7 @@ class App extends Component {
             {currentUser && (
               <li className="nav-item">
                 <Link to={"/cart"} className="nav-link">
-                Product Cart
+                 {t('productC')}
                 </Link>
               </li>
             )}
@@ -153,7 +155,7 @@ class App extends Component {
             {currentUser && (
               <li className="nav-item">
                 <Link to={"/wishlist"} className="nav-link">
-                Wish-List
+                {t('wish')}
                 </Link>
               </li>
             )}
@@ -169,7 +171,7 @@ class App extends Component {
               </li>
               <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={this.logOut}>
-                  LogOut
+                {t('logout')}
                 </a>
               </li>
             </div>
@@ -177,13 +179,13 @@ class App extends Component {
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={"/login"} className="nav-link">
-                  Login
+                {t('login')}
                 </Link>
               </li>
 
               <li className="nav-item">
                 <Link to={"/register"} className="nav-link">
-                  Sign Up
+                {t('signup')}
                 </Link>
               </li>
             </div>
@@ -250,4 +252,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withTranslation()(App);
