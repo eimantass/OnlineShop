@@ -45,7 +45,7 @@ class ProductControllerTest {
 	public void testGetProductById() throws Exception {
 		
 		long productId = 1L;
-		Product product = new Product(productId, "IntelI7", INTEL,  250, "16 core cpu", PROCESSORS, cpuParameterList,
+		Product product = new Product(productId, productId, "IntelI7", INTEL,  250, "16 core cpu", PROCESSORS, cpuParameterList,
 				coupon1);
 	
 	}

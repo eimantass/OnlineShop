@@ -27,7 +27,7 @@ class ProductRepositoryTest {
 	ProductParameters firstCPU = new ProductParameters("I3", "Intel");
 	Coupon coupon1 = new Coupon(10);
 	String name = "IntelI7";
-	Product product = new Product((long) 5, name, INTEL,  250, "16 core cpu", PROCESSORS, cpuParameterList,
+	Product product = new Product((long) 5, null, name, INTEL,  250, "16 core cpu", PROCESSORS, cpuParameterList,
 			coupon1);
 
 

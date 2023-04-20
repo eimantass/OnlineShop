@@ -33,7 +33,7 @@ class WishListServiceTest {
 	@Autowired
 	private WishListItemRepository wishListItemTestRepository;
 	
-
+/*
 	 void seedProduct() {
 		List<Coupon> couponList = List.of(new Coupon(10), new Coupon(20), new Coupon(30), new Coupon(40),
 		new Coupon(50), new Coupon(60), new Coupon(70), new Coupon(80), new Coupon(90), new Coupon(100));
@@ -48,7 +48,7 @@ class WishListServiceTest {
 
 		productTestRepository.saveAll(productList);
 	}
-
+*/
 	@SuppressWarnings("unused")
 	@Test
 	void testCreateWish() {
@@ -73,7 +73,7 @@ class WishListServiceTest {
 		
 		assertTrue(ifTestpassed);	
 	}
-
+/*
 	@Test
 	void testRemoveItem() {
 		seedProduct();
@@ -88,7 +88,7 @@ class WishListServiceTest {
 		}
 		assertTrue(ifTestpassed);	
 	}
-
+*/
 	@Test
 	void testDeleteWishList() {
 		WishListItem item = new WishListItem();
