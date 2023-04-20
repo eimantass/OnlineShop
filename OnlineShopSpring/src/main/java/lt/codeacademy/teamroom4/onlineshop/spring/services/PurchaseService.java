@@ -44,8 +44,11 @@ public class PurchaseService {
         System.out.println(cart.getTotalPrice());
         purchase.setPrice(cart.getTotalPrice());
         purchase.setCart(cart);
+        cart.setIfActiveCart(false);
         user.setMoney(user.getMoney()-cart.getTotalPrice());
         purchaseRepository.save(purchase);
+        cartRepository.save(cart);
+        
         
     }
 	public void removePurchasedItem(Cart cart) {
