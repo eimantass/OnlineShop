@@ -36,9 +36,9 @@ public class Product {
 	@Column
 	private Brands brand;
 
-//	@OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, orphanRemoval = true)
-//	@JoinColumn(name = "photo")
-//	private Photo foto;
+	@OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, orphanRemoval = true)
+	@JoinColumn(name = "photo")
+	private Photo foto;
 	@Column
 	private double price;
 	@Column
@@ -136,6 +136,10 @@ public class Product {
 	
 	
 
+	public Product(Photo foto) {
+		this.foto = foto;
+	}
+
 	public Product(Long id, String name, Brands brand, double price, String description,
 			Categories category, Set<ProductParameters> productParameters,Coupon discount) {
 		super();
@@ -172,6 +176,20 @@ public class Product {
 		this.productParameters = productParameters;
 	}
 
+	public Product(String name, Coupon discount, Brands brand, Photo foto, double price, String description,
+			Long quantity, Categories category, Set<ProductParameters> productParameters) {
+		super();
+		this.name = name;
+		this.discount = discount;
+		this.brand = brand;
+		this.foto = foto;
+		this.price = price;
+		this.description = description;
+		this.quantity = quantity;
+		this.category = category;
+		this.productParameters = productParameters;
+	}
+
 	//Product getters/setters
 	public Product(Set<ProductParameters> productParameters) {
 		this.productParameters = productParameters;
@@ -186,6 +204,14 @@ public class Product {
 	}
 
 	
+
+	public Photo getFoto() {
+		return foto;
+	}
+
+	public void setFoto(Photo foto) {
+		this.foto = foto;
+	}
 
 	public Product(Categories category) {
 		this.category = category;

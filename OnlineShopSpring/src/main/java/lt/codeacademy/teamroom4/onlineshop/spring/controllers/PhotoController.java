@@ -58,7 +58,8 @@ public class PhotoController {
 	public void assignPhotoToUserById(@PathVariable Long photoId,@PathVariable Long productId) {
 		Photo photo = repository.findById(photoId).orElseThrow(() -> new RuntimeException("Photo not found"));
 		Product product = productRepository.findById(productId).orElseThrow(() -> new RuntimeException("Product not found"));
-		photo.setProduct(product);
+		product.setFoto(photo);
+		//photo.setProduct(product);
 		repository.save(photo);
 		
 	}

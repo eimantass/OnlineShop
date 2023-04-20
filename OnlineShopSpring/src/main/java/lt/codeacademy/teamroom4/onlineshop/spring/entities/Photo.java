@@ -22,9 +22,9 @@ public class Photo {
 	@Lob 
 	private byte[] data;
 	
-	@OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, orphanRemoval = true)
-	@JoinColumn(name = "user")
-	private Product product;
+	//@OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, orphanRemoval = true)
+	//@JoinColumn(name = "product")
+	//private Product product;
 	
 	public Photo() {}
 
@@ -33,12 +33,6 @@ public class Photo {
 		this.data = data;
 	}
 
-	public Photo(Long id, String name, byte[] data, Product product) {
-		this.id = id;
-		this.name = name;
-		this.data = data;
-		this.product = product;
-	}
 
 	public Photo(Long id, String name, byte[] data) {
 		this.id = id;
@@ -69,15 +63,6 @@ public class Photo {
 	public void setData(byte[] data) {
 		this.data = data;
 	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
 
 	
 }
