@@ -36,9 +36,9 @@ public class Product {
 	@Column
 	private Brands brand;
 
-	@OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, orphanRemoval = true)
+	//@OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, orphanRemoval = true)
 	@JoinColumn(name = "photo")
-	private Photo foto;
+	private String photo;
 	@Column
 	private double price;
 	@Column
@@ -67,127 +67,36 @@ public class Product {
 		this.id = id;
 	}
 
-	public Product(Long quantity,String name,Brands brand, double price, String description, Categories categories) {
-		this.quantity=quantity; 
-		this.name = name;
-		this.brand = brand;
-		this.price = price;
-		this.description = description;
-		this.category = categories;
-	}
-	
-
-	public Product(Long id,Long quantity, String name, Coupon discount, Brands brand, double price,
-			String description, Categories category, Set<ProductParameters> productParameters) {
-		this.id = id;
-		this.quantity=quantity; 
-		this.name = name;
-		this.discount = discount;
-		this.brand = brand;
-		this.price = price;
-		this.description = description;
-		this.category = category;
-		this.productParameters = productParameters;
-	}
-	
-	public Product(String name, double price, String description) {
-		this.name = name;
-		this.price = price;
-		this.description = description;
-	}
-
-	public Product(Long id, Long quantity, String name, Brands brand, double price, String description,
-			Categories category, Set<ProductParameters> productParameters, Coupon discount) {
-		this.id = id;
-		this.quantity=quantity;
-		this.name = name;
-		this.discount = discount;
-		this.brand = brand;
-		this.price = price;
-		this.description = description;
-		this.category = category;
-		this.productParameters = productParameters;
-	}
-	public Product(String name, Long quantity, Brands brand, double price, String description,
-			Categories category, Set<ProductParameters> productParameters, Coupon discount) {
-		this.name = name;
-		this.quantity=quantity;
-		this.discount = discount;
-		this.brand = brand;
-		this.price = price;
-		this.description = description;
-		this.category = category;
-		this.productParameters = productParameters;
-	}
-	
-	public Product(Long quantity,String name, double price, String description) {
-		this.quantity=quantity;
-		this.name = name;
-		this.price = price;
-		this.description = description;
-	}
-	
-	public Product(Long id, Long quantity, String name, double price) {
-		this.id = id;
-		this.quantity=quantity;
-		this.name = name;
-		this.price = price;
-	}
-	
-	
-
-	public Product(Photo foto) {
-		this.foto = foto;
-	}
-
-	public Product(Long id, String name, Brands brand, double price, String description,
-			Categories category, Set<ProductParameters> productParameters,Coupon discount) {
+	public Product(Long id, String name, Brands brand, String photo, double price, String description,
+			Categories category) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.discount = discount;
 		this.brand = brand;
-		this.description = description;
+		this.photo = photo;
 		this.price = price;
+		this.description = description;
 		this.category = category;
-		this.productParameters = productParameters;
 	}
 
-	public Product(Long quantity,String name, Brands brand, double price, String description,
-			Categories category, Set<ProductParameters> productParameters) {
-		this.quantity=quantity;
+	public Product(String name, Brands brand, String photo, double price, String description, Categories category) {
+		super();
 		this.name = name;
 		this.brand = brand;
+		this.photo = photo;
 		this.price = price;
 		this.description = description;
 		this.category = category;
-		this.productParameters = productParameters;
 	}
 	
-	public Product(String name, Brands brand, double price, String description, Categories category,
-			Set<ProductParameters> productParameters, Coupon discount) {
+	public Product(Long id, String name, Brands brand, double price, String description, Categories category) {
 		super();
+		this.id = id;
 		this.name = name;
-		this.discount = discount;
 		this.brand = brand;
 		this.price = price;
 		this.description = description;
 		this.category = category;
-		this.productParameters = productParameters;
-	}
-
-	public Product(String name, Coupon discount, Brands brand, Photo foto, double price, String description,
-			Long quantity, Categories category, Set<ProductParameters> productParameters) {
-		super();
-		this.name = name;
-		this.discount = discount;
-		this.brand = brand;
-		this.foto = foto;
-		this.price = price;
-		this.description = description;
-		this.quantity = quantity;
-		this.category = category;
-		this.productParameters = productParameters;
 	}
 
 	//Product getters/setters
@@ -203,14 +112,12 @@ public class Product {
 		this.productParameters = productParameters;
 	}
 
-	
-
-	public Photo getFoto() {
-		return foto;
+	public String getPhoto() {
+		return photo;
 	}
 
-	public void setFoto(Photo foto) {
-		this.foto = foto;
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
 	public Product(Categories category) {
