@@ -74,6 +74,13 @@ public class CartServiceImpl implements CartService {
 		// TODO Auto-generated method stub
 		return repository.findByUserId(id);
 	}
-
+	public List<Cart> findActiveCartsByUserId(Long id) {
+		// TODO Auto-generated method stub
+		return repository.findActiveCartsByUserId(id);
+	}
+	public List<Cart> findInactiveCartsByUserId(Long id) {
+		// TODO Auto-generated method stub
+		return repository.findInactiveCartsByUserId(id);
+	}
 }
 

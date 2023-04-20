@@ -91,5 +91,14 @@ public class CartController {
 		
 		return cartService.findByUserId(userId);
 	}
-
+	@GetMapping("/activeCartByUserId/{userId}")
+	public List<Cart> activeCartsByUserId(@PathVariable Long userId ){
+		
+		return cartService.findActiveCartsByUserId(userId);
+	}
+	@GetMapping("/inactiveCartByUserId/{userId}")
+	public List<Cart> notActiveCartsByUserId(@PathVariable Long userId ){
+		
+		return cartService.findInactiveCartsByUserId(userId);
+	}
 }
