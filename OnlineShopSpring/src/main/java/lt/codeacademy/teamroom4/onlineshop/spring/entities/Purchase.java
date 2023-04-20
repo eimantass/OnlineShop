@@ -22,37 +22,30 @@ public class Purchase {
 	 private Long id;
 	 
 	 double price;
-	
-	 @OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, orphanRemoval = true)
-	 @JoinColumn(name = "wallet")
-	 private Wallet wallet;
+
 	@OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, orphanRemoval = true)
 	 @JoinColumn(name = "cart")
 	 Cart cart;
 	 
 	public Purchase() {}
 	
-	public Purchase(Wallet wallet, Cart cart) {
-		this.wallet = wallet;
+	public Purchase( Cart cart) {
 		this.cart = cart;
 	}
 	
-	public Purchase(Long id, double price, Wallet wallet, Cart cart) {
+	public Purchase(Long id, double price, Cart cart) {
 		this.id = id;
 		this.price = price;
-		this.wallet = wallet;
 		this.cart = cart;
 	}
 	
-	public Purchase(double price, Wallet wallet, Cart cart) {
+	public Purchase(double price, Cart cart) {
 		this.price = price;
-		this.wallet = wallet;
 		this.cart = cart;
 	}
 
 	public Purchase(Long id, Wallet wallet, Cart cart) {
 		this.id = id;
-		this.wallet = wallet;
 		this.cart = cart;
 	}
 
@@ -71,14 +64,6 @@ public class Purchase {
 
 	public void setPrice(double price) {
 		this.price = price;
-	}
-
-	public Wallet getWallet() {
-		return wallet;
-	}
-
-	public void setWallet(Wallet wallet) {
-		this.wallet = wallet;
 	}
 
 	public Cart getCart() {
