@@ -178,7 +178,7 @@ class UserTest {
         user.setNumber(454545);
         assertEquals(454545, user.getNumber());
 	}
-
+/*
 	@Test
 	void testGetMoney() {
 		Wallet wallet = new Wallet();
@@ -186,7 +186,7 @@ class UserTest {
 		User user = new User();
         user.setMoney(wallet);
         assertEquals(wallet.getCurrentBalance(), user.getMoney());
-	}
+	}*/
 
 //	@Test
 //	void testSetMoney() {

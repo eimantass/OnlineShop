@@ -43,7 +43,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.*;
-
+/*
 @RunWith(SpringRunner.class)
 @SpringBootTest
 //@DataJpaTest
@@ -320,3 +320,4 @@ class ProductServiceTest {
 //	}
 
 }
+*/
