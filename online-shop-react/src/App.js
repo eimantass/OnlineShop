@@ -53,6 +53,7 @@ import AdminControlPanel from "./layout/AdminControlPanel";
 import ServiceManagerControlPanel from "./layout/ServiceManagerControlPanel";
 import UserControlPanel from "./layout/UserControlPanel";
 import ShoppingCart from "./pages/shoppingCart";
+import WishList from "./components/WishList";
 
 
 class App extends Component {
@@ -148,6 +149,15 @@ class App extends Component {
                 </Link>
               </li>
             )}
+
+            {currentUser && (
+              <li className="nav-item">
+                <Link to={"/wishlist"} className="nav-link">
+                Wish-List
+                </Link>
+              </li>
+            )}
+
           </div>
 
           {currentUser ? (
@@ -197,6 +207,8 @@ class App extends Component {
     <Route path="/admin-user-control/edit/:id" element={<AdminControlPanel/>}/> 
     {/* Cart */}
     <Route path="/cart" element={<ShoppingCart/>} />
+    {/* Wish-list */}
+    <Route path="/wishlist" element={<WishList/>} />
     {/* Products */}
     <Route path="/products" element={<AdminProductControls/>} />
     <Route path="/users" element={<AdminUsersControls/>} />
