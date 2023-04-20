@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './css/FooterMenu.css'; // Import your CSS file
+import './css/footerMenu.css'; // Import your CSS file
 import { useTranslation } from 'react-i18next';
 
 function FooterMenu() {

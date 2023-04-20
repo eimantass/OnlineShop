@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import CartService from "../services/cart.service";
 import UserService from "../services/user.service";
 import AuthService from "../services/auth.service";
-import { Link } from "react-router-dom";
 import './css/product-list.css';
 import PurchaseService from "../services/purchase.service";
 
@@ -79,6 +78,10 @@ function ProductCart() {
   }
 
   async function handlePurchase() {
+    const user = JSON.parse(localStorage.getItem('user'));
+      const carts = await CartService.getAllCartsByUserId(user.id);
+      const sortedCarts = carts.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const lastCart = sortedCarts[0];
     try {
       // Check if the customer has enough money to make the purchase
       if (customerData.money < carts.reduce((sum, cart) => sum + cart.totalPrice, 0)) {
@@ -87,24 +90,22 @@ function ProductCart() {
         return;
       }
 
-      console.debug("Sending JSON Purchase: ", customerData.money);
-  
-      // Create a new purchase for each cart and remove the cart from the database
+      // Create a new purchase for cart
 
-      // for (const cart of carts) {
-      //   const purchase = {
-      //     userId: cart.user.id,
-      //     items: cart.items.map((item) => ({
-      //       productId: item.product.id,
-      //       quantity: item.quantity,
-      //       price: item.product.price,
-      //     })),
-      //     totalPrice: cart.totalPrice,
-      //   };
-      //   await CartService.deleteCartById(cart.id);
-      //   await PurchaseService.createPurchase(purchase);
-      // }
-  
+      PurchaseService.createPurchase(customerData.id, lastCart.id)
+      .then((data) => {
+        console.log("Purchase successful");
+        // handle success
+      })
+      .catch((error) => {
+        console.error(error);
+        // handle error
+      });
+      console.debug("Sending JSON Purchase: ", customerData.id, lastCart.id);
+
+      // await CartService.deleteCartById(cart.id);
+      // await PurchaseService.createPurchase(purchase);
+      
       // Update the customer's money balance and fetch the updated customer data
 
       // await UserService.updateCustomerMoney(currentUser.id, customerData.money - carts.reduce((sum, cart) => sum + cart.totalPrice, 0));
