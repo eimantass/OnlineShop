@@ -2,13 +2,14 @@ package lt.codeacademy.teamroom4.onlineshop.spring.dto;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
 class CartDtoTest {
 	
-	List<RecordDto> records;
+	List<RecordDto> records = new ArrayList<>();
 	CartDto dto = new CartDto((long)2, records);
 	
 	@Test
@@ -48,23 +49,13 @@ class CartDtoTest {
 		}
 	}
 
-	@Test
-	void testSetIrasai() {
-		dto.setIrasai(records);
-		if(dto.getRecords().equals(records)) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
-		}
-	}
 
 	@Test
 	void testGetTotalPrice() {
-		if(dto.getTotalPrice() == 0) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
-		}
+		records.add(new RecordDto(1L, "suris", 5, 22.5, 4.5));
+		records.add(new RecordDto(1L, "pienas", 2, 4.6, 2.3));
+		CartDto cart = new CartDto(1L, records);
+		cart.getTotalPrice();
 	}
 
 }

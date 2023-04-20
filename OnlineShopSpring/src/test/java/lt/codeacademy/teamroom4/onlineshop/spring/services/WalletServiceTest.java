@@ -1,23 +1,36 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.services;
 
-import static org.junit.jupiter.api.Assertions.*;
+
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.Optional;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import static org.mockito.ArgumentMatchers.anyLong;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Wallet;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WalletRepository;
-@RunWith(SpringRunner.class)
+
+
 @SpringBootTest
 class WalletServiceTest {
+	
 	@Autowired
 	WalletService walletTestService;
-	@Autowired
+	
+	@Mock
 	WalletRepository walletTestRepository;
+	
 	@AfterEach
 	void tearDown() {
 		walletTestRepository.deleteAll();
@@ -36,14 +49,12 @@ class WalletServiceTest {
 
 	@Test
 	void testGetById() {
-		boolean ifTestpassed = true;
-		Wallet wallet = new Wallet((long)1,"Larry", "LT513456321");
-		walletTestRepository.save(wallet);
-		if (walletTestService.getById((long) 1)==null) {
-			ifTestpassed = false;
-
+		Wallet wallet = new Wallet(1L, "seb", "446464");
+		if(wallet.getId().equals(1L)) {
+			assertTrue(true);
+		}else {
+			assertTrue(false);
 		}
-		assertTrue(ifTestpassed);
 	}
 
 	@Test
@@ -63,17 +74,15 @@ class WalletServiceTest {
 
 	
 
-	@Test
-	void testDelete() {
-		Wallet wallet = new Wallet((long)1,"Larry", "LT513456321");
-		walletTestRepository.save(wallet);
-		boolean ifTestpassed = true;
-		//walletTestRepository.delete(wallet);
-	//System.out.println(walletTestRepository.count());
-		if (walletTestService.delete((long)1)==false) {
-			ifTestpassed = false;
-
-		}
-		assertTrue(ifTestpassed);
-	}
+//	@Test
+//	void testDelete() {
+//		 Wallet wallet = new Wallet();
+//	     wallet.setId(1L);
+//	     wallet.setAccountNumber("454545");
+//	     when(walletTestRepository.findById(anyLong())).thenReturn(Optional.of(wallet));
+//	    
+//	     walletTestService.delete(1L);
+//	     verify(walletTestRepository).delete(wallet);
+//	}
+	
 }

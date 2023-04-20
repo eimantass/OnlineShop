@@ -2,6 +2,7 @@ package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -16,11 +17,17 @@ class WishListTest {
 	
 	@Test
 	void testWishList() {
-		if(list == null) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
-		}
+		Date laikas = new Date();
+		WishList wish = new WishList();
+		List<WishListItem> produktai = new ArrayList<>();
+		WishListItem pro1 = new WishListItem(1L, laikas, new Product());
+		WishListItem pro2 = new WishListItem(2L, laikas, new Product());
+		produktai.add(pro1);
+		produktai.add(pro2);
+		wish.setItems(produktai);
+		
+		assertEquals(produktai, wish.getItems());
+        assertEquals(2, wish.getItems().size());
 	}
 
 	@Test
@@ -45,22 +52,30 @@ class WishListTest {
 
 	@Test
 	void testGetItems() {
-		if(list.getItems().equals(items)) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
-		}
+		Date laikas = new Date();
+		WishList wish = new WishList();
+		List<WishListItem> produktai = new ArrayList<>();
+		WishListItem pro1 = new WishListItem(1L, laikas, new Product());
+		WishListItem pro2 = new WishListItem(2L, laikas, new Product());
+		produktai.add(pro1);
+		produktai.add(pro2);
+		wish.setItems(produktai);
+		
+		 assertEquals(produktai, wish.getItems());
 	}
 
 	@Test
 	void testSetItems() {
-		list.setItems(items);
-		if(list.getItems().equals(items)) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
-		}
-
+		Date laikas = new Date();
+		WishList wish = new WishList();
+		List<WishListItem> produktai = new ArrayList<>();
+		WishListItem pro1 = new WishListItem(1L, laikas, new Product());
+		WishListItem pro2 = new WishListItem(2L, laikas, new Product());
+		produktai.add(pro1);
+		produktai.add(pro2);
+		wish.setItems(produktai);
+		
+		assertEquals(produktai, wish.getItems());
 	}
 
 }
