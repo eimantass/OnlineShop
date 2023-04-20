@@ -7,5 +7,32 @@
     "warranty": "Garantinis aptarnavimas",
     "privacy": "Politika",
     "feedback": "Atsiliepimai",
-    "help": "Pagalba"
+    "help": "Pagalba",
+
+"processors": "Procesoriai(CPU)",
+"laptops": "Nesiojamieji kompiuteriai",
+"graphics": "Vaizdo plokstes",
+"mainboards": "Pagrindines plokstes",
+"phones": "Telefonai",
+"monitors": "Monitoriai",
+"printers": "Spausdintuvai",
+"consoles": "Zaidimu kompiuteriai",
+"games": "Zaidimai",
+
+"search": "Ieskoti",
+
+"home": "Pagrindinis",
+"managerB": "Vadybininku lentele",
+"servicemanagerB": "Aptarnavimo specialistu lentele",
+"adminb": "Administratoriu lentele",
+"customerB": "Vartotoju lentele",
+"productC": "Krepselis",
+"wish": "Megstamos prekes",
+"logout": "Atsijungti",
+"login": "Prisijungti",
+"signup": "Registruotis",
+
+"username": "Vartojo vardas",
+"password": "Slaptazodis",
+"email": "El.pastas"
 }

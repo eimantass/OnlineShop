@@ -6,6 +6,8 @@ import { isEmail } from "validator";
 
 import AuthService from "../services/auth.service";
 
+import i18n from "i18next";
+
 const required = value => {
   if (!value) {
     return (
@@ -139,7 +141,7 @@ export default class Register extends Component {
             {!this.state.successful && (
               <div>
                 <div className="form-group">
-                  <label htmlFor="username">Username</label>
+                  <label htmlFor="username">{i18n.t('username')}</label>
                   <Input
                     type="text"
                     className="form-control"
@@ -151,7 +153,7 @@ export default class Register extends Component {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="email">Email</label>
+                  <label htmlFor="email">{i18n.t('email')}</label>
                   <Input
                     type="text"
                     className="form-control"
@@ -163,7 +165,7 @@ export default class Register extends Component {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="password">Password</label>
+                  <label htmlFor="password">{i18n.t('password')}</label>
                   <Input
                     type="password"
                     className="form-control"
@@ -175,7 +177,7 @@ export default class Register extends Component {
                 </div>
 
                 <div className="form-group">
-                  <button className="btn btn-primary btn-block">Sign Up</button>
+                  <button className="btn btn-primary btn-block">{i18n.t('signup')}</button>
                 </div>
               </div>
             )}

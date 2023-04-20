@@ -1,10 +1,12 @@
 import Categories from "../components/categories-menu";
+import { useTranslation } from 'react-i18next';
 
 export default function Shipping() {
+  const { t } = useTranslation();
     return (
       <div>
         <Categories/>
-        <h1 style={{textAlign: "center"}}>Shipping page</h1>
+        <h1 style={{textAlign: "center"}}>{t('shipping')}</h1>
         {/*----------------------------------------------------------------------------------*/}
         <h1>SHIPPING AND SHIPPING COSTS</h1>
         <h3>

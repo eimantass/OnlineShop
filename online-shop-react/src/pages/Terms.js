@@ -1,10 +1,12 @@
 import Categories from "../components/categories-menu";
+import { useTranslation } from 'react-i18next';
 
 export default function Terms() {
+  const { t } = useTranslation();
     return (
       <div>
         <Categories/>
-        <h1 style={{textAlign: "center"}}>Terms page</h1>
+        <h1 style={{textAlign: "center"}}>{t('terms')}</h1>
         {/*----------------------------------------------------------------------------------*/}
         <h1>PRICES AND VAT</h1>
         <h3>
