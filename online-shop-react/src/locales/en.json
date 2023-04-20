@@ -34,5 +34,36 @@
 
 "username": "Username",
 "password": "Password",
-"email": "Email"
+"email": "Email",
+
+"aboutMain": "UAB 'Pavadinimas' is a new computer and electronic parts store chain in LithuaniaThis page was created by 4 people: Eimantas Kiseliovas, Dmitrij Uzun, Viliaus Daugėla, Lauynas Davidavičius.This pages purpose is to cause joy with the lowest of prices and a massive assortment of products.We are glad that we are able to bring joy to people who got their first computers.There are even some who celebrate just as much at the same time with their 5th, 6th or even 7th computers.Returning customers is the best evaluation of our work.",
+"vision": "Vision:",
+"visionBody": "To become the most popular computer and electronic parts seller in lithuania.",
+"mission": "Mission:",
+"missionBody": "Our gianed experienced allowed us to have an optimized infrastructure, so you could easily get help from proffesionals and the lowest prices. UAB 'Pavadinimas' for a lot of people is ascosiated with low prices and easy acces to products and support.",
+"goals": "Objectives:",
+"goalsBody": "To seccure the biggest collection of stationary and portable computers in our store. \n Try to have the best prices. \n To value each customer as an invidual with their own needs. \nTo provide the best customer service.",
+"values": "Values:",
+"values1": "Professionalism- Only qualified personell work in our team, most of whom constatly challange and improve themselves.",
+"values2": "Honesty- We are reliable and trustable. We expect the same from our business partners and customers.",
+"values3": "Frankness- we always listen to our customer and business partners observations and React accordingly.",
+
+"helpphone": "You can contact us with the following  numbers:",
+"{t('helpnumber1')}": "+370-472-84596 - help regarding product questions, leasing.",
+"{t('helpnumber2')}": "+370-472-84597 -help regarding electronic shop orders.",
+"{t('helpnumber3')}": "+370-472-84598 - help regarding warranty service.",
+"{t('helpnumber4')}": "+370-472-84599 - help regarding public purchases.",
+"{t('helpnumber5')}": "+370-472-84600 - general store questions.",
+
+"helpemail": "Help by email",
+"helpemail1": "manager@manager.com - help regarding product questions, leasing.",
+"helpemail2": " manager@manager.com - help regarding electronic shop orders. ",
+"helpemail3": " manager@manager.com - help regarding warranty service.",
+"helpemail4": "manager@manager.com - help regarding public purchases.",
+"helpemail5": "manager@manager.com - general store questions.",
+
+"termshead1": "PRICES AND VAT",
+"termsbody1": "Prices listed on our website include VAT.Depending on the destination \n of the parcel the VAT will be deducted in the checkout. \n The same applies when ordering as a company with a valid VAT number.",
+"termshead2": "LOCAL LAWS AND REGULATIONS",
+"termsbody2": "Every country has its own laws when it comes to knives and other items. \n When you order from 'PageName' you agree to being fully accountable for importing the ordered \n item(s) to the country of destination.'PageName' is not liable when and if items are confiscated by authorities."
 }
