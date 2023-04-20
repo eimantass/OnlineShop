@@ -120,6 +120,8 @@ function ProductList() {
     };
     
     await CartService.addItemToCart(cart.id, product.id, product.selectedQuantity);
+    // Message to user, that item was added to cart
+    alert(`Product ${product.name} has been added to your cart.`);
 
     console.debug("Sending JSON Cart: ", cart.id, product.id, product.selectedQuantity);
 

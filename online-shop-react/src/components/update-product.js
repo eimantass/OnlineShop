@@ -47,11 +47,16 @@ function UpdateProduct() {
       await ProductService.updateProduct(id, updatedProduct);
       setMessage("The product was updated successfully!");
       navigate("/home");
+      console.debug("Sending JSON Product:", updatedProduct);
     } catch (error) {
       setMessage("Could not update the product. Please try again.");
       console.log(error);
+      
     }
+    
   };
+
+  
 
   return (
     <main>
