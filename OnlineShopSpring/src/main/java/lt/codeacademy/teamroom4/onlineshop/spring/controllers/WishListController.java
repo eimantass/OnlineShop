@@ -71,7 +71,7 @@ public class WishListController {
 		wishListService.deleteWishList(id);
 	}
 
-	@GetMapping("/allCarts")
+	@GetMapping("/allWishLists")
 	public List<WishList> allWishLists() {
 		return wishListService.getAllWishLists();
 	}
