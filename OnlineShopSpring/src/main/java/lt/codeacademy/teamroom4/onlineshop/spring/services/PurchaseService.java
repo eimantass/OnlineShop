@@ -36,7 +36,7 @@ public class PurchaseService {
         Cart cart = cartRepository.findById(cartId).orElseThrow(() -> new RuntimeException("Cart not found"));
         // purchase.setItem(item);
         // purchase.setQuantity(quantity);
-       
+        System.out.println(cart.getTotalPrice());
         purchase.setPrice(cart.getTotalPrice());
         user.setMoney(user.getMoney()-cart.getTotalPrice());
         purchaseRepository.save(purchase);

@@ -66,11 +66,11 @@ public class Purchase {
 
 
 	public double getPrice() {
-		return cart.getTotalPrice();
+		return price;
 	}
 
 	public void setPrice(double price) {
-		this.price = cart.getTotalPrice();
+		this.price = price;
 	}
 
 	public Wallet getWallet() {
