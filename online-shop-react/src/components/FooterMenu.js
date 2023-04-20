@@ -2,21 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './css/FooterMenu.css'; // Import your CSS file
+import { useTranslation } from 'react-i18next';
 
 function FooterMenu() {
+  const { t } = useTranslation();
   return (
     <div className='aligner'>
       <nav className="footer-menu">
         <ul className="menu">
-          <li><Link to="/about">Apie mus</Link></li>
-          <li><Link to="/contacts">Kontaktai</Link></li>
-          <li><Link to="/terms">Pirkimo/Pardavimo taisyklės</Link></li>
-          <li><Link to="/shipping">Prekių pristatymas</Link></li>
-          <li><Link to="/returns">Prekių grąžinimas</Link></li>
-          <li><Link to="/warranty">Garantinis aptarnavimas</Link></li>
-          <li><Link to="/privacy">Privatumo politika</Link></li>
-          <li><Link to="/feedback">Atsiliepimai</Link></li>
-          <li><Link to="/help">Pagalba</Link></li>
+          <li><Link to="/about">{t('about')}</Link></li>
+          <li><Link to="/contacts">{t('contact')}</Link></li>
+          <li><Link to="/terms">{t('terms')}</Link></li>
+          <li><Link to="/shipping">{t('shipping')}</Link></li>
+          <li><Link to="/returns">{t('returns')}</Link></li>
+          <li><Link to="/warranty">{t('warranty')}</Link></li>
+          <li><Link to="/privacy">{t('privacy')}</Link></li>
+          <li><Link to="/feedback">{t('feedback')}</Link></li>
+          <li><Link to="/help">{t('help')}</Link></li>
         </ul>
       </nav>
     </div>
