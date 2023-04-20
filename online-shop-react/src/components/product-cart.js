@@ -4,6 +4,7 @@ import UserService from "../services/user.service";
 import AuthService from "../services/auth.service";
 import { Link } from "react-router-dom";
 import './css/product-list.css';
+import PurchaseService from "../services/purchase.service";
 
 function ProductCart() {
   const [content, setContent] = useState("");
@@ -77,6 +78,53 @@ function ProductCart() {
     }
   }
 
+  async function handlePurchase() {
+    try {
+      // Check if the customer has enough money to make the purchase
+      if (customerData.money < carts.reduce((sum, cart) => sum + cart.totalPrice, 0)) {
+        // if not enough, then alert the customer with this message:
+        alert("Not enough money to make the purchase!");
+        return;
+      }
+
+      console.debug("Sending JSON Purchase: ", customerData.money);
+  
+      // Create a new purchase for each cart and remove the cart from the database
+
+      // for (const cart of carts) {
+      //   const purchase = {
+      //     userId: cart.user.id,
+      //     items: cart.items.map((item) => ({
+      //       productId: item.product.id,
+      //       quantity: item.quantity,
+      //       price: item.product.price,
+      //     })),
+      //     totalPrice: cart.totalPrice,
+      //   };
+      //   await CartService.deleteCartById(cart.id);
+      //   await PurchaseService.createPurchase(purchase);
+      // }
+  
+      // Update the customer's money balance and fetch the updated customer data
+
+      // await UserService.updateCustomerMoney(currentUser.id, customerData.money - carts.reduce((sum, cart) => sum + cart.totalPrice, 0));
+      // const updatedCustomerData = (await UserService.getCustomerByIdMethod(currentUser.id)).data;
+      // setCustomerData(updatedCustomerData);
+  
+      // Clear the cart state
+
+      // setCarts([]);
+  
+      // Display success message
+
+      //setContent("Purchase successful!");
+
+    } catch (error) {
+      console.log(error);
+      setContent("Error occurred during purchase!");
+    }
+  }
+
   // render the list of carts
   return (
     <div>
@@ -102,10 +150,12 @@ function ProductCart() {
                 </li>
               ))}
             </ul>
-            <h3>Total Price of Cart Products: {cart.totalPrice}</h3>
+            <h3>Total Price: {cart.totalPrice}</h3>
             {currentUser && <h3>Your Wallet: {customerData.money}</h3>}
             {/* <button onClick={handlePurchase}>Purchase</button> */}
-            <button className="btn btn-primary btn-lg" type="button">Purchase</button>
+            <button className="btn btn-primary btn-lg" type="button" onClick={handlePurchase}>
+                        Purchase
+                                  </button>
           </div>
         ))
       ) : (
