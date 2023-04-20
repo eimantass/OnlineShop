@@ -54,15 +54,15 @@ public class PhotoController {
 				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); 
 			} 
 	}
-	@PostMapping("assign-photo/{photoId}/{productId}")
-	public void assignPhotoToUserById(@PathVariable Long photoId,@PathVariable Long productId) {
-		Photo photo = repository.findById(photoId).orElseThrow(() -> new RuntimeException("Photo not found"));
-		Product product = productRepository.findById(productId).orElseThrow(() -> new RuntimeException("Product not found"));
-		product.setFoto(photo);
-		//photo.setProduct(product);
-		repository.save(photo);
-		
-	}
+//	@PostMapping("assign-photo/{photoId}/{productId}")
+//	public void assignPhotoToUserById(@PathVariable Long photoId,@PathVariable Long productId) {
+//		Photo photo = repository.findById(photoId).orElseThrow(() -> new RuntimeException("Photo not found"));
+//		Product product = productRepository.findById(productId).orElseThrow(() -> new RuntimeException("Product not found"));
+//		product.setFoto(photo);
+//		//photo.setProduct(product);
+//		repository.save(photo);
+//		
+//	}
 	 @GetMapping("/{id}")
 	 public ResponseEntity<byte[]> getPhoto(@PathVariable Long id) {
 		 Optional<Photo> photo = repository.findById(id);

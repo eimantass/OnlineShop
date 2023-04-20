@@ -99,6 +99,81 @@ public class Product {
 		this.category = category;
 	}
 
+
+
+	public Product(String name,  Brands brand, String photo, double price, String description,
+			Long quantity, Categories category, Set<ProductParameters> productParameters, Coupon discount) {
+		super();
+		this.name = name;
+		this.discount = discount;
+		this.brand = brand;
+		this.photo = photo;
+		this.price = price;
+		this.description = description;
+		this.quantity = quantity;
+		this.category = category;
+		this.productParameters = productParameters;
+	}
+
+	
+
+	public Product(Long id,Long quantity, String name, Coupon discount, Brands brand, double price,
+			String description, Categories category, Set<ProductParameters> productParameters) {
+		this.id = id;
+		this.quantity=quantity; 
+		this.name = name;
+		this.discount = discount;
+		this.brand = brand;
+		this.price = price;
+		this.description = description;
+		this.category = category;
+		this.productParameters = productParameters;
+	}
+	
+	public Product(String name, double price, String description) {
+		this.name = name;
+		this.price = price;
+		this.description = description;
+	}
+
+	public Product(Long id, Long quantity, String name, Brands brand, double price, String description,
+			Categories category, Set<ProductParameters> productParameters, Coupon discount) {
+		this.id = id;
+		this.quantity=quantity;
+		this.name = name;
+		this.discount = discount;
+		this.brand = brand;
+		this.price = price;
+		this.description = description;
+		this.category = category;
+		this.productParameters = productParameters;
+	}
+	public Product(String name, Long quantity, Brands brand, double price, String description,
+			Categories category, Set<ProductParameters> productParameters, Coupon discount) {
+		this.name = name;
+		this.quantity=quantity;
+		this.discount = discount;
+		this.brand = brand;
+		this.price = price;
+		this.description = description;
+		this.category = category;
+		this.productParameters = productParameters;
+	}
+	
+	public Product(Long quantity,String name, double price, String description) {
+		this.quantity=quantity;
+		this.name = name;
+		this.price = price;
+		this.description = description;
+	}
+	
+	public Product(Long id, Long quantity, String name, double price) {
+		this.id = id;
+		this.quantity=quantity;
+		this.name = name;
+		this.price = price;
+	}
+	
 	//Product getters/setters
 	public Product(Set<ProductParameters> productParameters) {
 		this.productParameters = productParameters;
@@ -123,6 +198,8 @@ public class Product {
 	public Product(Categories category) {
 		this.category = category;
 	}
+	
+
 	public Long getId() {
 		return id;
 	}
