@@ -1,6 +1,7 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,8 +20,13 @@ public class PurchaseController {
 	@Autowired
 	PurchaseService purchaseService;
 	
-	@PostMapping
+	@PostMapping("/buy")
 	public void buyItem(User user, Cart cart) {
 		purchaseService.buyItem(user, cart);
 	}
+	@PostMapping("/buy2/{userId}/{cartId}")
+	public void buyItem2(@PathVariable Long userId,@PathVariable Long cartId) {
+		purchaseService.buyItem(userId, cartId);
+	}
+	
 }
