@@ -1,7 +1,9 @@
 
 import '../layout/css/Customers.css';
 
+
 export default function About() {
+ 
     return (
       <div>
         <h1 style={{textAlign: "center"}}>Apie Mus</h1>
