@@ -32,8 +32,11 @@ public class Cart {
 	private List<CartItem> items = new ArrayList<>();
 	Boolean ifActiveCart;
 	
-	public Cart() {	this.ifActiveCart=true;
-}
+
+	public Cart() {
+		this.ifActiveCart=true;
+	}
+	
 	public Cart(Double totalPrice, List<CartItem> items) {
 		this.totalPrice = totalPrice;
 		this.items = items;

@@ -102,8 +102,10 @@ function ProductCart() {
         // handle error
       });
       console.debug("Sending JSON Purchase: ", customerData.id, lastCart.id);
-
-      // await CartService.deleteCartById(cart.id);
+      // create a new cart for user
+      
+      await CartService.createCartByUserId(customerData.id);
+      
       // await PurchaseService.createPurchase(purchase);
       
       // Update the customer's money balance and fetch the updated customer data
