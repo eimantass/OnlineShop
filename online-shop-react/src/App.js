@@ -11,13 +11,20 @@ import Home from "./components/home.component";
 import Profile from "./components/profile.component";
 import CustomerBoard from "./components/board-customer.component";
 import ManagerBoard from "./components/board-manager.component";
+import ServiceManagerBoard from "./components/board-servicemanager.component";
+import ServiceManagerCustomers from "./components/ServiceManager-Customers";
 import AdminBoard from "./components/board-admin.component";
 // Import function pages
 import AdminProductControls from "./components/AdminProductControls";
+import AdminUsersControls from "./components/AdminUsersControls";
+import AdminAdminsControls from "./components/AdminAdminsControls";
+import AdminServiceManagersControls from "./components/AdminServiceManagersControls";
+import AdminManagersControls from "./components/AdminManagersControls";
+import AdminCustomersControls from "./components/AdminCustomersControls";
+import AdminCartsControls from "./components/AdminCartsControls";
 import ManagerProductControls from "./components/ManagerProductControls";
 import AddProductForm from "./components/add-product"
 import UpdateProduct from "./components/update-product"
-import UpdateProductPrice from "./components/UpdateProductPrice";
 // Import CategoriesMenu pages
 import Processors from "./pages/categoriesMenuPages/processors";
 import Laptops from "./pages/categoriesMenuPages/laptops";
@@ -43,6 +50,7 @@ import Help from "./pages/Help";
 import TSearchPage from "./pages/SearchPage";
 
 import AdminControlPanel from "./layout/AdminControlPanel";
+import ServiceManagerControlPanel from "./layout/ServiceManagerControlPanel";
 import UserControlPanel from "./layout/UserControlPanel";
 import ShoppingCart from "./pages/shoppingCart";
 
@@ -54,6 +62,7 @@ class App extends Component {
 
     this.state = {
       showManagerBoard: false,
+      showServiceManagerBoard: false,
       showAdminBoard: false,
       currentUser: undefined,
     };
@@ -65,7 +74,8 @@ class App extends Component {
     if (user) {
       this.setState({
         currentUser: user,
-        showManagerBoard: user.roles.includes("MANAGER", "SERVICEMANAGER"),
+        showManagerBoard: user.roles.includes("MANAGER"),
+        showServiceManagerBoard:  user.roles.includes("SERVICEMANAGER"),
         showAdminBoard: user.roles.includes("ADMIN"),
       });
     }
@@ -75,13 +85,14 @@ class App extends Component {
     AuthService.logout();
     this.setState({
       showManagerBoard: false,
+      showServiceManagerBoard: false,
       showAdminBoard: false,
       currentUser: undefined,
     });
   }
 
   render() {
-    const { currentUser, showManagerBoard, showAdminBoard } = this.state;
+    const { currentUser, showManagerBoard, showServiceManagerBoard, showAdminBoard} = this.state;
 
     return (
       <>
@@ -101,6 +112,14 @@ class App extends Component {
               <li className="nav-item">
                 <Link to={"/manager"} className="nav-link">
                   Manager Board
+                </Link>
+              </li>
+            )}
+
+              {showServiceManagerBoard && (
+              <li className="nav-item">
+                <Link to={"/servicemanager"} className="nav-link">
+                  Service Manager Board
                 </Link>
               </li>
             )}
@@ -170,6 +189,9 @@ class App extends Component {
     <Route path="/profile" element={<Profile/>} />
     <Route path="/customer" element={<CustomerBoard/>} />
     <Route path="/manager" element={<ManagerBoard/>} />
+    <Route path="/servicemanager" element={<ServiceManagerBoard/>} />
+    <Route path="/servicemanager-customers" element={<ServiceManagerCustomers/>} />
+    <Route path="/manager-user-control/edit/:id" element={<ServiceManagerControlPanel/>} />
     <Route path="/admin" element={<AdminBoard/>} />
     <Route path="/user-control/edit/:id" element={<UserControlPanel/>}/> 
     <Route path="/admin-user-control/edit/:id" element={<AdminControlPanel/>}/> 
@@ -177,10 +199,15 @@ class App extends Component {
     <Route path="/cart" element={<ShoppingCart/>} />
     {/* Products */}
     <Route path="/products" element={<AdminProductControls/>} />
+    <Route path="/users" element={<AdminUsersControls/>} />
+    <Route path="/admins" element={<AdminAdminsControls/>} />
+    <Route path="/servicemanagers" element={<AdminServiceManagersControls/>} />
+    <Route path="/managers" element={<AdminManagersControls/>} />
+    <Route path="/customers" element={<AdminCustomersControls/>} />
+    <Route path="/carts" element={<AdminCartsControls/>} />
     <Route path="/manager-products" element={<ManagerProductControls/>} />
     <Route path="/add-product" element={<AddProductForm/>} />
     <Route path="/update-product/:id" element={<UpdateProduct/>} />
-    <Route path="/update-product-price/:id" element={<UpdateProductPrice/>} />
     {/* Routes to CategoriesMenu pages */}
     <Route path="/processors" element={<Processors/>} />
     <Route path="/laptops" element={<Laptops/>} />
@@ -201,8 +228,6 @@ class App extends Component {
     <Route path="/privacy" element={<Privacy/>} />
     <Route path="/feedback" element={<Feedback/>} />
     <Route path="/help" element={<Help/>} />
-    {/*  <Route path="/Controll-panel" element={<AdminControllMenuAAM/>}/> */}
-    {/* <Route path="/Controll-panel/edit/:id" element={<TestPage/>}/>*/}
     <Route path="/search/:val" element={<TSearchPage/>}/>
 
     </Routes>

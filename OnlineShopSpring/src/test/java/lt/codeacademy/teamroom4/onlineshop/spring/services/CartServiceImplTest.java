@@ -2,6 +2,7 @@ package lt.codeacademy.teamroom4.onlineshop.spring.services;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -28,10 +29,12 @@ class CartServiceImplTest {
 
 	@Test
 	void testCreateCart() {
-		
-		Cart cart = service.createCart();
-		Optional<Cart> createdCart = repository.findById(cart.getId());
-		assertTrue(createdCart.isPresent());
+		 Cart cart = new Cart();
+	     Cart savedCart = repository.save(cart);
+
+	     assertNotNull(savedCart);
+	     assertNotNull(savedCart.getId());
+	     assertEquals(cart, savedCart);
 	}
 
 	@Test
@@ -41,7 +44,7 @@ class CartServiceImplTest {
 
 		CartItem item = new CartItem();
 		itemRepository.save(item);
-		service.addItem(cart.getId(), item);
+		service.addItem(cart.getId(), item.getId(), 5);
 
 		Optional<Cart> updatedCart = repository.findById(cart.getId());
 		assertTrue(updatedCart.isPresent());
@@ -57,9 +60,9 @@ class CartServiceImplTest {
 		 CartItem item = new CartItem();
 		 itemRepository.save(item);
 
-		 service.addItem(cart.getId(), item);
+		 service.addItem(cart.getId(), item.getId(), 5);
 
-		 service.removeItem(cart.getId(), item);
+		 service.removeItem(cart.getId(), item.getId());
 
 		 Optional<Cart> updatedCart = repository.findById(cart.getId());
 		 assertTrue(updatedCart.isPresent());

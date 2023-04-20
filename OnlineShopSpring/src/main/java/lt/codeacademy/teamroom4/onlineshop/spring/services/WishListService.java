@@ -1,86 +1,79 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.services;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.WishList;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.WishListItem;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartItemRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListItemRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListRepository;
 //This class handles wish list service
+
 @Service
 public class WishListService {
-	//Autowiring services and repositories
-	@Autowired
-	private WishListRepository wishListRepository;
 	
+	@Autowired 
+	WishListRepository repository;
 	@Autowired
-	private WishListItemRepository wishListItemRepository;
-	
+	WishListItemRepository itemRepository;
+
 	@Autowired
-	private ProductService productService;
-	//Adding first item to the wish list
-	public WishList addToWishFirstTime(Long id, String sessionToken) {
+	ProductRepository productRepository;
+	public WishList createWish(Long id) {
 		WishList wishList = new WishList();
-		WishListItem item = new WishListItem();
-		item.setDate(new Date());
-		item.setProduct(productService.getProductById(id));
-		wishList.getItems().add(item);
-		wishList.setSessionToken(sessionToken);
-		wishList.setDate(new Date());
-		return wishListRepository.save(wishList);
-		
-	}
-	//Adding wishlisted item to shopping cart
-	public WishList addToExistingShoppingCart(Long id, String sessionToken) {
-		WishList wishList = wishListRepository.findBySessionToken(sessionToken);
-		Product p = productService.getProductById(id);
-		Boolean productDoesExistInTheCart = false;
-		if(wishList != null) {
-			Set<WishListItem> items = wishList.getItems();
-			for(WishListItem item : items) {
-				if(item.getProduct().equals(p)) {
-					productDoesExistInTheCart = true;
-					break;
-				}
-			}
-		}
-		if(!productDoesExistInTheCart && (wishList != null)) {
-			WishListItem item1 = new WishListItem();
-			item1.setDate(new Date());
-			item1.setProduct(p);
-			wishList.getItems().add(item1);
-			return wishListRepository.saveAndFlush(wishList);
-		}
-		return null;
-	}
-	//Getting wish list accordingly to session token
-	public WishList getWishListBySessionToken(String sessionToken) {
-		return wishListRepository.findBySessionToken(sessionToken);
+		return repository.save(wishList);
 	}
 
-	//Removing item from the wish lsit
-	public WishList removeItemFromWishList(Long id, String sessionToken) {
-		WishList wishList = wishListRepository.findBySessionToken(sessionToken);
-		Set<WishListItem> items = wishList.getItems() ;
-		WishListItem item = null;
-		for(WishListItem item1 : items) {
-			if(item1.getId()==id) {
-				item = item1;
-			}
-		}
-		items.remove(item);
-		wishListItemRepository.delete(item);
-		wishList.setItems(items);
-		return wishListRepository.save(wishList);
+
+	public WishList addItem(Long wishListId, Long wishListItemId) {
+		WishList wishList = repository.findById(wishListId)
+				.orElseThrow(() -> new RuntimeException("WishList not found"));
+		Date time = new Date();
+		//item.setCart(cart);
+		//cart.setItems(null);
+		//CartItem item = cartItemRepository.findById(cartItemId).orElseThrow(() -> new RuntimeException("CartItem not found"));
+		WishListItem item =new WishListItem( time, productRepository.findById(wishListItemId).orElseThrow(() -> new RuntimeException("WishListItem not found")));
+		wishList.getItems().add(item);
+	
+		return repository.save(wishList);
 	}
-	//Clearing wish list
-	public void clearWishList(String sessionToken) {
-		WishList sh = wishListRepository.findBySessionToken(sessionToken);
-		wishListRepository.delete(sh);
+
+	public WishList removeItem(Long cartId, Long cartItem) {
+		WishList cart = repository.findById(cartId)
+				.orElseThrow(() -> new RuntimeException("Cart not found"));
+		WishListItem item = itemRepository.findById(cartItem).orElseThrow(() -> new RuntimeException("CartItem not found"));
+		cart.getItems().remove(item);
+		return repository.save(cart);
+	}
+	
+	public void deleteWishList(Long id) {
+		repository.deleteById(id);
+	}
+
+
+	public List<WishList> getAllWishLists() {
+		return repository.findAll();
+	}
+
+
+	public List<WishList> findByUserId(Long id) {
+		// TODO Auto-generated method stub
+		return repository.findByUserId(id);
+	}
+
+
+	public List<Cart> getAllWishListItems() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

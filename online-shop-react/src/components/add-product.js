@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProductService from "../services/product.service";
+import PhotoService from "../services/photo.service";
 import { useNavigate } from "react-router-dom";
 
 function AddProductForm() {
@@ -7,23 +8,15 @@ function AddProductForm() {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [categories, setCategories] = useState([]);
-  const [brand, setBrand] = useState(""); // Added brand state
-  const [brands, setBrands] = useState([]); // Added brands state
+  const [brand, setBrand] = useState("");
+  const [brands, setBrands] = useState([]);
   const [description, setDescription] = useState("");
-  const [photo, setPhoto] = useState("");
-  
+  const [photo, setPhoto] = useState(null); // Use null instead of an empty string for the photo state
   const navigate = useNavigate();
-
-  // Function to validate URL
-const isValidUrl = (url) => {
-  // Regular expression to validate URL
-  const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
-  return urlRegex.test(url);
-};
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const response = await ProductService.getCategories(); // Fetch categories from API
+      const response = await ProductService.getCategories();
       setCategories(response.data);
     };
     fetchCategories();
@@ -31,30 +24,39 @@ const isValidUrl = (url) => {
 
   useEffect(() => {
     const fetchBrands = async () => {
-      const response = await ProductService.getBrands(); // Fetch brands from API
+      const response = await ProductService.getBrands();
       setBrands(response.data);
     };
     fetchBrands();
   }, []);
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const product = {
-        name,
-        price,
-        category: category, //  Product object category 
-        brand: brand, //  Product object brand
-        description,
-        photo,
+      const photoResponse = await PhotoService.uploadProductPhoto(photo); // Upload the photo first
+      // const photoUrl = photoResponse.data.url; // Get the URL of the uploaded photo
+
+      const photosResponse = await PhotoService.getAllPhotos();
+      const photos = photosResponse.data;
+      const lastPhoto = photos[photos.length - 1];
+
+      const productData = {
+        name: name,
+        price: price,
+        category: category,
+        brand: brand,
+        description: description,
+        // photo: lastPhoto.id, // Use the URL of the uploaded photo in the product data
       };
-      await ProductService.createProduct(product);
+  
+      await ProductService.createProduct(productData); // Use the product data to create the product
+  
       navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
+
 
   return (
     <main>
@@ -97,7 +99,7 @@ const isValidUrl = (url) => {
           </select>
         </div>
         <div>
-          <label htmlFor="brand">Brand:</label> {/* Added brand select input */}
+          <label htmlFor="brand">Brand:</label>
           <select
             id="brand"
             name="brand"
@@ -122,26 +124,22 @@ const isValidUrl = (url) => {
           ></textarea>
         </div>
         <div>
-  <label htmlFor="photo">Image: (Only links to images: jpg,jpeg,png,gif)</label>
-  <input
-    id="photo"
-    name="photo"
-    value={photo}
-    type="url" /* Change input type to "url" to enforce URL validation */
-    pattern=".*\.(jpg|jpeg|png|gif)" /* Use "pattern" attribute with a regex to validate image file extensions */
-    onChange={(event) => {
-      const inputValue = event.target.value;
-      const isValidLink = isValidUrl(inputValue); // Add a function to validate URL
-      if (isValidLink || inputValue === "") {
-        setPhoto(inputValue);
-      }
-    }}
-  />
-</div>
+          <label htmlFor="photo">Image:</label>
+          <input
+            id="photo"
+            name="photo"
+            type="file"
+            accept=".jpg,.jpeg,.png,.gif"
+            onChange={(event) => {
+              const selectedFile = event.target.files[0];
+              setPhoto(selectedFile);
+            }}
+          />
+        </div>
         <button type="submit">Save Product</button>
       </form>
     </main>
   );
 }
 
-export default AddProductForm;
+export default AddProductForm

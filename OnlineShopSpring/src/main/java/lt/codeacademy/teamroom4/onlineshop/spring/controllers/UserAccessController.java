@@ -4,8 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,13 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.config.SecurityConfig;
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Role;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
-
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.*;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles;
+import lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles;
 
 import java.net.URISyntaxException;
 import java.util.List;
@@ -56,7 +53,11 @@ public class UserAccessController {
 	public User getUserById(@PathVariable Long id) {
 	    return userRepository.findById(id).orElseThrow();
 	}
-	
+	@GetMapping("/customers-by-role/{roleName}")
+	public List<User> getUserByRole(@PathVariable ERoles roleName) {
+		//Set<Role> role =  userRepository.findById(id).orElseThrow().getRoles();
+	    return userRepository.findAllByRole(roleName);
+	}
 	// Update an existing user
 	@PutMapping("/customer/{id}")
 	public User updateUser(@PathVariable Long id, @RequestBody User UpdatedUser) {

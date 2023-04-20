@@ -16,7 +16,7 @@ class ProductControllerTest {
 		 ProductService productService = mock(ProductService.class);
 		 ProductController productController = new ProductController();
 		 
-		 Product product = new Product((long)1, "Product 1", 10.0);
+		 Product product = new Product((long)1, "Product 1", 10.0, "Description");
 	     when(productService.getProductById((long)1)).thenReturn(product);
 	      
 	     Product result = productController.getProduct((long)1);

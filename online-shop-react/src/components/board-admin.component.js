@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import CustomersList from "./customers-list.component";
 
 const AdminBoard = () => {
   const navigate = useNavigate();
@@ -11,19 +10,50 @@ const AdminBoard = () => {
         {/* Render "Add New Product" button */}
         <h2>Product Controls</h2>
         <button
-          className="btn btn-primary"
-          onClick={() => navigate("/add-product")}
-        >
-          Add New Product
-        </button>
-        <button
           className="btn btn-info"
           onClick={() => navigate("/products")}
         >
           View All Products
         </button>
       </header>
-      <CustomersList/>
+      <h2>User Controls</h2>
+      <button
+          className="btn btn-warning"
+          onClick={() => navigate("/users")}
+        >
+          View All Users
+        </button>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/admins")}
+        >
+          View All Admins
+        </button>
+        <button
+          className="btn btn-success"
+          onClick={() => navigate("/servicemanagers")}
+        >
+          View All Service Managers
+        </button>
+        <button
+          className="btn btn-info"
+          onClick={() => navigate("/managers")}
+        >
+          View All Managers
+        </button>
+        <button
+          className="btn btn-danger"
+          onClick={() => navigate("/customers")}
+        >
+          View All Customers
+        </button>
+        <h2>Cart Controls</h2>
+        <button
+          className="btn btn-danger"
+          onClick={() => navigate("/carts")}
+        >
+          View All Carts
+        </button>
     </div>
   );
 };

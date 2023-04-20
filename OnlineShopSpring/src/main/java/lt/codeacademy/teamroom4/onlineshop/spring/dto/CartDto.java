@@ -1,8 +1,6 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.dto;
 
 import java.util.List;
-
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
 //DTO
 public class CartDto {
 	//DTO variables
