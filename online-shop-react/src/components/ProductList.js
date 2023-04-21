@@ -5,6 +5,7 @@ import WishListService from "../services/wishlist.service";
 import CartService from "../services/cart.service";
 import userService from "../services/user.service";
 import './css/product-list.css';
+import {useTranslation} from 'react-i18next';
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -143,9 +144,10 @@ function ProductList() {
     );
   };
   
+  const { t } = useTranslation();
   return (
     <main>
-      <h2 className="text-center">Products List:</h2>
+      <h2 className="text-center">{t('productList')}</h2>
       <ul className="list-unstyled row">
         {products.map((product) => (
           <li key={product.id} className="product-item col-md-6 col-lg-4 col-xl-3 mb-4">
@@ -153,11 +155,11 @@ function ProductList() {
               <img src={product.photo} alt={product.name} className="product-image img-fluid" />
             </div>
             <h3 className="product-name">{product.name}</h3>
-            <p>Description: {product.description}</p>
-            <p>Category: {product.category}</p>
-            <p>Brand: {product.brand}</p>
-            <p>Price: ${product.price}</p>
-            <p>Quantity in stock: ${product.quantity}</p>
+            <p>{t('description')}{product.description}</p>
+            <p>{t('category')} {product.category}</p>
+            <p>{t('brand')} {product.brand}</p>
+            <p>{t('price')}{product.price}</p>
+            <p>{t('quantitystock')}{product.quantity}</p>
             {product.productParameters.length > 0 && (
               <ul>
                 {product.productParameters.map((parameter) => (
@@ -170,7 +172,7 @@ function ProductList() {
               </ul>
             )}
             <label>
-              Quantity:
+            {t('quantity')}
               <input
                 type="number"
                 value={product.selectedQuantity}
@@ -184,13 +186,13 @@ function ProductList() {
               className="btn btn-success"
               onClick={() => handleAddToCart(product)}
             >
-              Add to Cart
+              {t('addtocart')}
             </button>
             <button
           className="btn btn-info"
           onClick={() => handleAddToWishlist(product)}
         >
-          Add to Wishlist
+          {t('addtowish')}
         </button>
           </li>
         ))}
