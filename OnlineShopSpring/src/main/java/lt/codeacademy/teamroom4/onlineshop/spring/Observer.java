@@ -66,12 +66,12 @@ public class Observer {
 
 	// Used to activate seed function
 
-	@EventListener
+	//@EventListener
 	public void seedRolesOnly(ContextRefreshedEvent event) {
 	 seedRole();
 
 	}
-	// @EventListener
+	 @EventListener
 	public void seed(ContextRefreshedEvent event) {
 		 //seedRole();
 		seedUserAdmin();
@@ -154,13 +154,13 @@ public class Observer {
 		//photoRepository.save(photo);
 		List<Product> product = List.of(
 //				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", categoryList.get(1),cpuParameterList),
-				new Product("RX 6400XT", AMD,"photo",  160, " 4gb gddr6 RX 6400XT gpu", null, GRAPHICS_CARDS,
+				new Product("RX 6400XT", AMD,"photo",  160, " 4gb gddr6 RX 6400XT gpu", (long)20, GRAPHICS_CARDS,
 						gpuParameterList, null),
-				new Product("GTX 1650 Super", NVIDIA,"photo",  220, "4 gb gddr6 GTX 1650 Super gpu", null, GRAPHICS_CARDS,
+				new Product("GTX 1650 Super", NVIDIA,"photo",  220, "4 gb gddr6 GTX 1650 Super gpu", (long)20, GRAPHICS_CARDS,
 						gpuParameterList, null),
-				new Product("4gb RAM", GOODRAM,"photo",  30, "4 gb ddr3 ram", null, LAPTOPS, gpuParameterList,
+				new Product("4gb RAM", GOODRAM,"photo",  30, "4 gb ddr3 ram", (long)20, LAPTOPS, gpuParameterList,
 						coupons.get(0)),
-				new Product("IntelI5", INTEL,  null, 200, "12 core cpu", null, PROCESSORS, gpuParameterList, null));
+				new Product("IntelI5", INTEL,  null, 200, "12 core cpu", (long)20, PROCESSORS, gpuParameterList, null));
 				//new Product("IntelI7", INTEL, null, 250, "16 core cpu", PROCESSORS, cpuParameterList),
 				//new Product("IntelI7", INTEL,  250, "16 core cpu", PROCESSORS, cpuParameterList,
 						//coupons.get(1)));

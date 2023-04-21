@@ -32,11 +32,11 @@ class CartItemTest {
 
 	@Test
 	void testGetQuantity() {
-		if(item.getQuantity() == 5) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
+		boolean ifTestpassed = true;
+		if(item.getQuantity() != 5) {
+			ifTestpassed=false;
 		}
+		assertTrue(ifTestpassed);
 	}
 
 	@Test
@@ -51,11 +51,15 @@ class CartItemTest {
 
 	@Test
 	void testGetSum() {
-		if(item.getSum() == 5) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
+		item.getProduct().setPrice(1);
+		boolean ifTestpassed = true;
+		if(item.getSum() != 5) {
+			ifTestpassed = false;
 		}
+		
+		assertTrue(ifTestpassed);
+
+		
 	}
 
 	@Test
