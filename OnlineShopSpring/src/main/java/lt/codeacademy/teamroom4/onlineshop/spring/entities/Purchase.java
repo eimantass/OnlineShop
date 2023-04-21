@@ -12,10 +12,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+//This class stores and handles purchase entity
 @Table(name="purchase")
 @Entity
 public class Purchase {
-	
+	//Purchase variables
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 @Column
@@ -26,7 +27,7 @@ public class Purchase {
 	@OneToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, orphanRemoval = true)
 	 @JoinColumn(name = "cart")
 	 Cart cart;
-	 
+	 //Constructors
 	public Purchase() {}
 	
 	public Purchase( Cart cart) {
@@ -48,7 +49,7 @@ public class Purchase {
 		this.id = id;
 		this.cart = cart;
 	}
-
+	//Getters/Setters
 	public Long getId() {
 		return id;
 	}
@@ -63,7 +64,9 @@ public class Purchase {
 	}
 
 	public void setPrice(double price) {
+		if(price !=0) {
 		this.price = price;
+		}
 	}
 
 	public Cart getCart() {
