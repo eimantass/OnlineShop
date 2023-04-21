@@ -19,26 +19,25 @@ import io.jsonwebtoken.MalformedJwtException;
 @SpringBootTest
 class JwtUtilsTest {
 	
-	@Value("${axios-post.app.jwtSecret}")
+	@Value("root")
     private String jwtSecret;
 
-	@Value("${axios-post.app.jwtExpirationMs}")
+	@Value("86400000")
     private int jwtExpirationMs;
 
-    @Autowired
-    private JwtUtils jwtUtils;
+ 
 
-    @InjectMocks
+    //@InjectMocks
     @Autowired
     private JwtUtils jwtUtil;
     @Autowired
     private String jwtToken;
-    
+    @Autowired
     private Authentication authentication;
 
 	@Test
 	void testGetUserNameFromJwtToken() {
-		 when(jwtUtils.getUserNameFromJwtToken(jwtToken)).thenReturn("testuser");
+		 when(jwtUtil.getUserNameFromJwtToken(jwtToken)).thenReturn("testuser");
 	     String username = jwtUtil.getUserNameFromJwtToken(jwtToken);
 	     assertEquals(username, "testuser");
 	    
