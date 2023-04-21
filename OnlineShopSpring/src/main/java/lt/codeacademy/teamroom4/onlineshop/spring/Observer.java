@@ -25,6 +25,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CategoryRepositor
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CouponRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.PhotoRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListItemRepository;
@@ -42,7 +43,8 @@ public class Observer {
 	MoneyGenerator moneyGenerator = new MoneyGenerator();
 
 	// Autowiring repositories
-
+	@Autowired
+	RoleRepository roleRepository;
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
@@ -64,10 +66,14 @@ public class Observer {
 
 	// Used to activate seed function
 
-	 @EventListener
+	@EventListener
+	public void seedRolesOnly(ContextRefreshedEvent event) {
+	 seedRole();
 
+	}
+	// @EventListener
 	public void seed(ContextRefreshedEvent event) {
-		
+		 //seedRole();
 		seedUserAdmin();
 		seedUserCustomer();
 		seedUserManager();
@@ -81,7 +87,17 @@ public class Observer {
 	//	seedCart();
 		
 	}
+	 private void seedRole() {
+			List<Role> role = List.of(
+					new Role(CUSTOMER),
+					new Role(ADMIN),
+					new Role(MANAGER),
+					new Role(SERVICEMANAGER)
+					);
 
+			roleRepository.saveAll(role);
+
+		}
 
 	// Seeding users and products
 
