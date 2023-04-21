@@ -65,5 +65,16 @@
 "termshead1": "KAINOS IR PVM",
 "termsbody1": "Nurodomos kainos puslapyje turi įskaičiuotus PVM. \n Taip pat yra įmonėms perkant su PVM mokėtojo kodu.",
 "termshead2": "VIETOS TEISĖS IR NUOSTATOS",
-"termsbody2": "Kiekviena šalis turi savo įstatymus. Kai užsisakai iš šio puslapio, \n sutinki, kad tu esi atsakingas už toprodukto importavimą \n į siunčiamą šalį arba regioną.Puslapis nėra atsakingas jei produktas yra konfiskuotas."
+"termsbody2": "Kiekviena šalis turi savo įstatymus. Kai užsisakai iš šio puslapio, \n sutinki, kad tu esi atsakingas už toprodukto importavimą \n į siunčiamą šalį arba regioną.Puslapis nėra atsakingas jei produktas yra konfiskuotas.",
+
+"Shippinghead": "SIUNTIMAS IR SIUNTIMO KAINOS",
+"Shippingbody": "Mes laikomu produktus (grupes pavadinimas) grupės sandėlyje Vilniuje, Lietuvoje. Kiekvienas produktas puslapis turi idikatorių, kuris rodo kiek liko sandėlyje, ar galima siųsti. Užsakymai yra siunčiami naudojant (Siuntimo paslauga1) arba (siuntimo paslauga2), kurie perduoda siuntinius vietiniams paštininkams.",
+
+"contacts": "Susisiekimas telefonu",
+"contnumber1": "+370-471-87654",
+"contnumber2": "+370-471-87655",
+"contnumber3": "+370-471-87656",
+
+"contactsel": "Susisiekimas el. paštu",
+"contantmail": "manager@managergeneral.com"
 }
