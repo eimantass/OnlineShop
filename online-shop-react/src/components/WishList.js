@@ -54,45 +54,61 @@ function WishList() {
       console.log(error);
     }
   }
+//Remove whole wish list
 
-  async function handleRemoveWishList(wishListId) {
-    try {
-      await WishListService.deleteWishListById(wishListId);
-      const newWishLists = wishLists.filter((wishList) => wishList.id !== wishListId);
-      setWishLists(newWishLists);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // async function handleRemoveWishList(wishListId) {
+  //   try {
+  //     await WishListService.deleteWishListById(wishListId);
+  //     const newWishLists = wishLists.filter((wishList) => wishList.id !== wishListId);
+  //     setWishLists(newWishLists);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   // render the list of wish lists
   return (
-    <div>
-      {wishLists.length > 0 ? (
-        wishLists.map((wishList) => (
-          <div key={wishList.id}>
-            <h2>WishList Id: {wishList.id}</h2>
-            <button onClick={() => handleRemoveWishList(wishList.id)}>Remove Wishlist</button>
-            <p>User Id: {wishList.user.id}</p>
-            <ul>
-              {wishList.items.map((item) => (
-                <li key={item.id}>
-                     <img src={item.product.photo} alt={item.product.name} />
-                  <h3>{item.product.name}</h3>
-                 
-                  <p>Price: {item.product.price}</p>
-                  <button onClick={() => handleRemoveItem(wishList.id, item.id)}>Remove Item</button>
-                </li>
-              ))}
-            </ul>
-        
-            
-          </div>
-        ))
-      ) : (
-        <h2>No active Wish Lists for current user!</h2>
-      )}
+<div className="container">
+  {wishLists.length > 0 ? (
+    wishLists.map((wishList) => (
+      <div key={wishList.id} className="my-4">
+        <div className="col-12 text-center">
+        <h2 className="mb-3">Your Wish List</h2>
+        </div>
+        {/* Remove wishlist button */}
+        {/* <button onClick={() => handleRemoveWishList(wishList.id)}>Remove Wishlist</button> */}
+        <div className="row">
+          {wishList.items.length > 0 ? (
+            wishList.items.map((item) => (
+              <div key={item.id} className="col-md-4">
+                <div className="card">
+                  <img src={item.product.photo} alt={item.product.name} className="card-img-top" />
+                  <div className="card-body">
+                    <h5 className="card-title">{item.product.name}</h5>
+                    <p className="card-text">Category: {item.product.category}</p>
+                    <p className="card-text">Brand: {item.product.brand}</p>
+                    <p className="card-text">Quantity in stock: {item.product.quantity}</p>
+                    <p className="card-text">Price: {item.product.price}</p>
+                    <p className="card-text">Description: {item.product.description}</p>
+                    <button onClick={() => handleRemoveItem(wishList.id, item.id)} className="btn btn-danger">Remove from Wish List</button>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="col-12 text-center">
+              <h3>No items in this Wish List!</h3>
+            </div>
+          )}
+        </div>
+      </div>
+    ))
+  ) : (
+    <div className="col-12 text-center">
+    <h2>No active Wish Lists for current user!</h2>
     </div>
+  )}
+</div>
   );
 }
 
