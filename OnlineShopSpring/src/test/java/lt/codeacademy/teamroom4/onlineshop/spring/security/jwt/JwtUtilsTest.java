@@ -6,15 +6,18 @@ import static org.mockito.Mockito.when;
 import java.security.SignatureException;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.Authentication;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
-
+//@RunWith(SpringRunner.class)
+@SpringBootTest
 class JwtUtilsTest {
 	
 	@Value("${jwt.secret}")
