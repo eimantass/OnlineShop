@@ -174,19 +174,7 @@ public class Product {
 		this.price = price;
 	}
 	
-	public Product(String name, Brands brand, String photo, double price, String description,
-			Long quantity, Categories category, Set<ProductParameters> productParameters, Coupon discount) {
-		super();
-		this.name = name;
-		this.discount = discount;
-		this.brand = brand;
-		this.photo = photo;
-		this.price = price;
-		this.description = description;
-		this.quantity = quantity;
-		this.category = category;
-		this.productParameters = productParameters;
-	}
+
 
 	//Product getters/setters
 	public Product(Set<ProductParameters> productParameters) {
