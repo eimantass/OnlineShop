@@ -137,21 +137,27 @@ function ProductCart() {
                   <img src={item.product.photo} alt={item.product.name} className="card-img-top" />
                   <div className="card-body">
                     <h5 className="card-title">{item.product.name}</h5>
-                    <p className="card-text">Price: {item.product.price}</p>
-                    <p className="card-text">Total: {item.sum}</p>
+                    <p className="card-text"><b>Category:</b> {item.product.category}</p>
+                    <p className="card-text"><b>Brand:</b> {item.product.brand}</p>
+                    <p className="card-text"><b>Price:</b> {item.product.price}</p>
+                    <p className="card-text"><b>Description:</b> {item.product.description}</p>
+                    <p className="card-text"><b>Quantity in stock:</b> {item.product.quantity}</p>
+                    <p className="card-text"><b>Price:</b> {item.product.price}</p>
                     <label>
                       Quantity:
                       <input type="number" value={item.quantity} 
                         onChange={(event) => handleUpdateQuantity(cart.id, item.id, event.target.value)} min="1" max="10" />
                     </label>
                     <button onClick={() => handleRemoveItem(cart.id, item.id)} className="btn btn-danger">Remove Item</button>
+                    <br></br>
+                    <p className="card-text"><b>Total: {item.sum} </b> </p>
                   </div>
                 </div>
               </div>
             ))
           ) : (
             <div className="col-12 text-center">
-              <h2>No products in the cart yet</h2>
+              <h2>No products in the cart yet!</h2>
             </div>
           )}
         </div>
