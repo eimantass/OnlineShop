@@ -112,18 +112,14 @@
 "graphicsList": "Vaizdo ploksciu sarasas",
 "laptopList": "Nesiojamuju kompiuteriu sarasas",
 "processorList": "Procesoriu sarasas",
-"productList":"Prekiu sarasas",
-"description":"Aprasymas:",
 "category":"Kategorija:",
 "brand":"Prekės ženklas:",
 "price":"Kaina:",
 "quantitystock":"Kiekis sandėlyje: ",
 "quantity":"Kiekis:",
 "addtocart": "Pridėti į krepšelį",
-"addtowish": "Pridėti į norų sarašą"
+"addtowish": "Pridėti į norų sarašą",
 
-
-"addtowish": "Prideti i noru sarasa",
 
 "wishList": "Jusu megstamos prekes",
 "noitemswish": "Nera pridetu prekiu",
