@@ -130,19 +130,21 @@ class App extends Component {
             {showAdminBoard && (
               <li className="nav-item">
                 <Link to={"/admin"} className="nav-link">
-                {t('adminB')}
+                {t('adminb')}
                 </Link>
               </li>
             )}
 
-            {currentUser && (
+{/* Moved customerboard to Profile functions */}
+
+            {/* {currentUser && (
               <li className="nav-item">
                 <Link to={"/customer"} className="nav-link">
                 {t('customerB')}
                 </Link>
               </li>
               
-            )}
+            )} */}
         
             {currentUser && (
               <li className="nav-item">

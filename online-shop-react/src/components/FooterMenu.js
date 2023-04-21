@@ -18,7 +18,6 @@ function FooterMenu() {
           <li><Link to="/returns">{t('returns')}</Link></li>
           <li><Link to="/warranty">{t('warranty')}</Link></li>
           <li><Link to="/privacy">{t('privacy')}</Link></li>
-          <li><Link to="/feedback">{t('feedback')}</Link></li>
           <li><Link to="/help">{t('help')}</Link></li>
         </ul>
       </nav>

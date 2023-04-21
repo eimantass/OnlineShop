@@ -67,8 +67,8 @@ const UserControlPanel = () => {
 
   return (
     <div className="table-container">
-      <Link to="/customer" className="btn btn-primary">
-        Back to Customer Board
+      <Link to="/profile" className="btn btn-primary">
+        Back to Profile
       </Link>
 
       <br></br>

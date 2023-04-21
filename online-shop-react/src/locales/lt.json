@@ -67,6 +67,18 @@
 "termshead2": "VIETOS TEISĖS IR NUOSTATOS",
 "termsbody2": "Kiekviena šalis turi savo įstatymus. Kai užsisakai iš šio puslapio, \n sutinki, kad tu esi atsakingas už toprodukto importavimą \n į siunčiamą šalį arba regioną.Puslapis nėra atsakingas jei produktas yra konfiskuotas.",
 
+
+
+"vadcontacts": "Vadybininkai:",
+"vadnumber1": "Tel.: +370-471-87654",
+"vadnumber2": "Mob.: +370-471-87655",
+"vadelp": "Vadybininkų el.p.: ",
+"vademail": "Person@place.lt, Person2@place.lt, Person3@place.lt",
+
+"intuž": "Internetinių užsakymų vadybininkų el. p.:",
+"intužvadelp": "Person4@place.lt, Person5@place.lt",
+"intužvadtlf": "Tel.: +370-471-87656",
+
 "shiphead1": "SIUNTIMAS IR SIUNTIMO KAINOS",
 "shipbody1": "Mes laikomu produktus (grupes pavadinimas) grupės sandėlyje Vilniuje, Lietuvoje. \n Kiekvienas produktas puslapis turi idikatorių, kuris rodo kiek liko sandėlyje, ar galima siųsti. \n  Užsakymai yra siunčiami naudojant (Siuntimo paslauga1) arba (siuntimo paslauga2), \n  kurie perduoda siuntinius vietiniams paštininkams.",
 "shiphead2": "KAINOS IR PVM",
@@ -118,6 +130,7 @@
 "quantitystock":"Kiekis sandėlyje: ",
 "quantity":"Kiekis:",
 "addtocart": "Prideti i krepseli",
+
 "addtowish": "Prideti i noru sarasa",
 
 "wishList": "Jusu megstamos prekes",

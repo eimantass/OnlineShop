@@ -50,7 +50,8 @@ const SearchpageT = () => {
     const updatedList = products.filter(products => products.name.includes(query)
     || products.description.includes(query)
     || products.category.includes(query)
-    || products.brand.includes(query));
+    || products.brand.includes(query)
+    || products.photo.includes(query));
 
     //console.log("updateList worked");         
 
