@@ -17,8 +17,10 @@ function ProductList() {
     async function fetchData() {
       try {
         const response = await ProductService.getAllProducts();
-        // Set default selected quantity to 1
-        const productsWithQuantity = response.data.map(product => ({ ...product, selectedQuantity: 1 }));
+        const productsWithQuantity = response.data.map(product => ({
+          ...product,
+          selectedQuantity: product.quantity > 0 ? 1 : 0
+        }));
         setProducts(productsWithQuantity);
       } catch (error) {
         console.log(error);
@@ -80,51 +82,39 @@ function ProductList() {
   };
 
   const handleAddToCart = async (product) => {
-
     if (!currentUser) {
-      // Redirect the user to the login page if not logged in
       navigate("/login");
       return;
     }
-
+  
+    const confirmed = window.confirm(`Are you sure you want to add ${product.name} to your cart?`);
+  
+    if (!confirmed) {
+      return;
+    }
+  
     try {
       const currentUser = JSON.parse(localStorage.getItem('user'));
-      // get all active carts of the user
-      let carts = await CartService.GetActiveCarts(currentUser.id);
-      // If user doesnt have an active cart - create it
+      const carts = await CartService.GetActiveCarts(currentUser.id);
+  
+      let cart;
+      let cartMessage;
+  
       if (!carts || carts.length === 0) {
-        carts = await CartService.createCartByUserId(currentUser.id);
-        setCartMessage("Cart created successfully!");
+        cart = await CartService.createCartByUserId(currentUser.id);
+        cartMessage = "Cart created successfully!";
       } else {
-        setCartMessage("You already have an active cart!");
+        carts.sort((a, b) => b.createdAt - a.createdAt);
+        cart = carts[0];
+        cartMessage = "You already have an active cart!";
       }
-      // Check again for active carts as per userID
-      let carts2 = await CartService.GetActiveCarts(currentUser.id);
-
-    // Sort the carts by createdAt field in descending order
-      carts2 = carts2.sort((a, b) => {
-      if (a.createdAt > b.createdAt) return -1;
-      if (a.createdAt < b.createdAt) return 1;
-      return 0;
-    });
-    // We select the latest active cart we get from carts list of the user and assign it
-    let cart;
-    cart = carts2[0];
-
-    // Construct the data to be sent in the request body
-    // JUST FOR DEBUGGING 
-    const data = {
-      productId: product.id,
-      quantity: product.selectedQuantity,
-      cartId: cart.id
-    };
-    
-    await CartService.addItemToCart(cart.id, product.id, product.selectedQuantity);
-    // Message to user, that item was added to cart
-    alert(`Product ${product.name} has been added to your cart.`);
-
-    console.debug("Sending JSON Cart: ", cart.id, product.id, product.selectedQuantity);
-
+  
+      await CartService.addItemToCart(cart.id, product.id, product.selectedQuantity);
+  
+      alert(`Product ${product.name} has been added to your cart.`);
+      console.debug("Sending JSON Cart: ", cart.id, product.id, product.selectedQuantity);
+  
+      setCartMessage(cartMessage);
     } catch (error) {
       console.log(error);
     }
@@ -175,8 +165,8 @@ function ProductList() {
                 type="number"
                 value={product.selectedQuantity}
                 onChange={(e) => handleQuantityChange(product, parseInt(e.target.value))}
-                min={1}
-                max={10}
+                min={0}
+                max={product.quantity}
                 className="form-control"
               />
             </label>
