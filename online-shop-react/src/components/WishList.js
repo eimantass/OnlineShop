@@ -75,6 +75,8 @@ function WishList() {
         <div className="col-12 text-center">
         <h2 className="mb-3">Your Wish List</h2>
         </div>
+        {/* Remove wishlist button */}
+        {/* <button onClick={() => handleRemoveWishList(wishList.id)}>Remove Wishlist</button> */}
         <div className="row">
           {wishList.items.length > 0 ? (
             wishList.items.map((item) => (

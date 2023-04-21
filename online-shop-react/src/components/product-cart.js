@@ -123,40 +123,49 @@ function ProductCart() {
   // render the list of carts
   return (
     <div>
-      {carts.length > 0 ? (
-        carts.map((cart) => (
-          <div key={cart.id}>
-            <h2>Cart Id: {cart.id}</h2>
-            <button onClick={() => handleRemoveCart(cart.id)}>Remove Cart</button>
-            <p>User Id: {cart.user.id}</p>
-            <ul>
-              {cart.items.map((item) => (
-                <li key={item.id}>
-                  <h3>{item.product.name}</h3>
-                  <img src={item.product.photo} alt={item.product.name} />
-                  <label>
+  {carts.length > 0 ? (
+    carts.map((cart) => (
+      <div key={cart.id}>
+        <div className="col-12 text-center">
+        <h2 className="mb-3">Your Cart</h2>
+        </div>
+        <div className="row">
+          {cart.items.length > 0 ? (
+            cart.items.map((item) => (
+              <div key={item.id} className="col-md-4">
+                <div className="card">
+                  <img src={item.product.photo} alt={item.product.name} className="card-img-top" />
+                  <div className="card-body">
+                    <h5 className="card-title">{item.product.name}</h5>
+                    <p className="card-text">Price: {item.product.price}</p>
+                    <p className="card-text">Total: {item.sum}</p>
+                    <label>
                       Quantity:
                       <input type="number" value={item.quantity} 
-                      onChange={(event) => handleUpdateQuantity(cart.id, item.id, event.target.value)} min="1" max="10" />
+                        onChange={(event) => handleUpdateQuantity(cart.id, item.id, event.target.value)} min="1" max="10" />
                     </label>
-                  <p>Price: {item.product.price}</p>
-                  <p>Total: {item.sum}</p>
-                  <button onClick={() => handleRemoveItem(cart.id, item.id)}>Remove Item</button>
-                </li>
-              ))}
-            </ul>
-            <h3>Total Price: {cart.totalPrice}</h3>
-            {currentUser && <h3>Your Wallet: {customerData.money}</h3>}
-            {/* <button onClick={handlePurchase}>Purchase</button> */}
-            <button className="btn btn-primary btn-lg" type="button" onClick={handlePurchase}>
-                        Purchase
-                                  </button>
-          </div>
-        ))
-      ) : (
-        <h2>No active carts for current user!</h2>
-      )}
-    </div>
+                    <button onClick={() => handleRemoveItem(cart.id, item.id)} className="btn btn-danger">Remove Item</button>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="col-12 text-center">
+              <h2>No products in the cart yet</h2>
+            </div>
+          )}
+        </div>
+        <h3>Total Price: {cart.totalPrice}</h3>
+        {currentUser && <h3>Your Wallet: {customerData.money}</h3>}
+        <button className="btn btn-primary btn-lg" type="button" onClick={handlePurchase}>
+          Purchase
+        </button>
+      </div>
+    ))
+  ) : (
+    <h2>No active carts for current user!</h2>
+  )}
+</div>
   );
 }
 
