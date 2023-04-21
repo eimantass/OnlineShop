@@ -5,7 +5,7 @@ import CheckButton from "react-validation/build/button";
 
 import AuthService from "../services/auth.service";
 
-import { withTranslation } from 'react-i18next';
+import { withRouter } from '../common/with-router';
 
 const required = value => {
   if (!value) {
@@ -82,7 +82,6 @@ class Login extends Component {
   }
 
   render() {
-    const { t } = this.props;
     return (
       <div className="col-md-12">
         <div className="card card-container">
@@ -99,7 +98,7 @@ class Login extends Component {
             }}
           >
             <div className="form-group">
-              <label htmlFor="username">{t('username')}</label>
+              <label htmlFor="username">Username</label>
               <Input
                 type="text"
                 className="form-control"
@@ -111,7 +110,7 @@ class Login extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="password">{t('password')}</label>
+              <label htmlFor="password">Password</label>
               <Input
                 type="password"
                 className="form-control"
@@ -130,7 +129,7 @@ class Login extends Component {
                 {this.state.loading && (
                   <span className="spinner-border spinner-border-sm"></span>
                 )}
-                <span>{t('login')}</span>
+                <span>Login</span>
               </button>
             </div>
 
@@ -154,4 +153,4 @@ class Login extends Component {
   }
 }
 
-export default withTranslation()(Login);
+export default withRouter(Login);
