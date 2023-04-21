@@ -89,25 +89,25 @@ function ProductList() {
 
     try {
       const currentUser = JSON.parse(localStorage.getItem('user'));
-      // get all carts of the user
-      let carts = await CartService.getAllCartsByUserId(currentUser.id);
-      // If user doesnt have a cart - create it
+      // get all active carts of the user
+      let carts = await CartService.GetActiveCarts(currentUser.id);
+      // If user doesnt have an active cart - create it
       if (!carts || carts.length === 0) {
         carts = await CartService.createCartByUserId(currentUser.id);
         setCartMessage("Cart created successfully!");
       } else {
         setCartMessage("You already have an active cart!");
       }
-      // Check again for carts as per userID
-      let carts2 = await CartService.getAllCartsByUserId(currentUser.id);
+      // Check again for active carts as per userID
+      let carts2 = await CartService.GetActiveCarts(currentUser.id);
 
     // Sort the carts by createdAt field in descending order
-    carts2 = carts2.sort((a, b) => {
+      carts2 = carts2.sort((a, b) => {
       if (a.createdAt > b.createdAt) return -1;
       if (a.createdAt < b.createdAt) return 1;
       return 0;
     });
-    // We select the latest cart we get from carts list of the user and assign it
+    // We select the latest active cart we get from carts list of the user and assign it
     let cart;
     cart = carts2[0];
 
