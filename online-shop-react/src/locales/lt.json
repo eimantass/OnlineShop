@@ -49,11 +49,11 @@
 "values3": "Atvirumas- mes visuomet išklausome klientų ir partnerių pastabas ir pastebėjimus. Į \n juos atsižvelgiame ir tobulėjame.",
 
 "helpphone": "Pagalba telefonu",
-"{t('helpnumber1')}": "+370-472-84596 - pagalba prekių klausimais, lizingo sudarymo klausimais.",
-"{t('helpnumber2')}": "+370-472-84597 - pagalba el. parduotuves užsakymų klausimais.",
-"{t('helpnumber3')}": "+370-472-84598 - pagalba garantinio ir pogarantinio aptarnavimo klausimais. Stacionariu ir nešiojamų kompiuterių atnaujinimas, servisas.",
-"{t('helpnumber4')}": "+370-472-84599 - pagalba viešujų prikimų klausimais.",
-"{t('helpnumber5')}": "+370-472-84600 - 'Vietos' parduotuves ir bendri klausimai",
+"helpnumber1": "+370-472-84596 - pagalba prekių klausimais, lizingo sudarymo klausimais.",
+"helpnumber2": "+370-472-84597 - pagalba el. parduotuves užsakymų klausimais.",
+"helpnumber3": "+370-472-84598 - pagalba garantinio ir pogarantinio aptarnavimo klausimais. Stacionariu ir nešiojamų kompiuterių atnaujinimas, servisas.",
+"helpnumber4": "+370-472-84599 - pagalba viešujų prikimų klausimais.",
+"helpnumber5": "+370-472-84600 - 'Vietos' parduotuves ir bendri klausimai",
 
 "helpemail": "Pagalba el.paštu",
 "helpemail1": "manager@manager.com - pagalba prekių klausimais, lizingo sudarymo klausimais.",
@@ -65,5 +65,39 @@
 "termshead1": "KAINOS IR PVM",
 "termsbody1": "Nurodomos kainos puslapyje turi įskaičiuotus PVM. \n Taip pat yra įmonėms perkant su PVM mokėtojo kodu.",
 "termshead2": "VIETOS TEISĖS IR NUOSTATOS",
-"termsbody2": "Kiekviena šalis turi savo įstatymus. Kai užsisakai iš šio puslapio, \n sutinki, kad tu esi atsakingas už toprodukto importavimą \n į siunčiamą šalį arba regioną.Puslapis nėra atsakingas jei produktas yra konfiskuotas."
+"termsbody2": "Kiekviena šalis turi savo įstatymus. Kai užsisakai iš šio puslapio, \n sutinki, kad tu esi atsakingas už toprodukto importavimą \n į siunčiamą šalį arba regioną.Puslapis nėra atsakingas jei produktas yra konfiskuotas.",
+
+"shiphead1": "SIUNTIMAS IR SIUNTIMO KAINOS",
+"shipbody1": "Mes laikomu produktus (grupes pavadinimas) grupės sandėlyje Vilniuje, Lietuvoje. \n Kiekvienas produktas puslapis turi idikatorių, kuris rodo kiek liko sandėlyje, ar galima siųsti. \n  Užsakymai yra siunčiami naudojant (Siuntimo paslauga1) arba (siuntimo paslauga2), \n  kurie perduoda siuntinius vietiniams paštininkams.",
+"shiphead2": "KAINOS IR PVM",
+"shipbody2": " Nurodomos kainos puslapyje turi įskaičiuotus PVM. \n Taip pat yra įmonėms perkant su PVM mokėtojo kodu.",
+"shiphead3": "VIETOS TEISĖS IR NUOSTATOS",
+"shipbody3": "Kiekviena šalis turi savo įstatymus. Kai užsisakai iš šio puslapio, \n sutinki,kad tu esi atsakingas už to produkto importavimą į siunčiamą šalį \n  arba regioną.Puslapis nėra atsakingas jei produktas yra konfiskuotas.",
+
+"returnhead1": "GRAŽINIMAS IR PINIGŲ GRAŽINIMAS",
+"returnhead2": "30 Dienų Garantuotas Pinigų Gražinimas",
+"returnbody1": "Mes garantuojame jūsų patenkinimą su visais puslapyje esančiais produktais. \n Bet kokiu metu galite atšaukti užsakymą ir atgauti savo pinigus iki 30 dienų po produkto \n gavimo. Gali būti grąžinamos tik nenaudotos prekės originalioje pakuotėje, \n kad būtų grąžinti visi pinigai.",
+"returnbody2": "Kad gražintumėte mums užsakymą, prašome pirma susisiekti su mumis \n el. paštu: manager@manager.com, kad galėtume atsiųsti jums supakavimo ir siuntimo instrukcijas.\n Mes gražinsime pinigus tokiu pačiu būdu, kokiu pirkote (kortele, elektronine bankininkyste, ...). \n Gausite pinigus nepraėjus 14 dienų po.",
+"returnbody3": "PASTABA: 30 Dienu pinigų gražinimo garantija netaikoma produktams, \n kurie buvo panaudoti arba pažeisti.",
+
+"warrantyhead1": "Pažeistos arba brokuotos prekės",
+"warrantybody1": "Jei jūs gavote pažeista arba brokuota prekę, mes ja pakeisime arba \n grąžinsime pinigus. Brokuotų prekių grąžinimo/keitimo išlaidas padengsime mes.",
+"warrantybody2": "Visoms mūsų parduotuvėje parduodamoms prekėmis suteikiama bent 1 metų\n garantija, nebent jei nurodyta kitaipties prekės aprašymu.",
+"warrantybody3": "Norėdami gražinti prekes susisiekite su mumis elektroniniu paštu, kad \n mes galėtume išsiųsti jums pakavimo ir pristatymoinstrukcijas. Pinigus mes gražinsime, \n pagal pirkimo metodą(kortele, grynais).Pinigų grąžinimas atliekamas per 14 dienų po grąžinimo.",
+
+"privacyhead1": "Privatumo politika ThisPageGroup",
+"privacyhead2": "Mūsų serveriouse saugoma tik ta informacija, kuri yra reikalinga, pirkimams ir su jais susijusioms funkcijoms atlikti.",
+"privacyhead3": "Mūsų renkami duomenis",
+"privacyhead4": "Užsakant prekes mūsų tinklapyje mums reikia jūsų duomenų, kad galėtume užbaigti \n pirkimą and išiųstume prekes į jūsų adresą.Taip pat, mums reikalingi jūsų kontaktiniai \n duomenis, kad galėtume susisiekti su jumis iškylus problemomis su užsakymais, taip pat \n saugomeslapukus, kad palengvinti prisijungimą prie sistemos.",
+"privacyhead5": "Mūsų renkama asmeninė informacija:",
+"privacylist1": "Telefono numeris",
+"privacylist2": "Siuntimo adresas",
+"privacylist3": "EL. pašto adresas",
+"privacylist4": "Pirkimo metodas",
+"privacylist5": "Pirkimo istorija",
+"privacylist6": "Mes mūsų pirkėjams suteikiama teisę pasirinkti, kuria informacija pateikti.",
+"privacybody1": "Asmeninės informacijos pasiekiamumas ir keitimas",
+"privacybody2": "Jei jūs turite klausimų, dėl mūsų privatumo politikos arba prieigos prie jos,pageidaujate \n asmeninės informacijos pakeitimo arba ištrinimo, galite susiekti su mumis. \n Siekiant išvengti neteisėto duomenų pasisavinimo, mes galime jūsų paprašyti tapatybės įrodymo.",
+"privacybody3": "Su mumis galite susisiekti šiuo numeriu +370 411 515 446",
+"privacybody4": "Arba elektroniniu paštu manager@manager.com"
 }
