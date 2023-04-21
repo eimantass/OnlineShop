@@ -104,6 +104,7 @@ public class ProductController {
 			product.setPrice(updatedProduct.getPrice());
 			product.setQuantity(updatedProduct.getQuantity());			product.setDescription(updatedProduct.getDescription());
 			product.setPhoto(updatedProduct.getPhoto());
+			product.setQuantity(updatedProduct.getQuantity());
 			product.setDiscount(updatedProduct.getDiscount());
 			Product savedProduct = productRepository.save(product);
 			log.info(null);

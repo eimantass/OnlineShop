@@ -46,8 +46,9 @@ function ManagerProductList() {
           <th>Name</th>
           <th>Brand</th>
           <th>Price</th>
+          <th style={{ textAlign: 'center' }}>Quantity in Stock</th>
           <th>Description</th>
-          <th>Parameters</th>
+          {/* <th>Parameters</th> */}
           <th>Actions</th>
         </tr>
       </thead>
@@ -58,14 +59,15 @@ function ManagerProductList() {
             <td>{product.name}</td>
             <td>{product.brand}</td>
             <td>{product.price}</td>
+            <td style={{ textAlign: 'center' }}>{product.quantity}</td>
             <td>{product.description}</td>
-            <td>
+            {/* <td>
               {product.productParameters.map((parameter) => (
                 <p key={parameter.id}>
                   {parameter.name}: {parameter.description}
                 </p>
               ))}
-            </td>
+            </td> */}
             <td>
               <button
                 className="btn btn-primary mr-2"
