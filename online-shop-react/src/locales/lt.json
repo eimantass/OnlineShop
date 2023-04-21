@@ -67,18 +67,6 @@
 "termshead2": "VIETOS TEISĖS IR NUOSTATOS",
 "termsbody2": "Kiekviena šalis turi savo įstatymus. Kai užsisakai iš šio puslapio, \n sutinki, kad tu esi atsakingas už toprodukto importavimą \n į siunčiamą šalį arba regioną.Puslapis nėra atsakingas jei produktas yra konfiskuotas.",
 
-
-
-"vadcontacts": "Vadybininkai:",
-"vadnumber1": "Tel.: +370-471-87654",
-"vadnumber2": "Mob.: +370-471-87655",
-"vadelp": "Vadybininkų el.p.: ",
-"vademail": "Person@place.lt, Person2@place.lt, Person3@place.lt",
-
-"intuž": "Internetinių užsakymų vadybininkų el. p.:",
-"intužvadelp": "Person4@place.lt, Person5@place.lt",
-"intužvadtlf": "Tel.: +370-471-87656",
-
 "shiphead1": "SIUNTIMAS IR SIUNTIMO KAINOS",
 "shipbody1": "Mes laikomu produktus (grupes pavadinimas) grupės sandėlyje Vilniuje, Lietuvoje. \n Kiekvienas produktas puslapis turi idikatorių, kuris rodo kiek liko sandėlyje, ar galima siųsti. \n  Užsakymai yra siunčiami naudojant (Siuntimo paslauga1) arba (siuntimo paslauga2), \n  kurie perduoda siuntinius vietiniams paštininkams.",
 "shiphead2": "KAINOS IR PVM",
@@ -136,5 +124,35 @@
 "wishList": "Jusu megstamos prekes",
 "noitemswish": "Nera pridetu prekiu",
 "noactivewish":"Turite buti prisijunge, kad matytumete sarasa!",
-"removefromwish" : "Istrinti is saraso"
+"removefromwish" : "Istrinti is saraso",
+
+"profile": "Paskyra",
+"id": "Identifikavimo numeris:",
+"email1": "El. pastas:",
+"number": "Tel. numeris:",
+"authorities": "Teises:",
+"money": "Saskaita:",
+"editUser":"Readaguoti paskyra",
+
+"password1": "Slaptazodis:",
+"update": "Readaguoti",
+"back":"Grizti atgal",
+"updateform": "Vartotojo readagavimo forma",
+
+"removeitem": "Istrinti preke",
+"yourCart": "Jusu krepselis",
+"total": "Is viso:",
+"totalprice": "Galutine suma:",
+"wallet": "Jusu pinigine:",
+"purchase": "Pirkti",
+
+"vadcontacts": "Vadybininkai:",
+"vadnumber1": "Tel.: +370-471-87654",
+"vadnumber2": "Mob.: +370-471-87655",
+"vadelp": "Vadybininkų el.p.: ",
+"vademail": "Person@place.lt, Person2@place.lt, Person3@place.lt",
+
+"intuž": "Internetinių užsakymų vadybininkų el. pastas",
+"intužvadelp": "Person4@place.lt, Person5@place.lt",
+"intužvadtlf": "Tel.: +370-471-87656"
 }
