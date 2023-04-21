@@ -173,8 +173,6 @@ public class Product {
 		this.name = name;
 		this.price = price;
 	}
-	
-
 
 	//Product getters/setters
 	public Product(Set<ProductParameters> productParameters) {

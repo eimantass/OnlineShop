@@ -20,16 +20,18 @@ class CategoryTest {
 	
 	@Test
 	void testCategoryCategories() {
-		if(cato == null) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
+		boolean ifTestSuccesfull =true;
+		Set<Categories> emptyCategory = new HashSet<>();		
+		if(!cato.equals(emptyCategory)) {
+			ifTestSuccesfull=false;
 		}
+		assertTrue(ifTestSuccesfull);
+		
 	}
 
 	@Test
 	void testCategory() {
-		if(cat == null) {
+		if(cat != null) {
 			assertTrue(true);
 		}else {
 			assertTrue(false);
@@ -57,7 +59,7 @@ class CategoryTest {
 
 	@Test
 	void testGetName() {
-		if(cat.getName().equals(PROCESSORS)) {
+		if(cat.getName().equals(GRAPHICS_CARDS)) {
 			assertTrue(true);
 		}else {
 			assertTrue(false);

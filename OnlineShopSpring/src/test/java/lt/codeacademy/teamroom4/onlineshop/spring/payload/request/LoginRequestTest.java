@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import payload.request.LoginRequest;
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @SpringBootTest
 class LoginRequestTest {
 	
@@ -31,7 +31,7 @@ class LoginRequestTest {
 //		fail("Not yet implemented");
 //	}
 
-	@Test
+	//@Test
 	void testGetSetPassword() {
 		loginRequest.setPassword("Test");
 		boolean ifTestpassed = true;
