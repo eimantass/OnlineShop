@@ -100,11 +100,15 @@ class App extends Component {
     return (
       <>
       <div>
+
         <nav className="navbar navbar-expand navbar-dark bg-dark">
+
         <Link to={"/"} className="navbar-brand">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM5GgYJWQI9E0nPyj1XpO3VfQdkBEyCia-2g&usqp=CAU" alt="WebPage" style={{ width: "60px", height: "60px" }}/>
-  </Link>
+        </Link>
+
           <div className="navbar-nav mr-auto">
+
             <li className="nav-item">
               <Link to={"/home"} className="nav-link">
               {t('home')}
@@ -145,40 +149,48 @@ class App extends Component {
               </li>
               
             )} */}
-        
-            {currentUser && (
-              <li className="nav-item">
+              {currentUser && (
+              <li className="nav-item ml-auto">
                 <Link to={"/cart"} className="nav-link">
-                 {t('productC')}
+                <img src="https://cdn.iconscout.com/icon/free/png-512/shopping-cart-452-1163339.png" alt="Cart" style={{ width: "30px", height: "30px", filter: "invert(23%) sepia(100%) saturate(7457%) hue-rotate(357deg) brightness(111%) contrast(116%)" }} />
+                  {t('productC')}
                 </Link>
               </li>
-            )}
-
-            {currentUser && (
-              <li className="nav-item">
-                <Link to={"/wishlist"} className="nav-link">
-                {t('wish')}
-                </Link>
-              </li>
-            )}
-
+              )}
+        
+        {currentUser && (
+  <li className="nav-item">
+    <Link to={"/wishlist"} className="nav-link">
+      <img src="https://cdn.iconscout.com/icon/free/png-512/heart-1767836-1502416.png" alt="Wishlist" style={{ width: "30px", height: "30px", filter: "invert(23%) sepia(100%) saturate(7457%) hue-rotate(357deg) brightness(111%) contrast(116%)" }} />
+      {t('wish')}
+    </Link>
+  </li>
+)}
           </div>
 
+          {/* Current user can see these menus */}
           {currentUser ? (
             <div className="navbar-nav ml-auto">
+
               <li className="nav-item">
                 <Link to={"/profile"} className="nav-link">
                   {currentUser.username}
                 </Link>
               </li>
+
               <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={this.logOut}>
                 {t('logout')}
                 </a>
               </li>
+
             </div>
+
           ) : (
+
+            // Only guest can see
             <div className="navbar-nav ml-auto">
+
               <li className="nav-item">
                 <Link to={"/login"} className="nav-link">
                 {t('login')}
@@ -190,7 +202,9 @@ class App extends Component {
                 {t('signup')}
                 </Link>
               </li>
+
             </div>
+
           )}
         </nav>
 
