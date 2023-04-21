@@ -101,8 +101,16 @@
 "privacybody1": "Accessing and changing your data",
 "privacybody2": "If you have any questions regarding our privacy policy or questions about access to, \n changes made to (or removal of) your personal data,you can contact us at any time via \n the information listed below.To prevent abuse we may ask you to identify yourself \n adequately.We want to prevent anyone from having control over your personal \n information.It is best to submit your request by email.",
 "privacybody3": "Want to talk to an actual human being? Please contact our customer service department on working days at +370 411 515 446",
-"privacybody4": "Prefer to send us an email? Send an email to manager@manager.com."
+"privacybody4": "Prefer to send us an email? Send an email to manager@manager.com.",
 
-
+"productList":"Product List",
+"description":"Description:",
+"category":"Category:",
+"brand":"Brand:",
+"price":"Price:",
+"quantitystock":"Quantity in stock: $",
+"quantity":"Quantity:",
+"addtocart": "Add to Cart",
+"addtowish": "Add to Wishlist"
 
 }
