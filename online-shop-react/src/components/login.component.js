@@ -6,10 +6,6 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../services/auth.service";
 
-
-import { withRouter } from '../common/with-router';
-
-
 const required = value => {
   if (!value) {
     return (
@@ -125,4 +121,4 @@ const Login = ({ t }) => {
   );
 };
 
-export default withRouter(Login);
+export default withTranslation()(Login);
