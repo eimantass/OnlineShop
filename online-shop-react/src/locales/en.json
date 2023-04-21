@@ -48,7 +48,7 @@
 "values2": "Honesty- We are reliable and trustable. We expect the same from our business partners and customers.",
 "values3": "Frankness- we always listen to our customer and business partners observations and React accordingly.",
 
-"helpphone": "You can contact us with the following  numbers:",
+"helpphone": "You can contact us with the following numbers:",
 "{t('helpnumber1')}": "+370-472-84596 - help regarding product questions, leasing.",
 "{t('helpnumber2')}": "+370-472-84597 -help regarding electronic shop orders.",
 "{t('helpnumber3')}": "+370-472-84598 - help regarding warranty service.",
@@ -65,5 +65,16 @@
 "termshead1": "PRICES AND VAT",
 "termsbody1": "Prices listed on our website include VAT.Depending on the destination \n of the parcel the VAT will be deducted in the checkout. \n The same applies when ordering as a company with a valid VAT number.",
 "termshead2": "LOCAL LAWS AND REGULATIONS",
-"termsbody2": "Every country has its own laws when it comes to knives and other items. \n When you order from 'PageName' you agree to being fully accountable for importing the ordered \n item(s) to the country of destination.'PageName' is not liable when and if items are confiscated by authorities."
+"termsbody2": "Every country has its own laws when it comes to knives and other items. \n When you order from 'PageName' you agree to being fully accountable for importing the ordered \n item(s) to the country of destination.'PageName' is not liable when and if items are confiscated by authorities.",
+
+"Shippinghead": "SHIPPING AND SHIPPING COSTS",
+"Shippingbody": "We keep stock at our groups Group's local warehouse in Place, the Country. Every product has a stock label indicating if a product is in stock and ready for shipment or not. Orders will be shipped with Shipping service1 and Shipping service2 (who hand our parcels over to local mail carriers).",
+
+"contacts": "Contact by phone",
+"contnumber1": "+370-471-87654",
+"contnumber2": "+370-471-87655",
+"contnumber3": "+370-471-87656",
+
+"contactsel": "Contact by e-mail",
+"contantmail": "manager@managergeneral.com"
 }
