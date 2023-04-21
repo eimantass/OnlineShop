@@ -34,5 +34,36 @@
 
 "username": "Vartojo vardas",
 "password": "Slaptazodis",
-"email": "El.pastas"
+"email": "El.pastas",
+
+"aboutMain": " UAB 'Pavadinimas' yra naujas kompiuterinės ir skaitmeninės technikos prekybos tinklas Lietuvoje.\n Šis puslapis sukurtas 4 žmonių: Eimantas Kiseliovas, Dmitrij Uzun, Viliaus Daugėla, Lauynas Davidavičius. \n Šio puslapio prasmė džiuginti pirkėjus bene mažiausiomis kainomis, didžiuliu prekių asortimentu. \n Mes džiaugiamės, kad kažkam suteikėme galimybę mėgautis savo pirmuoju kompiuteriu. \n Yra ir tokių, kurie džiaugiasi per tą laiką pakeitę penkis, šešis ar septynis kompiuterius. \n Vėl grįžtantys žmonės geriausias mūsų darbo įvertinimas!  ",
+"vision": "Vizija:",
+"visionBody": "Tapti populiariausiu kompiuterinės ir skaitmeninės technikos prekybos tinklu Lietuvoje.",
+"mission": "Misija:",
+"missionBody": "Sukaupta patirtis leido optimizuoti turimą infrastruktūrą taip, kad minimaliausiais \n kaštais galėtume suteikti visapusiškai profesionalias paslaugas bene mažiausiomis \n rinkos kainomis. UAB 'Pavadinimas' daugeliui asocijuojasi su maža kaina, individualia \n prieiga prie pageidaujamų poreikių ir patikimumu.",
+"goals": "Tikslai: ",
+"goalsBody": "Užtikrinti didžiausią stalinių ir nešiojamų kompiuterių asortimentą savo parduotuvėse. \n Stengtis užtikrinti geriausias rinkos kainas.Kiekvieną klientą ir partnerį vertinti kaip \n individualius poreikius turintį subjektą.Suteikti visapusiškai profesionalų aptarnavimą.",
+"values": "Vertybės:",
+"values1": "Profesionalumas- mūsų komandoje dirba tik kvalifikuoti savo srities profesionalai, \n kurie nuolatos tobulina savo žinias gebėjimus ir įgūdžius įvairiuose seminaruose ir \n apmokymuose.",
+"values2": "Sąžiningumas- mes esame sąžiningi ir patikimi. To paties tikimės ir iš savo partnerių ir \n klientų.",
+"values3": "Atvirumas- mes visuomet išklausome klientų ir partnerių pastabas ir pastebėjimus. Į \n juos atsižvelgiame ir tobulėjame.",
+
+"helpphone": "Pagalba telefonu",
+"{t('helpnumber1')}": "+370-472-84596 - pagalba prekių klausimais, lizingo sudarymo klausimais.",
+"{t('helpnumber2')}": "+370-472-84597 - pagalba el. parduotuves užsakymų klausimais.",
+"{t('helpnumber3')}": "+370-472-84598 - pagalba garantinio ir pogarantinio aptarnavimo klausimais. Stacionariu ir nešiojamų kompiuterių atnaujinimas, servisas.",
+"{t('helpnumber4')}": "+370-472-84599 - pagalba viešujų prikimų klausimais.",
+"{t('helpnumber5')}": "+370-472-84600 - 'Vietos' parduotuves ir bendri klausimai",
+
+"helpemail": "Pagalba el.paštu",
+"helpemail1": "manager@manager.com - pagalba prekių klausimais, lizingo sudarymo klausimais.",
+"helpemail2": " manager@manager.com - pagalba el. parduotuves užsakymų klausimais. ",
+"helpemail3": " manager@manager.com - pagalba garantinio ir pogarantinio aptarnavimo klausimais. Stacionariu ir nešiojamų kompiuterių atnaujinimas, servisas.",
+"helpemail4": "manager@manager.com - pagalba viešujų prikimų klausimais.",
+"helpemail5": "manager@manager.com - 'Vietos' parduotuves ir bendri klausimai",
+
+"termshead1": "KAINOS IR PVM",
+"termsbody1": "Nurodomos kainos puslapyje turi įskaičiuotus PVM. \n Taip pat yra įmonėms perkant su PVM mokėtojo kodu.",
+"termshead2": "VIETOS TEISĖS IR NUOSTATOS",
+"termsbody2": "Kiekviena šalis turi savo įstatymus. Kai užsisakai iš šio puslapio, \n sutinki, kad tu esi atsakingas už toprodukto importavimą \n į siunčiamą šalį arba regioną.Puslapis nėra atsakingas jei produktas yra konfiskuotas."
 }
