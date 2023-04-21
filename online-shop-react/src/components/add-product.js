@@ -114,18 +114,21 @@ function AddProductForm() {
         ></textarea>
       </div>
       <div>
-        <label htmlFor="photo">Photo:</label>
-        <input
-          type="text"
-          id="photo"
-          name="photo"
-          value={photo}
-          onChange={(event) => setPhoto(event.target.value)}
-        />
-      </div>
+  <label htmlFor="photo">Image: (Only links to images: jpg,jpeg,png,gif) </label>
+  <input
+    id="photo"
+    type="url" /* Change input type to "url" to enforce URL validation */
+    name="photo"
+    value={photo}
+    pattern=".*\.(jpg|jpeg|png|gif)" /* Use "pattern" attribute with a regex to validate image file extensions */
+    onChange={(event) => setPhoto(event.target.value)}
+    required /* Add "required" attribute to make the input mandatory */
+  />
+</div>
       <button type="submit">Save Product</button>
     </form>
   </main>
+
 );
 }
 export default AddProductForm;

@@ -56,8 +56,6 @@ function UpdateProduct() {
     
   };
 
-  
-
   return (
     <main>
       <h2 className="center">Update Product:</h2>
@@ -104,7 +102,16 @@ function UpdateProduct() {
   ))}
                </select>
         </div>
-
+        <div>
+          <label htmlFor="quantity">Quantity in Stock:</label>
+          <input
+            id="quantity"
+            type="number"
+            name="quantity"
+            value={product.quantity || ''}
+            onChange={handleInputChange}
+          />
+        </div>
         <div>
           <label htmlFor="price">Price:</label>
           <input
