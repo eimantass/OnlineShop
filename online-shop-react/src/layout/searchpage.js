@@ -5,13 +5,13 @@ import './css/Customers.css';
 import { useNavigate } from "react-router-dom";
 import ProductService from "../services/product.service";
 
+
+
 const SearchpageT = () => {
 
   const {val} = useParams();
   const [products, setProducts] = useState([]);
   const [productsNEW, setProductsNEW] = useState([]);
-  const navigate = useNavigate();
-
   useEffect(() => {
     async function fetchData() {
       try {
