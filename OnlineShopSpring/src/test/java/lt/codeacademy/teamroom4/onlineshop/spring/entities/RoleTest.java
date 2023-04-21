@@ -16,20 +16,21 @@ class RoleTest {
 	
 	List<Role> roles = List.of(new Role(ADMIN), new Role(CUSTOMER), new Role(MANAGER), new Role(SERVICEMANAGER));
 	Role role = new Role(1, ADMIN);
-	Set<ERoles> eroles = new HashSet<>();
+	Set<ERoles> eroles = Set.of(ADMIN,CUSTOMER,MANAGER,SERVICEMANAGER);
+			//new HashSet<>();
 
 	@Test
 	void testRole() {
+		boolean ifTestSuccesfull =true;
 		if(role == null) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
+			ifTestSuccesfull = false;
 		}
+			assertTrue(ifTestSuccesfull);
 	}
 
 	@Test
 	void testRoleERoles() {
-		if(eroles == null) {
+		if(eroles.contains(ADMIN)&&eroles.contains(CUSTOMER)&&eroles.contains(MANAGER)&&eroles.contains(SERVICEMANAGER)) {
 			assertTrue(true);
 		}else {
 			assertTrue(false);
@@ -57,11 +58,14 @@ class RoleTest {
 
 	@Test
 	void testGetName() {
-		if(role.getName().equals(MANAGER)) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
+		boolean ifTestSuccesfull =true;
+
+		if(!role.getName().equals(ADMIN)) {
+			ifTestSuccesfull = false;
+
 		}
+		assertTrue(ifTestSuccesfull);
+
 	}
 
 	@Test

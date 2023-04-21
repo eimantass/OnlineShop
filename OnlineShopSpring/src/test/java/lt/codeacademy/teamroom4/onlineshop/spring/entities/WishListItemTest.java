@@ -13,11 +13,12 @@ class WishListItemTest {
 	
 	@Test
 	void testWishListItem() {
+		boolean ifTestSuccesfull =true;
 		if(item == null) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
+			ifTestSuccesfull = false;
 		}
+		assertTrue(ifTestSuccesfull);
+
 	}
 
 	@Test
@@ -51,27 +52,32 @@ class WishListItemTest {
 
 	@Test
 	void testSetDate() {
+		Boolean ifTestSuccesfull = true;
+		Date testDate =new Date();
 		item.setDate(new Date());
-		if(item.getDate().equals(time)) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
-		}
+		if(!item.getDate().equals(testDate)) {
+			ifTestSuccesfull = false;
+			}
+	
+			assertTrue(ifTestSuccesfull);
 	}
 
 	@Test
 	void testGetProduct() {
+		boolean ifTestSuccesfull =true;
+		
 		if(item.getProduct() == null) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
+			ifTestSuccesfull=false;
 		}
+		assertTrue(ifTestSuccesfull);
+
 	}
 
 	@Test
 	void testSetProduct() {
-		item.setProduct(new Product());
-		if(item.getProduct() == new Product()) {
+		Product product = new Product();
+		item.setProduct(product);
+		if(item.getProduct() == product) {
 			assertTrue(true);
 		}else {
 			assertTrue(false);

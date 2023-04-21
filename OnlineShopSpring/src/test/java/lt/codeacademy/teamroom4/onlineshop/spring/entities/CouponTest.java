@@ -9,7 +9,7 @@ class CouponTest {
 	Coupon cpn = new Coupon((long)2, 30, false);
 	@Test
 	void testGetId() {
-		if(cpn.getId().equals((long)1)) {
+		if(cpn.getId().equals((long)2)) {
 			assertTrue(true);
 		}else {
 			assertTrue(false);
@@ -28,11 +28,12 @@ class CouponTest {
 
 	@Test
 	void testCoupon() {
-		if(cpn == null) {
-			assertTrue(true);
-		}else {
-			assertTrue(false);
-		}
+		boolean ifTestSuccesfull =true;
+
+		if(cpn.getDiscount() != 30) {
+			ifTestSuccesfull=false;}
+			assertTrue(ifTestSuccesfull);
+
 	}
 
 	@Test
@@ -48,7 +49,7 @@ class CouponTest {
 	@Test
 	void testCouponLongIntBoolean() {
 		if( 
-			cpn.getId().equals((long)3) &&
+			cpn.getId().equals((long)2) &&
 			cpn.getDiscount() == 30) {
 			assertTrue(true);
 		}else {
