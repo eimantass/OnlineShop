@@ -26,9 +26,6 @@ const SearchpageT = () => {
     fetchData();
   }, []);
 
-  const handleAddProduct = () => {
-    navigate('/add-product');
-  };
 
   const handleEditProduct = async (id) => {
     navigate(`/update-product/${id}`);
@@ -66,8 +63,6 @@ const SearchpageT = () => {
 <main>
       <h2> </h2>
       <h2 className="center">Products List containing {val}:</h2>
-      {/* The add product button   */}
-      <button onClick={handleAddProduct}>Add Product</button>
       {/* Products List from Repository */}
       {/*<FilterItem/>*/}
 
@@ -80,6 +75,7 @@ const SearchpageT = () => {
             <p>Category: {product.category}</p>
             <p>Brand: {product.brand}</p>
             <p>Price: ${product.price}</p>
+            <p>Quantity in stock: ${product.quantity}</p>
             {product.productParameters.length > 0 && (
               <ul>
                 {product.productParameters.map((parameter) => (
@@ -91,12 +87,6 @@ const SearchpageT = () => {
                 ))}
               </ul>
             )}
-            <button onClick={() => handleRemoveProduct(product.id)}>
-              Remove
-            </button>
-            <button onClick={() => handleEditProduct(product.id)}>
-              Edit
-            </button>
           </li>
         ))}
       </ul>

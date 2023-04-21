@@ -5,6 +5,7 @@ import WishListService from "../services/wishlist.service";
 import CartService from "../services/cart.service";
 import userService from "../services/user.service";
 import './css/product-list.css';
+import {useTranslation} from 'react-i18next';
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -89,25 +90,25 @@ function ProductList() {
 
     try {
       const currentUser = JSON.parse(localStorage.getItem('user'));
-      // get all carts of the user
-      let carts = await CartService.getAllCartsByUserId(currentUser.id);
-      // If user doesnt have a cart - create it
+      // get all active carts of the user
+      let carts = await CartService.GetActiveCarts(currentUser.id);
+      // If user doesnt have an active cart - create it
       if (!carts || carts.length === 0) {
         carts = await CartService.createCartByUserId(currentUser.id);
         setCartMessage("Cart created successfully!");
       } else {
         setCartMessage("You already have an active cart!");
       }
-      // Check again for carts as per userID
-      let carts2 = await CartService.getAllCartsByUserId(currentUser.id);
+      // Check again for active carts as per userID
+      let carts2 = await CartService.GetActiveCarts(currentUser.id);
 
     // Sort the carts by createdAt field in descending order
-    carts2 = carts2.sort((a, b) => {
+      carts2 = carts2.sort((a, b) => {
       if (a.createdAt > b.createdAt) return -1;
       if (a.createdAt < b.createdAt) return 1;
       return 0;
     });
-    // We select the latest cart we get from carts list of the user and assign it
+    // We select the latest active cart we get from carts list of the user and assign it
     let cart;
     cart = carts2[0];
 
@@ -134,15 +135,19 @@ function ProductList() {
     setProducts((prevProducts) =>
       prevProducts.map((prevProduct) =>
         prevProduct.id === product.id
-          ? { ...prevProduct, selectedQuantity: newQuantity }
+          ? {
+              ...prevProduct,
+              selectedQuantity: newQuantity > prevProduct.quantity ? prevProduct.quantity : newQuantity,
+            }
           : prevProduct
       )
     );
   };
   
+  const { t } = useTranslation();
   return (
     <main>
-      <h2 className="text-center">Products List:</h2>
+      <h2 className="text-center">{t('productList')}</h2>
       <ul className="list-unstyled row">
         {products.map((product) => (
           <li key={product.id} className="product-item col-md-6 col-lg-4 col-xl-3 mb-4">
@@ -150,10 +155,11 @@ function ProductList() {
               <img src={product.photo} alt={product.name} className="product-image img-fluid" />
             </div>
             <h3 className="product-name">{product.name}</h3>
-            <p>Description: {product.description}</p>
-            <p>Category: {product.category}</p>
-            <p>Brand: {product.brand}</p>
-            <p>Price: ${product.price}</p>
+            <p>{t('description')}{product.description}</p>
+            <p>{t('category')} {product.category}</p>
+            <p>{t('brand')} {product.brand}</p>
+            <p>{t('price')}{product.price}</p>
+            <p>{t('quantitystock')}{product.quantity}</p>
             {product.productParameters.length > 0 && (
               <ul>
                 {product.productParameters.map((parameter) => (
@@ -166,7 +172,7 @@ function ProductList() {
               </ul>
             )}
             <label>
-              Quantity:
+            {t('quantity')}
               <input
                 type="number"
                 value={product.selectedQuantity}
@@ -180,13 +186,13 @@ function ProductList() {
               className="btn btn-success"
               onClick={() => handleAddToCart(product)}
             >
-              Add to Cart
+              {t('addtocart')}
             </button>
             <button
           className="btn btn-info"
           onClick={() => handleAddToWishlist(product)}
         >
-          Add to Wishlist
+          {t('addtowish')}
         </button>
           </li>
         ))}

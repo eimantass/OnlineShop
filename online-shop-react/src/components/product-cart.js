@@ -15,7 +15,7 @@ function ProductCart() {
     async function fetchData() {
       try {
         const user = JSON.parse(localStorage.getItem('user'));
-        const carts = await CartService.getAllCartsByUserId(user.id);
+        const carts = await CartService.GetActiveCarts(user.id);
         setCarts(carts);
       } catch (error) {
         console.log(error);
@@ -79,21 +79,28 @@ function ProductCart() {
 
   async function handlePurchase() {
     const user = JSON.parse(localStorage.getItem('user'));
-      const carts = await CartService.getAllCartsByUserId(user.id);
+      const carts = await CartService.GetActiveCarts(user.id);
       const sortedCarts = carts.sort((a, b) => new Date(b.date) - new Date(a.date));
       const lastCart = sortedCarts[0];
     try {
       // Check if the customer has enough money to make the purchase
-      if (customerData.money < carts.reduce((sum, cart) => sum + cart.totalPrice, 0)) {
-        // if not enough, then alert the customer with this message:
-        alert("Not enough money to make the purchase!");
-        return;
-      }
+  const totalPrice = carts.reduce((sum, cart) => sum + cart.totalPrice, 0);
+  if (totalPrice === 0) {
+    // if no products selected, then alert the customer with this message:
+    alert("No products selected!");
+    return;
+  }
+  if (customerData.money < totalPrice) {
+    // if not enough, then alert the customer with this message:
+    alert("Not enough money to make the purchase!");
+    return;
+  }
 
       // Create a new purchase for cart
-
       PurchaseService.createPurchase(customerData.id, lastCart.id)
       .then((data) => {
+        alert("Purchase successful");
+        window.location.reload();
         console.log("Purchase successful");
         // handle success
       })
@@ -105,22 +112,7 @@ function ProductCart() {
       // create a new cart for user
       
       await CartService.createCartByUserId(customerData.id);
-      
-      // await PurchaseService.createPurchase(purchase);
-      
-      // Update the customer's money balance and fetch the updated customer data
 
-      // await UserService.updateCustomerMoney(currentUser.id, customerData.money - carts.reduce((sum, cart) => sum + cart.totalPrice, 0));
-      // const updatedCustomerData = (await UserService.getCustomerByIdMethod(currentUser.id)).data;
-      // setCustomerData(updatedCustomerData);
-  
-      // Clear the cart state
-
-      // setCarts([]);
-  
-      // Display success message
-
-      //setContent("Purchase successful!");
 
     } catch (error) {
       console.log(error);
@@ -131,40 +123,59 @@ function ProductCart() {
   // render the list of carts
   return (
     <div>
-      {carts.length > 0 ? (
-        carts.map((cart) => (
-          <div key={cart.id}>
-            <h2>Cart Id: {cart.id}</h2>
-            <button onClick={() => handleRemoveCart(cart.id)}>Remove Cart</button>
-            <p>User Id: {cart.user.id}</p>
-            <ul>
-              {cart.items.map((item) => (
-                <li key={item.id}>
-                  <h3>{item.product.name}</h3>
-                  <img src={item.product.photo} alt={item.product.name} />
-                  <label>
+  {carts.length > 0 ? (
+    carts.map((cart) => (
+      <div key={cart.id}>
+        <div className="col-12 text-center">
+        <h2 className="mb-3">Your Cart</h2>
+        </div>
+        <div className="row">
+          {cart.items.length > 0 ? (
+            cart.items.map((item) => (
+              <div key={item.id} className="col-md-4">
+                <div className="card">
+                  <img src={item.product.photo} alt={item.product.name} className="card-img-top" />
+                  <div className="card-body">
+                    <h5 className="card-title">{item.product.name}</h5>
+                    <p className="card-text"><b>Category:</b> {item.product.category}</p>
+                    <p className="card-text"><b>Brand:</b> {item.product.brand}</p>
+                    <p className="card-text"><b>Price:</b> {item.product.price}</p>
+                    <p className="card-text"><b>Description:</b> {item.product.description}</p>
+                    <p className="card-text"><b>Quantity in stock:</b> {item.product.quantity}</p>
+                    <p className="card-text"><b>Price:</b> {item.product.price}</p>
+                    <label>
                       Quantity:
                       <input type="number" value={item.quantity} 
-                      onChange={(event) => handleUpdateQuantity(cart.id, item.id, event.target.value)} min="1" max="10" />
+                        onChange={(event) => handleUpdateQuantity(cart.id, item.id, event.target.value)} min="1" max="10" />
                     </label>
-                  <p>Price: {item.product.price}</p>
-                  <p>Total: {item.sum}</p>
-                  <button onClick={() => handleRemoveItem(cart.id, item.id)}>Remove Item</button>
-                </li>
-              ))}
-            </ul>
-            <h3>Total Price: {cart.totalPrice}</h3>
-            {currentUser && <h3>Your Wallet: {customerData.money}</h3>}
-            {/* <button onClick={handlePurchase}>Purchase</button> */}
-            <button className="btn btn-primary btn-lg" type="button" onClick={handlePurchase}>
-                        Purchase
-                                  </button>
-          </div>
-        ))
-      ) : (
-        <h2>No active carts for current user!</h2>
-      )}
-    </div>
+                    <button onClick={() => handleRemoveItem(cart.id, item.id)} className="btn btn-danger">Remove Item</button>
+                    <br></br>
+                    <p className="card-text"><b>Total: {item.sum} </b> </p>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="col-12 text-center">
+              <h2>No products in the cart yet!</h2>
+            </div>
+          )}
+        </div>
+        <h3>Total Price: {cart.totalPrice}</h3>
+        {currentUser && <h3>Your Wallet: {customerData.money}</h3>}
+        <button className="btn btn-primary btn-lg" type="button" onClick={() => {
+          if (window.confirm('Are you sure you want to purchase these items?')) {
+            handlePurchase();
+          }
+        }}>
+          Purchase
+        </button>
+      </div>
+    ))
+  ) : (
+    <h2>No active carts for current user!</h2>
+  )}
+</div>
   );
 }
 

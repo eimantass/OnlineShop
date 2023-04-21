@@ -86,6 +86,29 @@ static async GetAllCarts() {
   }
 }
 
+// Get active carts by userID
+static async GetActiveCarts(userId) {
+  try {
+    const response = await axios.get(`${CART_API_URL}/activeCartByUserId/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to load user active carts");
+  }
+}
+
+// Get inactive carts by userID
+static async GetInactiveCarts(userId) {
+  try {
+    const response = await axios.get(`${CART_API_URL}/inactiveCartByUserId/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to load user inactive carts");
+  }
+}
+
+
 }
 
 export default CartService;
