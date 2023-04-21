@@ -35,7 +35,7 @@ public class Cart {
 	@JoinColumn(name = "Cart")
 	private List<CartItem> items = new ArrayList<>();
 	@Column
-	Boolean ifActiveCart;
+	Boolean ifActiveCart=true;
 	
 
 	public Cart() {

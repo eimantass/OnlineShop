@@ -15,7 +15,7 @@ function ProductCart() {
     async function fetchData() {
       try {
         const user = JSON.parse(localStorage.getItem('user'));
-        const carts = await CartService.getAllCartsByUserId(user.id);
+        const carts = await CartService.GetActiveCarts(user.id);
         setCarts(carts);
       } catch (error) {
         console.log(error);
@@ -79,21 +79,28 @@ function ProductCart() {
 
   async function handlePurchase() {
     const user = JSON.parse(localStorage.getItem('user'));
-      const carts = await CartService.getAllCartsByUserId(user.id);
+      const carts = await CartService.GetActiveCarts(user.id);
       const sortedCarts = carts.sort((a, b) => new Date(b.date) - new Date(a.date));
       const lastCart = sortedCarts[0];
     try {
       // Check if the customer has enough money to make the purchase
-      if (customerData.money < carts.reduce((sum, cart) => sum + cart.totalPrice, 0)) {
-        // if not enough, then alert the customer with this message:
-        alert("Not enough money to make the purchase!");
-        return;
-      }
+  const totalPrice = carts.reduce((sum, cart) => sum + cart.totalPrice, 0);
+  if (totalPrice === 0) {
+    // if no products selected, then alert the customer with this message:
+    alert("No products selected!");
+    return;
+  }
+  if (customerData.money < totalPrice) {
+    // if not enough, then alert the customer with this message:
+    alert("Not enough money to make the purchase!");
+    return;
+  }
 
       // Create a new purchase for cart
-
       PurchaseService.createPurchase(customerData.id, lastCart.id)
       .then((data) => {
+        alert("Purchase successful");
+        window.location.reload();
         console.log("Purchase successful");
         // handle success
       })
@@ -105,22 +112,7 @@ function ProductCart() {
       // create a new cart for user
       
       await CartService.createCartByUserId(customerData.id);
-      
-      // await PurchaseService.createPurchase(purchase);
-      
-      // Update the customer's money balance and fetch the updated customer data
 
-      // await UserService.updateCustomerMoney(currentUser.id, customerData.money - carts.reduce((sum, cart) => sum + cart.totalPrice, 0));
-      // const updatedCustomerData = (await UserService.getCustomerByIdMethod(currentUser.id)).data;
-      // setCustomerData(updatedCustomerData);
-  
-      // Clear the cart state
-
-      // setCarts([]);
-  
-      // Display success message
-
-      //setContent("Purchase successful!");
 
     } catch (error) {
       console.log(error);
