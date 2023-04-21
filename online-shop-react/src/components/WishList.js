@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import WishListService from "../services/wishlist.service";
 import UserService from "../services/user.service";
 import './css/product-list.css';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
+import CartService from "../services/cart.service";
 
 function WishList() {
   const [wishLists, setWishLists] = useState([]);
   const [customerData, setCustomerData] = useState([]);
+  const [cartMessage, setCartMessage] = useState("");
   const currentUser = JSON.parse(localStorage.getItem('user'));
+  const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     async function fetchData() {
@@ -36,7 +41,6 @@ function WishList() {
     }
   }, []);
 
-
   async function handleRemoveItem(wishListId, itemId) {
     try {
       await WishListService.removeItemFromWishList(wishListId, itemId);
@@ -55,6 +59,38 @@ function WishList() {
       console.log(error);
     }
   }
+
+  async function handleAddToCart(productId, quantity) {
+    if (currentUser) {
+      try {
+
+        const carts = await CartService.GetActiveCarts(currentUser.id);
+  
+      let cart;
+      let cartMessage;
+  
+      if (!carts || carts.length === 0) {
+        cart = await CartService.createCartByUserId(currentUser.id);
+        cartMessage = "Cart created successfully!";
+      } else {
+        carts.sort((a, b) => b.createdAt - a.createdAt);
+        cart = carts[0];
+        cartMessage = "You already have an active cart!";
+      }
+        const response = await CartService.addItemToCart(cart.id, productId, quantity);
+        setCartMessage(response.data.message);
+        console.debug("Sending JSON: ", cart.id, quantity, currentUser.id);
+        
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      // redirect to login page if the user is not logged in
+      navigate("/login");
+    }
+
+    
+  }
 //Remove whole wish list
 
   // async function handleRemoveWishList(wishListId) {
@@ -68,7 +104,7 @@ function WishList() {
   // }
 
   // render the list of wish lists
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   return (
 <div className="container">
   {wishLists.length > 0 ? (
@@ -93,6 +129,45 @@ function WishList() {
                     <p className="card-text">{t('price')} {item.product.price}</p>
                     <p className="card-text">{t('description')} {item.product.description}</p>
                     <button onClick={() => handleRemoveItem(wishList.id, item.id)} className="btn btn-danger">{t('removefromwish')}</button>
+                    <div className="input-group mt-2">
+                      <input
+                        type="number"
+                        className="form-control"
+                        placeholder={t('quantity')}
+                        value={item.quantity}
+                        min="1"
+                        max={item.product.quantity}
+                        onChange={(e) => {
+                          const updatedQuantity = e.target.value;
+                          const updatedItems = wishList.items.map((wishListItem) => {
+                            if (wishListItem.id === item.id) {
+                              return {
+                                ...wishListItem,
+                                quantity: updatedQuantity
+                              };
+                            }
+                            return wishListItem;
+                          });
+                          const updatedWishList = {
+                            ...wishList,
+                            items: updatedItems
+                          };
+                          const updatedWishLists = wishLists.map((wl) => {
+                            if (wl.id === wishList.id) {
+                              return updatedWishList;
+                            }
+                            return wl;
+                          });
+                          setWishLists(updatedWishLists);
+                        }}
+                      />
+                      <button
+                          className="btn btn-primary"
+                          onClick={() => handleAddToCart(item.product.id, item.quantity)}
+                        >
+                          {t('addtocart')}
+                        </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -113,5 +188,4 @@ function WishList() {
 </div>
   );
 }
-
 export default WishList;
