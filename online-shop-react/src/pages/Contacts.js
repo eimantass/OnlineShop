@@ -7,18 +7,22 @@ export default function Contacts() {
       <div>
         <h1 style={{textAlign: "center"}}>{t('contact')}</h1>
         <ul>
-        <h1>{t('contacts')}</h1>
+        <h1>{t('vadcontacts')}</h1>
         <b2> </b2>
-        <li>{t('contnumber1')}</li>
+        <li>{t('vadnumber1')}</li>
         <b2> </b2>
-        <li>{t('contnumber2')}</li>
+        <li>{t('vadnumber2')}</li>
         <b2> </b2>
-        <li>{t('contnumber3')}</li>
+        <li>{t('vadelp')}</li>
+        <b2> </b2>
+        <li>{t('vademail')}</li>
         </ul>
         <ul>
-        <h1>{t('contactsel')}</h1>
+        <h1>{t('intuž')}</h1>
         <b2> </b2>
-        <li> {t('contantmail')}</li>
+        <li> {t('intužvadelp')}</li>
+        <b2> </b2>
+        <li> {t('intužvadtlf')}</li>
         </ul>
       
       </div>

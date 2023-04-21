@@ -5,7 +5,9 @@ import { useTranslation } from 'react-i18next';
 function SeachAndLogo() {
   const [val, setVal] = useState('')
   const click = () => {
-    //alert(val)
+    if(val.length===0){
+      setVal("foto")
+    }
   }
   const change = event => {
     const newvalue = event.target.value
