@@ -134,7 +134,10 @@ function ProductList() {
     setProducts((prevProducts) =>
       prevProducts.map((prevProduct) =>
         prevProduct.id === product.id
-          ? { ...prevProduct, selectedQuantity: newQuantity }
+          ? {
+              ...prevProduct,
+              selectedQuantity: newQuantity > prevProduct.quantity ? prevProduct.quantity : newQuantity,
+            }
           : prevProduct
       )
     );
@@ -154,6 +157,7 @@ function ProductList() {
             <p>Category: {product.category}</p>
             <p>Brand: {product.brand}</p>
             <p>Price: ${product.price}</p>
+            <p>Quantity in stock: ${product.quantity}</p>
             {product.productParameters.length > 0 && (
               <ul>
                 {product.productParameters.map((parameter) => (
