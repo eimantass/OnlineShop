@@ -1,12 +1,16 @@
 import './css/searchandlogo.css'; // Import your CSS file
 import {useState} from 'react'
 import { useTranslation } from 'react-i18next';
+import {useNavigate} from 'react-router-dom';
 
 function SeachAndLogo() {
+  const navigate = useNavigate();
   const [val, setVal] = useState('')
   const click = () => {
     if(val.length===0){
-      setVal("foto")
+      navigate('/home')
+    } else {
+      navigate('/search/'+val)
     }
   }
   const change = event => {
@@ -25,9 +29,9 @@ function SeachAndLogo() {
 
         <div className="search-form">
               <input value={val} onChange={change}/>
-              <a href={'http://localhost:8081/search/'+val}  rel="noopener noreferrer">
+              {/* <a href={'http://localhost:8081/search/'+val}  rel="noopener noreferrer"> */}
               <button onClick={click}>{t('search')}</button>
-              </a>
+              {/*</a>*/}
         </div>
       </div>
     );
