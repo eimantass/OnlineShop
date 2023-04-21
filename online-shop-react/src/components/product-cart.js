@@ -157,7 +157,11 @@ function ProductCart() {
         </div>
         <h3>Total Price: {cart.totalPrice}</h3>
         {currentUser && <h3>Your Wallet: {customerData.money}</h3>}
-        <button className="btn btn-primary btn-lg" type="button" onClick={handlePurchase}>
+        <button className="btn btn-primary btn-lg" type="button" onClick={() => {
+          if (window.confirm('Are you sure you want to purchase these items?')) {
+            handlePurchase();
+          }
+        }}>
           Purchase
         </button>
       </div>
