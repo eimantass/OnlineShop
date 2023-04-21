@@ -64,9 +64,10 @@ public class Observer {
 
 	// Used to activate seed function
 
-	 //@EventListener
+	 @EventListener
 
 	public void seed(ContextRefreshedEvent event) {
+		
 		seedUserAdmin();
 		seedUserCustomer();
 		seedUserManager();
@@ -78,6 +79,7 @@ public class Observer {
 		//seedProductWithPhoto();
 		seedWishList();
 	//	seedCart();
+		
 	}
 
 
