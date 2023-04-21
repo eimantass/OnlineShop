@@ -69,18 +69,6 @@
 "termshead2": "LOCAL LAWS AND REGULATIONS",
 "termsbody2": "Every country has its own laws when it comes to knives and other items. \n When you order from 'PageName' you agree to being fully accountable for importing the ordered \n item(s) to the country of destination.'PageName' is not liable when and if items are confiscated by authorities.",
 
-
-
-"vadcontacts": "Managers:",
-"vadnumber1": "Tel.: +370-471-87654",
-"vadnumber2": "Mob.: +370-471-87655",
-"vadelp": "Managers el.p.: ",
-"vademail": "Person@place.lt, Person2@place.lt, Person3@place.lt",
-
-"intuž": "Internet Orders Managers el. p.:",
-"intužvadelp": "Person4@place.lt, Person5@place.lt",
-"intužvadtlf": "Tel.: +370-471-87656",
-
 "shiphead1": "SHIPPING AND SHIPPING COSTS",
 "shipbody1": "We keep stock at 'our groups' Group's local warehouse in 'Place', the 'Country'.Every \n product has a stock label indicating if a product is in stock and ready for shipment or \n not.Orders will be shipped with 'Shipping service1' and 'Shipping service2' (who hand \n our parcels over to local mail carriers).",
 "shiphead2": "PRICES AND VAT",
@@ -115,6 +103,15 @@
 "privacybody3": "Want to talk to an actual human being? Please contact our customer service department on working days at +370 411 515 446",
 "privacybody4": "Prefer to send us an email? Send an email to manager@manager.com.",
 
+"gamesList": "Games List",
+"consolesList": "Game Consoles List",
+"printerList": "Printer List",
+"monitorsList": "Monitors List",
+"phonesList": "Mobile Phones List",
+"mainboardsList": "Mainboards List",
+"graphicsList": "Graphics Cards List",
+"laptopList": "Laptop List",
+"processorList": "Processors List",
 "productList":"Product List",
 "description":"Description:",
 "category":"Category:",
@@ -123,6 +120,41 @@
 "quantitystock":"Quantity in stock: $",
 "quantity":"Quantity:",
 "addtocart": "Add to Cart",
-"addtowish": "Add to Wishlist"
+"addtowish": "Add to Wishlist",
+
+"wishList": "Your Wish List",
+"noitemswish": "No items in this Wish List!",
+"noactivewish":"No active Wish Lists for current user!",
+"removefromwish" : "Remove from WishList",
+
+"removeitem": "Remove Item",
+"yourCart": "Your Cart",
+"total": "Total:",
+"totalprice": "Total Price:",
+"wallet": "Your Wallet:",
+"purchase": " Make a Purchase",
+
+"profile": "Profile",
+"id": "Id:",
+"email1": "Email:",
+"number": "Phone Number:",
+"authorities": "Authorities:",
+"money": "Money:",
+"editUser":" Edit User Information",
+
+"password1": "Password:",
+"update": "Update",
+"back":"Back to Profile",
+"updateform": "Update User Form",
+
+"vadcontacts": "Managers:",
+"vadnumber1": "Tel.: +370-471-87654",
+"vadnumber2": "Mob.: +370-471-87655",
+"vadelp": "Managers emails",
+"vademail": "Person@place.lt, Person2@place.lt, Person3@place.lt",
+
+"intuž": "Internet Orders Managers email",
+"intužvadelp": "Person4@place.lt, Person5@place.lt",
+"intužvadtlf": "Tel.: +370-471-87656"
 
 }

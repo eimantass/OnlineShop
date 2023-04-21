@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import WishListService from "../services/wishlist.service";
 import UserService from "../services/user.service";
 import './css/product-list.css';
+import {useTranslation} from 'react-i18next';
 
 function WishList() {
   const [wishLists, setWishLists] = useState([]);
@@ -67,13 +68,14 @@ function WishList() {
   // }
 
   // render the list of wish lists
+  const { t } = useTranslation();
   return (
 <div className="container">
   {wishLists.length > 0 ? (
     wishLists.map((wishList) => (
       <div key={wishList.id} className="my-4">
         <div className="col-12 text-center">
-        <h2 className="mb-3">Your Wish List</h2>
+        <h2 className="mb-3">{t('wishList')}</h2>
         </div>
         {/* Remove wishlist button */}
         {/* <button onClick={() => handleRemoveWishList(wishList.id)}>Remove Wishlist</button> */}
@@ -85,19 +87,19 @@ function WishList() {
                   <img src={item.product.photo} alt={item.product.name} className="card-img-top" />
                   <div className="card-body">
                     <h5 className="card-title">{item.product.name}</h5>
-                    <p className="card-text">Category: {item.product.category}</p>
-                    <p className="card-text">Brand: {item.product.brand}</p>
-                    <p className="card-text">Quantity in stock: {item.product.quantity}</p>
-                    <p className="card-text">Price: {item.product.price}</p>
-                    <p className="card-text">Description: {item.product.description}</p>
-                    <button onClick={() => handleRemoveItem(wishList.id, item.id)} className="btn btn-danger">Remove from Wish List</button>
+                    <p className="card-text">{t('category')} {item.product.category}</p>
+                    <p className="card-text">{t('brand')} {item.product.brand}</p>
+                    <p className="card-text">{t('quantitystock')}  {item.product.quantity}</p>
+                    <p className="card-text">{t('price')} {item.product.price}</p>
+                    <p className="card-text">{t('description')} {item.product.description}</p>
+                    <button onClick={() => handleRemoveItem(wishList.id, item.id)} className="btn btn-danger">{t('removefromwish')}</button>
                   </div>
                 </div>
               </div>
             ))
           ) : (
             <div className="col-12 text-center">
-              <h3>No items in this Wish List!</h3>
+              <h3>{t('noitemswish')}</h3>
             </div>
           )}
         </div>
@@ -105,7 +107,7 @@ function WishList() {
     ))
   ) : (
     <div className="col-12 text-center">
-    <h2>No active Wish Lists for current user!</h2>
+    <h2>{t('noactivewish')}</h2>
     </div>
   )}
 </div>

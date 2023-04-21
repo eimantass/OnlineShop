@@ -5,8 +5,6 @@ import './css/Customers.css';
 import { useNavigate } from "react-router-dom";
 import ProductService from "../services/product.service";
 
-
-
 const SearchpageT = () => {
 
   const {val} = useParams();
@@ -26,19 +24,6 @@ const SearchpageT = () => {
     fetchData();
   }, []);
 
-
-  const handleEditProduct = async (id) => {
-    navigate(`/update-product/${id}`);
-  };
-
-  const handleRemoveProduct = async (id) => {
-    try {
-      await ProductService.deleteProduct(id);
-      setProducts(products.filter((product) => product.id !== id));
-    } catch (error) {
-      console.log(error);
-    }
-  };
   useEffect(() => {
     FilterItem();
   })

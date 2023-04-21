@@ -9,6 +9,7 @@ function AddProductForm() {
   const [categories, setCategories] = useState([]);
   const [brand, setBrand] = useState(""); // Added brand state
   const [brands, setBrands] = useState([]); // Added brands state
+  const [quantity, setQuantity] = useState(""); // Added brands state
   const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState("");
   
@@ -37,12 +38,12 @@ function AddProductForm() {
         category: category, //  Product object category 
         brand: brand, //  Product object brand
         description,
+        quantity,
         photo,
       };
-      console.debug("product: ", product.name, product.price, product.category, product.brand, product.description, product.photo);
+      console.debug("product: ", product.name, product.price, product.category, product.brand, product.description, product.quantity, product.photo);
       await ProductService.createProduct(product);
-
-     
+      // Redirect after product was created
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -65,7 +66,7 @@ function AddProductForm() {
         <div>
           <label htmlFor="price">Price:</label>
           <input
-            type="text"
+            type="number"
             id="price"
             name="price"
             value={price}
@@ -105,6 +106,16 @@ function AddProductForm() {
         </select>
       </div>
       <div>
+          <label htmlFor="quantity">Quantity in stock</label>
+          <input
+            type="number"
+            id="quantity"
+            name="quantity"
+            value={quantity}
+            onChange={(event) => setQuantity(event.target.value)}
+          />
+        </div>
+      <div>
         <label htmlFor="description">Description:</label>
         <textarea
           id="description"
@@ -114,18 +125,21 @@ function AddProductForm() {
         ></textarea>
       </div>
       <div>
-        <label htmlFor="photo">Photo:</label>
-        <input
-          type="text"
-          id="photo"
-          name="photo"
-          value={photo}
-          onChange={(event) => setPhoto(event.target.value)}
-        />
-      </div>
+  <label htmlFor="photo">Image: (Only links to images: jpg,jpeg,png,gif) </label>
+  <input
+    id="photo"
+    type="url" /* Change input type to "url" to enforce URL validation */
+    name="photo"
+    value={photo}
+    pattern=".*\.(jpg|jpeg|png|gif)" /* Use "pattern" attribute with a regex to validate image file extensions */
+    onChange={(event) => setPhoto(event.target.value)}
+    required /* Add "required" attribute to make the input mandatory */
+  />
+</div>
       <button type="submit">Save Product</button>
     </form>
   </main>
+
 );
 }
 export default AddProductForm;

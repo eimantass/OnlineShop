@@ -2,6 +2,7 @@ import './css/AdminEditPage.css';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import userService from '../services/user.service';
+import {useTranslation} from 'react-i18next';
 
 const UserControlPanel = () => {
   console.log(useParams());
@@ -64,33 +65,33 @@ const UserControlPanel = () => {
       // Show error message to user
     }
   };
-
+  const { t } = useTranslation();
   return (
     <div className="table-container">
       <Link to="/profile" className="btn btn-primary">
-        Back to Profile
+      {t('back')}
       </Link>
 
       <br></br>
 
       {/* Render customer data */}
       <li>
-        <b>E-mail</b> {customers.email}
+        <b>{t('email1')}</b> {customers.email}
       </li>
       <li>
-        <b>Number:</b> {customers.number}
+        <b>{t('number')}</b> {customers.number}
       </li>
       <li>
-        <b>Money:</b> {customers.money}
+        <b>{t('money')}</b> {customers.money}
       </li>
 
       <br></br>
 
-        <h2>Update User Form:</h2>
+        <h2>{t('updateform')}</h2>
         <form onSubmit={handleFormSubmit}>
           
           <label className="form-label">
-            Email:
+          {t('email1')}
             <input className="form-control" 
                   type="email" 
                   value={newEmail} 
@@ -98,7 +99,7 @@ const UserControlPanel = () => {
                   style={{ width: '500px' }} />
           </label>
           <label className="form-label">
-            Tel.number:
+          {t('number')}
             <input className="form-control" 
                    type="number" 
                    value={newNumber} 
@@ -106,7 +107,7 @@ const UserControlPanel = () => {
                    style={{ width: '500px' }} />
           </label>
           <label className="form-label">
-            Password:
+          {t('password1')}
             <input className="form-control" 
                    type="password" 
                    value={newPassword} 
@@ -114,7 +115,7 @@ const UserControlPanel = () => {
                    style={{ width: '500px' }} />
           </label>
           
-          <button className="btn btn-primary" type="submit">Update</button>
+          <button className="btn btn-primary" type="submit"> {t('update')}</button>
         </form>
 
         {successMessage && (

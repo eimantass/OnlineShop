@@ -16,14 +16,13 @@ import org.springframework.security.core.Authentication;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
-//@RunWith(SpringRunner.class)
 @SpringBootTest
 class JwtUtilsTest {
 	
-	@Value("${jwt.secret}")
+	@Value("${axios-post.app.jwtSecret}")
     private String jwtSecret;
 
-    @Value("${jwt.expirationMs}")
+	@Value("${axios-post.app.jwtExpirationMs}")
     private int jwtExpirationMs;
 
     @Autowired

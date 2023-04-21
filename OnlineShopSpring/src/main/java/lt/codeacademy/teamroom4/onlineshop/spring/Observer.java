@@ -25,6 +25,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CategoryRepositor
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CouponRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.PhotoRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListItemRepository;
@@ -42,7 +43,8 @@ public class Observer {
 	MoneyGenerator moneyGenerator = new MoneyGenerator();
 
 	// Autowiring repositories
-
+	@Autowired
+	RoleRepository roleRepository;
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
@@ -64,9 +66,14 @@ public class Observer {
 
 	// Used to activate seed function
 
-	 //@EventListener
+	//@EventListener
+	public void seedRolesOnly(ContextRefreshedEvent event) {
+	 seedRole();
 
+	}
+	 @EventListener
 	public void seed(ContextRefreshedEvent event) {
+		 //seedRole();
 		seedUserAdmin();
 		seedUserCustomer();
 		seedUserManager();
@@ -78,8 +85,19 @@ public class Observer {
 		//seedProductWithPhoto();
 		seedWishList();
 	//	seedCart();
+		
 	}
+	 private void seedRole() {
+			List<Role> role = List.of(
+					new Role(CUSTOMER),
+					new Role(ADMIN),
+					new Role(MANAGER),
+					new Role(SERVICEMANAGER)
+					);
 
+			roleRepository.saveAll(role);
+
+		}
 
 	// Seeding users and products
 
@@ -136,13 +154,13 @@ public class Observer {
 		//photoRepository.save(photo);
 		List<Product> product = List.of(
 //				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", categoryList.get(1),cpuParameterList),
-				new Product("RX 6400XT", AMD,"photo",  160, " 4gb gddr6 RX 6400XT gpu", null, GRAPHICS_CARDS,
+				new Product("RX 6400XT", AMD,"photo",  160, " 4gb gddr6 RX 6400XT gpu", (long)20, GRAPHICS_CARDS,
 						gpuParameterList, null),
-				new Product("GTX 1650 Super", NVIDIA,"photo",  220, "4 gb gddr6 GTX 1650 Super gpu", null, GRAPHICS_CARDS,
+				new Product("GTX 1650 Super", NVIDIA,"photo",  220, "4 gb gddr6 GTX 1650 Super gpu", (long)20, GRAPHICS_CARDS,
 						gpuParameterList, null),
-				new Product("4gb RAM", GOODRAM,"photo",  30, "4 gb ddr3 ram", null, LAPTOPS, gpuParameterList,
+				new Product("4gb RAM", GOODRAM,"photo",  30, "4 gb ddr3 ram", (long)20, LAPTOPS, gpuParameterList,
 						coupons.get(0)),
-				new Product("IntelI5", INTEL,  null, 200, "12 core cpu", null, PROCESSORS, gpuParameterList, null));
+				new Product("IntelI5", INTEL,  null, 200, "12 core cpu", (long)20, PROCESSORS, gpuParameterList, null));
 				//new Product("IntelI7", INTEL, null, 250, "16 core cpu", PROCESSORS, cpuParameterList),
 				//new Product("IntelI7", INTEL,  250, "16 core cpu", PROCESSORS, cpuParameterList,
 						//coupons.get(1)));

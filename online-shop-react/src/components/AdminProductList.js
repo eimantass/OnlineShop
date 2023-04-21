@@ -47,7 +47,7 @@ function AdminProductList() {
           <th>Brand</th>
           <th>Price</th>
           <th>Description</th>
-          <th>Parameters</th>
+          {/* <th>Parameters</th> */}
           <th>Actions</th>
         </tr>
       </thead>
@@ -59,13 +59,13 @@ function AdminProductList() {
             <td>{product.brand}</td>
             <td>{product.price}</td>
             <td>{product.description}</td>
-            <td>
+            {/* <td>
               {product.productParameters.map((parameter) => (
                 <p key={parameter.id}>
                   {parameter.name}: {parameter.description}
                 </p>
               ))}
-            </td>
+            </td> */}
             <td>
               <button
                 className="btn btn-primary mr-2"
