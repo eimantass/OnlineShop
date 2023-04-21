@@ -46,6 +46,7 @@ function AdminProductList() {
           <th>Name</th>
           <th>Brand</th>
           <th>Price</th>
+          <th style={{ textAlign: 'center' }}>Quantity in Stock</th>
           <th>Description</th>
           {/* <th>Parameters</th> */}
           <th>Actions</th>
@@ -58,6 +59,7 @@ function AdminProductList() {
             <td>{product.name}</td>
             <td>{product.brand}</td>
             <td>{product.price}</td>
+            <td style={{ textAlign: 'center' }}>{product.quantity}</td>
             <td>{product.description}</td>
             {/* <td>
               {product.productParameters.map((parameter) => (
