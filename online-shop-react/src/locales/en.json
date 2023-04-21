@@ -103,6 +103,15 @@
 "privacybody3": "Want to talk to an actual human being? Please contact our customer service department on working days at +370 411 515 446",
 "privacybody4": "Prefer to send us an email? Send an email to manager@manager.com.",
 
+"gamesList": "Games List",
+"consolesList": "Game Consoles List",
+"printerList": "Printer List",
+"monitorsList": "Monitors List",
+"phonesList": "Mobile Phones List",
+"mainboardsList": "Mainboards List",
+"graphicsList": "Graphics Cards List",
+"laptopList": "Laptop List",
+"processorList": "Processors List",
 "productList":"Product List",
 "description":"Description:",
 "category":"Category:",
@@ -111,6 +120,11 @@
 "quantitystock":"Quantity in stock: $",
 "quantity":"Quantity:",
 "addtocart": "Add to Cart",
-"addtowish": "Add to Wishlist"
+"addtowish": "Add to Wishlist",
+
+"wishList": "Your Wish List",
+"noitemswish": "No items in this Wish List!",
+"noactivewish":"No active Wish Lists for current user!",
+"removefromwish" : "Remove from WishList"
 
 }

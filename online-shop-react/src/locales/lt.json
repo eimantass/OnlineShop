@@ -101,6 +101,15 @@
 "privacybody3": "Su mumis galite susisiekti šiuo numeriu +370 411 515 446",
 "privacybody4": "Arba elektroniniu paštu manager@manager.com",
 
+"gamesList": "Zaidimu sarasas",
+"consolesList": "Zaidimu kompiuteriu sarasas",
+"printerList": "Spausdintuvu sarasas",
+"monitorsList": "Monitoriu sarasas",
+"phonesList": "Ismaniuju telefonu sarasas",
+"mainboardsList": "Pagrindiniu ploksciu sarasas",
+"graphicsList": "Vaizdo ploksciu sarasas",
+"laptopList": "Nesiojamuju kompiuteriu sarasas",
+"processorList": "Procesoriu sarasas",
 "productList":"Prekiu sarasas",
 "description":"Aprasymas:",
 "category":"Kategorija:",
@@ -109,5 +118,10 @@
 "quantitystock":"Kiekis sandėlyje: ",
 "quantity":"Kiekis:",
 "addtocart": "Prideti i krepseli",
-"addtowish": "Prideti i noru sarasa"
+"addtowish": "Prideti i noru sarasa",
+
+"wishList": "Jusu megstamos prekes",
+"noitemswish": "Nera pridetu prekiu",
+"noactivewish":"Turite buti prisijunge, kad matytumete sarasa!",
+"removefromwish" : "Istrinti is saraso"
 }
