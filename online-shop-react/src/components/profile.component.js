@@ -3,7 +3,8 @@ import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import AuthService from "../services/auth.service";
 import UserService from "../services/user.service";
-
+import {useTranslation} from 'react-i18next';
+import i18n from 'i18next';
 const Profile = () => {
   const [redirect, setRedirect] = useState(null);
   const [userReady, setUserReady] = useState(false);
@@ -30,14 +31,14 @@ const Profile = () => {
   if (redirect) {
     return <Navigate to={redirect} />;
   }
-
+  //const { t } = useTranslation();
   return (
     <div className="container">
       {userReady ? (
         <div>
           <header className="jumbotron">
             <h3>
-              <strong>{currentUser.username}</strong> Profile
+              <strong>{currentUser.username}</strong> {i18n.t('profile')}
             </h3>
           </header>
           {/* No need to show token */}
@@ -47,23 +48,23 @@ const Profile = () => {
             {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
           </p> */}
           <p>
-            <strong>Id:</strong> {currentUser.id}
+            <strong>{i18n.t('id')}</strong> {currentUser.id}
           </p>
           <p>
-            <strong>Email:</strong> {currentUser.email}
+            <strong>{i18n.t('email1')}</strong> {currentUser.email}
           </p>
           <p>
-            <strong>Phone Number:</strong> {customerData.number}
+            <strong>{i18n.t('number')}</strong> {customerData.number}
           </p>
-          <strong>Authorities:</strong>
+          <strong>{i18n.t('authorities')}</strong>
           <ul>
             {currentUser.roles &&
               currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
           </ul>
-          <strong>Money:</strong> {customerData.money}
+          <strong>{i18n.t('money')}</strong> {customerData.money}
           <div>
           <Link to={`/user-control/edit/${customerData.id}`} className="btn btn-primary mr-2">
-                  Edit User Information
+          {i18n.t('editUser')}
                 </Link>
                 </div>
           

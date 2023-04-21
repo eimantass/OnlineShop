@@ -4,6 +4,7 @@ import UserService from "../services/user.service";
 import AuthService from "../services/auth.service";
 import './css/product-list.css';
 import PurchaseService from "../services/purchase.service";
+import {useTranslation} from 'react-i18next';
 
 function ProductCart() {
   const [content, setContent] = useState("");
@@ -122,13 +123,14 @@ function ProductCart() {
   }
 
   // render the list of carts
+  const { t } = useTranslation();
   return (
     <div>
     {carts.length > 0 ? (
       carts.map((cart) => (
         <div key={cart.id}>
           <div className="col-12 text-center">
-            <h2 className="mb-3">Your Cart</h2>
+            <h2 className="mb-3">{t('yourCart')}</h2>
           </div>
           <div className="row">
             {cart.items.length > 0 ? (
@@ -138,14 +140,13 @@ function ProductCart() {
                     <img src={item.product.photo} alt={item.product.name} className="card-img-top" />
                     <div className="card-body">
                       <h5 className="card-title">{item.product.name}</h5>
-                      <p className="card-text"><b>Category:</b> {item.product.category}</p>
-                      <p className="card-text"><b>Brand:</b> {item.product.brand}</p>
-                      <p className="card-text"><b>Price:</b> {item.product.price}</p>
-                      <p className="card-text"><b>Description:</b> {item.product.description}</p>
-                      <p className="card-text"><b>Quantity in stock:</b> {item.product.quantity}</p>
-                      <p className="card-text"><b>Price:</b> {item.product.price}</p>
+                      <p className="card-text"><b>{t('category')}</b> {item.product.category}</p>
+                      <p className="card-text"><b>{t('brand')}</b> {item.product.brand}</p>
+                      <p className="card-text"><b>{t('price')}</b> {item.product.price}</p>
+                      <p className="card-text"><b>{t('description')}</b> {item.product.description}</p>
+                      <p className="card-text"><b>{t('quantitystock')}</b> {item.product.quantity}</p>
                       <label>
-                        Quantity:
+                      {t('quantity')}
                         <input
                           type="number"
                           value={item.quantity}
@@ -155,12 +156,12 @@ function ProductCart() {
                         />
                       </label>
                       <button onClick={() => handleRemoveItem(cart.id, item.id)} className="btn btn-danger">
-                        Remove Item
+                      {t('removeitem')}
                       </button>
                       <br></br>
                       <p className="card-text">
                         <h3>
-                          <b>Total: {item.sum} </b>
+                          <b> {t('total')} {item.sum} </b>
                         </h3>{" "}
                       </p>
                     </div>
@@ -169,14 +170,14 @@ function ProductCart() {
               ))
             ) : (
               <div className="col-12 text-center">
-                <h2>No products in the cart yet!</h2>
+                <h2> {t('noitemswish')} </h2>
               </div>
             )}
           </div>
           {cart.items.length > 0 && (
             <>
-              <h3>Total Price: {cart.totalPrice}</h3>
-              {currentUser && <h3>Your Wallet: {customerData.money}</h3>}
+              <h3>{t('totalprice')} {cart.totalPrice}</h3>
+              {currentUser && <h3>{t('wallet')} {customerData.money}</h3>}
               <button
                 className="btn btn-primary btn-lg"
                 type="button"
@@ -186,14 +187,14 @@ function ProductCart() {
                   }
                 }}
               >
-                Make a Purchase
+                {t('purchase')} 
               </button>
             </>
           )}
         </div>
       ))
     ) : (
-      <h2>No active carts for current user!</h2>
+      <h2> {t('noactivewish')} </h2>
     )}
   </div>
   );
