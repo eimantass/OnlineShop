@@ -9,6 +9,7 @@ function AddProductForm() {
   const [categories, setCategories] = useState([]);
   const [brand, setBrand] = useState(""); // Added brand state
   const [brands, setBrands] = useState([]); // Added brands state
+  const [quantity, setQuantity] = useState(""); // Added brands state
   const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState("");
   
@@ -37,12 +38,12 @@ function AddProductForm() {
         category: category, //  Product object category 
         brand: brand, //  Product object brand
         description,
+        quantity,
         photo,
       };
-      console.debug("product: ", product.name, product.price, product.category, product.brand, product.description, product.photo);
+      console.debug("product: ", product.name, product.price, product.category, product.brand, product.description, product.quantity, product.photo);
       await ProductService.createProduct(product);
-
-     
+      // Redirect after product was created
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -65,7 +66,7 @@ function AddProductForm() {
         <div>
           <label htmlFor="price">Price:</label>
           <input
-            type="text"
+            type="number"
             id="price"
             name="price"
             value={price}
@@ -104,6 +105,16 @@ function AddProductForm() {
           ))}
         </select>
       </div>
+      <div>
+          <label htmlFor="quantity">Quantity in stock</label>
+          <input
+            type="number"
+            id="quantity"
+            name="quantity"
+            value={quantity}
+            onChange={(event) => setQuantity(event.target.value)}
+          />
+        </div>
       <div>
         <label htmlFor="description">Description:</label>
         <textarea
