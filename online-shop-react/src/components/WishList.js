@@ -63,8 +63,13 @@ function WishList() {
   async function handleAddToCart(productId, quantity) {
     if (currentUser) {
       try {
+        if (typeof quantity === 'undefined') {
+          // Show warning message to user that quantity needs to be selected
+          alert('Please select the quantity before adding to cart');
+          return;
+        }
 
-        const carts = await CartService.GetActiveCarts(currentUser.id);
+      const carts = await CartService.GetActiveCarts(currentUser.id);
   
       let cart;
       let cartMessage;
@@ -77,10 +82,16 @@ function WishList() {
         cart = carts[0];
         cartMessage = "You already have an active cart!";
       }
+        console.debug("Sending JSON: ", cart.id, productId, quantity);
+        const confirmed = window.confirm(`Are you sure you want to add to your cart?`);
+  
+        if (!confirmed) {
+          return;
+          }
         const response = await CartService.addItemToCart(cart.id, productId, quantity);
+        alert('Product has been successfuly added to cart!');
         setCartMessage(response.data.message);
-        console.debug("Sending JSON: ", cart.id, quantity, currentUser.id);
-        
+  
       } catch (error) {
         console.log(error);
       }
@@ -113,7 +124,7 @@ function WishList() {
         <div className="col-12 text-center">
         <h2 className="mb-3">{t('wishList')}</h2>
         </div>
-        {/* Remove wishlist button */}
+        {/* Remove delete wishlist button */}
         {/* <button onClick={() => handleRemoveWishList(wishList.id)}>Remove Wishlist</button> */}
         <div className="row">
           {wishList.items.length > 0 ? (
@@ -134,8 +145,8 @@ function WishList() {
                         type="number"
                         className="form-control"
                         placeholder={t('quantity')}
-                        value={item.quantity}
-                        min="1"
+                        value={item.quantity || ''}
+                        min="0"
                         max={item.product.quantity}
                         onChange={(e) => {
                           const updatedQuantity = e.target.value;
