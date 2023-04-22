@@ -54,6 +54,13 @@ const AdminBoard = () => {
         >
           View All Carts
         </button>
+        <h2>Order Controls</h2>
+        <button
+          className="btn btn-danger"
+          onClick={() => navigate("/orders")}
+        >
+          View All Orders
+        </button>
     </div>
   );
 };

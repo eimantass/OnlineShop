@@ -25,6 +25,8 @@ import AdminCartsControls from "./components/AdminCartsControls";
 import ManagerProductControls from "./components/ManagerProductControls";
 import AddProductForm from "./components/add-product"
 import UpdateProduct from "./components/update-product"
+import OrderList from "./components/OrderList";
+import UserOrder from "./components/UserOrder";
 // Import CategoriesMenu pages
 import Processors from "./pages/categoriesMenuPages/processors";
 import Laptops from "./pages/categoriesMenuPages/laptops";
@@ -222,6 +224,7 @@ class App extends Component {
     <Route path="/manager-user-control/edit/:id" element={<ServiceManagerControlPanel/>} />
     <Route path="/admin" element={<AdminBoard/>} />
     <Route path="/user-control/edit/:id" element={<UserControlPanel/>}/> 
+    <Route path="/user-order/:id" element={<UserOrder/>}/> 
     <Route path="/admin-user-control/edit/:id" element={<AdminControlPanel/>}/> 
     {/* Cart */}
     <Route path="/cart" element={<ShoppingCart/>} />
@@ -235,6 +238,7 @@ class App extends Component {
     <Route path="/managers" element={<AdminManagersControls/>} />
     <Route path="/customers" element={<AdminCustomersControls/>} />
     <Route path="/carts" element={<AdminCartsControls/>} />
+    <Route path="/orders" element={<OrderList/>} />
     <Route path="/manager-products" element={<ManagerProductControls/>} />
     <Route path="/add-product" element={<AddProductForm/>} />
     <Route path="/update-product/:id" element={<UpdateProduct/>} />

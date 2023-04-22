@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import CartService from "../services/cart.service";
 import UserService from "../services/user.service";
 import AuthService from "../services/auth.service";
@@ -6,6 +7,7 @@ import './css/product-list.css';
 import PurchaseService from "../services/purchase.service";
 
 function ProductCart() {
+  const navigate = useNavigate();
   const [content, setContent] = useState("");
   const [carts, setCarts] = useState([]);
   const [customerData, setCustomerData] = useState([]);
@@ -99,11 +101,15 @@ function ProductCart() {
 
       // Create a new purchase for cart
       PurchaseService.createPurchase(customerData.id, lastCart.id)
+      // handle success
       .then((data) => {
-        alert("Purchase successful");
-        window.location.reload();
         console.log("Purchase successful");
-        // handle success
+        alert("Purchase successful");
+        // Redirect to order list
+        navigate(`/user-order/${user.id}`);
+        //
+        window.location.reload();
+        
       })
       .catch((error) => {
         console.error(error);
