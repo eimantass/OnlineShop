@@ -145,11 +145,11 @@ function ProductList() {
               <img src={product.photo} alt={product.name} className="product-image img-fluid" />
             </div>
             <h3 className="product-name">{product.name}</h3>
-            <p>{t('description')}{product.description}</p>
-            <p>{t('category')} {product.category}</p>
-            <p>{t('brand')} {product.brand}</p>
-            <p>{t('price')}{product.price}</p>
-            <p>{t('quantitystock')}{product.quantity}</p>
+            <p><b>{t('description')}</b> {product.description}</p>
+            <p><b>{t('category')}</b> {product.category}</p>
+            <p><b>{t('brand')}</b> {product.brand}</p>
+            <p><b>{t('price')}</b>{product.price}</p>
+            <p><b>{t('quantitystock')}</b>{product.quantity}</p>
             {product.productParameters.length > 0 && (
               <ul>
                 {product.productParameters.map((parameter) => (
@@ -161,8 +161,8 @@ function ProductList() {
                 ))}
               </ul>
             )}
-            <label>
-            {t('quantity')}
+            <label><b>
+            {t('quantity')}</b>
               <input
                 type="number"
                 value={product.selectedQuantity}

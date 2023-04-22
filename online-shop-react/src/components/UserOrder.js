@@ -19,6 +19,14 @@ function UserOrder() {
 
     fetchInactiveCarts();
   }, []);
+
+  if (inactiveCarts.length === 0) {
+    return (
+      <main className="container">
+        <h1>No any orders completed.</h1>
+      </main>
+    );
+  }
     
 
   return (
@@ -32,17 +40,20 @@ function UserOrder() {
             <h5 className="card-title">Order Number: {cart.id}</h5>
             <p className="card-text"><b>Username:</b> {cart.user.username}</p>
             <p><b>Order Total Price:</b> {new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(cart.totalPrice)}</p>
-            <p className="card-text"><b>Date of Purchase:</b> {cart.items[0].date}</p>
+           
+            {/* <p className="card-text"><b>Date of Purchase:</b>  </p> */}
+            {/*    {cart.items[0].date}  */}
+            
             <h6 className="card-subtitle mb-2 text-muted"><b>Order Items:</b></h6>
             <ul className="list-group">
-              {cart.items.map((item) => (
-                <li key={item.id} className="list-group-item">
-                  <p><b>Product Name:</b> {item.product.name}</p>
-                  <p><b>Product Price:</b> {new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(item.product.price)}</p>
-                  <p><b>Quantity:</b> {item.quantity}</p>
-                  {/* display other item details */}
-                </li>
-              ))}
+            {cart.items.map((item) => (
+  <li key={item.id} className="list-group-item">
+    <p><b>Product Name:</b> {item.product.name}</p>
+    <p><b>Product Price:</b> {new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(item.product.price)}</p>
+    <p><b>Quantity:</b> {item.quantity}</p>
+    {item && item.date && <p><b>Date:</b> {item.date}</p>}
+  </li>
+))}
             </ul>
           </div>
         </div>

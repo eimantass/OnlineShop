@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import AuthService from "./services/auth.service";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 
 import Login from "./components/login.component";
 import Register from "./components/register.component";
@@ -70,6 +71,7 @@ class App extends Component {
       showServiceManagerBoard: false,
       showAdminBoard: false,
       currentUser: undefined,
+      language: 'en',
     };
   }
 
@@ -99,6 +101,7 @@ class App extends Component {
   render() {
     const { t } = this.props;
     const { currentUser, showManagerBoard, showServiceManagerBoard, showAdminBoard} = this.state;
+  
     return (
       <>
       <div>
@@ -185,6 +188,9 @@ class App extends Component {
                 {t('logout')}
                 </a>
               </li>
+
+              {/* Changed from button to a Link tag for LanguageSwitcher component */}
+              <LanguageSwitcher />
 
             </div>
 
