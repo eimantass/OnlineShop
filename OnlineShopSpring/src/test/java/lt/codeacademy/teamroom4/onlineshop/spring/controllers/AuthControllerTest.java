@@ -1,6 +1,8 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.any;
+import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -11,6 +13,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,6 +38,9 @@ class AuthControllerTest {
 
 	 @Mock
 	 private UserDetailsService userDetailsService;
+	 
+	 @Autowired
+	 private TestRestTemplate restTemplate;
 
 	 private MockMvc mockMvc;
 	 
@@ -65,19 +73,13 @@ class AuthControllerTest {
 
 	@Test
 	void testRegisterUser() {
-        String username = "testuser";
-        String email = "testuser@gmail.com";
-        String password = "testpass";
-        String encodedPassword = "encodedpass";
-        User user = new User(username,email ,encodedPassword);
-        
-        when(userRepository.save(user)).thenReturn(user);
-        when(passwordEncoder.encode(password)).thenReturn(encodedPassword);
-        
-        SignupRequest signupRequest = new SignupRequest(username,email, password);
-        
-        ResponseEntity<?> result = authController.registerUser(signupRequest);
-        assertEquals(user, result);
+      SignupRequest request = new SignupRequest();
+      request.setUsername("user");
+      request.setEmail("user@user.com");
+      request.setPassword("user123");
+      
+      ResponseEntity<Void> response = restTemplate.postForEntity("/api/auth/signup", request, Void.class);
+      assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 
 	}
 
