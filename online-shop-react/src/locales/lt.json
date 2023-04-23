@@ -104,7 +104,7 @@
 "productList":"Prekių sąrašas",
 "description":"Aprašymas:",
 "gamesList": "Žaidimų sąrašas",
-"consolesList": "žaidimų kompiuterių sąrašas",
+"consolesList": "Žaidimų kompiuterių sąrašas",
 "printerList": "Spausdintuvų sąrašas",
 "monitorsList": "Monitorių ąrašas",
 "phonesList": "Išmaniųjų telefonų sąrašas",
@@ -145,6 +145,7 @@
 "totalprice": "Galutinė suma:",
 "wallet": "Jūsų piniginė:",
 "purchase": "Pirkti",
+"vieworders": "Peržiurėti užsakymus", 
 
 "vadcontacts": "Vadybininkai:",
 "vadnumber1": "Tel.: +370-471-87654",
