@@ -21,7 +21,7 @@ class CartControllerTest {
 	public void testAddToCart() {
 		 long productId = 1;
 	     int quantity = 2;
-	     Product product = new Product("Test Product name", 10.0, "Test Description");
+	     Product product = new Product("Test Product name", null, null, 10.0, "Test Description", productId, null, null, null);
 	     
 	     when(productService.getProductById(productId)).thenReturn(product);
 //	     CartItem cartItem = cartController.addingItemsToCart(null, productId, quantity);
