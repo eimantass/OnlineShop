@@ -125,6 +125,7 @@
 "wishList": "Your Wish List",
 "noitemswish": "No items in this Wish List!",
 "noactivewish":"No active Wish Lists for current user!",
+"noactivecart":"No active Cart for current user!",
 "removefromwish" : "Remove from WishList",
 
 "removeitem": "Remove Item",
