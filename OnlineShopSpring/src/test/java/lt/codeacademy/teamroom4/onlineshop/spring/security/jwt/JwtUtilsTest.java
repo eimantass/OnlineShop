@@ -1,21 +1,9 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.security.jwt;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
-
-import java.security.SignatureException;
-
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.core.Authentication;
 
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.MalformedJwtException;
+
 @SpringBootTest
 class JwtUtilsTest {
 	
@@ -28,12 +16,7 @@ class JwtUtilsTest {
  
 
     //@InjectMocks
-    @Autowired
-    private JwtUtils jwtUtil;
-    @Autowired
-    private String jwtToken;
-    @Autowired
-    private Authentication authentication;
+  
 
 //	@Test
 //	void testGetUserNameFromJwtToken() {

@@ -1,8 +1,6 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
 /*
 class WalletTest {
 	

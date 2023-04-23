@@ -8,10 +8,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.*;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.*;
@@ -24,7 +22,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.WishListItem;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CouponRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListItemRepository;
-import lt.codeacademy.teamroom4.onlineshop.spring.repositories.WishListRepository;
+
 
 @SpringBootTest
 class WishListServiceTest {

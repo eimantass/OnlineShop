@@ -1,57 +1,17 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.CoreMatchers.any;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
-import payload.request.SignupRequest;
+
 
 @SpringBootTest
 class AuthControllerTest {
 	
 	 @Autowired
-	 private AuthenticationManager authenticationManager;
-
-	 @Autowired
-	 private UserDetailsService userDetailsService;
-	 
-	 @Autowired
 	 UserRepository userRepository;
 	 
-	 @Autowired
-	 private MockMvc mockMvc;
-	 
-	 private PasswordEncoder passwordEncoder;
-	 private AuthController authController;
-	 
-	
+
 //	@Test
 //	void testAuthenticateUser() throws Exception {
 //		String username = "testuser";

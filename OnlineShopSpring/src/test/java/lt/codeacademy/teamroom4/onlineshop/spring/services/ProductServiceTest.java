@@ -1,38 +1,20 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.services;
 
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.AMD;
+
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.GOODRAM;
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.INTEL;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.NVIDIA;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.spy;
+
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import javax.transaction.Transactional;
-
-import org.junit.Before;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.Spy;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-
-import lt.codeacademy.teamroom4.onlineshop.spring.Observer;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Category;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Coupon;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
