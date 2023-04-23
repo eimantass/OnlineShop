@@ -67,6 +67,7 @@ public class UserAccessController {
 	public User updateUser(@PathVariable Long id, @RequestBody User UpdatedUser) {
 	    log.info(UpdatedUser.toString());
 	    Set<Role> roles =new HashSet<>();
+	    roles.addAll(UpdatedUser.getRoles());
 	    //roles.addAll(roleRepository.findAll());
 		return userRepository.findById(id)
 	    	.map(user -> {
@@ -74,7 +75,7 @@ public class UserAccessController {
 		        user.setEmail(UpdatedUser.getEmail());
 		        if(UpdatedUser.getPassword()!="") {
 		        user.setPassword(SecurityConfig.passwordEncoder().encode(UpdatedUser.getPassword()));}
-		        user.setRoles(roles);
+		        user.getRoles().addAll(roles);
 		        user.setNumber(UpdatedUser.getNumber());
 		        user.setMoney(UpdatedUser.getMoney());
 		        // user.setRoles(UpdatedUser.getRoles());
