@@ -43,7 +43,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ProductRepository
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories;
 import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.*;
-/*
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 //@DataJpaTest
@@ -70,17 +70,17 @@ class ProductServiceTest {
 		gpuParameterList.add(new ProductParameters("Voltage", "1.15"));
 		// productRepository.deleteAll();
 		List<Product> productList = List.of(
-				new Product("4gb RAM", GOODRAM,  30, "4 gb ddr3 ram", LAPTOPS, gpuParameterList,
+				new Product("4gb RAM", GOODRAM,  null, 30, "4 gb ddr3 ram", null, LAPTOPS, gpuParameterList,
 						couponList.get(0)),
-				new Product("Gt710", NVIDIA, 40, "RTX", GRAPHICS_CARDS, gpuParameterList, couponList.get(1)),
-				new Product("Gt730", NVIDIA,  90, "RTX", GRAPHICS_CARDS, gpuParameterList, couponList.get(2)),
-				new Product("Gt1030", NVIDIA, 100, "RTX", GRAPHICS_CARDS, gpuParameterList, couponList.get(3)),
-				new Product("Gt610", NVIDIA, 90, "RTX", GRAPHICS_CARDS, gpuParameterList, couponList.get(4)),
-				new Product("4gb RAM", GOODRAM, 30, "4 gb ddr3 ram", LAPTOPS, gpuParameterList,
+				new Product("Gt710", NVIDIA, null, 40, "RTX", null, GRAPHICS_CARDS, gpuParameterList, couponList.get(1)),
+				new Product("Gt730", NVIDIA,  null, 90, "RTX", null, GRAPHICS_CARDS, gpuParameterList, couponList.get(2)),
+				new Product("Gt1030", NVIDIA, null, 100, "RTX", null, GRAPHICS_CARDS, gpuParameterList, couponList.get(3)),
+				new Product("Gt610", NVIDIA, null, 90, "RTX", null, GRAPHICS_CARDS, gpuParameterList, couponList.get(4)),
+				new Product("4gb RAM", GOODRAM, null, 30, "4 gb ddr3 ram", null, LAPTOPS, gpuParameterList,
 						couponList.get(5)),
-				new Product("4gb RAM", GOODRAM, 30, "4 gb ddr3 ram", LAPTOPS, gpuParameterList,
+				new Product("4gb RAM", GOODRAM, null, 30, "4 gb ddr3 ram", null, LAPTOPS, gpuParameterList,
 						couponList.get(6)),
-				new Product("RTX", NVIDIA,  80, "RTX", GRAPHICS_CARDS, gpuParameterList, couponList.get(7)));
+				new Product("RTX", NVIDIA,  null, 80, "RTX", null, GRAPHICS_CARDS, gpuParameterList, couponList.get(7)));
 
 		productTestRepository.saveAll(productList);
 
@@ -320,4 +320,3 @@ class ProductServiceTest {
 //	}
 
 }
-*/
