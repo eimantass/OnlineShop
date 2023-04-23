@@ -10,21 +10,21 @@ function AdminCartsControls() {
   useEffect(() => {
     async function fetchCarts() {
       try {
-        const carts = await CartService.GetAllCarts();
+        const carts = await CartService.GetAllActiveCarts();
         setCarts(carts);
       } catch (error) {
         console.log(error);
       }
     }
-
     fetchCarts();
   }, []);
 
   const handleRemoveItem = async (cartId, itemId) => {
     try {
       await CartService.removeItemFromCart(cartId, itemId);
-      const updatedCarts = await CartService.GetActiveCarts();
+      const updatedCarts = await CartService.GetAllActiveCarts();
       setCarts(updatedCarts);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -33,8 +33,9 @@ function AdminCartsControls() {
   async function handleRemoveCart(cartId) {
     try {
       await CartService.deleteCartById(cartId);
-      const updatedCarts = await CartService.getAllCartsByUserId();
+      const updatedCarts = await CartService.GetAllActiveCarts();
       setCarts(updatedCarts);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -49,6 +50,7 @@ function AdminCartsControls() {
       >
         Back
       </button>
+      <h1>Active Carts (Incomplete orders)</h1>
       {carts.length > 0 ? (
         <div className="row">
           {carts.map((cart) => (

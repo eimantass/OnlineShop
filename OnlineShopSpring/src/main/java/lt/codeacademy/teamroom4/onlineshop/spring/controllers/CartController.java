@@ -109,4 +109,10 @@ public class CartController {
 
 		return cartService.findAllNotActiveCarts();
 	}
+	
+	@GetMapping("/allActiveCarts") 
+	public List<Cart> allActiveCartsByUserId() { 
+		
+		return cartService.findAllActiveCarts(); 
+		}
 }
