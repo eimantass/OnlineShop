@@ -176,7 +176,7 @@ function ProductCart() {
               ))
             ) : (
               <div className="col-12 text-center">
-                <h2> {t('noitemswish')} </h2>
+                <h2> {t('noitemscart')} </h2>
               </div>
             )}
           </div>
