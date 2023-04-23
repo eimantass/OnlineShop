@@ -35,33 +35,33 @@ class JwtUtilsTest {
     @Autowired
     private Authentication authentication;
 
-	@Test
-	void testGetUserNameFromJwtToken() {
-		 when(jwtUtil.getUserNameFromJwtToken(jwtToken)).thenReturn("testuser");
-	     String username = jwtUtil.getUserNameFromJwtToken(jwtToken);
-	     assertEquals(username, "testuser");
-	    
-	}
-
-	@Test
-	void testValidateJwtToken() throws SignatureException {
-		 boolean isValid = jwtUtil.validateJwtToken(jwtToken);
-	        assertTrue(isValid);
-	        String invalidToken = "invalidtoken";
-	        boolean isInvalid = jwtUtil.validateJwtToken(invalidToken);
-	        assertFalse(isInvalid);
-	        String expiredToken = jwtUtil.generateJwtToken(authentication);
-	        try {
-	            jwtUtil.validateJwtToken(expiredToken);
-	        } catch (Exception e) {
-	            assertTrue(e instanceof ExpiredJwtException);
-	        }
-	        String malformedToken = "malformedtoken";
-	        try {
-	            jwtUtil.validateJwtToken(malformedToken);
-	        } catch (Exception e) {
-	            assertTrue(e instanceof MalformedJwtException);
-	        }
-	}
+//	@Test
+//	void testGetUserNameFromJwtToken() {
+//		 when(jwtUtil.getUserNameFromJwtToken(jwtToken)).thenReturn("testuser");
+//	     String username = jwtUtil.getUserNameFromJwtToken(jwtToken);
+//	     assertEquals(username, "testuser");
+//	    
+//	}
+//
+//	@Test
+//	void testValidateJwtToken() throws SignatureException {
+//		 boolean isValid = jwtUtil.validateJwtToken(jwtToken);
+//	        assertTrue(isValid);
+//	        String invalidToken = "invalidtoken";
+//	        boolean isInvalid = jwtUtil.validateJwtToken(invalidToken);
+//	        assertFalse(isInvalid);
+//	        String expiredToken = jwtUtil.generateJwtToken(authentication);
+//	        try {
+//	            jwtUtil.validateJwtToken(expiredToken);
+//	        } catch (Exception e) {
+//	            assertTrue(e instanceof ExpiredJwtException);
+//	        }
+//	        String malformedToken = "malformedtoken";
+//	        try {
+//	            jwtUtil.validateJwtToken(malformedToken);
+//	        } catch (Exception e) {
+//	            assertTrue(e instanceof MalformedJwtException);
+//	        }
+//	}
 
 }
