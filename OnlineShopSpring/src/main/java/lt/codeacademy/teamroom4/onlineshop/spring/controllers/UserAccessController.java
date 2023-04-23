@@ -22,8 +22,12 @@ import lt.codeacademy.teamroom4.onlineshop.spring.repositories.RoleRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.repositories.UserRepository;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles;
 import lt.codeacademy.teamroom4.onlineshop.spring.utils.Roles;
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.*;
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Brands.*;
+import static lt.codeacademy.teamroom4.onlineshop.spring.utils.Parameters.Categories.*;
 
 import java.net.URISyntaxException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 //This controller handles user access accordingly to roles
@@ -62,14 +66,15 @@ public class UserAccessController {
 	@PutMapping("/customer/{id}")
 	public User updateUser(@PathVariable Long id, @RequestBody User UpdatedUser) {
 	    log.info(UpdatedUser.toString());
+	    Set<Role> roles =new HashSet<>();
+	    //roles.addAll(roleRepository.findAll());
 		return userRepository.findById(id)
 	    	.map(user -> {
 		        user.setUsername(UpdatedUser.getUsername());
 		        user.setEmail(UpdatedUser.getEmail());
 		        if(UpdatedUser.getPassword()!="") {
 		        user.setPassword(SecurityConfig.passwordEncoder().encode(UpdatedUser.getPassword()));}
-		       if(UpdatedUser.getRoles()!=null) {
-		        user.setRoles(UpdatedUser.getRoles());}
+		        user.setRoles(roles);
 		        user.setNumber(UpdatedUser.getNumber());
 		        user.setMoney(UpdatedUser.getMoney());
 		       // user.setRoles(UpdatedUser.getRoles());

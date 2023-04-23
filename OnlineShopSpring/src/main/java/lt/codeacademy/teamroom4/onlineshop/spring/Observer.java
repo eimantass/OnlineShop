@@ -70,13 +70,13 @@ public class Observer {
 	}
 	//@EventListener
 	public void seed(ContextRefreshedEvent event) {
-	//	seedRole();
-	//	seedUserAdmin();
-	//	seedUserCustomer();
-	//	seedUserManager();
-	//	seedUserServiceManager();
-	//	seedCoupons();
-	//	seedCategory();
+		seedRole();
+		seedUserAdmin();
+		seedUserCustomer();
+		seedUserManager();
+		seedUserServiceManager();
+		seedCoupons();
+		seedCategory();
 		seedProduct();
 	//	seedWishListItemRepository();
 		//seedProductWithPhoto();
