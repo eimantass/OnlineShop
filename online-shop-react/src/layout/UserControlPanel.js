@@ -21,7 +21,7 @@ const UserControlPanel = () => {
         setCustomers(customersResponse.data); // Setting the fetched customers data to state
         setEmail(customersResponse.data.email || '');
         setNumber(customersResponse.data.number || '');
-        setPassword(customersResponse.data.password || '');
+        //setPassword(customersResponse.data.password || '');
       } catch (error) {
         console.log(error);
       }

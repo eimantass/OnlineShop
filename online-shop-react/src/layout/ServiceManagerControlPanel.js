@@ -20,7 +20,7 @@ const ServiceManagerControlPanel = () => {
         setUsername(customersResponse.data.username || '');
         setEmail(customersResponse.data.email || '');
         setNumber(customersResponse.data.number || '');
-        setPassword(customersResponse.data.password || '');
+        //setPassword(customersResponse.data.password || '');
         setMoney(customersResponse.data.money || '');
       } catch (error) {
         console.log(error);
