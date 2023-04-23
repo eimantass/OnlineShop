@@ -71,7 +71,7 @@ public class UserAccessController {
 		        
 		        user.setNumber(UpdatedUser.getNumber());
 		        user.setMoney(UpdatedUser.getMoney());
-		        user.setRoles(UpdatedUser.getRoles());
+		        // user.setRoles(UpdatedUser.getRoles());
 		        User savedUser = userRepository.save(user);
 		        log.info(null);
                 log.info("User with id {} updated successfully: {}", id, savedUser);
