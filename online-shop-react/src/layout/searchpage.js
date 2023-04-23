@@ -14,11 +14,9 @@ const SearchpageT = () => {
   const {val} = useParams();
   const [products, setProducts] = useState([]);
   const [productsNEW, setProductsNEW] = useState([]);
-  const [wishlistMessage, setwishlistMessage] = useState("");
-  const [cartMessage, setCartMessage] = useState("");
-  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
-
+  const navigate = useNavigate();
+ 
   useEffect(() => {
     async function fetchData() {
       try {
@@ -72,10 +70,7 @@ const SearchpageT = () => {
       // If user doesnt have a wishlist - create it
       if (!wishlists || wishlists.length === 0) {
         await WishListService.createWishListByUserId(currentUser.id);
-        setwishlistMessage("Wish List created successfully!");
-      } else {
-        setwishlistMessage("You already have an active wishlist!");
-      }
+      } 
       // Check again for wishlists as per userID
       let wishlists2 = await WishListService.getAllWishListsByUserId(currentUser.id);
 
@@ -123,15 +118,13 @@ const SearchpageT = () => {
       const carts = await CartService.GetActiveCarts(currentUser.id);
   
       let cart;
-      let cartMessage;
-  
+      
       if (!carts || carts.length === 0) {
         cart = await CartService.createCartByUserId(currentUser.id);
-        cartMessage = "Cart created successfully!";
+        
       } else {
         carts.sort((a, b) => b.createdAt - a.createdAt);
         cart = carts[0];
-        cartMessage = "You already have an active cart!";
       }
   
       await CartService.addItemToCart(cart.id, product.id, product.selectedQuantity);
@@ -139,7 +132,7 @@ const SearchpageT = () => {
       alert(`Product ${product.name} has been added to your cart.`);
       console.debug("Sending JSON Cart: ", cart.id, product.id, product.selectedQuantity);
   
-      setCartMessage(cartMessage);
+      
     } catch (error) {
       console.log(error);
     }

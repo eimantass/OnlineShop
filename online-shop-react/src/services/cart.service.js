@@ -106,9 +106,17 @@ static async GetInactiveCarts(userId) {
     console.log(error);
     throw new Error("Failed to load user inactive carts");
   }
-  
 }
-
+// Get All inactive carts (completed orders)
+static async GetAllInactiveCarts() {
+  try {
+    const response = await axios.get(`${CART_API_URL}/allInactiveCarts`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to load all inactive carts");
+  }
+}
 
 }
 

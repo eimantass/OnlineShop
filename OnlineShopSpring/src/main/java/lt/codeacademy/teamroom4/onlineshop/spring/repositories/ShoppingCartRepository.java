@@ -16,7 +16,7 @@ public interface ShoppingCartRepository extends JpaRepository<Cart, Long>{
 	@Query("from Cart c where c.ifActiveCart = 1 and c.user.id = :userId")
 	List<Cart> findActiveCartsByUserId(@Param("userId") Long userId);
 	@Query("from Cart c where c.ifActiveCart = 0 and c.user.id = :userId")
-
-
 	List<Cart> findInactiveCartsByUserId(Long userId);
+	@Query("from Cart where ifActiveCart = 0")
+	List<Cart> findAllInactiveCartsByUserId();
 }

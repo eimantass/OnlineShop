@@ -59,7 +59,7 @@ const AdminBoard = () => {
           className="btn btn-danger"
           onClick={() => navigate("/orders")}
         >
-          View All Orders
+          View All Finished Orders
         </button>
     </div>
   );

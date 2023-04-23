@@ -20,10 +20,6 @@ public class PurchaseController {
 	@Autowired
 	PurchaseService purchaseService;
 	
-	@PostMapping("/buy")
-	public void buyItem(User user, Cart cart) {
-		purchaseService.buyItem(user, cart);
-	}
 	@PostMapping("/buy2/{userId}/{cartId}")
 	public void buyItem2(@PathVariable Long userId,@PathVariable Long cartId) {
 		purchaseService.buyItem(userId, cartId);

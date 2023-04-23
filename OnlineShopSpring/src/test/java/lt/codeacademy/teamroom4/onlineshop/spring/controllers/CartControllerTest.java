@@ -29,7 +29,16 @@ class CartControllerTest {
 
 	@Test
 	public void testAddToCart() {
-		
+
+		 long productId = 1;
+	     int quantity = 2;
+	     Product product = new Product("Test Product name", null, null, 10.0, "Test Description", productId, null, null, null);
+	     
+	     when(productService.getProductById(productId)).thenReturn(product);
+//	     CartItem cartItem = cartController.addingItemsToCart(null, productId, quantity);
+//	     
+//	     assertEquals(product, cartItem.getProduct());
+//	     assertEquals(quantity, cartItem.getQuantity());
 	}
 
 }

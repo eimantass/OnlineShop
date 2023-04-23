@@ -1,15 +1,13 @@
-import Categories from '../components/categories-menu';
-import '../layout/css/Customers.css';
+import '../components/css/FooterMenu.css';
 import { useTranslation } from 'react-i18next';
 
 export default function Help() {
   const { t } = useTranslation();
     return (
       <div>
-        <Categories/>
+        <h1 className="headText">{t('help')}</h1>
+        <h1 className="bigPartText" >{t('helpphone')}</h1>
         <ul>
-        <h1 style={{textAlign: "center"}}>{t('help')}</h1>
-        <h1>{t('helpphone')}</h1>
         <b2> </b2>
         <li>{t('helpnumber1')}</li>
         <b2> </b2>
@@ -21,8 +19,8 @@ export default function Help() {
         <b2> </b2>
         <li>{t('helpnumber5')}</li>
         </ul>
+        <h1 className="bigPartText">{t('helpemail')}</h1>
         <ul>
-        <h1>{t('helpemail')}</h1>
         <b2> </b2>
         <li> {t('helpemail1')}</li>
         <b2> </b2>

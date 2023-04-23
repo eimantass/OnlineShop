@@ -148,7 +148,7 @@ function ProductCart() {
                       <h5 className="card-title">{item.product.name}</h5>
                       <p className="card-text"><b>{t('category')}</b> {item.product.category}</p>
                       <p className="card-text"><b>{t('brand')}</b> {item.product.brand}</p>
-                      <p className="card-text"><b>{t('price')}</b> {item.product.price}</p>
+                      <p className="card-text"><b>{t('price')}</b> {item.product.price.toLocaleString('de-DE', {style: 'currency', currency: 'EUR'})}</p>
                       <p className="card-text"><b>{t('description')}</b> {item.product.description}</p>
                       <p className="card-text"><b>{t('quantitystock')}</b> {item.product.quantity}</p>
                       <label>
@@ -176,7 +176,7 @@ function ProductCart() {
               ))
             ) : (
               <div className="col-12 text-center">
-                <h2> {t('noitemswish')} </h2>
+                <h2> {t('noitemscart')} </h2>
               </div>
             )}
           </div>
