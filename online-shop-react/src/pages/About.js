@@ -20,13 +20,6 @@ export default function About() {
         <b2>
 
         </b2>
-        <h2>{t('mission')}</h2>
-        <h3>
-        {t('missionBody')}
-        </h3>
-        <b2>
-
-        </b2>
         <h2> {t('goals')}</h2>
         <h3>
               {t('goalsBody')}
