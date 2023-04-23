@@ -9,13 +9,14 @@ function LanguageSwitcher() {
   };
 
   return (
-    <div>
-      {i18n.language === 'en' ? (
-        <button onClick={() => handleChangeLanguage('lt')}>LT</button>
-      ) : (
-        <button onClick={() => handleChangeLanguage('en')}>EN</button>
-      )}
-    </div>
+    <div className="d-flex justify-content-center">
+  <button
+    className="btn btn-primary mx-2"
+    onClick={() => handleChangeLanguage(i18n.language === 'en' ? 'lt' : 'en')}
+  >
+    {i18n.language === 'en' ? 'LT' : 'EN'}
+  </button>
+</div>
   );
 }
 

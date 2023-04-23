@@ -188,8 +188,7 @@ class App extends Component {
                 {t('logout')}
                 </a>
               </li>
-
-              {/* Changed from button to a Link tag for LanguageSwitcher component */}
+              {/* LanguageSwitcher component for current users */}
               <LanguageSwitcher />
 
             </div>
@@ -210,6 +209,9 @@ class App extends Component {
                 {t('signup')}
                 </Link>
               </li>
+
+              {/* LanguageSwitcher component for guests */}
+              <LanguageSwitcher />
 
             </div>
 
