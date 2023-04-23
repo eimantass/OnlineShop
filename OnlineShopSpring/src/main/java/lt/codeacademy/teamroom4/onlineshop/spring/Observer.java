@@ -48,10 +48,6 @@ public class Observer {
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
-	private PhotoService photoService;
-	@Autowired
-	private PhotoRepository photoRepository;
-	@Autowired
 	private ProductRepository productRepository;
 	@Autowired
 	private CouponRepository couponRepository;
@@ -66,12 +62,13 @@ public class Observer {
 
 	// Used to activate seed function
 
+	//Use this one if you want to seed only roles without users or products
 	//@EventListener
 	public void seedRolesOnly(ContextRefreshedEvent event) {
 	 seedRole();
 
 	}
-	// @EventListener
+	 @EventListener
 	public void seed(ContextRefreshedEvent event) {
 	//	seedRole();
 	//	seedUserAdmin();
@@ -83,8 +80,9 @@ public class Observer {
 		seedProduct();
 	//	seedWishListItemRepository();
 		//seedProductWithPhoto();
-	//	seedWishList();
-	//	seedCart();
+
+		seedWishList();
+
 		
 	}
 	 private void seedRole() {
@@ -197,7 +195,7 @@ public class Observer {
 	private void seedCart() {
 		Date time = new Date();
 		List<CartItem> items = List.of(
-				new CartItem(5, time, new Product((long)14,"IntelI5", INTEL, 200, "12 core cpu", PROCESSORS))
+				new CartItem(5, time, new Product("IntelI5", INTEL, null, 200, "12 core cpu", null, PROCESSORS, null, null))
 				);
 		
 		Cart cart = new Cart(4515.545, items);
