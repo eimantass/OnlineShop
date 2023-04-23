@@ -148,19 +148,9 @@ function ProductList() {
             <p><b>{t('description')}</b> {product.description}</p>
             <p><b>{t('category')}</b> {product.category}</p>
             <p><b>{t('brand')}</b> {product.brand}</p>
-            <p><b>{t('price')} </b>{product.price}</p>
+            <p><b>{t('price')} </b>{product.price.toLocaleString('de-DE', {style: 'currency', currency: 'EUR'})}</p>
             <p><b>{t('quantitystock')}</b>{product.quantity}</p>
-            {product.productParameters.length > 0 && (
-              <ul>
-                {product.productParameters.map((parameter) => (
-                  <li key={parameter.id}>
-                    <p>
-                      {parameter.name}: {parameter.description}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            )}
+    
             <label><b>
             {t('quantity')}</b>
               <input

@@ -137,7 +137,7 @@ function WishList() {
                     <p className="card-text">{t('category')} {item.product.category}</p>
                     <p className="card-text">{t('brand')} {item.product.brand}</p>
                     <p className="card-text">{t('quantitystock')}  {item.product.quantity}</p>
-                    <p className="card-text">{t('price')} {item.product.price}</p>
+                    <p className="card-text">{t('price')} {item.product.price.toLocaleString('de-DE', {style: 'currency', currency: 'EUR'})}</p>
                     <p className="card-text">{t('description')} {item.product.description}</p>
                     <button onClick={() => handleRemoveItem(wishList.id, item.id)} className="btn btn-danger">{t('removefromwish')}</button>
                     <div className="input-group mt-2">
