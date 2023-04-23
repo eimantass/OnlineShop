@@ -6,8 +6,9 @@ import {useTranslation} from 'react-i18next';
 
 const UserControlPanel = () => {
   console.log(useParams());
+  
   const { id } = useParams();
-  const [customers, setCustomers] = useState([]); // Added state for customers
+  const [customers, setCustomers] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
 
@@ -18,6 +19,9 @@ const UserControlPanel = () => {
           userService.getCustomerByIdMethod(id), // Fetching customer data from API
         ]);
         setCustomers(customersResponse.data); // Setting the fetched customers data to state
+        setEmail(customersResponse.data.email || '');
+        setNumber(customersResponse.data.number || '');
+        setPassword(customersResponse.data.password || '');
       } catch (error) {
         console.log(error);
       }
@@ -58,7 +62,7 @@ const UserControlPanel = () => {
       setSuccessMessage('User updated successfully.'); // Set success message
       setTimeout(() => {
         setSuccessMessage(''); // Clear success message after 2 seconds
-        navigate('/customer'); // Redirect to /customers page
+        navigate('/profile'); // Redirect to /customers page
       }, 2000);
     } catch (error) {
       console.log('Error updating customer:', error);
