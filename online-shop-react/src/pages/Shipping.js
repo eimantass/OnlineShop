@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import '../components/css/FooterMenu.css';
 
 export default function Shipping() {
   const { t } = useTranslation();

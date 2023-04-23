@@ -1,3 +1,4 @@
+import '../components/css/FooterMenu.css';
 import { useTranslation } from 'react-i18next';
 
 
