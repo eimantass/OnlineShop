@@ -1,44 +1,65 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.controllers;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 
+import lt.codeacademy.teamroom4.onlineshop.spring.entities.Cart;
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.CartItem;
-import lt.codeacademy.teamroom4.onlineshop.spring.entities.Product;
-import lt.codeacademy.teamroom4.onlineshop.spring.services.ProductService;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.CartItemRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.repositories.ShoppingCartRepository;
+import lt.codeacademy.teamroom4.onlineshop.spring.services.CartServiceImpl;
 
+@SpringBootTest
 class CartControllerTest {
 	
-	 private CartController cartController;
-	 private ProductService productService;
-	 
-	 @Autowired
-	 private MockMvc mockMvc;
+	@Autowired 
+	ShoppingCartRepository repository;
+	
+	@Autowired
+	CartItemRepository itemRepository;
+	
+	@Autowired
+	CartServiceImpl service;
+	
+	@Test
+	void testCreateCart() {
+		Cart cart = new Cart();
+	    Cart savedCart = repository.save(cart);
+
+	    assertNotNull(savedCart);
+	    assertNotNull(savedCart.getId());
+	    assertEquals(cart, savedCart);
+	}
+
+	@Test
+	void testAddItem() {
+		Cart cart = new Cart();
+		repository.save(cart);
+
+		CartItem item = new CartItem();
+		itemRepository.save(item);
+		cart.addItems(item);
+
+		Optional<Cart> updatedCart = repository.findById(cart.getId());
+		assertTrue(updatedCart.isPresent());
+	}
 
 
 	@Test
-	public void testAddToCart() {
-
-		 long productId = 1;
-	     int quantity = 2;
-	     Product product = new Product("Test Product name", null, null, 10.0, "Test Description", productId, null, null, null);
-	     
-	     when(productService.getProductById(productId)).thenReturn(product);
-//	     CartItem cartItem = cartController.addingItemsToCart(null, productId, quantity);
-//	     
-//	     assertEquals(product, cartItem.getProduct());
-//	     assertEquals(quantity, cartItem.getQuantity());
+	void testDeleteCart() {
+		 Cart cart = new Cart();
+		 repository.save(cart);
+		 service.deleteCart(cart.getId());
+		 Optional<Cart> deletedCart = repository.findById(cart.getId());
+		 assertFalse(deletedCart.isPresent());
 	}
 
 }
