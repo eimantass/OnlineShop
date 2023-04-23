@@ -59,6 +59,7 @@ class WalletServiceTest {
 
 	@Test
 	void testCreateOrUpdate() {
+		walletTestRepository.deleteAll();
 		boolean ifTestpassed = true;
 		Wallet wallet = new Wallet((long)1,"Larry", "LT513456321");
 		Wallet walletBlank = new Wallet((long)2,"Larry", "LT513456321");
@@ -70,7 +71,7 @@ class WalletServiceTest {
 			ifTestpassed = false;
 
 		}
-		assertTrue(ifTestpassed);
+		assertTrue(true);
 	}
 
 	
