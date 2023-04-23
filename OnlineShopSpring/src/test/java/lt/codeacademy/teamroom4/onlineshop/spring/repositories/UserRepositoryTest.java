@@ -32,7 +32,7 @@ class UserRepositoryTest {
 		String username = "username";
 		User user = new User(username, "email@gmail.com", "password");
 		underTest.save(user);
-		boolean exist = underTest.existsByEmail(username);
+		boolean exist = underTest.existsByUsername(username);
 		assertTrue(exist);
 	}
 

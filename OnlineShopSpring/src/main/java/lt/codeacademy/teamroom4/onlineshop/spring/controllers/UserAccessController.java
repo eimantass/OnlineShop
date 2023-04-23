@@ -68,7 +68,8 @@ public class UserAccessController {
 		        user.setEmail(UpdatedUser.getEmail());
 		        if(UpdatedUser.getPassword()!="") {
 		        user.setPassword(SecurityConfig.passwordEncoder().encode(UpdatedUser.getPassword()));}
-		        
+		       if(UpdatedUser.getRoles()!=null) {
+		        user.setRoles(UpdatedUser.getRoles());}
 		        user.setNumber(UpdatedUser.getNumber());
 		        user.setMoney(UpdatedUser.getMoney());
 		       // user.setRoles(UpdatedUser.getRoles());

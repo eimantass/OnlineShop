@@ -22,13 +22,14 @@ class ProductRepositoryTest {
 	@Autowired
 	ProductRepository rep;
 	
-	
+	@Autowired
+	CouponRepository couponRepository;
 	Set<ProductParameters> cpuParameterList = new HashSet<>();
 	ProductParameters firstCPU = new ProductParameters("I3", "Intel");
-	Coupon coupon1 = new Coupon(10);
+	//Coupon coupon1 = new Coupon(10);
 	String name = "IntelI7";
-	Product product = new Product((long) 5, null, name, INTEL,  250, "16 core cpu", PROCESSORS, cpuParameterList,
-			coupon1);
+	Product product = new Product( name, INTEL,  name, 250, "16 core cpu", null, PROCESSORS, cpuParameterList,
+			null);
 
 
 	@Test

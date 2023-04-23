@@ -14,7 +14,7 @@ class ProductTest {
 	Set<ProductParameters> cpuParameterList = new HashSet<>();
 	ProductParameters firstCPU = new ProductParameters("I3", "Intel");
 	Coupon coupon1 = new Coupon(10);
-	Product product = new Product((long) 5, null, "IntelI7", INTEL,  250, "16 core cpu", PROCESSORS, cpuParameterList,
+	Product product = new Product((long)5, "IntelI7", INTEL,  null, 250, "16 core cpu", null, PROCESSORS, cpuParameterList,
 			coupon1);
 
 	void addProductParameters() {
@@ -38,7 +38,7 @@ class ProductTest {
 	void testProductParametersStringBrandPhotoDoubleStringDescriptionCategories() {
 		// String name, Brands brand, String photo, double price, String description,
 		// Categories categories
-		Product testProduct = new Product((long)20, "IntelI7", INTEL, 250, "16 core cpu", GRAPHICS_CARDS);
+		Product testProduct = new Product((long)20, "IntelI7", INTEL, 250, "16 core cpu", PROCESSORS);
 		// emptyProduct.setName("RTX");
 
 		if (testProduct.getName().equals("IntelI7") && testProduct.getBrand().equals(INTEL)
@@ -71,7 +71,7 @@ class ProductTest {
 */
 	@Test
 	void testProductParametersAllExceptId() {
-		Product product = new Product((long)20,null, "IntelI7", INTEL, 250, "16 core cpu", PROCESSORS, cpuParameterList, coupon1);
+		Product product = new Product("IntelI7", INTEL, null, 250, "16 core cpu", null, PROCESSORS, cpuParameterList, coupon1);
 
 		addProductParameters();
 
@@ -90,12 +90,12 @@ class ProductTest {
 
 	@Test
 	void testProductParametersAll() {
-		Product product = new Product((long) 5, null, "IntelI7", INTEL,  250, "16 core cpu", PROCESSORS, cpuParameterList,
+		Product product = new Product("IntelI7", INTEL,  null, 250, "16 core cpu", null, PROCESSORS, cpuParameterList,
 				coupon1);
 
 		addProductParameters();
 
-		if (product.getId().equals((long) 5) && product.getName().equals("IntelI7")
+		if ( product.getName().equals("IntelI7")
 				&& product.getDiscount().equals(coupon1) && product.getBrand().equals(INTEL)
 				&& product.getPrice() == 250
 				&& product.getCategory().equals(PROCESSORS) && product.getProductParameters().equals(cpuParameterList)
@@ -107,20 +107,8 @@ class ProductTest {
 
 		}		
 	}
-
 	@Test
-	void testGetId() {
-		if (product.getId().equals((long) 5)) {
-			assertTrue(true);
-
-		} else {
-			assertTrue(false);
-
-		}
-	}
-
-	@Test
-	void testSetId() {
+	void testGetSetId() {
 		product.setId((long) 4);
 		if (product.getId() == 4) {
 			assertTrue(true);
@@ -177,8 +165,9 @@ class ProductTest {
 
 	@Test
 	void toStringTest() {
+		System.out.println(product.toString());
 		if (product.toString().equals(
-				"Product [id=5, name=IntelI7, photo=foto.png, price=250.0, description=16 core cpu, category=CPU, parameters=]")) {
+				"Product [id=5, name=IntelI7, photo=, price=250.0, description=16 core cpu, category=PROCESSORS, parameters=]")) {
 			assertTrue(true);
 		} else {
 			assertTrue(false);

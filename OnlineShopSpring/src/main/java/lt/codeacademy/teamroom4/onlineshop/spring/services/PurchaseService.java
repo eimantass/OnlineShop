@@ -29,22 +29,11 @@ public class PurchaseService {
 	@Autowired
 	ShoppingCartRepository cartRepository;
 	
-	public void buyItem(User user, Cart cart) {
-        Purchase purchase = new Purchase();
-        // purchase.setItem(item);
-        // purchase.setQuantity(quantity);
-       
-        purchase.setPrice(cart.getTotalPrice());
-        user.setMoney(user.getMoney()-cart.getTotalPrice());
-        purchaseRepository.save(purchase);
-    }
+
 	public void buyItem(Long userId, Long cartId) {
         Purchase purchase = new Purchase();
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
         Cart cart = cartRepository.findById(cartId).orElseThrow(() -> new RuntimeException("Cart not found"));
-        
-        // purchase.setItem(item);
-        // purchase.setQuantity(quantity);
         System.out.println(cart.getTotalPrice());
         purchase.setPrice(cart.getTotalPrice());
         purchase.setCart(cart);
@@ -53,6 +42,7 @@ public class PurchaseService {
         purchaseRepository.save(purchase);
         cartRepository.save(cart);
         removePurchasedItem(cart);
+        
         
         
     }
