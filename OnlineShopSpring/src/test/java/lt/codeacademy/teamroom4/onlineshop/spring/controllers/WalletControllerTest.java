@@ -28,7 +28,8 @@ class WalletControllerTest {
 	
 	 @Autowired
 	 private MockMvc mvc;
-
+	 @Autowired
+	 
 	 @MockBean
 	 private WalletService walletService;
 	
