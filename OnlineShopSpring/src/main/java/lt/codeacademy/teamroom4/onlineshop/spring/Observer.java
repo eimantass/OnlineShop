@@ -73,7 +73,7 @@ public class Observer {
 	}
 	// @EventListener
 	public void seed(ContextRefreshedEvent event) {
-		 //seedRole();
+		 seedRole();
 		seedUserAdmin();
 		seedUserCustomer();
 		seedUserManager();
@@ -103,16 +103,16 @@ public class Observer {
 
 	private void seedUserAdmin() {
 		Set<Role> roles = new HashSet<>();
-		roles.add(new Role(ADMIN));
+		roles.add(roleRepository.findByName(ADMIN).orElseThrow( () -> new RuntimeException("Error: Role is not found")));
 		List<User> admin = List.of(
 				new User("admin", "admin@gmail.com", SecurityConfig.passwordEncoder().encode("administrator"), roles));
-
+		roleRepository.saveAll(roles);
 		userRepository.saveAll(admin);
 	}
 
 	private void seedUserCustomer() {
 		Set<Role> roles = new HashSet<>();
-		roles.add(new Role(CUSTOMER));
+		roles.add(roleRepository.findByName(CUSTOMER).orElseThrow( () -> new RuntimeException("Error: Role is not found")));
 		List<User> customer = List.of(
 				new User("customer", "customer@gmail.com", SecurityConfig.passwordEncoder().encode("customer"), roles));
 		userRepository.saveAll(customer);
@@ -120,7 +120,7 @@ public class Observer {
 
 	private void seedUserManager() {
 		Set<Role> roles = new HashSet<>();
-		roles.add(new Role(MANAGER));
+		roles.add(roleRepository.findByName(MANAGER).orElseThrow( () -> new RuntimeException("Error: Role is not found")));
 		List<User> manager = List.of(
 				new User("manager", "manager@gmail.com", SecurityConfig.passwordEncoder().encode("manager"), roles));
 		userRepository.saveAll(manager);
@@ -128,7 +128,7 @@ public class Observer {
 
 	private void seedUserServiceManager() {
 		Set<Role> roles = new HashSet<>();
-		roles.add(new Role(SERVICEMANAGER));
+		roles.add(roleRepository.findByName(SERVICEMANAGER).orElseThrow( () -> new RuntimeException("Error: Role is not found")));
 		List<User> serviceManager = List.of(new User("serviceManager", "serviceManager@gmail.com",
 				SecurityConfig.passwordEncoder().encode("serviceManager"), roles));
 		userRepository.saveAll(serviceManager);

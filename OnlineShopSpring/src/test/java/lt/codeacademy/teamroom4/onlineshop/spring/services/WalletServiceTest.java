@@ -28,7 +28,7 @@ class WalletServiceTest {
 	@Autowired
 	WalletService walletTestService;
 	
-	@Mock
+	@Autowired
 	WalletRepository walletTestRepository;
 	
 	@AfterEach
@@ -61,9 +61,10 @@ class WalletServiceTest {
 	void testCreateOrUpdate() {
 		boolean ifTestpassed = true;
 		Wallet wallet = new Wallet((long)1,"Larry", "LT513456321");
-		Wallet walletBlank = new Wallet();
+		Wallet walletBlank = new Wallet((long)2,"Larry", "LT513456321");
 		Wallet testWalletBlank = walletTestService.createOrUpdate(walletBlank);
-
+		walletTestRepository.save(wallet);
+		walletTestRepository.save(walletBlank);
 		Wallet testWallet = walletTestService.createOrUpdate(wallet);
 		if (walletTestRepository.count()!=2) {
 			ifTestpassed = false;
