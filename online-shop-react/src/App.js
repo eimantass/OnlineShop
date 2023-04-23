@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import AuthService from "./services/auth.service";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 
 import Login from "./components/login.component";
 import Register from "./components/register.component";
@@ -25,6 +26,8 @@ import AdminCartsControls from "./components/AdminCartsControls";
 import ManagerProductControls from "./components/ManagerProductControls";
 import AddProductForm from "./components/add-product"
 import UpdateProduct from "./components/update-product"
+import OrderList from "./components/OrderList";
+import UserOrder from "./components/UserOrder";
 // Import CategoriesMenu pages
 import Processors from "./pages/categoriesMenuPages/processors";
 import Laptops from "./pages/categoriesMenuPages/laptops";
@@ -68,6 +71,7 @@ class App extends Component {
       showServiceManagerBoard: false,
       showAdminBoard: false,
       currentUser: undefined,
+      language: 'en',
     };
   }
 
@@ -97,6 +101,7 @@ class App extends Component {
   render() {
     const { t } = this.props;
     const { currentUser, showManagerBoard, showServiceManagerBoard, showAdminBoard} = this.state;
+  
     return (
       <>
       <div>
@@ -183,6 +188,8 @@ class App extends Component {
                 {t('logout')}
                 </a>
               </li>
+              {/* LanguageSwitcher component for current users */}
+              <LanguageSwitcher />
 
             </div>
 
@@ -203,6 +210,9 @@ class App extends Component {
                 </Link>
               </li>
 
+              {/* LanguageSwitcher component for guests */}
+              <LanguageSwitcher />
+
             </div>
 
           )}
@@ -222,6 +232,7 @@ class App extends Component {
     <Route path="/manager-user-control/edit/:id" element={<ServiceManagerControlPanel/>} />
     <Route path="/admin" element={<AdminBoard/>} />
     <Route path="/user-control/edit/:id" element={<UserControlPanel/>}/> 
+    <Route path="/user-order/:id" element={<UserOrder/>}/> 
     <Route path="/admin-user-control/edit/:id" element={<AdminControlPanel/>}/> 
     {/* Cart */}
     <Route path="/cart" element={<ShoppingCart/>} />
@@ -235,6 +246,7 @@ class App extends Component {
     <Route path="/managers" element={<AdminManagersControls/>} />
     <Route path="/customers" element={<AdminCustomersControls/>} />
     <Route path="/carts" element={<AdminCartsControls/>} />
+    <Route path="/orders" element={<OrderList/>} />
     <Route path="/manager-products" element={<ManagerProductControls/>} />
     <Route path="/add-product" element={<AddProductForm/>} />
     <Route path="/update-product/:id" element={<UpdateProduct/>} />

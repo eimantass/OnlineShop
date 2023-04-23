@@ -1,3 +1,4 @@
+import Categories from '../components/categories-menu';
 import '../layout/css/Customers.css';
 import { useTranslation } from 'react-i18next';
 
@@ -5,6 +6,7 @@ export default function Help() {
   const { t } = useTranslation();
     return (
       <div>
+        <Categories/>
         <ul>
         <h1 style={{textAlign: "center"}}>{t('help')}</h1>
         <h1>{t('helpphone')}</h1>

@@ -106,6 +106,7 @@ static async GetInactiveCarts(userId) {
     console.log(error);
     throw new Error("Failed to load user inactive carts");
   }
+  
 }
 
 

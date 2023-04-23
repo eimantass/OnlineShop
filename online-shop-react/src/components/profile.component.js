@@ -67,8 +67,16 @@ const Profile = () => {
           {i18n.t('editUser')}
                 </Link>
                 </div>
-          
+                <br></br>
+                <div>
+          <Link to={`/user-order/${customerData.id}`} className="btn btn-success mr-2">
+                  View Orders
+                </Link>
+                </div>
+
         </div>
+        
+        
       ) : null}
     </div>
   );
