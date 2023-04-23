@@ -87,6 +87,11 @@ function ProductList() {
       navigate("/login");
       return;
     }
+
+    if (product.selectedQuantity === 0) {
+      alert(`Product ${product.name} is out of stock.`);
+      return;
+    }
   
     const confirmed = window.confirm(`Are you sure you want to add ${product.name} to your cart?`);
   

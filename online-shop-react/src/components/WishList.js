@@ -62,10 +62,17 @@ function WishList() {
 
   async function handleAddToCart(productId, quantity) {
     if (currentUser) {
+
       try {
+
         if (typeof quantity === 'undefined') {
           // Show warning message to user that quantity needs to be selected
           alert('Please select the quantity before adding to cart');
+          return;
+        }
+
+        if (quantity <= 0) {
+          alert('Product is out of stock');
           return;
         }
 
@@ -99,8 +106,6 @@ function WishList() {
       // redirect to login page if the user is not logged in
       navigate("/login");
     }
-
-    
   }
 //Remove whole wish list
 
