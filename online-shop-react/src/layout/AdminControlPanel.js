@@ -17,6 +17,12 @@ const AdminUserControl = () => {
           userService.getCustomerByIdMethod(id), // Fetching customer data from API
         ]);
         setCustomers(customersResponse.data); // Setting the fetched customers data to state
+        // Autofill the form
+        setUsername(customersResponse.data.username || '');
+        setEmail(customersResponse.data.email || '');
+        setNumber(customersResponse.data.number || '');
+        setPassword(customersResponse.data.password || '');
+        setMoney(customersResponse.data.money || '');
       } catch (error) {
         console.log(error);
       }
