@@ -81,7 +81,7 @@ public class Observer {
 	//	seedWishListItemRepository();
 		//seedProductWithPhoto();
 
-		seedWishList();
+		//seedWishList();
 
 		
 	}
