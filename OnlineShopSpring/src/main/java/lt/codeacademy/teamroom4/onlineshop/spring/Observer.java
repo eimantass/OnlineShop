@@ -147,9 +147,6 @@ public class Observer {
 		gpuParameterList.add(firstGpu);
 		cpuParameterList.add(firstCPU);
 		List<Coupon> coupons = couponRepository.findAll();
-		//Photo photo = new Photo();
-		// photo = photoService.findPhotoById((long)1);
-		//photoRepository.save(photo);
 		List<Product> product = List.of(
 				new Product("Intel Core i3-10100F", INTEL, "https://avitela.lt/image/cache/catalog/product-images/62/225/original/e633e099cb5811924267c39c10fc23d7-1080x1000.jpg", 
 						180, "Quad Core CPU", (long)20, PROCESSORS, cpuParameterList, null),
@@ -168,12 +165,7 @@ public class Observer {
 
 		productRepository.saveAll(product);
 	}
-//	private void seedProductWithPhoto() {
-//		Photo photo = photoService.findPhotoById((long)1);
-//		Product product = new Product((long)40,"RX 6400XT With Photo", AMD,  160, " 4gb gddr6 RX 6400XT gpu", GRAPHICS_CARDS,
-//				null, null);
-//		productRepository.save(product);
-//	}
+
 	private void seedCategory() {
 		List<Category> categoryList = List.of(new Category(PROCESSORS), new Category(LAPTOPS),
 				new Category(GRAPHICS_CARDS), new Category(MAINBOARDS), new Category(MOBILE_PHONES),
@@ -182,24 +174,6 @@ public class Observer {
 		categoryRepository.saveAll(categoryList);
 	}
 
-	private void seedWishListItemRepository() {
-		WishListItem blank = new WishListItem();
-		wishListItemRepository.save(blank);
-	}
-
-	private void seedWishList() {
-		WishList blank = new WishList();
-		wishListRepository.save(blank);
-	}
 	
-	private void seedCart() {
-		Date time = new Date();
-		List<CartItem> items = List.of(
-				new CartItem(5, time, new Product("IntelI5", INTEL, null, 200, "12 core cpu", null, PROCESSORS, null, null))
-				);
-		
-		Cart cart = new Cart(4515.545, items);
-		shoppingCartRepository.save(cart);
-	}
 
 }
