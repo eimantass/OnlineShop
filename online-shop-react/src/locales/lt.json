@@ -156,5 +156,16 @@
 "intužvadelp": "Person4@place.lt, Person5@place.lt",
 "intužvadtlf": "Tel.: +370-471-87656",
 
-"Filt": "Filtruota pagal: "
+"Filt": "Filtruota pagal: ",
+
+"noorders": "Nėra jokių užsakymų.",
+"orderhistory": "Užsakymų istorija:",
+"ordernumber": "Užsakymo numeris: ",
+"username1": "Užsakovo slapyvardis:",
+"orderprice": "Užsakymo galutinė kaina:",
+"orderitems": "Užsakymo produktai:",
+"productname:": "Produkto pavadinimas:",
+"productprice": "Produkto kaina:",
+"quantity1": "Kiekis:",
+"date": "Data:"
 }
