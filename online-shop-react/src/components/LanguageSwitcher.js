@@ -14,7 +14,7 @@ function LanguageSwitcher() {
     className="btn btn-primary mx-2"
     onClick={() => handleChangeLanguage(i18n.language === 'en' ? 'lt' : 'en')}
   >
-    {i18n.language === 'en' ? 'LT' : 'EN'}
+    {i18n.language === 'en' ? 'EN' : 'LT'}
   </button>
 </div>
   );
