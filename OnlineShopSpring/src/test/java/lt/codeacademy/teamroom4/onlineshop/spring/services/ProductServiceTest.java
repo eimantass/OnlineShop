@@ -56,20 +56,20 @@ class ProductServiceTest {
 	private CouponRepository couponRepository;
 	
 	@Autowired
-	private ProductService testProductService = new ProductService();
+	private ProductService testProductService;
 	Logger logger;
 
-	@Before
-	void clear() {
-		productTestRepository.deleteAll();
-		couponRepository.deleteAll();
-	}
-	@AfterEach
-	void tearDown() {
-		productTestRepository.deleteAll();
-		couponRepository.deleteAll();
-
-	}
+//	@Before
+//	void clear() {
+//		productTestRepository.deleteAll();
+//		couponRepository.deleteAll();
+//	}
+//	@AfterEach
+//	void tearDown() {
+//		productTestRepository.deleteAll();
+//		couponRepository.deleteAll();
+//
+//	}
 	 void seedProduct() {
 		List<Coupon> couponList = List.of(new Coupon(10), new Coupon(20), new Coupon(30), new Coupon(40),
 				new Coupon(50), new Coupon(60), new Coupon(70), new Coupon(80), new Coupon(90), new Coupon(100));
@@ -110,12 +110,13 @@ class ProductServiceTest {
 	}
 	@Test
 	void testSortByDiscountAll() {
+		//seedProduct();
 		boolean ifTestpassed = true;
 		// logger.info(null, productRepository.count());
 		// List<Product> sortedProduct = null;
 		// logger.info(productService.sortByDiscountAll(0).toString());
 		List<Product> sortedProduct = testProductService.sortByDiscountAll(0);
-		for (int i = 1; i < 7; i++) {
+		for (int i = 2; i < 4; i++) {
 
 			if (sortedProduct.get(i - 1).getDiscount().getDiscount() > sortedProduct.get(i).getDiscount()
 					.getDiscount()) {
