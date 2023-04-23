@@ -200,7 +200,9 @@ function ProductCart() {
         </div>
       ))
     ) : (
-      <h2> {t('noactivewish')} </h2>
+      <div className="col-12 text-center">
+      <h2> {t('noactivecart')} </h2>
+      </div>
     )}
   </div>
   );

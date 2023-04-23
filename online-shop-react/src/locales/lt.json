@@ -122,7 +122,8 @@
 
 "wishList": "Jusu mėgstamos prekės",
 "noitemswish": "Nėra pridėtų prekių",
-"noactivewish":"Šiuo metu nėra pridėtų prekių",
+"noactivewish":"Šiuo metu nėra pridėtų prekių į megstamas prekės",
+"noactivecart":"Šiuo metu nėra pridėtų prekių į krepšelį",
 "removefromwish" : "Ištrinti iš sąrašo",
 
 "profile": "Paskyra",
