@@ -9,6 +9,27 @@
 
   }
 
+  .headText {
+    
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+
+  }
+
+  .bigPartText {
+    
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: rgb(40, 37, 234);
+    color: white;
+
+  }
+
   .aligner{
     margin-top:auto;
   }
