@@ -1,14 +1,13 @@
-import Categories from "../components/categories-menu";
 import { useTranslation } from 'react-i18next';
+import '../components/css/FooterMenu.css';
 
 export default function Shipping() {
   const { t } = useTranslation();
     return (
       <div>
-        <Categories/>
-        <h1 style={{textAlign: "center"}}>{t('shipping')}</h1>
+        <h1 className="headText">{t('shipping')}</h1>
         {/*----------------------------------------------------------------------------------*/}
-        <h1>{t('shiphead1')}</h1>
+        <h1 className="bigPartText">{t('shiphead1')}</h1>
         <h3>
         {t('shipbody1')}
         </h3>
@@ -16,7 +15,7 @@ export default function Shipping() {
 
         </b2>
         {/*----------------------------------------------------------------------------------*/}
-        <h1>{t('shiphead2')}</h1>
+        <h1 className="bigPartText">{t('shiphead2')}</h1>
         <h3>
         {t('shipbody2')}
         </h3>
@@ -24,7 +23,7 @@ export default function Shipping() {
 
         </b2>
         {/*----------------------------------------------------------------------------------*/}
-        <h1>{t('shiphead3')}</h1>
+        <h1 className="bigPartText">{t('shiphead3')}</h1>
         <h3>
         {t('shipbody2')}
         </h3>

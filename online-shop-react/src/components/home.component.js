@@ -7,8 +7,8 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <SeachAndLogo/>
         <Categories/>
+        <SeachAndLogo/>
         <ProductList/>
       </div>
     );

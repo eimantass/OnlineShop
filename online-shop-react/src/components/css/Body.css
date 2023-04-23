@@ -3,8 +3,13 @@
 
   .categories {
     background-color: rgb(40, 46, 243);
-    margin-top: 40px;
-    
+    margin-top: -20px;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
 
   }
 

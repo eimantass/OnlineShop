@@ -1,5 +1,4 @@
-
-import '../layout/css/Customers.css';
+import '../components/css/FooterMenu.css';
 import { useTranslation } from 'react-i18next';
 
 
@@ -7,7 +6,7 @@ export default function About() {
     const { t } = useTranslation();
     return (
       <div>
-        <h1 style={{textAlign: "center"}}>{t('about')}</h1>
+        <h1 className="headText">{t('about')}</h1>
         <h3>
         {t('aboutMain')}
         </h3>

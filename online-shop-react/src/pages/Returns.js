@@ -1,15 +1,13 @@
-
-import Categories from "../components/categories-menu";
 import { useTranslation } from 'react-i18next';
+import '../components/css/FooterMenu.css';
 
 export default function Returns() {
   const { t } = useTranslation();
     return (
       <div>
-        <Categories/>
-        <h1 style={{textAlign: "center"}}>{t('returns')}</h1>
+        <h1 className="headText">{t('returns')}</h1>
         {/*----------------------------------------------------------------------------------*/}
-        <h1>{t('returnhead1')}</h1>
+        <h1 className="bigPartText">{t('returnhead1')}</h1>
         <h2 style={{ fontWeight: 'bold' }}>{t('returnhead2')}</h2>
         <h3>
         {t('returnbody1')}

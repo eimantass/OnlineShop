@@ -70,7 +70,7 @@ const Profile = () => {
                 <br></br>
                 <div>
           <Link to={`/user-order/${customerData.id}`} className="btn btn-success mr-2">
-                  View Orders
+                 {i18n.t('vieworders')}
                 </Link>
                 </div>
 

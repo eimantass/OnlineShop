@@ -9,8 +9,8 @@ export default class TSearchPage extends Component {
   render(){
   return (
       <div>
-        <SeachAndLogo/>
         <Categories/>
+        <SeachAndLogo/>
         <SearchpageT/>
       </div>
     );
