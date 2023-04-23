@@ -31,6 +31,24 @@ class CartService {
       throw new Error("Failed to get carts by userId");
     }
   }
+
+  // Retrieve all active carts of the user
+  static async getAllActiveCartsByUserId() {
+    // Here we get the userID
+    const getCurrentUser = () => {
+      return JSON.parse(localStorage.getItem('user'));
+    }
+    // We use it to retrieve the cart by UserID
+    try {
+      const userId = getCurrentUser().id;
+      const response = await axios.get(`${CART_API_URL}/activeCartByUserId/${userId}`);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Failed to get active carts by userId");
+    }
+  }
+
   // Delete a cart by its ID
 static async deleteCartById(cartId) {
   try {
@@ -115,6 +133,17 @@ static async GetAllInactiveCarts() {
   } catch (error) {
     console.log(error);
     throw new Error("Failed to load all inactive carts");
+  }
+}
+
+// Get All carts (incomplete orders)
+static async GetAllActiveCarts() {
+  try {
+    const response = await axios.get(`${CART_API_URL}/allActiveCarts`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to load all active carts");
   }
 }
 
