@@ -20,6 +20,7 @@ public interface CartService {
 	List<Cart> findByUserId(Long id);
 	public List<Cart> findActiveCartsByUserId(Long id);
 	public List<Cart> findInactiveCartsByUserId(Long id);
+	List<Cart> findAllActiveCarts();
 
 	List<Cart> findAllNotActiveCarts();
 }

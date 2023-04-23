@@ -88,5 +88,11 @@ public class CartServiceImpl implements CartService {
 		// TODO Auto-generated method stub
 		return 	repository.findAllInactiveCartsByUserId();
 	}
+
+	@Override
+	public List<Cart> findAllActiveCarts() {
+		// TODO Auto-generated method stub
+		return repository.findAllActiveCarts();
+	}
 }
 
