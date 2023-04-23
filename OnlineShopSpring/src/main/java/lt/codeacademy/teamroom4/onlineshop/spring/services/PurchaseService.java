@@ -44,6 +44,7 @@ public class PurchaseService {
         removePurchasedItem(cart);
         
         
+        
     }
 	public void removePurchasedItem(Cart cart) {
 		List<CartItem> cartItems = cart.getItems();
