@@ -4,6 +4,8 @@ public enum Brands {
 AMD,
 NVIDIA,
 INTEL,
+MSI,
+BENQ,
 GOODRAM;
 
 }

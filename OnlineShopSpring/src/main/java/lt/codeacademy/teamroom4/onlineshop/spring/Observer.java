@@ -73,17 +73,17 @@ public class Observer {
 	}
 	 @EventListener
 	public void seed(ContextRefreshedEvent event) {
-		 seedRole();
-		seedUserAdmin();
-		seedUserCustomer();
-		seedUserManager();
-		seedUserServiceManager();
-		seedCoupons();
-		seedCategory();
+	//	seedRole();
+	//	seedUserAdmin();
+	//	seedUserCustomer();
+	//	seedUserManager();
+	//	seedUserServiceManager();
+	//	seedCoupons();
+	//	seedCategory();
 		seedProduct();
-	seedWishListItemRepository();
+	//	seedWishListItemRepository();
 		//seedProductWithPhoto();
-		seedWishList();
+	//	seedWishList();
 	//	seedCart();
 		
 	}
@@ -153,18 +153,21 @@ public class Observer {
 		// photo = photoService.findPhotoById((long)1);
 		//photoRepository.save(photo);
 		List<Product> product = List.of(
-//				new Product("i3-10100F", INTEL, "foto.png", 67, "Quad Core CPU", categoryList.get(1),cpuParameterList),
-				new Product("RX 6400XT", AMD,"photo",  160, " 4gb gddr6 RX 6400XT gpu", (long)20, GRAPHICS_CARDS,
-						gpuParameterList, null),
-				new Product("GTX 1650 Super", NVIDIA,"photo",  220, "4 gb gddr6 GTX 1650 Super gpu", (long)20, GRAPHICS_CARDS,
-						gpuParameterList, null),
-				new Product("4gb RAM", GOODRAM,"photo",  30, "4 gb ddr3 ram", (long)20, LAPTOPS, gpuParameterList,
-						coupons.get(0)),
-				new Product("IntelI5", INTEL,  null, 200, "12 core cpu", (long)20, PROCESSORS, gpuParameterList, null));
-				//new Product("IntelI7", INTEL, null, 250, "16 core cpu", PROCESSORS, cpuParameterList),
-				//new Product("IntelI7", INTEL,  250, "16 core cpu", PROCESSORS, cpuParameterList,
-						//coupons.get(1)));
-//
+				new Product("Intel Core i3-10100F", INTEL, "https://avitela.lt/image/cache/catalog/product-images/62/225/original/e633e099cb5811924267c39c10fc23d7-1080x1000.jpg", 
+						180, "Quad Core CPU", (long)20, PROCESSORS, cpuParameterList, null),
+				new Product("AMD Radeon RX 6400XT", AMD, "https://cdn.mdcomputers.in/image/cache/catalog/graphics%20card/asus/dual-rx-6700-4g/dual-rx-6700-4g-image-main-600x600.JPG",  
+						240, "4gb gddr6 RX 6400XT gpu", (long)20, GRAPHICS_CARDS, gpuParameterList, null),
+				new Product("Geforce GTX 1650 Super", NVIDIA, "https://images.kaina24.lt/5665/54/asus-geforce-tuf-gtx1650s-o4g-gaming-2.jpg",  
+						220, "4 gb gddr6 GTX 1650 Super gpu", (long)20, GRAPHICS_CARDS, gpuParameterList, null),
+				new Product("MSI GF63 i5-11400H 16GB 512SSD RTX3050Ti", MSI, "https://nesiojami.lt/wp-content/uploads/2021/01/MSI-GF65.jpg",  
+						120, "MSI Gaming Laptop", (long)20, LAPTOPS, gpuParameterList, null),
+				new Product("Intel Core™ i5-9400F", INTEL,  "https://images.kaina24.lt/8832/94/intel-core-i5-9400f-1.jpg", 
+						200, "6 core CPU", (long)20, PROCESSORS, gpuParameterList, null),
+				new Product("MSI B350M PRO-VDH", AMD, "https://asset.msi.com/resize/image/global/product/product_5_20170331165110_58de187eec6c3.png62405b38c58fe0f07fcef2367d8a9ba1/380.png", 
+						200, "6 core CPU", (long)20, MAINBOARDS, gpuParameterList, null),
+				new Product("Monitorius BenQ EX2710U | 27", BENQ,  "https://www.varle.lt/static/uploads/products/235x195/622/ste/stebeti-benq-mobiuz-ex240n-9hll6lbqbe.jpg", 
+						200, "Maksimali rezoliucija 3840 x 2160 ", (long)20, MONITORS, gpuParameterList, null));
+
 		productRepository.saveAll(product);
 	}
 //	private void seedProductWithPhoto() {
