@@ -1,7 +1,6 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.repositories;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Optional;
 

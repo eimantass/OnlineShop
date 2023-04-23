@@ -16,7 +16,7 @@ import lt.codeacademy.teamroom4.onlineshop.spring.entities.User;
 
 class UserDetailsImplTest {
 
-	private UserDetailsImpl underTest;
+	
 	private Collection<? extends GrantedAuthority> authorities;
 
 	@Test

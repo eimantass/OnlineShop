@@ -1,14 +1,8 @@
 package lt.codeacademy.teamroom4.onlineshop.spring.entities;
 
-import static lt.codeacademy.teamroom4.onlineshop.spring.utils.ERoles.MANAGER;
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.HashSet;
-import java.util.Set;
-
 import org.junit.jupiter.api.Test;
 
-import lt.codeacademy.teamroom4.onlineshop.spring.config.SecurityConfig;
 
 class UserTest {
 	//Set<Role> roles = new HashSet<>();

@@ -2,9 +2,6 @@ package lt.codeacademy.teamroom4.onlineshop.spring.repositories;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import lt.codeacademy.teamroom4.onlineshop.spring.entities.WishList;
