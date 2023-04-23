@@ -1,4 +1,3 @@
-import Categories from "../components/categories-menu";
 import '../layout/css/Customers.css';
 import { useTranslation } from 'react-i18next';
 
@@ -6,13 +5,12 @@ export default function Privacy() {
   const { t } = useTranslation();
     return (
       <div>
-        <Categories/>
-        <h1 style={{textAlign: "center"}}>{t('privacy')}</h1>
-        <h1>{t('privacyhead1')}</h1>
+        <h1 className="headText">{t('privacy')}</h1>
+        <h1 className="bigPartText">{t('privacyhead1')}</h1>
         <h3>
         {t('privacyhead2')}
         </h3>
-        <h1>{t('privacyhead3')}	</h1>
+        <h1 className="bigPartText">{t('privacyhead3')}	</h1>
         <h3>
         {t('privacyhead4')}
         </h3>
@@ -29,7 +27,7 @@ export default function Privacy() {
   </li>
 </ul>
 
-<h1>{t('privacybody1')}</h1>
+<h1 className="bigPartText">{t('privacybody1')}</h1>
 <h3>
 {t('privacybody2')}
 </h3>
