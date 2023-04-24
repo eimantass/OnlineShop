@@ -15,6 +15,8 @@ const SearchpageT = () => {
   const [products, setProducts] = useState([]);
   const [productsNEW, setProductsNEW] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+  const [wishlistMessage, setwishlistMessage] = useState("");
+  const [cartMessage, setCartMessage] = useState("");
   const navigate = useNavigate();
  
   useEffect(() => {
@@ -70,7 +72,10 @@ const SearchpageT = () => {
       // If user doesnt have a wishlist - create it
       if (!wishlists || wishlists.length === 0) {
         await WishListService.createWishListByUserId(currentUser.id);
-      } 
+        setwishlistMessage("Wish List created successfully!");
+      } else {
+        setwishlistMessage("You already have an active wishlist!");
+      }
       // Check again for wishlists as per userID
       let wishlists2 = await WishListService.getAllWishListsByUserId(currentUser.id);
 
@@ -106,6 +111,11 @@ const SearchpageT = () => {
       navigate("/login");
       return;
     }
+
+    if (product.selectedQuantity === 0) {
+      alert(`Product ${product.name} is out of stock.`);
+      return;
+    }
   
     const confirmed = window.confirm(`Are you sure you want to add ${product.name} to your cart?`);
   
@@ -118,13 +128,15 @@ const SearchpageT = () => {
       const carts = await CartService.GetActiveCarts(currentUser.id);
   
       let cart;
-      
+      let cartMessage;
+  
       if (!carts || carts.length === 0) {
         cart = await CartService.createCartByUserId(currentUser.id);
-        
+        cartMessage = "Cart created successfully!";
       } else {
         carts.sort((a, b) => b.createdAt - a.createdAt);
         cart = carts[0];
+        cartMessage = "You already have an active cart!";
       }
   
       await CartService.addItemToCart(cart.id, product.id, product.selectedQuantity);
@@ -132,12 +144,12 @@ const SearchpageT = () => {
       alert(`Product ${product.name} has been added to your cart.`);
       console.debug("Sending JSON Cart: ", cart.id, product.id, product.selectedQuantity);
   
-      
+      setCartMessage(cartMessage);
     } catch (error) {
       console.log(error);
     }
   };
-
+  
   const handleQuantityChange = (product, newQuantity) => {
     setProducts((prevProducts) =>
       prevProducts.map((prevProduct) =>
@@ -150,11 +162,11 @@ const SearchpageT = () => {
       )
     );
   };
-
+  
   const { t } = useTranslation();
   return (
     <main>
-      <h2 className="text-center">{t('Filt')+val}</h2>
+      <h2 className="text-center">{t('Filt') + val}</h2>
       <ul className="list-unstyled row">
         {productsNEW.map((product) => (
           <li key={product.id} className="product-item col-md-6 col-lg-4 col-xl-3 mb-4">
@@ -162,24 +174,14 @@ const SearchpageT = () => {
               <img src={product.photo} alt={product.name} className="product-image img-fluid" />
             </div>
             <h3 className="product-name">{product.name}</h3>
-            <p>{t('description')}{product.description}</p>
-            <p>{t('category')} {product.category}</p>
-            <p>{t('brand')} {product.brand}</p>
-            <p>{t('price')}{product.price}</p>
-            <p>{t('quantitystock')}{product.quantity}</p>
-            {product.productParameters.length > 0 && (
-              <ul>
-                {product.productParameters.map((parameter) => (
-                  <li key={parameter.id}>
-                    <p>
-                      {parameter.name}: {parameter.description}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            )}
-            <label>
-            {t('quantity')}
+            <p><b>{t('description')}</b> {product.description}</p>
+            <p><b>{t('category')}</b> {product.category}</p>
+            <p><b>{t('brand')}</b> {product.brand}</p>
+            <p><b>{t('price')} </b>{product.price.toLocaleString('de-DE', {style: 'currency', currency: 'EUR'})}</p>
+            <p><b>{t('quantitystock')}</b>{product.quantity}</p>
+    
+            <label><b>
+            {t('quantity')}</b>
               <input
                 type="number"
                 value={product.selectedQuantity}
