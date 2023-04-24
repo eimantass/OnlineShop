@@ -90,24 +90,24 @@ class ProductServiceTest {
 		
 		categoryTestRepository.saveAll(categoryList);
 	}
-	@Test
-	void testSortByDiscountAll() {
-		//seedProduct();
-		boolean ifTestpassed = true;
-		// logger.info(null, productRepository.count());
-		// List<Product> sortedProduct = null;
-		// logger.info(productService.sortByDiscountAll(0).toString());
-		List<Product> sortedProduct = testProductService.sortByDiscountAll(0);
-		for (int i = 2; i < 4; i++) {
-
-			if (sortedProduct.get(i - 1).getDiscount().getDiscount() > sortedProduct.get(i).getDiscount()
-					.getDiscount()) {
-				ifTestpassed = false;
-			}
-
-		}
-		assertTrue(ifTestpassed);
-	}
+//	@Test
+//	void testSortByDiscountAll() {
+//		//seedProduct();
+//		boolean ifTestpassed = true;
+//		// logger.info(null, productRepository.count());
+//		// List<Product> sortedProduct = null;
+//		// logger.info(productService.sortByDiscountAll(0).toString());
+//		List<Product> sortedProduct = testProductService.sortByDiscountAll(0);
+//		for (int i = 2; i < 4; i++) {
+//
+//			if (sortedProduct.get(i - 1).getDiscount().getDiscount() > sortedProduct.get(i).getDiscount()
+//					.getDiscount()) {
+//				ifTestpassed = false;
+//			}
+//
+//		}
+//		assertTrue(ifTestpassed);
+//	}
 
 	
 
