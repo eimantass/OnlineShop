@@ -5,6 +5,7 @@ export default function Games() {
     return (
       <div>
         <Categories/>
+        <SeachAndLogo/>
         <GamesProductList/>
       </div>
         

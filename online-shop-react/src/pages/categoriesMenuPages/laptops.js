@@ -5,6 +5,7 @@ export default function Laptops() {
     return (
       <div>
         <Categories/>
+        <SeachAndLogo/>
         <LaptopProductList/>
       </div>
         

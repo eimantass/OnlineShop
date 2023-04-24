@@ -5,6 +5,7 @@ export default function GraphicsCards() {
     return (
       <div>
         <Categories/>
+        <SeachAndLogo/>
         <GraphicsCardsProductList/>
       </div>
         

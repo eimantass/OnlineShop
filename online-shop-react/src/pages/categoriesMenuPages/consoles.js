@@ -5,6 +5,7 @@ export default function Consoles() {
     return (
       <div>
         <Categories/>
+        <SeachAndLogo/>
         <ConsolesProductList/>
       </div>
         

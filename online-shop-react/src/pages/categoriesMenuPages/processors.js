@@ -5,6 +5,7 @@ export default function Processors() {
     return (
       <div>
         <Categories/>
+        <SeachAndLogo/>
         <CPUProductList/>
       </div>
         

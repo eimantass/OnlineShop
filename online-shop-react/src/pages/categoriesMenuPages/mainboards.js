@@ -5,6 +5,7 @@ export default function Mainboards() {
     return (
       <div>
         <Categories/>
+        <SeachAndLogo/>
         <MainboardsProductList/>
       </div>
         

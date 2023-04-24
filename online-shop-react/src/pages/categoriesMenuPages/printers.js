@@ -5,6 +5,7 @@ export default function Printers() {
     return (
       <div>
         <Categories/>
+        <SeachAndLogo/>
         <PrintersProductList/>
       </div>
         

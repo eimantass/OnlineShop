@@ -5,6 +5,7 @@ export default function MobilePhones() {
     return (
       <div>
         <Categories/>
+        <SeachAndLogo/>
         <MobilePhonesProductList/>
       </div>
         
