@@ -1,4 +1,4 @@
-# OnlineShop
+# 64 bit - OnlineShop
 Repository for online shopping system project.
 The purpose of the project was to develop a web app that simulates e-shop functionalities.
 To launch backend you need to import the project in eclipse using import/Existing Maven Projects, wait for dependancies to install, edit application.properties file to match your mysql profile.
