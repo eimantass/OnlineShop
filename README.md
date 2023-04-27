@@ -5,6 +5,10 @@ Run as spring boot app.
 To launch the frontend  install react and its dependencies in  online-shop-react directory using npm install and start using npm start to launch the frontend.
 After React launches, it should start a tab directed to http://localhost:8081/ where you can interact with the app, if not you can manually paste http://localhost:8081/ into the web browser.
 
-
+The project was created by:
+Eimantas Kiseliovas - Backend development, github management and project coordination.
+Vilius Daugėla - Backend development.
+Dmitrij Uzun - Front End Development.
+Laurynas Davidavičius - Front end development.
 
 
