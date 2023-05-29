@@ -13,3 +13,8 @@ Dmitrij Uzun - Front End Development.
 Laurynas Davidavičius - Front end development.
 
 
+![HomePage](https://github.com/eimantass/OnlineShop/assets/6293860/7fadac3a-6ddc-4fd9-90fe-d17894dff7d2)
+![Krepšelis](https://github.com/eimantass/OnlineShop/assets/6293860/02b5ec76-9728-4904-9704-0ca63950880e)
+![Products](https://github.com/eimantass/OnlineShop/assets/6293860/7a883111-9520-4687-90e4-eecf7f521013)
+![PurchaseRecord](https://github.com/eimantass/OnlineShop/assets/6293860/b11dfef0-3117-49ae-b06d-ae8a967dfcd3)
+![WishList](https://github.com/eimantass/OnlineShop/assets/6293860/1466955d-c402-43e8-9d40-6baac48078ee)
